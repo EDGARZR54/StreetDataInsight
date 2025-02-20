@@ -97,7 +97,7 @@
       width: calc(100% - 40px); /* Ancho con márgenes */
       margin: 20px auto; /* Márgenes laterales para el mapa */
     }
-    
+
     /* Contenedor para la imagen */
     .image-container {
       width: 80%; /* Ajustar el ancho de la imagen */
@@ -108,6 +108,26 @@
     .image-container img {
       max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
       height: auto; /* Mantener la proporción de la imagen */
+    }
+
+    /* Estilos para el slider integrado al mapa */
+    .map-overlay {
+      font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    .map-overlay input {
+      background-color: transparent;
+      width: 100%;
+      cursor: ew-resize;
     }
   </style>
 </head>
@@ -120,14 +140,15 @@
       StreetData Insight
     </h1>
 
-    <!-- Slider de control de zoom -->
-    <div>
-      <input type="range" id="zoomSlider" min="1" max="20" value="15" step="1" />
-      <label for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
-    </div>
-
     <!-- Mapa insertado -->
     <div id="map"></div>
+
+    <!-- Slider integrado al mapa -->
+    <div class="map-overlay">
+      <h2>Zoom Map</h2>
+      <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1" />
+      <label for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
+    </div>
 
     <!-- Créditos y logos al final de la página -->
     <div class="credits">
@@ -180,44 +201,6 @@
       map.setZoom(zoomLevel);
       zoomValue.textContent = zoomLevel;
     });
-
-    // Funciones para cambiar la vista del mapa
-    function setMapView(coordinates, zoomLevel) {
-      map.setCenter(coordinates);
-      map.setZoom(zoomLevel);
-    }
-
-    // Cambiar vista a México y República Dominicana
-    function viewMexicoAndDR() {
-      setMapView([-98.233, 19.0], 4); // Coordenadas de México y República Dominicana
-    }
-
-    // Cambiar vista a República Dominicana
-    function viewDominicanRepublic() {
-      setMapView([-69.9, 18.6], 7); // Coordenadas para toda la República Dominicana
-    }
-
-    // Cambiar vista a Distrito Nacional
-    function viewDistritoNacional() {
-      setMapView([-69.9, 18.5], 10); // Coordenadas para el Distrito Nacional
-    }
-
-    // Añadir botones o controles para cambiar la vista
-    const viewMexicoButton = document.createElement('button');
-    viewMexicoButton.textContent = 'Vista México y RD';
-    viewMexicoButton.onclick = viewMexicoAndDR;
-    document.body.appendChild(viewMexicoButton);
-
-    const viewDRButton = document.createElement('button');
-    viewDRButton.textContent = 'Vista República Dominicana';
-    viewDRButton.onclick = viewDominicanRepublic;
-    document.body.appendChild(viewDRButton);
-
-    const viewDistritoButton = document.createElement('button');
-    viewDistritoButton.textContent = 'Vista Distrito Nacional';
-    viewDistritoButton.onclick = viewDistritoNacional;
-    document.body.appendChild(viewDistritoButton);
-
   </script>
 </body>
 </html>
