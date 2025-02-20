@@ -163,9 +163,9 @@
 
     /* Estilos para el contenedor del mapa */
     #map {
-      height: 400px;
-      width: 100%;
-      margin-top: 20px;
+      height: 600px; /* Aumenta la altura del mapa */
+      width: calc(100% - 40px); /* Ancho con márgenes */
+      margin: 20px auto; /* Márgenes laterales para el mapa */
     }
     
     
@@ -228,7 +228,7 @@
         container: 'map', // container id
         style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // style URL
         center: [-69.88745587021114, 18.47668346661841], // Coordenadas deseadas [lng, lat]
-        zoom: 14, // Nivel de zoom adecuado
+        zoom: 15, // Nivel de zoom adecuado
         maplibreLogo: true
     });
 
