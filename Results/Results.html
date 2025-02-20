@@ -93,7 +93,7 @@
       position: relative; /* Necesario para posicionar el slider dentro de este contenedor */
     }
 
-    /* Contenedor para el slider */
+    /* Contenedor para el slider (ampliado a 350px de ancho) */
     .slider-container {
       position: absolute; /* Tomará referencia del contenedor #map */
       top: 20px; /* Se coloca en la parte superior del mapa */
@@ -102,13 +102,26 @@
       padding: 10px;
       border-radius: 5px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      width: 200px;
+      width: 350px; /* Establecer ancho a 350px */
+      display: flex;
+      flex-direction: column; /* Disposición en columna */
+      justify-content: space-between; /* Distribuir los elementos de forma equidistante */
+      gap: 10px; /* Espaciado entre los elementos */
       z-index: 10; /* Asegura que el slider esté por encima del mapa */
     }
 
-    .slider-container h2,
+    /* Título dentro del slider */
+    .slider-container h2 {
+      color: black; /* Texto en negro */
+      margin: 0;
+      text-align: center;
+    }
+
     .slider-container label {
       color: black; /* Texto en negro */
+      display: inline-flex; /* Asegura que el label y el span estén en una sola línea */
+      align-items: center;
+      justify-content: center;
     }
 
     .slider-container input {
@@ -116,6 +129,14 @@
       height: 5px;
       background-color: transparent;
       cursor: ew-resize;
+    }
+
+    /* Distribución horizontal de los elementos en la parte inferior del slider */
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
     }
 
     /* Estilo para el botón de play/pause */
@@ -126,9 +147,6 @@
       color: black;
       cursor: pointer;
       padding: 5px;
-      margin-top: 10px;
-      display: block;
-      width: 100%;
     }
 
     /* Estilo para los créditos y logos */
@@ -152,6 +170,16 @@
       line-height: 1.6;
       font-weight: 300; /* Cambiar a light/regular */
     }
+
+    /* Contenedor del número de zoom */
+    #zoomValue {
+      display: inline-block;
+      min-width: 40px;  /* Establecer un ancho mínimo para el valor */
+      text-align: right; /* Alineación a la derecha */
+      padding-left: 5px; /* Espacio adicional para evitar que el texto se pegue */
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -210,10 +238,12 @@
 
       // HTML para el slider y botón de play/pause
       sliderContainer.innerHTML = `
-        <h2>Control de zoom</h2>
-        <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">2</span></label>
-        <input type="range" id="zoomSlider" min="2" max="15" value="2" step="0.1" />
-        <button id="toggleBtn" class="toggle-btn">⏵</button>
+        <h2>Caso de estudio - República Dominicana, Santo Domingo</h2>
+        <div class="slider-controls">
+          <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">2</span></label>
+          <input type="range" id="zoomSlider" min="2" max="15" value="2" step="0.1" />
+          <button id="toggleBtn" class="toggle-btn">⏵</button>
+        </div>
       `;
       
       // Agregar el slider al mapa
@@ -243,7 +273,12 @@
             let currentValue = parseFloat(zoomSlider.value);
             if (currentValue < zoomSlider.max) {
               zoomSlider.value = (currentValue + 0.1).toFixed(1); // Incrementar
-              map.setZoom(parseFloat(zoomSlider.value)); // Cambiar zoom del mapa
+              // Animar el zoom hacia las coordenadas específicas
+              map.easeTo({
+                center: [-69.88745587021114, 18.47668346661841], // Coordenadas fijas
+                zoom: parseFloat(zoomSlider.value), // Nuevo valor de zoom
+                duration: 300 // Duración de la animación (en milisegundos)
+              });
               zoomValue.textContent = zoomSlider.value;
             } else {
               clearInterval(animationInterval); // Detener la animación cuando llegue al máximo
