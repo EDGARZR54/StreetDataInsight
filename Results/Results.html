@@ -95,8 +95,8 @@
 
     /* Contenedor para el slider */
     .slider-container {
-      position: absolute;
-      top: 20px;
+      position: absolute; /* Tomará referencia del contenedor #map */
+      top: 20px; /* Se coloca en la parte superior del mapa */
       left: 20px;
       background-color: white;
       padding: 10px;
@@ -106,10 +106,9 @@
       z-index: 10; /* Asegura que el slider esté por encima del mapa */
     }
 
-    .slider-container h2 {
-      font-size: 14px;
-      margin: 0;
-      padding-bottom: 5px;
+    .slider-container h2,
+    .slider-container label {
+      color: black; /* Texto en negro */
     }
 
     .slider-container input {
@@ -119,10 +118,17 @@
       cursor: ew-resize;
     }
 
-    .slider-container label {
-      font-size: 12px;
-      text-align: left;
+    /* Estilo para el botón de play/pause */
+    .toggle-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      padding: 5px;
+      margin-top: 10px;
       display: block;
+      width: 100%;
     }
 
     /* Estilo para los créditos y logos */
@@ -160,13 +166,6 @@
     <!-- Mapa insertado -->
     <div id="map"></div>
 
-    <!-- Slider dentro del mapa -->
-    <div class="slider-container">
-      <h2>Control de zoom</h2>
-      <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
-      <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1" />
-    </div>
-
     <!-- Créditos y logos al final de la página -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
@@ -196,7 +195,7 @@
       container: 'map', // Contenedor del mapa
       style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // Estilo del mapa
       center: [-69.88745587021114, 18.47668346661841], // Coordenadas iniciales (República Dominicana)
-      zoom: 15, // Zoom inicial
+      zoom: 2, // Establecer el zoom inicial en 2 (valor mínimo)
       bearing: 0, // Rotación del mapa
       antialias: true, // Suavizado
       maxZoom: 15, // Zoom máximo
@@ -204,20 +203,57 @@
       maplibreLogo: true
     });
 
-    // Crear un marcador y colocarlo en las coordenadas específicas
-    const marker = new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
-      .addTo(map);
+    // Función para agregar el slider después de cargar el mapa
+    map.on('load', function() {
+      const sliderContainer = document.createElement('div');
+      sliderContainer.classList.add('slider-container');
 
-    // Función para actualizar el zoom con el slider
-    const zoomSlider = document.getElementById('zoomSlider');
-    const zoomValue = document.getElementById('zoomValue');
-    const zoomLabel = document.getElementById('zoomLabel');
+      // HTML para el slider y botón de play/pause
+      sliderContainer.innerHTML = `
+        <h2>Control de zoom</h2>
+        <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">2</span></label>
+        <input type="range" id="zoomSlider" min="2" max="15" value="2" step="0.1" />
+        <button id="toggleBtn" class="toggle-btn">⏵</button>
+      `;
+      
+      // Agregar el slider al mapa
+      document.getElementById('map').appendChild(sliderContainer);
 
-    zoomSlider.addEventListener('input', (e) => {
-      const zoomLevel = parseFloat(e.target.value);
-      map.setZoom(zoomLevel);
-      zoomValue.textContent = zoomLevel;
+      // Obtener los elementos del DOM
+      const zoomSlider = document.getElementById('zoomSlider');
+      const zoomValue = document.getElementById('zoomValue');
+      const toggleBtn = document.getElementById('toggleBtn');
+
+      // Actualizar el zoom con el slider
+      zoomSlider.addEventListener('input', (e) => {
+        const zoomLevel = parseFloat(e.target.value);
+        map.setZoom(zoomLevel);
+        zoomValue.textContent = zoomLevel;
+      });
+
+      // Variables para la animación
+      let animationInterval;
+
+      // Cambiar el ícono de play/pause y animar el slider
+      toggleBtn.addEventListener('click', () => {
+        if (toggleBtn.textContent === '⏵') {
+          toggleBtn.textContent = '⏸'; // Cambiar a pausa
+          // Animación del slider (incrementar el valor del slider cada 100ms)
+          animationInterval = setInterval(() => {
+            let currentValue = parseFloat(zoomSlider.value);
+            if (currentValue < zoomSlider.max) {
+              zoomSlider.value = (currentValue + 0.1).toFixed(1); // Incrementar
+              map.setZoom(parseFloat(zoomSlider.value)); // Cambiar zoom del mapa
+              zoomValue.textContent = zoomSlider.value;
+            } else {
+              clearInterval(animationInterval); // Detener la animación cuando llegue al máximo
+            }
+          }, 100); 
+        } else {
+          toggleBtn.textContent = '⏵'; // Cambiar a play
+          clearInterval(animationInterval); // Detener la animación
+        }
+      });
     });
   </script>
 </body>
