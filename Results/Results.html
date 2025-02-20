@@ -3,182 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StreetData Insight | Resultados</title>
+  <title>Map with Zoom Slider Inside</title>
   
-  <!-- Incluir Open Sans desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Incluir el CDN para la librería Before/After Slider -->
-  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-
-  <!-- Estilos MapLibre -->
+  <!-- Incluir el estilo de MapLibre -->
   <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
 
   <style>
-    /* Estilos para eliminar márgenes y padding predeterminados */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: black; /* Fondo negro */
-      color: white; /* Texto blanco */
-      font-family: 'Open Sans', sans-serif;
-      overflow: hidden; /* Evitar el scroll vertical */
     }
 
-    /* Ajustar el contenedor principal para dar espacio al navbar */
-    #main-content {
-      margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
-      height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
-      overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
-    }
-
-    /* Contenedor del navbar */
-    #navbar-placeholder {
-      height: auto; /* Asegura que el contenedor tenga altura */
-      position: relative; /* Asegura que el navbar esté dentro del flujo */
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;      
-      top: 0;       
-      left: 0;
-      width: 100%; /* Asegura que el navbar ocupe el ancho completo */
-      background-color: white; /* Fondo blanco para el navbar */
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    /* Logo en el navbar */
-    .navbar img {
-      height: 80px; /* Reducir el tamaño para móviles */
-      margin-right: 15px;
-    }
-
-    /* Contenedor de botones en la navbar */
-    .navbar-links {
-      display: flex;
-      gap: 10px; /* Reducir el espacio entre botones */
-      flex-wrap: wrap; /* Permitir que los botones se envuelvan en móviles */
-    }
-
-    /* Estilo de los botones */
-    .navbar-links a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      font-size: 14px; /* Reducir el tamaño de la fuente */
-    }
-
-    /* Título e imágenes */
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-      display: flex; /* Usar flexbox para alineación precisa */
-      justify-content: center; /* Centrar horizontalmente */
-      width: 100%;
-    }
-
-    /* Slider de zoom */
-    #zoomSlider {
-      width: 80%;
-      margin: 20px auto;
-    }
-
-    /* Estilos para el contenedor del mapa */
+    /* Estilos para el mapa */
     #map {
-      height: 600px; /* Aumenta la altura del mapa */
-      width: calc(100% - 40px); /* Ancho con márgenes */
-      margin: 20px auto; /* Márgenes laterales para el mapa */
-    }
-
-    /* Contenedor para la imagen */
-    .image-container {
-      width: 80%; /* Ajustar el ancho de la imagen */
-      margin: 20px auto; /* Centrar la imagen */
-      text-align: center; /* Centrar la imagen dentro del contenedor */
-    }
-
-    .image-container img {
-      max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
-      height: auto; /* Mantener la proporción de la imagen */
-    }
-
-    /* Estilos para el slider integrado al mapa */
-    .map-overlay {
-      font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 10px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      z-index: 10;
-    }
-
-    .map-overlay input {
-      background-color: transparent;
+      height: 100%;
       width: 100%;
-      cursor: ew-resize;
+    }
+
+    /* Estilo para el slider de zoom */
+    .zoom-slider {
+      position: absolute;
+      bottom: 50px; /* Ajustar la distancia desde el fondo */
+      left: 50%; /* Centrar horizontalmente */
+      transform: translateX(-50%); /* Centrar completamente */
+      width: 80%; /* Ancho del slider */
+      background-color: rgba(255, 255, 255, 0.7); /* Fondo ligeramente transparente */
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .zoom-slider input {
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .zoom-slider label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <!-- Incluir el navbar desde un archivo externo -->
-  <div id="navbar-placeholder"></div>
-  <div id="main-content">
-    <!-- Título -->
-    <h1>
-      StreetData Insight
-    </h1>
 
-    <!-- Mapa insertado -->
-    <div id="map"></div>
+  <div id="map"></div>
 
-    <!-- Slider integrado al mapa -->
-    <div class="map-overlay">
-      <h2>Zoom Map</h2>
-      <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1" />
-      <label for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
-    </div>
-
-    <!-- Créditos y logos al final de la página -->
-    <div class="credits">
-      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
-      <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
-        Todos los derechos de las imágenes corresponden a Google. 
-        Año de publicación: 2025.
-      </p>
-    </div>
+  <div class="zoom-slider">
+    <label for="zoomSlider">Zoom</label>
+    <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1">
   </div>
 
-  <!-- Cargar el navbar externo -->
-  <script>
-    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el navbar:', error));
-  </script>
-
-  <!-- Script para inicializar el mapa, colocarlo al final para asegurar que se cargue después del HTML -->
+  <!-- Cargar la librería MapLibre GL JS -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
     const map = new maplibregl.Map({
       container: 'map', // Contenedor del mapa
       style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // Estilo del mapa
-      center: [-69.88745587021114, 18.47668346661841], // Coordenadas iniciales (República Dominicana)
+      center: [-69.88745587021114, 18.47668346661841], // Coordenadas iniciales
       zoom: 15, // Zoom inicial
       bearing: 0, // Rotación del mapa
       antialias: true, // Suavizado
@@ -187,20 +71,14 @@
       maplibreLogo: true
     });
 
-    // Crear un marcador y colocarlo en las coordenadas específicas
-    const marker = new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
-      .addTo(map);
-
     // Función para actualizar el zoom con el slider
     const zoomSlider = document.getElementById('zoomSlider');
-    const zoomValue = document.getElementById('zoomValue');
 
     zoomSlider.addEventListener('input', (e) => {
       const zoomLevel = parseFloat(e.target.value);
       map.setZoom(zoomLevel);
-      zoomValue.textContent = zoomLevel;
     });
   </script>
+
 </body>
 </html>
