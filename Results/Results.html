@@ -13,8 +13,10 @@
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
   <!-- OpenLayers CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.1/ol.css" type="text/css">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+  <!-- OpenLayers JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
+
   <style>
     /* Estilos para eliminar márgenes y padding predeterminados */
     body, html {
@@ -198,6 +200,7 @@
       <img src="https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png" alt="Perfil B">
     </div>
    
+    
     <!-- Créditos y logos al final de la página -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
@@ -221,29 +224,48 @@
   </script>
 
   <!-- Script para inicializar el mapa con OpenLayers -->
-  <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.1/ol.js"></script>
   <script>
-    // Inicializar el mapa
+    // Crear el mapa
     const map = new ol.Map({
-      target: 'map', // Elemento del contenedor
+      target: 'map', // ID del contenedor del mapa
       layers: [
         new ol.layer.Tile({
-          source: new ol.source.OSM() // Capa de OpenStreetMap
-        })
+          source: new ol.source.OSM(), // Usar OpenStreetMap como capa base
+        }),
       ],
       view: new ol.View({
-        center: ol.proj.fromLonLat([-69.88745587021114, 18.47668346661841]), // Coordenadas y proyección
-        zoom: 15
-      })
+        center: ol.proj.fromLonLat([-69.88745587021114, 18.47668346661841]), // Coordenadas en [lon, lat]
+        zoom: 15, // Nivel de zoom
+      }),
     });
 
-    // Añadir un marcador (sin popup)
-    const marker = new ol.Overlay({
-      position: ol.proj.fromLonLat([-69.88745587021114, 18.47668346661841]),
-      positioning: 'center-center',
-      element: document.createElement('div')
+    // Añadir un marcador (punto)
+    const marker = new ol.Feature({
+      geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
+      ),
     });
-    map.addOverlay(marker);
+
+    // Estilo del marcador
+    marker.setStyle(
+      new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 6,
+          fill: new ol.style.Fill({ color: 'red' }),
+          stroke: new ol.style.Stroke({ color: 'white', width: 2 }),
+        }),
+      })
+    );
+
+    // Capa de vector para el marcador
+    const vectorLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [marker],
+      }),
+    });
+
+    // Añadir la capa de vector al mapa
+    map.addLayer(vectorLayer);
   </script>
 </body>
 </html>
