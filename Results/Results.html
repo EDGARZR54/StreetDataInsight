@@ -1,76 +1,105 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreetData Insight | Mapa</title>
-    
-    <!-- Incluir Mapbox GL JS para estilos vectoriales -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    
-    <style>
-        /* Estilos previos del navbar y cuerpo se mantienen igual */
-        
-        /* Nuevos estilos para el mapa */
-        #map-container {
-            width: 100%;
-            height: 60vh;
-            margin: 20px 0;
-        }
-        
-        .map {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetData Insight | Resultados</title>
+  
+  <!-- Incluir Open Sans desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Incluir el CDN para la librería Before/After Slider -->
+  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  
+  <!-- MapLibre CSS -->
+  <link href="https://unpkg.com/maplibre-gl@2.8.1/dist/maplibre-gl.css" rel="stylesheet" />
+  
+  <style>
+    /* Estilos para eliminar márgenes y padding predeterminados */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* Fondo negro */
+      color: white; /* Texto blanco */
+      font-family: 'Open Sans', sans-serif;
+      overflow: hidden; /* Evitar el scroll vertical */
+    }
+
+    /* Contenedor para el mapa */
+    #map {
+      height: 80vh; /* Altura para el mapa */
+      width: 100%; /* Ancho completo */
+    }
+
+    /* Ajustar el contenedor principal para dar espacio al navbar */
+    #main-content {
+      margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
+      height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
+      overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
+    }
+
+    /* Otros estilos se mantienen igual */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar y contenido principal existente -->
+  <!-- Incluir el navbar desde un archivo externo -->
+  <div id="navbar-placeholder"></div>
+  <div id="main-content">
+    <!-- Título -->
+    <h1>
+      StreetData Insight
+    </h1>
+
+    <!-- Contenedor para el mapa -->
+    <div id="map"></div>
     
-    <!-- Contenedor del mapa -->
-    <div id="map-container">
-        <div id="map" class="map"></div>
+    <!-- Créditos y logos al final de la página -->
+    <div class="credits">
+      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <p>
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
+        Todos los derechos de las imágenes corresponden a Google. 
+        Año de publicación: 2025.
+      </p>
     </div>
+  </div>
 
-    <!-- Resto de tu contenido existente -->
+  <!-- Cargar el navbar externo -->
+  <script>
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el navbar:', error));
 
-    <script>
-        // Configurar API Key de Geoapify
-        const GEOAPIFY_API_KEY = '5cd722885fcb433bb1f934c2a38533b8'; // Regístrate en https://www.geoapify.com/ para obtener tu key
-        
-        // Cargar estilo personalizado desde GitHub
-        fetch('https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json')
-            .then(response => response.json())
-            .then(styleJSON => {
-                // Modificar fuentes para usar Geoapify
-                styleJSON.sources = {
-                    "openmaptiles": {
-                        "type": "vector",
-                        "url": `https://maps.geoapify.com/v1/tile/klokantech-basic/{z}/{x}/{y}.vector.pbf?apiKey=${GEOAPIFY_API_KEY}`
-                    }
-                };
+    // Inicializar MapLibre
+    maplibregl.accessToken = 'tu-token-de-acceso'; // Reemplaza con tu token si es necesario
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://api.maptiler.com/maps/basic-v2/style.json?key=tu-api-key', // Usa tu estilo o el predeterminado
+      center: [-69.88745587021114, 18.47668346661841], // Coordenadas proporcionadas
+      zoom: 15, // Nivel de zoom
+    });
+  </script>
 
-                // Inicializar mapa con el estilo personalizado
-                const map = new mapboxgl.Map({
-                    container: 'map',
-                    style: styleJSON,
-                    center: [-99.1332, 19.4326], // Coordenadas de la CDMX
-                    zoom: 12
-                });
-
-                // Añadir controles de navegación
-                map.addControl(new mapboxgl.NavigationControl());
-                
-                // Añadir marcador personalizado
-                new mapboxgl.Marker({color: '#FF6B6B'})
-                    .setLngLat([-99.1332, 19.4326])
-                    .setPopup(new mapboxgl.Popup().setHTML('<h3>Punto de interés</h3><p>Ejemplo de marcador</p>'))
-                    .addTo(map);
-            })
-            .catch(error => console.error('Error cargando el estilo:', error));
-    </script>
+  <!-- Incluir el script de MapLibre -->
+  <script src="https://unpkg.com/maplibre-gl@2.8.1/dist/maplibre-gl.js"></script>
 </body>
 </html>
