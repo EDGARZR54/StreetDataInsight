@@ -7,47 +7,35 @@
   
   <!-- Incluir Open Sans desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Incluir el CDN para la librería Before/After Slider -->
-  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
-  <!-- MapLibre GL JS -->
-  <script src="https://unpkg.com/maplibre-gl@1.13.0-rc.3/dist/maplibre-gl.js"></script>
-  <link href="https://unpkg.com/maplibre-gl@1.13.0-rc.3/dist/maplibre-gl.css" rel="stylesheet" />
+  <!-- Incluir MapLibre GL -->
+  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
 
   <style>
-    /* Estilos para eliminar márgenes y padding predeterminados */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: black; /* Fondo negro */
-      color: white; /* Texto blanco */
+      background-color: black;
+      color: white;
       font-family: 'Open Sans', sans-serif;
-      overflow: hidden; /* Evitar el scroll vertical */
+      overflow: hidden;
     }
 
-    /* Ajustar el contenedor principal para dar espacio al navbar */
-    #main-content {
-      margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
-      height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
-      overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
-    }
-        
-    /* Contenedor del navbar */
     #navbar-placeholder {
-      height: auto; /* Asegura que el contenedor tenga altura */
-      position: relative; /* Asegura que el navbar esté dentro del flujo */
+      height: auto;
+      position: relative;
     }
 
-    /* Navbar */
     .navbar {
-      position: fixed;      
-      top: 0;       
+      position: fixed;
+      top: 0;
       left: 0;
-      width: 100%; /* Asegura que el navbar ocupe el ancho completo */
-      background-color: white; /* Fondo blanco para el navbar */
+      width: 100%;
+      background-color: white;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,57 +44,24 @@
       z-index: 1000;
     }
 
-    /* Logo en el navbar */
-    .navbar img {
-      height: 80px; /* Reducir el tamaño para móviles */
-      margin-right: 15px;
+    #main-content {
+      margin-top: 100px;
+      height: calc(100vh - 100px);
+      overflow-y: auto;
     }
 
-    /* Contenedor de botones en la navbar */
-    .navbar-links {
-      display: flex;
-      gap: 10px; /* Reducir el espacio entre botones */
-      flex-wrap: wrap; /* Permitir que los botones se envuelvan en móviles */
-    }
-
-    /* Estilo de los botones */
-    .navbar-links a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      font-size: 14px; /* Reducir el tamaño de la fuente */
-    }
-
-    /* Añadir un margen derecho solo al último enlace en la navbar */
-    .navbar-links a:last-child {
-      margin-right: 50px; /* Ajusta el valor según sea necesario */
-    }
-
-    /* Título e imágenes */
     h1 {
       text-align: center;
       margin-top: 20px;
-      display: flex; /* Usar flexbox para alineación precisa */
-      justify-content: center; /* Centrar horizontalmente */
-      width: 100%;
     }
 
-    /* Texto central */
-    .open-sans-bold {
-      font-weight: 700;
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.2rem; /* Usar unidades relativas */
+    #map {
+      height: 600px;
+      width: 90%;
+      margin: 20px auto;
+      border: 2px solid #ccc;
     }
 
-    /* Centrar sliders */
-    #slider1, #slider2 {
-      margin: 0 auto;
-      width: 90%; /* Ajustar el ancho para móviles */
-      max-width: 800px; /* Limitar el ancho máximo */
-    }
-
-    /* Espacio para créditos y logos */
     .credits {
       text-align: center;
       margin-top: 40px;
@@ -114,100 +69,19 @@
       background-color: #333;
       color: white;
     }
-
-    .credits img {
-      height: 40px; /* Reducir el tamaño de los logos */
-      margin: 10px 0;
-    }
-
-    .credits p {
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: justify;
-      line-height: 1.6;
-      font-weight: 300; /* Cambiar a light/regular */
-    }
-
-    /* Media queries para móviles */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column; /* Cambiar a columna en móviles */
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      .navbar img {
-        height: 60px; /* Reducir aún más el tamaño del logo */
-      }
-
-      .navbar-links {
-        gap: 8px; /* Reducir el espacio entre botones */
-      }
-
-      .navbar-links a {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
-
-      .open-sans-bold {
-        font-size: 1rem; /* Reducir el tamaño de la fuente */
-      }
-
-      #slider1, #slider2 {
-        width: 95%; /* Ajustar el ancho para móviles */
-        height: auto; /* Altura automática */
-      }
-
-      .credits p {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
-    }
-
-    /* Estilos para la imagen */
-    .image-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .image-container img {
-      height: 500px;
-      width: auto; /* El ancho se ajusta automáticamente */
-    }
-
-    /* Estilos para el mapa */
-    #map {
-      height: 600px; /* Altura del mapa más alta */
-      width: 90%; /* Ancho del mapa */
-      margin: 20px auto; /* Centrar el mapa */
-      border: 2px solid #ccc; /* Borde para el mapa */
-    }
   </style>
 </head>
 <body>
-  <!-- Incluir el navbar desde un archivo externo -->
   <div id="navbar-placeholder"></div>
   <div id="main-content">
-    <!-- Título -->
-    <h1>
-      StreetData Insight
-    </h1>
-
-    <!-- Contenedor para el mapa -->
+    <h1>StreetData Insight</h1>
     <div id="map"></div>
-
-    <!-- Contenedor para la imagen -->
-    <div class="image-container">
-      <img src="https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png" alt="Perfil B">
-    </div>
-   
-    
-    <!-- Créditos y logos al final de la página -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
       <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
-        Todos los derechos de las imágenes corresponden a Google. 
-        Año de publicación: 2025.
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
+        Todos los derechos de las imágenes corresponden a Google. Año de publicación: 2025.
       </p>
     </div>
   </div>
@@ -222,26 +96,22 @@
       .catch(error => console.error('Error al cargar el navbar:', error));
   </script>
 
-  <!-- Script para inicializar el mapa con MapLibre GL JS -->
+  <!-- Script para inicializar el mapa con MapLibre GL -->
   <script>
-    // URL del estilo JSON exportado desde Maputnik
-    const styleUrl = 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json';
+    document.addEventListener("DOMContentLoaded", function () {
+      const map = new maplibregl.Map({
+        container: "map",
+        style: "https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json",
+        center: [-69.88745587021114, 18.47668346661841],
+        zoom: 15
+      });
 
-    // Inicializar el mapa
-    const map = new maplibregl.Map({
-      container: 'map', // Contenedor del mapa
-      style: styleUrl, // Estilo personalizado
-      center: [-69.88745587021114, 18.47668346661841], // Coordenadas [lng, lat]
-      zoom: 15 // Nivel de zoom
+      map.addControl(new maplibregl.NavigationControl());
+
+      new maplibregl.Marker()
+        .setLngLat([-69.88745587021114, 18.47668346661841])
+        .addTo(map);
     });
-
-    // Añadir controles de navegación
-    map.addControl(new maplibregl.NavigationControl());
-
-    // Añadir un marcador (opcional)
-    new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841])
-      .addTo(map);
   </script>
 </body>
 </html>
