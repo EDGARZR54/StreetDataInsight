@@ -97,7 +97,7 @@
       width: calc(100% - 40px); /* Ancho con márgenes */
       margin: 20px auto; /* Márgenes laterales para el mapa */
     }
-    
+
     /* Contenedor para la imagen */
     .image-container {
       width: 80%; /* Ajustar el ancho de la imagen */
@@ -110,21 +110,26 @@
       height: auto; /* Mantener la proporción de la imagen */
     }
 
-    /* Créditos y logos */
+    /* Estilo para los créditos y logos */
     .credits {
       text-align: center;
       margin-top: 40px;
+      padding: 20px;
+      background-color: #333;
+      color: white;
     }
 
     .credits img {
-      max-width: 150px; /* Limitar el tamaño de los logos */
-      height: auto;
-      margin: 10px;
+      height: 40px; /* Reducir el tamaño de los logos */
+      margin: 10px 0;
     }
 
     .credits p {
       font-size: 14px;
-      color: white;
+      margin-top: 10px;
+      text-align: justify;
+      line-height: 1.6;
+      font-weight: 300; /* Cambiar a light/regular */
     }
   </style>
 </head>
@@ -146,7 +151,7 @@
     <!-- Mapa insertado -->
     <div id="map"></div>
 
-    <!-- Imagen Perfil B -->
+    <!-- Imagen adicional después del mapa -->
     <div class="image-container">
       <img src="https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png" alt="Perfil B">
     </div>
