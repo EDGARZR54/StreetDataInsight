@@ -85,29 +85,43 @@
       width: 100%;
     }
 
-    /* Slider de zoom */
-    #zoomSlider {
-      width: 80%;
-      margin: 20px auto;
-    }
-
-    /* Estilos para el contenedor del mapa */
+    /* Contenedor del mapa */
     #map {
       height: 600px; /* Aumenta la altura del mapa */
       width: calc(100% - 40px); /* Ancho con márgenes */
       margin: 20px auto; /* Márgenes laterales para el mapa */
+      position: relative;
     }
 
-    /* Contenedor para la imagen */
-    .image-container {
-      width: 80%; /* Ajustar el ancho de la imagen */
-      margin: 20px auto; /* Centrar la imagen */
-      text-align: center; /* Centrar la imagen dentro del contenedor */
+    /* Contenedor para el slider */
+    .slider-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      width: 200px;
     }
 
-    .image-container img {
-      max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
-      height: auto; /* Mantener la proporción de la imagen */
+    .slider-container h2 {
+      font-size: 14px;
+      margin: 0;
+      padding-bottom: 5px;
+    }
+
+    .slider-container input {
+      width: 100%;
+      height: 5px;
+      background-color: transparent;
+      cursor: ew-resize;
+    }
+
+    .slider-container label {
+      font-size: 12px;
+      text-align: left;
+      display: block;
     }
 
     /* Estilo para los créditos y logos */
@@ -142,18 +156,14 @@
       StreetData Insight
     </h1>
 
-    <!-- Slider de control de zoom -->
-    <div>
-      <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1" />
-      <label for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
-    </div>
-
     <!-- Mapa insertado -->
     <div id="map"></div>
 
-    <!-- Imagen adicional después del mapa -->
-    <div class="image-container">
-      <img src="https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png" alt="Perfil B">
+    <!-- Slider dentro del mapa -->
+    <div class="slider-container">
+      <h2>Control de zoom</h2>
+      <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
+      <input type="range" id="zoomSlider" min="2" max="15" value="15" step="0.1" />
     </div>
 
     <!-- Créditos y logos al final de la página -->
@@ -201,49 +211,13 @@
     // Función para actualizar el zoom con el slider
     const zoomSlider = document.getElementById('zoomSlider');
     const zoomValue = document.getElementById('zoomValue');
+    const zoomLabel = document.getElementById('zoomLabel');
 
     zoomSlider.addEventListener('input', (e) => {
       const zoomLevel = parseFloat(e.target.value);
       map.setZoom(zoomLevel);
       zoomValue.textContent = zoomLevel;
     });
-
-    // Funciones para cambiar la vista del mapa
-    function setMapView(coordinates, zoomLevel) {
-      map.setCenter(coordinates);
-      map.setZoom(zoomLevel);
-    }
-
-    // Cambiar vista a México y República Dominicana
-    function viewMexicoAndDR() {
-      setMapView([-98.233, 19.0], 4); // Coordenadas de México y República Dominicana
-    }
-
-    // Cambiar vista a República Dominicana
-    function viewDominicanRepublic() {
-      setMapView([-69.9, 18.6], 7); // Coordenadas para toda la República Dominicana
-    }
-
-    // Cambiar vista a Distrito Nacional
-    function viewDistritoNacional() {
-      setMapView([-69.9, 18.5], 10); // Coordenadas para el Distrito Nacional
-    }
-
-    // Añadir botones o controles para cambiar la vista
-    const viewMexicoButton = document.createElement('button');
-    viewMexicoButton.textContent = 'Vista México y RD';
-    viewMexicoButton.onclick = viewMexicoAndDR;
-    document.body.appendChild(viewMexicoButton);
-
-    const viewDRButton = document.createElement('button');
-    viewDRButton.textContent = 'Vista República Dominicana';
-    viewDRButton.onclick = viewDominicanRepublic;
-    document.body.appendChild(viewDRButton);
-
-    const viewDistritoButton = document.createElement('button');
-    viewDistritoButton.textContent = 'Vista Distrito Nacional';
-    viewDistritoButton.onclick = viewDistritoNacional;
-    document.body.appendChild(viewDistritoButton);
   </script>
 </body>
 </html>
