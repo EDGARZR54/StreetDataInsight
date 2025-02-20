@@ -160,21 +160,10 @@
 
     /* Estilos para el contenedor del mapa */
     #map {
-      height: 800px;
-      width: 80%; /* Ajustar el ancho del mapa */
-      margin: 20px auto; /* Centrar el mapa */
-    }
-
-    /* Contenedor para la imagen */
-    .image-container {
-      width: 80%; /* Ajustar el ancho de la imagen */
-      margin: 20px auto; /* Centrar la imagen */
-      text-align: center; /* Centrar la imagen dentro del contenedor */
-    }
-
-    .image-container img {
-      max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
-      height: auto; /* Mantener la proporción de la imagen */
+      height: 80vh; /* Ajustar la altura para usar el 80% de la ventana */
+      width: 80%;   /* Ajustar el ancho del mapa */
+      margin: 0 auto; /* Centrar el mapa */
+      position: relative; /* Asegura que el contenedor tenga un contexto adecuado */
     }
   </style>
 </head>
@@ -220,18 +209,26 @@
   <!-- Script para inicializar el mapa, colocarlo al final para asegurar que se cargue después del HTML -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
-    const map = new maplibregl.Map({
-        container: 'map', // container id
-        style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // style URL
-        center: [-69.88745587021114, 18.47668346661841], // Coordenadas deseadas [lng, lat]
-        zoom: 15, // Nivel de zoom adecuado
-        maplibreLogo: true
-    });
+    // Espera a que el DOM esté completamente cargado antes de inicializar el mapa
+    document.addEventListener('DOMContentLoaded', function () {
+      const map = new maplibregl.Map({
+          container: 'map', // El contenedor donde se muestra el mapa
+          style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // URL del estilo
+          center: [-69.88745587021114, 18.47668346661841], // Coordenadas [long, lat]
+          zoom: 15, // Nivel de zoom
+          maplibreLogo: true
+      });
 
-    // Crear un marcador y colocarlo en las mismas coordenadas
-    const marker = new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas para el marcador
-      .addTo(map);
+      // Ajuste en la posición y visibilidad del marcador
+      const marker = new maplibregl.Marker()
+        .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
+        .addTo(map);
+
+      // Asegura que el mapa se redimensione si cambia el tamaño de la ventana
+      window.addEventListener('resize', function() {
+        map.resize();
+      });
+    });
   </script>
 </body>
 </html>
