@@ -31,144 +31,6 @@
       overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
     }
         
-    /* Contenedor del navbar */
-    #navbar-placeholder {
-      height: auto; /* Asegura que el contenedor tenga altura */
-      position: relative; /* Asegura que el navbar esté dentro del flujo */
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;      
-      top: 0;       
-      left: 0;
-      width: 100%; /* Asegura que el navbar ocupe el ancho completo */
-      background-color: white; /* Fondo blanco para el navbar */
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    /* Logo en el navbar */
-    .navbar img {
-      height: 80px; /* Reducir el tamaño para móviles */
-      margin-right: 15px;
-    }
-
-    /* Contenedor de botones en la navbar */
-    .navbar-links {
-      display: flex;
-      gap: 10px; /* Reducir el espacio entre botones */
-      flex-wrap: wrap; /* Permitir que los botones se envuelvan en móviles */
-    }
-
-    /* Estilo de los botones */
-    .navbar-links a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      font-size: 14px; /* Reducir el tamaño de la fuente */
-    }
-
-    /* Añadir un margen derecho solo al último enlace en la navbar */
-    .navbar-links a:last-child {
-      margin-right: 50px; /* Ajusta el valor según sea necesario */
-    }
-
-    /* Título e imágenes */
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-      display: flex; /* Usar flexbox para alineación precisa */
-      justify-content: center; /* Centrar horizontalmente */
-      width: 100%;
-    }
-
-    /* Texto central */
-    .open-sans-bold {
-      font-weight: 700;
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.2rem; /* Usar unidades relativas */
-    }
-
-    /* Centrar sliders */
-    #slider1, #slider2 {
-      margin: 0 auto;
-      width: 90%; /* Ajustar el ancho para móviles */
-      max-width: 800px; /* Limitar el ancho máximo */
-    }
-
-    /* Espacio para créditos y logos */
-    .credits {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #333;
-      color: white;
-    }
-
-    .credits img {
-      height: 40px; /* Reducir el tamaño de los logos */
-      margin: 10px 0;
-    }
-
-    .credits p {
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: justify;
-      line-height: 1.6;
-      font-weight: 300; /* Cambiar a light/regular */
-    }
-
-    /* Media queries para móviles */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column; /* Cambiar a columna en móviles */
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      .navbar img {
-        height: 60px; /* Reducir aún más el tamaño del logo */
-      }
-
-      .navbar-links {
-        gap: 8px; /* Reducir el espacio entre botones */
-      }
-
-      .navbar-links a {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
-
-      .open-sans-bold {
-        font-size: 1rem; /* Reducir el tamaño de la fuente */
-      }
-
-      #slider1, #slider2 {
-        width: 95%; /* Ajustar el ancho para móviles */
-        height: auto; /* Altura automática */
-      }
-
-      .credits p {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
-    }
-
-    /* Estilos para la imagen */
-    .image-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .image-container img {
-      height: 500px;
-      width: auto; /* El ancho se ajusta automáticamente */
-    }
-
     /* Estilos para el mapa */
     #map {
       height: 400px;
@@ -215,7 +77,8 @@
       .catch(error => console.error('Error al cargar el navbar:', error));
   </script>
 
-  <!-- Script para inicializar el mapa -->
+  <!-- Script para inicializar el mapa, colocarlo al final para asegurar que se cargue después del HTML -->
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
     const map = new maplibregl.Map({
         container: 'map', // container id
