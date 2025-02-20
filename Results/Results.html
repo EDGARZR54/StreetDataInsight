@@ -210,16 +210,17 @@
   <script>
     const map = new maplibregl.Map({
         container: 'map', // container id
-        style: 'https://demotiles.maplibre.org/style.json', // style URL
+        style: 'https://raw.githubusercontent.com/openstreetmap/osm-bright/master/styles/osm-bright.json', // Estilo de OpenStreetMap
         center: [-69.88745587021114, 18.47668346661841], // Coordenadas deseadas [lng, lat]
         zoom: 14, // Nivel de zoom adecuado
         maplibreLogo: true
     });
-
+  
     // Crear un marcador y colocarlo en las mismas coordenadas
     const marker = new maplibregl.Marker()
       .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas para el marcador
       .addTo(map);
   </script>
+
 </body>
 </html>
