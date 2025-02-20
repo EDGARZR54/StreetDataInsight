@@ -259,6 +259,11 @@
         const zoomLevel = parseFloat(e.target.value);
         map.setZoom(zoomLevel);
         zoomValue.textContent = zoomLevel;
+
+        // Si el slider no está en el valor máximo (15), cambia el botón a 'play'
+        if (zoomLevel < 15) {
+          toggleBtn.textContent = '⏵'; // Cambiar el botón a play si no está en 15
+        }
       });
 
       // Variables para la animación
@@ -282,10 +287,10 @@
               zoomValue.textContent = zoomSlider.value;
             } else {
               clearInterval(animationInterval); // Detener la animación cuando llegue al máximo
-              toggleBtn.textContent = '■'; // Cambiar el botón a stop cuando llegue al máximo
+              toggleBtn.textContent = '⏪︎'; // Cambiar el botón a stop cuando llegue al máximo
             }
           }, 100); 
-        } else if (toggleBtn.textContent === '■') {
+        } else if (toggleBtn.textContent === '⏪︎') {
           toggleBtn.textContent = '⏵'; // Cambiar a play y reiniciar el zoom
           zoomSlider.value = 2;
           zoomValue.textContent = '2';
