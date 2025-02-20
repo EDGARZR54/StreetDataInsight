@@ -282,8 +282,19 @@
               zoomValue.textContent = zoomSlider.value;
             } else {
               clearInterval(animationInterval); // Detener la animación cuando llegue al máximo
+              toggleBtn.textContent = '■'; // Cambiar el botón a stop cuando llegue al máximo
             }
           }, 100); 
+        } else if (toggleBtn.textContent === '■') {
+          toggleBtn.textContent = '⏵'; // Cambiar a play y reiniciar el zoom
+          zoomSlider.value = 2;
+          zoomValue.textContent = '2';
+          map.setZoom(2);
+          map.easeTo({
+            center: [-69.88745587021114, 18.47668346661841], // Coordenadas fijas
+            zoom: 2, // Valor inicial
+            duration: 0 // Sin animación
+          });
         } else {
           toggleBtn.textContent = '⏵'; // Cambiar a play
           clearInterval(animationInterval); // Detener la animación
