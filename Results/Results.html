@@ -12,6 +12,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <style>
     /* Estilos para eliminar márgenes y padding predeterminados */
     body, html {
@@ -168,6 +173,14 @@
       height: 500px;
       width: auto; /* El ancho se ajusta automáticamente */
     }
+
+    /* Estilos para el mapa */
+    #map {
+      height: 400px; /* Altura del mapa */
+      width: 90%; /* Ancho del mapa */
+      margin: 20px auto; /* Centrar el mapa */
+      border: 2px solid #ccc; /* Borde para el mapa */
+    }
   </style>
 </head>
 <body>
@@ -178,6 +191,9 @@
     <h1>
       StreetData Insight
     </h1>
+
+    <!-- Contenedor para el mapa -->
+    <div id="map"></div>
 
     <!-- Contenedor para la imagen -->
     <div class="image-container">
@@ -205,6 +221,22 @@
         document.getElementById('navbar-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error al cargar el navbar:', error));
+  </script>
+
+  <!-- Script para inicializar el mapa con Leaflet -->
+  <script>
+    // Inicializar el mapa
+    const map = L.map('map').setView([19.4326, -99.1332], 13); // Coordenadas de Ciudad de México y nivel de zoom
+
+    // Añadir la capa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Añadir un marcador
+    L.marker([19.4326, -99.1332]).addTo(map)
+      .bindPopup('Ciudad de México')
+      .openPopup();
   </script>
 </body>
 </html>
