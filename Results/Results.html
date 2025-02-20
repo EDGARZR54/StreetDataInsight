@@ -90,7 +90,7 @@
       height: 600px; /* Aumenta la altura del mapa */
       width: calc(100% - 40px); /* Ancho con márgenes */
       margin: 20px auto; /* Márgenes laterales para el mapa */
-      position: relative;
+      position: relative; /* Necesario para posicionar el slider dentro de este contenedor */
     }
 
     /* Contenedor para el slider */
@@ -103,6 +103,7 @@
       border-radius: 5px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       width: 200px;
+      z-index: 10; /* Asegura que el slider esté por encima del mapa */
     }
 
     .slider-container h2 {
