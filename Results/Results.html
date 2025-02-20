@@ -1,84 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StreetData Insight | Resultados</title>
-  
-  <!-- Incluir Open Sans desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetData Insight | Resultados</title>
 
-  <!-- Incluir MapLibre GL CSS y JS -->
-  <link href="https://unpkg.com/maplibre-gl@1.13.0/dist/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl@1.13.0/dist/mapbox-gl.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+    <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
-  <style>
-    /* Estilos para eliminar márgenes y padding predeterminados */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black; /* Fondo negro */
-      color: white; /* Texto blanco */
-      font-family: 'Open Sans', sans-serif;
-      overflow: hidden; /* Evitar el scroll vertical */
-    }
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    /* Ajustar el contenedor principal para dar espacio al navbar */
-    #main-content {
-      margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
-      height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
-      overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
-    }
+    <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/leaflet-gl@latest/leaflet-gl.js"></script>
 
-    /* Estilos para el mapa */
-    #map {
-      height: 600px; /* Altura del mapa más alta */
-      width: 90%; /* Ancho del mapa */
-      margin: 20px auto; /* Centrar el mapa */
-      border: 2px solid #ccc; /* Borde para el mapa */
-    }
-  </style>
+    <style>
+        /* ... (tus estilos CSS) ... */
+    </style>
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
-  <div id="main-content">
-    <h1>StreetData Insight</h1>
-    <div id="map"></div>
-    <div class="credits">
-      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
-      <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
-        Todos los derechos de las imágenes corresponden a Google. 
-        Año de publicación: 2025.
-      </p>
-    </div>
-  </div>
+    <script>
+        // Inicializar el mapa
+        const map = L.map('map').setView([18.47668346661841, -69.88745587021114], 15);
 
-  <script>
-    // Cargar el navbar externo
-    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el navbar:', error));
+        // Cargar el estilo JSON desde tu repositorio
+        fetch('https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json')
+            .then(response => response.json())
+            .then(style => {
+                // Añadir la capa con el estilo personalizado
+                L.leafletGl({
+                    style: style
+                }).addTo(map);
 
-    // Inicializar el mapa
-    const map = new maplibregl.Map({
-      container: 'map', // ID del contenedor
-      style: 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0c/partials/MapStyle.json', // URL del estilo JSON
-      center: [-69.88745587021114, 18.47668346661841], // Coordenadas [longitud, latitud]
-      zoom: 15 // Nivel de zoom
-    });
-
-    // Añadir un marcador
-    new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
-      .addTo(map);
-  </script>
+                // Añadir un marcador (sin popup)
+                L.marker([18.47668346661841, -69.88745587021114]).addTo(map);
+            })
+            .catch(error => console.error('Error al cargar el estilo:', error));
+    </script>
 </body>
 </html>
