@@ -10,64 +10,35 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
-  <!-- Incluir MapLibre GL -->
-  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+  <!-- Incluir MapLibre GL CSS y JS -->
+  <link href="https://unpkg.com/maplibre-gl@1.13.0/dist/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@1.13.0/dist/mapbox-gl.js"></script>
 
   <style>
+    /* Estilos para eliminar márgenes y padding predeterminados */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: black;
-      color: white;
+      background-color: black; /* Fondo negro */
+      color: white; /* Texto blanco */
       font-family: 'Open Sans', sans-serif;
-      overflow: hidden;
+      overflow: hidden; /* Evitar el scroll vertical */
     }
 
-    #navbar-placeholder {
-      height: auto;
-      position: relative;
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
+    /* Ajustar el contenedor principal para dar espacio al navbar */
     #main-content {
-      margin-top: 100px;
-      height: calc(100vh - 100px);
-      overflow-y: auto;
+      margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
+      height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
+      overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-    }
-
+    /* Estilos para el mapa */
     #map {
-      height: 600px;
-      width: 90%;
-      margin: 20px auto;
-      border: 2px solid #ccc;
-    }
-
-    .credits {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #333;
-      color: white;
+      height: 600px; /* Altura del mapa más alta */
+      width: 90%; /* Ancho del mapa */
+      margin: 20px auto; /* Centrar el mapa */
+      border: 2px solid #ccc; /* Borde para el mapa */
     }
   </style>
 </head>
@@ -79,39 +50,35 @@
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
       <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
-        Todos los derechos de las imágenes corresponden a Google. Año de publicación: 2025.
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
+        Todos los derechos de las imágenes corresponden a Google. 
+        Año de publicación: 2025.
       </p>
     </div>
   </div>
 
-  <!-- Cargar el navbar externo -->
   <script>
+    // Cargar el navbar externo
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error al cargar el navbar:', error));
-  </script>
 
-  <!-- Script para inicializar el mapa con MapLibre GL -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const map = new maplibregl.Map({
-        container: "map",
-        style: "https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json",
-        center: [-69.88745587021114, 18.47668346661841],
-        zoom: 15
-      });
-
-      map.addControl(new maplibregl.NavigationControl());
-
-      new maplibregl.Marker()
-        .setLngLat([-69.88745587021114, 18.47668346661841])
-        .addTo(map);
+    // Inicializar el mapa
+    const map = new maplibregl.Map({
+      container: 'map', // ID del contenedor
+      style: 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0c/partials/MapStyle.json', // URL del estilo JSON
+      center: [-69.88745587021114, 18.47668346661841], // Coordenadas [longitud, latitud]
+      zoom: 15 // Nivel de zoom
     });
+
+    // Añadir un marcador
+    new maplibregl.Marker()
+      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
+      .addTo(map);
   </script>
 </body>
 </html>
