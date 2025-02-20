@@ -76,11 +76,6 @@
       font-size: 14px; /* Reducir el tamaño de la fuente */
     }
 
-    /* Añadir un margen derecho solo al último enlace en la navbar */
-    .navbar-links a:last-child {
-      margin-right: 50px; /* Ajusta el valor según sea necesario */
-    }
-
     /* Título e imágenes */
     h1 {
       text-align: center;
@@ -90,75 +85,10 @@
       width: 100%;
     }
 
-    /* Texto central */
-    .open-sans-bold {
-      font-weight: 700;
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.2rem; /* Usar unidades relativas */
-    }
-
-    /* Centrar sliders */
-    #slider1, #slider2 {
-      margin: 0 auto;
-      width: 90%; /* Ajustar el ancho para móviles */
-      max-width: 800px; /* Limitar el ancho máximo */
-    }
-
-    /* Espacio para créditos y logos */
-    .credits {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #333;
-      color: white;
-    }
-
-    .credits img {
-      height: 40px; /* Reducir el tamaño de los logos */
-      margin: 10px 0;
-    }
-
-    .credits p {
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: justify;
-      line-height: 1.6;
-      font-weight: 300; /* Cambiar a light/regular */
-    }
-
-    /* Media queries para móviles */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column; /* Cambiar a columna en móviles */
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      .navbar img {
-        height: 60px; /* Reducir aún más el tamaño del logo */
-      }
-
-      .navbar-links {
-        gap: 8px; /* Reducir el espacio entre botones */
-      }
-
-      .navbar-links a {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
-
-      .open-sans-bold {
-        font-size: 1rem; /* Reducir el tamaño de la fuente */
-      }
-
-      #slider1, #slider2 {
-        width: 95%; /* Ajustar el ancho para móviles */
-        height: auto; /* Altura automática */
-      }
-
-      .credits p {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-      }
+    /* Slider de zoom */
+    #zoomSlider {
+      width: 80%;
+      margin: 20px auto;
     }
 
     /* Estilos para el contenedor del mapa */
@@ -167,7 +97,6 @@
       width: calc(100% - 40px); /* Ancho con márgenes */
       margin: 20px auto; /* Márgenes laterales para el mapa */
     }
-    
     
     /* Contenedor para la imagen */
     .image-container {
@@ -191,9 +120,10 @@
       StreetData Insight
     </h1>
 
-    <!-- Contenedor para la imagen -->
-    <div class="image-container">
-      <img src="https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png" alt="Perfil B">
+    <!-- Slider de control de zoom -->
+    <div>
+      <input type="range" id="zoomSlider" min="1" max="20" value="15" step="1" />
+      <label for="zoomSlider">Zoom: <span id="zoomValue">15</span></label>
     </div>
 
     <!-- Mapa insertado -->
@@ -225,17 +155,70 @@
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
     const map = new maplibregl.Map({
-        container: 'map', // container id
-        style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // style URL
-        center: [-69.88745587021114, 18.47668346661841], // Coordenadas deseadas [lng, lat]
-        zoom: 15, // Nivel de zoom adecuado
-        maplibreLogo: true
+      container: 'map', // Contenedor del mapa
+      style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // Estilo del mapa
+      center: [-69.88745587021114, 18.47668346661841], // Coordenadas iniciales (República Dominicana)
+      zoom: 15, // Zoom inicial
+      pitch: 30, // Inclinación para un efecto más tridimensional (opcional)
+      bearing: 0, // Rotación del mapa
+      antialias: true, // Suavizado
+      maxZoom: 20, // Zoom máximo
+      minZoom: 1,  // Zoom mínimo
+      maplibreLogo: true
     });
 
-    // Crear un marcador y colocarlo en las mismas coordenadas
+    // Crear un marcador y colocarlo en las coordenadas específicas
     const marker = new maplibregl.Marker()
-      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas para el marcador
+      .setLngLat([-69.88745587021114, 18.47668346661841]) // Coordenadas del marcador
       .addTo(map);
+
+    // Función para actualizar el zoom con el slider
+    const zoomSlider = document.getElementById('zoomSlider');
+    const zoomValue = document.getElementById('zoomValue');
+
+    zoomSlider.addEventListener('input', (e) => {
+      const zoomLevel = parseFloat(e.target.value);
+      map.setZoom(zoomLevel);
+      zoomValue.textContent = zoomLevel;
+    });
+
+    // Funciones para cambiar la vista del mapa
+    function setMapView(coordinates, zoomLevel) {
+      map.setCenter(coordinates);
+      map.setZoom(zoomLevel);
+    }
+
+    // Cambiar vista a México y República Dominicana
+    function viewMexicoAndDR() {
+      setMapView([-98.233, 19.0], 4); // Coordenadas de México y República Dominicana
+    }
+
+    // Cambiar vista a República Dominicana
+    function viewDominicanRepublic() {
+      setMapView([-69.9, 18.6], 7); // Coordenadas para toda la República Dominicana
+    }
+
+    // Cambiar vista a Distrito Nacional
+    function viewDistritoNacional() {
+      setMapView([-69.9, 18.5], 10); // Coordenadas para el Distrito Nacional
+    }
+
+    // Añadir botones o controles para cambiar la vista
+    const viewMexicoButton = document.createElement('button');
+    viewMexicoButton.textContent = 'Vista México y RD';
+    viewMexicoButton.onclick = viewMexicoAndDR;
+    document.body.appendChild(viewMexicoButton);
+
+    const viewDRButton = document.createElement('button');
+    viewDRButton.textContent = 'Vista República Dominicana';
+    viewDRButton.onclick = viewDominicanRepublic;
+    document.body.appendChild(viewDRButton);
+
+    const viewDistritoButton = document.createElement('button');
+    viewDistritoButton.textContent = 'Vista Distrito Nacional';
+    viewDistritoButton.onclick = viewDistritoNacional;
+    document.body.appendChild(viewDistritoButton);
+
   </script>
 </body>
 </html>
