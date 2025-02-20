@@ -12,10 +12,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <!-- Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- MapLibre GL JS -->
+  <script src="https://unpkg.com/maplibre-gl@1.13.0-rc.3/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@1.13.0-rc.3/dist/maplibre-gl.css" rel="stylesheet" />
 
   <style>
     /* Estilos para eliminar márgenes y padding predeterminados */
@@ -223,18 +222,26 @@
       .catch(error => console.error('Error al cargar el navbar:', error));
   </script>
 
-  <!-- Script para inicializar el mapa con Leaflet -->
+  <!-- Script para inicializar el mapa con MapLibre GL JS -->
   <script>
+    // URL del estilo JSON exportado desde Maputnik
+    const styleUrl = 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/f3c9f0c1bef3ae5b6ac0d60efc9041420adecf0f/partials/MapStyle.json';
+
     // Inicializar el mapa
-    const map = L.map('map').setView([18.47668346661841, -69.88745587021114], 16); // Coordenadas y nivel de zoom
+    const map = new maplibregl.Map({
+      container: 'map', // Contenedor del mapa
+      style: styleUrl, // Estilo personalizado
+      center: [-69.88745587021114, 18.47668346661841], // Coordenadas [lng, lat]
+      zoom: 15 // Nivel de zoom
+    });
 
-    // Añadir la capa de OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    // Añadir controles de navegación
+    map.addControl(new maplibregl.NavigationControl());
 
-    // Añadir un marcador (sin popup)
-    L.marker([18.47668346661841, -69.88745587021114]).addTo(map);
+    // Añadir un marcador (opcional)
+    new maplibregl.Marker()
+      .setLngLat([-69.88745587021114, 18.47668346661841])
+      .addTo(map);
   </script>
 </body>
 </html>
