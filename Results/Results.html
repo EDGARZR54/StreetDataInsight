@@ -236,14 +236,14 @@
         const sliderContainer = document.createElement('div');
         sliderContainer.classList.add('slider-container');
 
-        sliderContainer.innerHTML = `
+        sliderContainer.innerHTML = 
             <h2>Caso de estudio - Santo Domingo, RD</h2>
             <div class="slider-controls">
                 <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
                 <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
                 <button id="toggleBtn">⏵</button>
             </div>
-        `;
+        ;
 
         document.getElementById('map').appendChild(sliderContainer);
 
@@ -294,7 +294,7 @@
         });
 
         // Cargar capa GeoJSON
-        const geojsonURL = 'https://github.com/EDGARZR54/StreetData-Insight/blob/be28419b5fdfdeab8a2f3d3653a670845adb331a/partials/43_Manzanas_RD2.geojson';
+        const geojsonURL = 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/7eb8d3678a7512e3d0805dd011041f4b96a7c11e/partials/43_Manzanas_RD.geojson';
 
         try {
             const response = await fetch(geojsonURL);
@@ -330,11 +330,11 @@
 
                 const props = feature.properties;
                 const description = Object.keys(props)
-                    .map(key => `<strong>${key}:</strong> ${props[key]}`)
+                    .map(key => <strong>${key}:</strong> ${props[key]})
                     .join('<br>');
 
                 popup.setLngLat(e.lngLat)
-                     .setHTML(`<div style="color: black;">${description}</div>`)
+                     .setHTML(<div style="color: black;">${description}</div>)
                      .addTo(map);
             });
 
