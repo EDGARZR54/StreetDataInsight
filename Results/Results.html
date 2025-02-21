@@ -236,14 +236,14 @@
         const sliderContainer = document.createElement('div');
         sliderContainer.classList.add('slider-container');
 
-        sliderContainer.innerHTML = 
+        sliderContainer.innerHTML = `
             <h2>Caso de estudio - Santo Domingo, RD</h2>
             <div class="slider-controls">
                 <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
                 <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
                 <button id="toggleBtn">⏵</button>
             </div>
-        ;
+        `;
 
         document.getElementById('map').appendChild(sliderContainer);
 
@@ -330,11 +330,11 @@
 
                 const props = feature.properties;
                 const description = Object.keys(props)
-                    .map(key => <strong>${key}:</strong> ${props[key]})
+                    .map(key => `<strong>${key}:</strong> ${props[key]}`)
                     .join('<br>');
 
                 popup.setLngLat(e.lngLat)
-                     .setHTML(<div style="color: black;">${description}</div>)
+                     .setHTML(`<div style="color: black;">${description}</div>`)
                      .addTo(map);
             });
 
