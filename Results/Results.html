@@ -220,92 +220,131 @@
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
     const map = new maplibregl.Map({
-      container: 'map', // Contenedor del mapa
-      style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json', // Estilo del mapa
-      center: [-69.88745587021114, 18.47668346661841], // Coordenadas iniciales (República Dominicana)
-      zoom: 2, // Establecer el zoom inicial en 2 (valor mínimo)
-      bearing: 0, // Rotación del mapa
-      antialias: true, // Suavizado
-      maxZoom: 15, // Zoom máximo
-      minZoom: 2,  // Zoom mínimo
-      maplibreLogo: true
+        container: 'map',
+        style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json',
+        center: [-69.88745587021114, 18.47668346661841],
+        zoom: 2,
+        bearing: 0,
+        antialias: true,
+        maxZoom: 15.2,
+        minZoom: 2,
+        maplibreLogo: true
     });
 
-    // Función para agregar el slider después de cargar el mapa
-    map.on('load', function() {
-      const sliderContainer = document.createElement('div');
-      sliderContainer.classList.add('slider-container');
+    map.on('load', async function() {
+        // Crear el contenedor del slider y botón de control
+        const sliderContainer = document.createElement('div');
+        sliderContainer.classList.add('slider-container');
 
-      // HTML para el slider y botón de play/pause
-      sliderContainer.innerHTML = `
-        <h2>Caso de estudio - República Dominicana, Santo Domingo</h2>
-        <div class="slider-controls">
-          <label id="zoomLabel" for="zoomSlider">Zoom: <span id="zoomValue">2</span></label>
-          <input type="range" id="zoomSlider" min="2" max="15" value="2" step="0.1" />
-          <button id="toggleBtn" class="toggle-btn">⏵</button>
-        </div>
-      `;
-      
-      // Agregar el slider al mapa
-      document.getElementById('map').appendChild(sliderContainer);
+        sliderContainer.innerHTML = `
+            <h2>Caso de estudio - Santo Domingo, RD</h2>
+            <div class="slider-controls">
+                <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
+                <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
+                <button id="toggleBtn">⏵</button>
+            </div>
+        `;
 
-      // Obtener los elementos del DOM
-      const zoomSlider = document.getElementById('zoomSlider');
-      const zoomValue = document.getElementById('zoomValue');
-      const toggleBtn = document.getElementById('toggleBtn');
+        document.getElementById('map').appendChild(sliderContainer);
 
-      // Actualizar el zoom con el slider
-      zoomSlider.addEventListener('input', (e) => {
-        const zoomLevel = parseFloat(e.target.value);
-        map.setZoom(zoomLevel);
-        zoomValue.textContent = zoomLevel;
+        const zoomSlider = document.getElementById('zoomSlider');
+        const zoomValue = document.getElementById('zoomValue');
+        const toggleBtn = document.getElementById('toggleBtn');
+        let animationInterval;
 
-        // Si el slider no está en el valor máximo (15), cambia el botón a 'play'
-        if (zoomLevel < 15) {
-          toggleBtn.textContent = '⏵'; // Cambiar el botón a play si no está en 15
-        }
-      });
+        // Control del slider manual
+        zoomSlider.addEventListener('input', (e) => {
+            const zoomLevel = parseFloat(e.target.value);
+            map.setZoom(zoomLevel);
+            zoomValue.textContent = zoomLevel.toFixed(1);
 
-      // Variables para la animación
-      let animationInterval;
-
-      // Cambiar el ícono de play/pause y animar el slider
-      toggleBtn.addEventListener('click', () => {
-        if (toggleBtn.textContent === '⏵') {
-          toggleBtn.textContent = '⏸'; // Cambiar a pausa
-          // Animación del slider (incrementar el valor del slider cada 100ms)
-          animationInterval = setInterval(() => {
-            let currentValue = parseFloat(zoomSlider.value);
-            if (currentValue < zoomSlider.max) {
-              zoomSlider.value = (currentValue + 0.1).toFixed(1); // Incrementar
-              // Animar el zoom hacia las coordenadas específicas
-              map.easeTo({
-                center: [-69.88745587021114, 18.47668346661841], // Coordenadas fijas
-                zoom: parseFloat(zoomSlider.value), // Nuevo valor de zoom
-                duration: 300 // Duración de la animación (en milisegundos)
-              });
-              zoomValue.textContent = zoomSlider.value;
-            } else {
-              clearInterval(animationInterval); // Detener la animación cuando llegue al máximo
-              toggleBtn.textContent = '⏪︎'; // Cambiar el botón a stop cuando llegue al máximo
+            if (zoomLevel < 15.2) {
+                toggleBtn.textContent = '⏵';
             }
-          }, 100); 
-        } else if (toggleBtn.textContent === '⏪︎') {
-          toggleBtn.textContent = '⏵'; // Cambiar a play y reiniciar el zoom
-          zoomSlider.value = 2;
-          zoomValue.textContent = '2';
-          map.setZoom(2);
-          map.easeTo({
-            center: [-69.88745587021114, 18.47668346661841], // Coordenadas fijas
-            zoom: 2, // Valor inicial
-            duration: 0 // Sin animación
-          });
-        } else {
-          toggleBtn.textContent = '⏵'; // Cambiar a play
-          clearInterval(animationInterval); // Detener la animación
+        });
+
+        // Control de animación con play/pause
+        toggleBtn.addEventListener('click', () => {
+            if (toggleBtn.textContent === '⏵') {
+                toggleBtn.textContent = '⏸';
+                animationInterval = setInterval(() => {
+                    let currentValue = parseFloat(zoomSlider.value);
+                    if (currentValue < zoomSlider.max) {
+                        zoomSlider.value = (currentValue + 0.1).toFixed(1);
+                        map.easeTo({
+                            center: [-69.88745587021114, 18.47668346661841],
+                            zoom: parseFloat(zoomSlider.value),
+                            duration: 300
+                        });
+                        zoomValue.textContent = zoomSlider.value;
+                    } else {
+                        clearInterval(animationInterval);
+                        toggleBtn.textContent = '⏪︎';
+                    }
+                }, 100);
+            } else if (toggleBtn.textContent === '⏪︎') {
+                toggleBtn.textContent = '⏵';
+                zoomSlider.value = 2;
+                zoomValue.textContent = '2';
+                map.easeTo({ center: [-69.88745587021114, 18.47668346661841], zoom: 2, duration: 0 });
+            } else {
+                toggleBtn.textContent = '⏵';
+                clearInterval(animationInterval);
+            }
+        });
+
+        // Cargar capa GeoJSON
+        const geojsonURL = 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/7eb8d3678a7512e3d0805dd011041f4b96a7c11e/partials/43_Manzanas_RD.geojson';
+
+        try {
+            const response = await fetch(geojsonURL);
+            const geojsonData = await response.json();
+
+            map.addSource('manzanas', { type: 'geojson', data: geojsonData });
+
+            map.addLayer({
+                id: 'manzanas-fill',
+                type: 'fill',
+                source: 'manzanas',
+                paint: {
+                    'fill-color': '#007BFF',
+                    'fill-opacity': 0.5
+                }
+            });
+
+            map.addLayer({
+                id: 'manzanas-outline',
+                type: 'line',
+                source: 'manzanas',
+                paint: {
+                    'line-color': '#0056b3',
+                    'line-width': 2
+                }
+            });
+
+            const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
+
+            map.on('click', 'manzanas-fill', function(e) {
+                const feature = e.features[0];
+                if (!feature) return;
+
+                const props = feature.properties;
+                const description = Object.keys(props)
+                    .map(key => `<strong>${key}:</strong> ${props[key]}`)
+                    .join('<br>');
+
+                popup.setLngLat(e.lngLat)
+                     .setHTML(`<div style="color: black;">${description}</div>`)
+                     .addTo(map);
+            });
+
+            map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
+            map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
+        } catch (error) {
+            console.error('Error cargando el GeoJSON:', error);
         }
-      });
     });
-  </script>
+</script>
+
 </body>
 </html>
