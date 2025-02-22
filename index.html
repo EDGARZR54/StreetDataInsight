@@ -22,7 +22,8 @@
       color: white; /* Texto blanco */
       font-family: 'Open Sans', sans-serif;
     }
-        /* Ajustar el contenedor principal para dar espacio al navbar */
+
+    /* Ajustar el contenedor principal para dar espacio al navbar */
     #main-content {
       margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
     }
@@ -150,60 +151,82 @@
         font-size: 12px; /* Reducir el tamaño de la fuente */
       }
     }
+
+    /* Sobrescribir las flechas del slider */
+    .slider-container .slider-wrap .slider-btn::after {
+      content: '\2039\00a0\203A'; /* Flecha izquierda (‹), espacio no separable, flecha derecha (›) */
+      font-family: Arial, sans-serif;
+      font-size: 40px;
+      font-weight: 400; /* Reducir el grosor de la fuente */
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px #000;
+      transition: all 0.3s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </head>
 <body>
   <!-- Incluir el navbar desde un archivo externo -->
   <div id="navbar-placeholder"></div>
   <div id="main-content">
-  <!-- Título -->
-  <h1>
-    <img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37" 
-      alt="Title Image" 
-      style="max-width: 100%; height: auto;">
-  </h1>
+    <!-- Título -->
+    <h1>
+      <img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37" 
+        alt="Title Image" 
+        style="max-width: 100%; height: auto;">
+    </h1>
 
-  <!-- Texto y sliders -->
-  <p class="open-sans-bold">Segmentación por deep learning RTFP</p>
-  <div id="slider1"></div>
+    <!-- Texto y sliders -->
+    <p class="open-sans-bold">Segmentación por deep learning RTFP</p>
+    <div id="slider1"></div>
 
-  <p class="open-sans-bold">Comparativa referencial</p>
-  <div id="slider2"></div>
+    <p class="open-sans-bold">Comparativa referencial</p>
+    <div id="slider2"></div>
 
-  <!-- Configuración de los sliders -->
-  <script>
-    window.onload = function() {
-      // Slider 1
-      new SliderBar({
-        el: "#slider1",
-        beforeImg: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_A.png',
-        afterImg: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png',
-        width: "100%",
-        height: "500px",
-        line: true
-      });
-    };
-  </script>
-  
-  <!-- Cargar el navbar externo -->
-  <script>
-    fetch('./partials/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el navbar:', error));
-  </script>
-  
-  <!-- Créditos y logos al final de la página -->
-  <div class="credits">
-    <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
-    <p>
-      Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
-      Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
-      Todos los derechos de las imágenes corresponden a Google. 
-      Año de publicación: 2025.
-    </p>
+    <!-- Configuración de los sliders -->
+    <script>
+      window.onload = function() {
+        // Slider 1
+        new SliderBar({
+          el: "#slider1",
+          beforeImg: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_A.png',
+          afterImg: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@613b8a46317686d4fe95213d7fc7e50cfc5d392e/partials/example/Perfil_B.png',
+          width: "100%",
+          height: "500px",
+          line: true
+        });
+      };
+    </script>
+    
+    <!-- Cargar el navbar externo -->
+    <script>
+      fetch('./partials/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar el navbar:', error));
+    </script>
+    
+    <!-- Créditos y logos al final de la página -->
+    <div class="credits">
+      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <p>
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
+        Todos los derechos de las imágenes corresponden a Google. 
+        Año de publicación: 2025.
+      </p>
+    </div>
   </div>
 </body>
 </html>
