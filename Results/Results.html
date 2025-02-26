@@ -218,6 +218,7 @@
 
   <!-- Script para inicializar el mapa, colocarlo al final para asegurar que se cargue después del HTML -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script> <!-- Incluir Turf.js -->
   <script>
     const map = new maplibregl.Map({
         container: 'map',
@@ -226,125 +227,141 @@
         zoom: 2,
         bearing: 0,
         antialias: true,
-        maxZoom: 15.2,
-        minZoom: 2,
         maplibreLogo: false
     });
 
-    map.on('load', async function() {
-        // Crear el contenedor del slider y botón de control
-        const sliderContainer = document.createElement('div');
-        sliderContainer.classList.add('slider-container');
+  map.on('load', async function() {
+      // Crear el contenedor del slider y botón de control
+      const sliderContainer = document.createElement('div');
+      sliderContainer.classList.add('slider-container');
 
-        sliderContainer.innerHTML = `
-            <h2>Caso de estudio - Santo Domingo, RD</h2>
-            <div class="slider-controls">
-                <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
-                <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
-                <button id="toggleBtn">⏵</button>
-            </div>
-        `;
+      sliderContainer.innerHTML = `
+          <h2>Caso de estudio - Santo Domingo, RD</h2>
+          <div class="slider-controls">
+              <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
+              <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
+              <button id="toggleBtn">⏵</button>
+          </div>
+      `;
 
-        document.getElementById('map').appendChild(sliderContainer);
+      document.getElementById('map').appendChild(sliderContainer);
 
-        const zoomSlider = document.getElementById('zoomSlider');
-        const zoomValue = document.getElementById('zoomValue');
-        const toggleBtn = document.getElementById('toggleBtn');
-        let animationInterval;
+      const zoomSlider = document.getElementById('zoomSlider');
+      const zoomValue = document.getElementById('zoomValue');
+      const toggleBtn = document.getElementById('toggleBtn');
+      let animationInterval;
 
-        // Control del slider manual
-        zoomSlider.addEventListener('input', (e) => {
-            const zoomLevel = parseFloat(e.target.value);
-            map.setZoom(zoomLevel);
-            zoomValue.textContent = zoomLevel.toFixed(1);
+      // Control del slider manual
+      zoomSlider.addEventListener('input', (e) => {
+          const zoomLevel = parseFloat(e.target.value);
+          map.setZoom(zoomLevel); // Forzar el zoom al valor del slider
+          zoomValue.textContent = zoomLevel.toFixed(1);
+      });
 
-            if (zoomLevel < 15.2) {
-                toggleBtn.textContent = '⏵';
-            }
-        });
+      // Control de animación con play/pause
+      toggleBtn.addEventListener('click', () => {
+          if (toggleBtn.textContent === '⏵') {
+              toggleBtn.textContent = '⏸';
+              animationInterval = setInterval(() => {
+                  let currentValue = parseFloat(zoomSlider.value);
+                  if (currentValue < zoomSlider.max) {
+                      zoomSlider.value = (currentValue + 0.1).toFixed(1);
+                      map.easeTo({
+                          center: [-69.88745587021114, 18.47668346661841],
+                          zoom: parseFloat(zoomSlider.value),
+                          duration: 300
+                      });
+                      zoomValue.textContent = zoomSlider.value;
+                  } else {
+                      clearInterval(animationInterval);
+                      toggleBtn.textContent = '⏪︎';
+                  }
+              }, 100);
+          } else if (toggleBtn.textContent === '⏪︎') {
+              toggleBtn.textContent = '⏵';
+              zoomSlider.value = 2;
+              zoomValue.textContent = '2';
+              map.easeTo({ center: [-69.88745587021114, 18.47668346661841], zoom: 2, duration: 0 });
+          } else {
+              toggleBtn.textContent = '⏵';
+              clearInterval(animationInterval);
+          }
+      });
 
-        // Control de animación con play/pause
-        toggleBtn.addEventListener('click', () => {
-            if (toggleBtn.textContent === '⏵') {
-                toggleBtn.textContent = '⏸';
-                animationInterval = setInterval(() => {
-                    let currentValue = parseFloat(zoomSlider.value);
-                    if (currentValue < zoomSlider.max) {
-                        zoomSlider.value = (currentValue + 0.1).toFixed(1);
-                        map.easeTo({
-                            center: [-69.88745587021114, 18.47668346661841],
-                            zoom: parseFloat(zoomSlider.value),
-                            duration: 300
-                        });
-                        zoomValue.textContent = zoomSlider.value;
-                    } else {
-                        clearInterval(animationInterval);
-                        toggleBtn.textContent = '⏪︎';
-                    }
-                }, 100);
-            } else if (toggleBtn.textContent === '⏪︎') {
-                toggleBtn.textContent = '⏵';
-                zoomSlider.value = 2;
-                zoomValue.textContent = '2';
-                map.easeTo({ center: [-69.88745587021114, 18.47668346661841], zoom: 2, duration: 0 });
-            } else {
-                toggleBtn.textContent = '⏵';
-                clearInterval(animationInterval);
-            }
-        });
+      // Sincronizar el slider con el zoom del mapa (solo cuando no se usa el slider o la animación)
+      map.on('zoom', () => {
+          if (!animationInterval && !zoomSlider.matches(':active')) {
+              const currentZoom = map.getZoom();
+              zoomSlider.value = currentZoom.toFixed(1);
+              zoomValue.textContent = currentZoom.toFixed(1);
+          }
+      });
 
-        // Cargar capa GeoJSON
-        const geojsonURL = 'https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/7eb8d3678a7512e3d0805dd011041f4b96a7c11e/partials/43_Manzanas_RD.geojson';
+      // Cargar capa GeoJSON
+      const geojsonURL = 'https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson';
 
-        try {
-            const response = await fetch(geojsonURL);
-            const geojsonData = await response.json();
+      try {
+          const response = await fetch(geojsonURL);
+          const geojsonData = await response.json();
 
-            map.addSource('manzanas', { type: 'geojson', data: geojsonData });
+          map.addSource('manzanas', { type: 'geojson', data: geojsonData });
 
-            map.addLayer({
-                id: 'manzanas-fill',
-                type: 'fill',
-                source: 'manzanas',
-                paint: {
-                    'fill-color': '#007BFF',
-                    'fill-opacity': 0.5
-                }
-            });
+          map.addLayer({
+              id: 'manzanas-fill',
+              type: 'fill',
+              source: 'manzanas',
+              paint: {
+                  'fill-color': '#007BFF',
+                  'fill-opacity': 0.5
+              }
+          });
 
-            map.addLayer({
-                id: 'manzanas-outline',
-                type: 'line',
-                source: 'manzanas',
-                paint: {
-                    'line-color': '#0056b3',
-                    'line-width': 2
-                }
-            });
+          map.addLayer({
+              id: 'manzanas-outline',
+              type: 'line',
+              source: 'manzanas',
+              paint: {
+                  'line-color': '#0056b3',
+                  'line-width': 2
+              }
+          });
 
-            const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
+          const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
 
-            map.on('click', 'manzanas-fill', function(e) {
-                const feature = e.features[0];
-                if (!feature) return;
+          map.on('click', 'manzanas-fill', function(e) {
+              const feature = e.features[0];
+              if (!feature) return;
 
-                const props = feature.properties;
-                const description = Object.keys(props)
-                    .map(key => `<strong>${key}:</strong> ${props[key]}`)
-                    .join('<br>');
+              // Calcular el centroide de la geometría
+              const centroid = turf.centroid(feature);
+              const [lng, lat] = centroid.geometry.coordinates;
 
-                popup.setLngLat(e.lngLat)
-                     .setHTML(`<div style="color: black;">${description}</div>`)
-                     .addTo(map);
-            });
+              // Centrar el mapa en el centroide y ajustar el zoom a 18
+              map.flyTo({
+                  center: [lng, lat],
+                  zoom: 18,
+                  speed: 1.5, // Velocidad de la animación
+                  curve: 1, // Curva de la animación
+                  essential: true // Asegura que la animación se ejecute
+              });
 
-            map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
-            map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
-        } catch (error) {
-            console.error('Error cargando el GeoJSON:', error);
-        }
-    });
+              // Mostrar el popup con las propiedades
+              const props = feature.properties;
+              const description = Object.keys(props)
+                  .map(key => `<strong>${key}:</strong> ${props[key]}`)
+                  .join('<br>');
+
+              popup.setLngLat([lng, lat])
+                   .setHTML(`<div style="color: black;">${description}</div>`)
+                   .addTo(map);
+          });
+
+          map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
+          map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
+      } catch (error) {
+          console.error('Error cargando el GeoJSON:', error);
+      }
+  });
 </script>
-
 </body>
 </html>
