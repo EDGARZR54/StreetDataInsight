@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speckle Integration</title>
+</head>
+<body>
+  <h1>Integración de Speckle con Grasshopper</h1>
+
+  <button onclick="sendDataToSpeckle()">Enviar Datos a Speckle</button>
+  <button onclick="getDataFromSpeckle()">Obtener Datos desde Speckle</button>
+
+  <script>
+    const apiUrl = "https://speckle.xyz/api/"; // URL de la API de Speckle
+    const token = "431b0d0d81bf112c4bfc49325853d396e9f88a0a94"; // Tu token de Speckle
+    const streamId = "d7dc3f93ba"; // El ID de tu stream de Speckle
+    const branch = "a36db4606f"; // El branch o modelo al que quieres enviar datos
+
+    // Función para enviar datos a Speckle
+    async function sendDataToSpeckle() {
+      const data = {
+        // Datos que quieres enviar a Speckle desde la página (ejemplo con un número)
+        number: 42  // Aquí puedes poner el número o cualquier otro tipo de dato
+      };
+
+      try {
+        const response = await fetch(`${apiUrl}streams/${streamId}/commits`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            objects: [data],
+            streamId: streamId,
+            branch: branch // Especifica el branch en el que deseas hacer el commit
+          })
+        });
+
+        const result = await response.json();
+        console.log('Datos enviados a Speckle:', result);
+      } catch (error) {
+        console.error('Error al enviar datos a Speckle:', error);
+      }
+    }
+
+    // Función para obtener datos desde Speckle
+    async function getDataFromSpeckle() {
+      try {
+        const response = await fetch(`${apiUrl}streams/${streamId}/commits`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const result = await response.json();
+        console.log('Datos recibidos desde Speckle:', result);
+      } catch (error) {
+        console.error('Error al obtener datos de Speckle:', error);
+      }
+    }
+  </script>
+</body>
+</html>
