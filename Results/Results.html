@@ -335,33 +335,45 @@
 
           const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
 
-          map.on('click', 'manzanas-fill', function(e) {
-              const feature = e.features[0];
-              if (!feature) return;
-
-              // Calcular el centroide de la geometría
-              const centroid = turf.centroid(feature);
-              const [lng, lat] = centroid.geometry.coordinates;
-
-              // Centrar el mapa en el centroide y ajustar el zoom a 18
-              map.flyTo({
-                  center: [lng, lat],
-                  zoom: 18,
-                  speed: 1.5, // Velocidad de la animación
-                  curve: 1, // Curva de la animación
-                  essential: true // Asegura que la animación se ejecute
-              });
-
-              // Mostrar el popup con las propiedades
-              const props = feature.properties;
-              const description = Object.keys(props)
-                  .map(key => `<strong>${key}:</strong> ${props[key]}`)
-                  .join('<br>');
-
-              popup.setLngLat([lng, lat])
-                   .setHTML(`<div style="color: black;">${description}</div>`)
-                   .addTo(map);
-          });
+        map.on('click', 'manzanas-fill', function(e) {
+            const feature = e.features[0];
+            if (!feature) return;
+        
+            // Calcular el centroide de la geometría
+            const centroid = turf.centroid(feature);
+            const [lng, lat] = centroid.geometry.coordinates;
+        
+            // Calcular área y perímetro
+            const area = turf.area(feature); // Devuelve el área en metros cuadrados
+            const perimeter = turf.length(feature, { units: 'meters' }); // Devuelve el perímetro en metros
+        
+            // Extraer las propiedades deseadas
+            const props = feature.properties;
+            const vecindario = props["Vecindario"] || "Desconocido";
+            const manzana = props["Manzana"] || "Desconocida";
+        
+            // Formatear la información
+            const description = `
+                <strong>Vecindario:</strong> ${vecindario}<br>
+                <strong>Manzana:</strong> ${manzana}<br>
+                <strong>Área:</strong> ${area.toFixed(2)} m²<br>
+                <strong>Perímetro:</strong> ${perimeter.toFixed(2)} m
+            `;
+        
+            // Mostrar el popup con la información filtrada
+            popup.setLngLat([lng, lat])
+                .setHTML(`<div style="color: black;">${description}</div>`)
+                .addTo(map);
+        
+            // Centrar el mapa en el centroide y ajustar el zoom a 18
+            map.flyTo({
+                center: [lng, lat],
+                zoom: 18,
+                speed: 1.5,
+                curve: 1,
+                essential: true
+            });
+        });
 
           map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
           map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
