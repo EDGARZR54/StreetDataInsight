@@ -251,42 +251,49 @@
       const toggleBtn = document.getElementById('toggleBtn');
       let animationInterval;
 
-      // Control del slider manual
-      zoomSlider.addEventListener('input', (e) => {
-          const zoomLevel = parseFloat(e.target.value);
-          map.setZoom(zoomLevel); // Forzar el zoom al valor del slider
-          zoomValue.textContent = zoomLevel.toFixed(1);
-      });
+    // Control de animación con play/pause
+    toggleBtn.addEventListener('click', () => {
+        if (toggleBtn.textContent === '⏵') {  // Si está en play, iniciar animación
+            toggleBtn.textContent = '⏸';
+            animationInterval = setInterval(() => {
+                let currentValue = parseFloat(zoomSlider.value);
+                if (currentValue < zoomSlider.max) {
+                    zoomSlider.value = (currentValue + 0.1).toFixed(1);
+                    map.easeTo({
+                        center: [-69.88745587021114, 18.47668346661841],
+                        zoom: parseFloat(zoomSlider.value),
+                        duration: 300
+                    });
+                    zoomValue.textContent = zoomSlider.value;
+                } else {
+                    clearInterval(animationInterval);
+                    toggleBtn.textContent = '⏪︎'; // Solo cambiar a replay si llegó al máximo
+                }
+            }, 100);
+        } else if (toggleBtn.textContent === '⏸') {  // Si está en pausa, detener animación
+            toggleBtn.textContent = '⏵';
+            clearInterval(animationInterval);
+        } else if (toggleBtn.textContent === '⏪︎') {  // Si está en replay, reiniciar desde el inicio
+            toggleBtn.textContent = '⏵';
+            zoomSlider.value = 2;
+            zoomValue.textContent = '2';
+            map.easeTo({ center: [-69.88745587021114, 18.47668346661841], zoom: 2, duration: 0 });
+        }
+    });
+    
+    // Control del slider manual
+    zoomSlider.addEventListener('input', (e) => {
+        const zoomLevel = parseFloat(e.target.value);
+        map.setZoom(zoomLevel);
+        zoomValue.textContent = zoomLevel.toFixed(1);
+    
+        // Si el usuario mueve el slider manualmente y no está en el valor máximo, volver a play
+        if (zoomLevel < zoomSlider.max && toggleBtn.textContent === '⏪︎') {
+            toggleBtn.textContent = '⏵';
+        }
+    });
 
-      // Control de animación con play/pause
-      toggleBtn.addEventListener('click', () => {
-          if (toggleBtn.textContent === '⏵') {
-              toggleBtn.textContent = '⏸';
-              animationInterval = setInterval(() => {
-                  let currentValue = parseFloat(zoomSlider.value);
-                  if (currentValue < zoomSlider.max) {
-                      zoomSlider.value = (currentValue + 0.1).toFixed(1);
-                      map.easeTo({
-                          center: [-69.88745587021114, 18.47668346661841],
-                          zoom: parseFloat(zoomSlider.value),
-                          duration: 300
-                      });
-                      zoomValue.textContent = zoomSlider.value;
-                  } else {
-                      clearInterval(animationInterval);
-                      toggleBtn.textContent = '⏪︎';
-                  }
-              }, 100);
-          } else if (toggleBtn.textContent === '⏪︎') {
-              toggleBtn.textContent = '⏵';
-              zoomSlider.value = 2;
-              zoomValue.textContent = '2';
-              map.easeTo({ center: [-69.88745587021114, 18.47668346661841], zoom: 2, duration: 0 });
-          } else {
-              toggleBtn.textContent = '⏵';
-              clearInterval(animationInterval);
-          }
-      });
+
 
       // Sincronizar el slider con el zoom del mapa (solo cuando no se usa el slider o la animación)
       map.on('zoom', () => {
