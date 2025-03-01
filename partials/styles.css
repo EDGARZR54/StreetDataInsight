@@ -320,6 +320,7 @@ model-viewer {
   background-color: white; /* Fondo blanco para el visor 3D */
   margin: auto; /* Centrar el model-viewer */
   border: 2px solid white; /* Contorno blanco */
+  object-fit: contain; /* Ajusta el contenido al tamaño del contenedor */
 }
 
 /* Estilos para los créditos del modelo */
