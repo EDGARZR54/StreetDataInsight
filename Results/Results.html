@@ -5,85 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StreetData Insight | Resultados</title>
   
-  <!-- Incluir Open Sans desde Google Fonts -->
+  <!-- Fuentes y librerías externas -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Incluir el CDN para la librería Before/After Slider -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-  <!-- Estilos MapLibre -->
   <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
-  <!-- Incluir la biblioteca de model-viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <!-- Enlazar el archivo CSS externo -->
+
+  <!-- Estilos del carrusel y visualizador 3D -->
+  <style>
+    /* Estilos del carrusel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: calc(100vw - 40px);
+      height: 350px; /* Altura fija para el carrusel */
+      overflow: hidden;
+      margin: 20px auto;
+      background: #000;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .carousel {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+      filter: saturate(1.5);
+      cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .btn-carousel {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .btn-left { left: 20px; }
+    .btn-right { right: 20px; }
+
+    /* Estilos para el texto del URL */
+    .image-url {
+      margin: 10px auto 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      word-wrap: break-word;
+      max-width: 90%;
+      color: white;
+      width: 100%;
+      display: block;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* Estilos para el popup de imagen */
+    .image-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Fondo oscurecido */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Asegura que esté por encima de todo */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .image-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-popup img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    /* Estilos para el texto superpuesto en el visualizador 3D */
+    .model-container {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+    }
+
+    .model-credits {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: black;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 12px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+  </style>
+
+  <!-- Estilos externos -->
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/styles.css">
 </head>
-<body>
-  <!-- Incluir el navbar desde un archivo externo -->
-  <div id="navbar-placeholder"></div>
-  <div id="main-content">
-    <!-- Título -->
-    <h1>
-      StreetData Insight
-    </h1>
 
-    <!-- Mapa insertado -->
+<body>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <div id="main-content">
+    <h1>StreetData Insight</h1>
+
+    <!-- Mapa -->
     <div id="map"></div>
 
-    <!-- Visualizador de Modelo 3D -->
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel-container">
+      <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
+      <div class="carousel"></div>
+      <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
+    </div>
+    <p class="image-url">Cargando...</p>
+
+    <!-- Popup de imagen -->
+    <div class="image-popup">
+      <img src="" alt="Imagen ampliada">
+    </div>
+
+    <!-- Visor 3D -->
     <h1>Visualizador de Modelo 3D</h1>
     <div class="model-container">
       <model-viewer 
-          id="model-viewer"
-          src="https://cdn.glitch.me/cf57c429-6f82-4cc2-8387-d3f003bd320b/SB01.glb?v=1740475981433" 
-          ar 
-          ar-modes="webxr scene-viewer quick-look" 
-          camera-controls 
-          tone-mapping="neutral" 
-          poster="poster.webp" 
-          auto-rotate 
-          exposure="0.8" 
-          shadow-intensity="1" 
-          shadow-softness="1" 
-          camera-orbit="73.5deg 100.2deg 225.7m" 
-          field-of-view="17.6deg"
-          max-camera-orbit="auto 90deg auto">
-          
-          <!-- Hotspots -->
-          <button class="Hotspot" slot="hotspot-3" data-position="34.71576156053151m 19.100185107366087m -0.6389702122213261m" data-normal="0.9128737226750974m 0.36513999103422606m -0.18257697937263262m" data-visibility-attribute="visible">
-              <div class="HotspotAnnotation">SB01</div>
-          </button>
-          <button class="Hotspot" slot="hotspot-4" data-position="-13.69468822635946m 15.23664467170375m 6.211341789889632m" data-normal="-0.8226735688626616m 0.21578356390298162m 0.5259711519124404m" data-visibility-attribute="visible">
-              <div class="HotspotAnnotation">SB02</div>
-          </button>
+        id="model-viewer"
+        src="https://cdn.glitch.me/cf57c429-6f82-4cc2-8387-d3f003bd320b/SB01.glb?v=1740475981433" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        tone-mapping="neutral" 
+        poster="poster.webp" 
+        auto-rotate 
+        exposure="0.8" 
+        shadow-intensity="1" 
+        shadow-softness="1" 
+        camera-orbit="73.5deg 100.2deg 225.7m" 
+        field-of-view="17.6deg"
+        max-camera-orbit="auto 90deg auto">
+        
+        <button class="Hotspot" slot="hotspot-3" data-position="34.71576156053151m 19.100185107366087m -0.6389702122213261m" data-normal="0.9128737226750974m 0.36513999103422606m -0.18257697937263262m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">SB01</div>
+        </button>
+        <button class="Hotspot" slot="hotspot-4" data-position="-13.69468822635946m 15.23664467170375m 6.211341789889632m" data-normal="-0.8226735688626616m 0.21578356390298162m 0.5259711519124404m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">SB02</div>
+        </button>
 
-          <!-- Barra de progreso -->
-          <div class="progress-bar hide" slot="progress-bar">
-              <div class="update-bar"></div>
-          </div>
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
 
-          <!-- Botón de AR -->
-          <button slot="ar-button" id="ar-button">
-              View in your space
-          </button>
+        <button slot="ar-button" id="ar-button">View in your space</button>
       </model-viewer>
+
+      <!-- Texto superpuesto -->
+      <div class="model-credits">
+        Modelo por fotogrametría capturado por el Arq. Alejandro Marambio 2024.
+      </div>
     </div>
 
-    <!-- Script para modificar propiedades del modelo 3D -->
-    <script>
-      const modelViewerParameters = document.querySelector("model-viewer#model-viewer");
-
-      modelViewerParameters.addEventListener("load", (ev) => {
-          // Asegurarse de que el modelo se ha cargado
-          let material = modelViewerParameters.model.materials[0];
-          // Modificar la rugosidad directamente al cargar el modelo
-          material.pbrMetallicRoughness.setRoughnessFactor(1);  // Rugosidad máxima (1)
-          // Modificar la metalicidad
-          material.pbrMetallicRoughness.setMetallicFactor(0.5);  // Metalicidad media (0.5)
-      });
-    </script>
-
-    <!-- Créditos y logos al final de la página -->
+    <!-- Créditos -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
       <p>
@@ -95,19 +210,94 @@
     </div>
   </div>
 
-  <!-- Cargar el navbar externo -->
+  <!-- Scripts -->
   <script>
+    // Carrusel de imágenes
+    const fileIds = ["1JzfdvJbeXwAu0GRYTHkm0m_1YX_44PgC", "1yGBVp6BT7v7252Ndo6ps0lzho0QtpQLR", 
+                    "16HiOU-xw41ny5uz2zAyXQvb5z5fzIKFw", "1XQKBkB9H9-QyyHXEkDpE30RT-F-eF-ac"];
+    const images = document.querySelector(".carousel");
+    const imageUrl = document.querySelector(".image-url");
+    
+    fileIds.forEach(id => {
+      const imgUrl = `https://lh3.googleusercontent.com/d/${id}=s0`;
+      const imgElement = document.createElement("img");
+      imgElement.src = imgUrl;
+      images.appendChild(imgElement);
+    });
+
+    let currentIndex = 0;
+    const carouselImages = document.querySelectorAll(".carousel img");
+
+    function showImage(index, direction) {
+      carouselImages.forEach((img, i) => {
+        img.classList.remove("active");
+        if (i === index) {
+          img.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
+          setTimeout(() => {
+            img.classList.add("active");
+            img.style.transform = 'translateX(0)';
+            imageUrl.textContent = img.src;
+          }, 50);
+        }
+      });
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % carouselImages.length;
+      showImage(currentIndex, 'next');
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+      showImage(currentIndex, 'prev');
+    }
+
+    // Mostrar la primera imagen al cargar
+    showImage(currentIndex, 'next');
+
+    // Popup de imagen
+    const imagePopup = document.querySelector(".image-popup");
+    const popupImage = imagePopup.querySelector("img");
+
+    // Añadir evento click a las imágenes del carrusel
+    carouselImages.forEach(img => {
+      img.addEventListener("click", () => {
+        // Obtener la imagen activa actual
+        const activeImage = document.querySelector(".carousel img.active");
+        if (activeImage) {
+          popupImage.src = activeImage.src; // Actualizar el src del popup con la imagen activa
+          imagePopup.classList.add("active");
+        }
+      });
+    });
+
+    // Cerrar el popup al hacer clic fuera de la imagen
+    imagePopup.addEventListener("click", (e) => {
+      if (e.target === imagePopup) {
+        imagePopup.classList.remove("active");
+      }
+    });
+
+    // Navbar
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error al cargar el navbar:', error));
+
+    // Modelo 3D
+    const modelViewerParameters = document.querySelector("model-viewer#model-viewer");
+    modelViewerParameters.addEventListener("load", (ev) => {
+      let material = modelViewerParameters.model.materials[0];
+      material.pbrMetallicRoughness.setRoughnessFactor(1);
+      material.pbrMetallicRoughness.setMetallicFactor(0.5);
+    });
   </script>
 
-  <!-- Script para inicializar el mapa, colocarlo al final para asegurar que se cargue después del HTML -->
+  <!-- Mapa y Turf.js -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
-  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script> <!-- Incluir Turf.js -->
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
   <script>
     const map = new maplibregl.Map({
         container: 'map',
