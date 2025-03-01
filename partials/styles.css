@@ -303,13 +303,26 @@ model-viewer {
   object-fit: contain;
 }
 
-/* Estilos para el texto superpuesto en el visualizador 3D */
+/* Estilos para el contenedor del model-viewer */
 .model-container {
   position: relative;
-  width: 100%;
-  height: 80vh;
+  width: calc(100% - 40px); /* Ancho total menos 40px de margen (20px a cada lado) */
+  height: 60vh; /* Altura del 60% del viewport */
+  margin: 20px auto; /* Margen superior e inferior de 20px, y centrado horizontalmente */
+  text-align: center; /* Centrar el contenido */
 }
 
+/* Estilos para el model-viewer */
+model-viewer {
+  width: 100%;
+  height: 100%;
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  background-color: white; /* Fondo blanco para el visor 3D */
+  margin: auto; /* Centrar el model-viewer */
+  border: 2px solid white; /* Contorno blanco */
+}
+
+/* Estilos para los créditos del modelo */
 .model-credits {
   position: absolute;
   bottom: 40px;
