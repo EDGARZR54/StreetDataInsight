@@ -323,7 +323,6 @@ model-viewer {
   object-fit: contain; /* Ajusta el contenido al tamaño del contenedor */
 }
 
-/* Estilos para los créditos del modelo */
 .model-credits {
   position: absolute;
   bottom: 40px;
@@ -335,4 +334,6 @@ model-viewer {
   padding: 8px 12px;
   border-radius: 4px;
   z-index: 10;
+  text-align: left;
+  white-space: pre-line;
 }
