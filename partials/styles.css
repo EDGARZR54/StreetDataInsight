@@ -307,7 +307,7 @@ model-viewer {
 .model-container {
   position: relative;
   width: calc(100% - 40px); /* Ancho total menos 40px de margen (20px a cada lado) */
-  height: 60vh; /* Altura del 60% del viewport */
+  height: 350px; /* Altura fija de 350px */
   margin: 20px auto; /* Margen superior e inferior de 20px, y centrado horizontalmente */
   text-align: center; /* Centrar el contenido */
 }
