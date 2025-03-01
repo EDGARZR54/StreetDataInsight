@@ -43,15 +43,21 @@
 
         <!-- Visor 3D -->
         <div class="model-container">
-            <model-viewer id="model-viewer" src="https://cdn.glitch.me/cf57c429-6f82-4cc2-8387-d3f003bd320b/SB01.glb?v=1740475981433" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
+            <model-viewer id="model-viewer" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
 
-                <button class="Hotspot" slot="hotspot-3" data-position="34.71576156053151m 19.100185107366087m -0.6389702122213261m" data-normal="0.9128737226750974m 0.36513999103422606m -0.18257697937263262m" data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation">SB01</div>
+                <button class="Hotspot" slot="hotspot-1" data-position data-normal data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation"></div>
                 </button>
-                <button class="Hotspot" slot="hotspot-4" data-position="-13.69468822635946m 15.23664467170375m 6.211341789889632m" data-normal="-0.8226735688626616m 0.21578356390298162m 0.5259711519124404m" data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation">SB02</div>
+                <button class="Hotspot" slot="hotspot-2" data-position data-normal data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation"></div>
                 </button>
-
+                <button class="Hotspot" slot="hotspot-3" data-position data-normal data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation"></div>
+                </button>
+                <button class="Hotspot" slot="hotspot-4" data-position data-normal data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation"></div>
+                </button>
+                
                 <div class="progress-bar hide" slot="progress-bar">
                     <div class="update-bar"></div>
                 </div>
@@ -80,23 +86,58 @@
 
     <!-- Scripts -->
     <script>
-        // Carrusel de imágenes
-        const fileIds = ["1JzfdvJbeXwAu0GRYTHkm0m_1YX_44PgC", "1yGBVp6BT7v7252Ndo6ps0lzho0QtpQLR",
-            "16HiOU-xw41ny5uz2zAyXQvb5z5fzIKFw", "1XQKBkB9H9-QyyHXEkDpE30RT-F-eF-ac"
-        ];
-        const images = document.querySelector(".carousel");
-        const imageUrl = document.querySelector(".image-url");
-
-        fileIds.forEach(id => {
-            const imgUrl = `https://lh3.googleusercontent.com/d/${id}=s0`;
-            const imgElement = document.createElement("img");
-            imgElement.src = imgUrl;
-            images.appendChild(imgElement);
-        });
-
+        // Variables globales
         let currentIndex = 0;
-        const carouselImages = document.querySelectorAll(".carousel img");
+        let carouselImages = [];
+    
+        // Funciones de actualización
+        function updateCarousel(perfilesConLetra, manzana) {
+            const imagesContainer = document.querySelector('.carousel');
+            imagesContainer.innerHTML = '';
+            
+            // Almacenar la manzana en el contenedor
+            imagesContainer.dataset.manzana = manzana;
+    
+            perfilesConLetra.forEach(perfil => {
+                const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
+                const imgElement = document.createElement("img");
+                imgElement.src = imgUrl;
+                imgElement.dataset.letraPerfil = perfil.letra;  // Almacenar la letra del perfil
+                imagesContainer.appendChild(imgElement);
+            });
+    
+            carouselImages = document.querySelectorAll(".carousel img");
+            currentIndex = 0;
+            if (carouselImages.length > 0) {
+                showImage(currentIndex, 'next');
+            } else {
+                document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
+            }
+        }
 
+
+        function updateModelViewer(modelURL) {
+            const modelViewer = document.querySelector("model-viewer#model-viewer");
+            if (modelURL && modelURL !== "None") {
+                modelViewer.src = modelURL;
+            }
+        }
+
+        function updateHotspots(hotspots, manzana) {
+            for (let i = 0; i < 4; i++) {
+                const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
+                if (hotspot && hotspots[i]) {
+                    const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
+                    hotspot.dataset.position = `${x}m ${y}m ${z}m`;
+                    const annotation = hotspot.querySelector('.HotspotAnnotation');
+                    if (annotation) {
+                        annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
+                    }
+                }
+            }
+        }
+
+        // Carrusel de imágenes
         function showImage(index, direction) {
             carouselImages.forEach((img, i) => {
                 img.classList.remove("active");
@@ -105,42 +146,43 @@
                     setTimeout(() => {
                         img.classList.add("active");
                         img.style.transform = 'translateX(0)';
-                        imageUrl.textContent = img.src;
+                        
+                        // Obtener datos para el texto
+                        const manzana = document.querySelector('.carousel').dataset.manzana;
+                        const letraPerfil = img.dataset.letraPerfil;
+                        
+                        document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
                     }, 50);
                 }
             });
         }
 
         function nextImage() {
+            if (carouselImages.length === 0) return;
             currentIndex = (currentIndex + 1) % carouselImages.length;
             showImage(currentIndex, 'next');
         }
 
         function prevImage() {
+            if (carouselImages.length === 0) return;
             currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
             showImage(currentIndex, 'prev');
         }
-
-        // Mostrar la primera imagen al cargar
-        showImage(currentIndex, 'next');
 
         // Popup de imagen
         const imagePopup = document.querySelector(".image-popup");
         const popupImage = imagePopup.querySelector("img");
 
-        // Añadir evento click a las imágenes del carrusel
-        carouselImages.forEach(img => {
-            img.addEventListener("click", () => {
-                // Obtener la imagen activa actual
-                const activeImage = document.querySelector(".carousel img.active");
-                if (activeImage) {
-                    popupImage.src = activeImage.src; // Actualizar el src del popup con la imagen activa
-                    imagePopup.classList.add("active");
-                }
-            });
+        // Popup de imagen
+        document.querySelector(".carousel-container").addEventListener("click", (e) => {
+            // Obtener la imagen activa actual
+            const activeImage = document.querySelector(".carousel img.active");
+            if (activeImage) {
+                popupImage.src = activeImage.src;
+                imagePopup.classList.add("active");
+            }
         });
 
-        // Cerrar el popup al hacer clic fuera de la imagen
         imagePopup.addEventListener("click", (e) => {
             if (e.target === imagePopup) {
                 imagePopup.classList.remove("active");
@@ -155,10 +197,10 @@
             })
             .catch(error => console.error('Error al cargar el navbar:', error));
 
-        // Modelo 3D
-        const modelViewerParameters = document.querySelector("model-viewer#model-viewer");
-        modelViewerParameters.addEventListener("load", (ev) => {
-            let material = modelViewerParameters.model.materials[0];
+        // Configuración del modelo 3D
+        const modelViewer = document.querySelector("model-viewer#model-viewer");
+        modelViewer.addEventListener('load', (ev) => {
+            let material = modelViewer.model.materials[0];
             material.pbrMetallicRoughness.setRoughnessFactor(1);
             material.pbrMetallicRoughness.setMetallicFactor(0.5);
         });
@@ -179,49 +221,48 @@
         });
 
         map.on('load', async function() {
-            // Crear el contenedor del slider y botón de control
+            // Controles del slider
             const sliderContainer = document.createElement('div');
             sliderContainer.classList.add('slider-container');
-
             sliderContainer.innerHTML = `
-            <h2>Caso de estudio - Santo Domingo, RD</h2>
-            <div class="slider-controls">
-                <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
-                <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
-                <button id="toggleBtn">⏵</button>
-            </div>
-        `;
-
+                <h2>Caso de estudio - Santo Domingo, RD</h2>
+                <div class="slider-controls">
+                    <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
+                    <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
+                    <button id="toggleBtn">⏵</button>
+                </div>
+            `;
             document.getElementById('map').appendChild(sliderContainer);
 
+            // Control de zoom
             const zoomSlider = document.getElementById('zoomSlider');
             const zoomValue = document.getElementById('zoomValue');
             const toggleBtn = document.getElementById('toggleBtn');
             let animationInterval;
 
-            // Control de animación con play/pause
+            // Control de animación
             toggleBtn.addEventListener('click', () => {
-                if (toggleBtn.textContent === '⏵') { // Si está en play, iniciar animación
+                if (toggleBtn.textContent === '⏵') {
                     toggleBtn.textContent = '⏸';
                     animationInterval = setInterval(() => {
                         let currentValue = parseFloat(zoomSlider.value);
                         if (currentValue < zoomSlider.max) {
                             zoomSlider.value = (currentValue + 0.1).toFixed(1);
-                            map.easeTo({
-                                center: [-69.88745587021114, 18.47668346661841],
-                                zoom: parseFloat(zoomSlider.value),
-                                duration: 300
+                            map.easeTo({ 
+                                center: [-69.88745587021114, 18.47668346661841], 
+                                zoom: zoomSlider.value, 
+                                duration: 300 
                             });
                             zoomValue.textContent = zoomSlider.value;
                         } else {
                             clearInterval(animationInterval);
-                            toggleBtn.textContent = '⏪︎'; // Solo cambiar a replay si llegó al máximo
+                            toggleBtn.textContent = '⏪︎';
                         }
                     }, 100);
-                } else if (toggleBtn.textContent === '⏸') { // Si está en pausa, detener animación
+                } else if (toggleBtn.textContent === '⏸') {
                     toggleBtn.textContent = '⏵';
                     clearInterval(animationInterval);
-                } else if (toggleBtn.textContent === '⏪︎') { // Si está en replay, reiniciar desde el inicio
+                } else if (toggleBtn.textContent === '⏪︎') {
                     toggleBtn.textContent = '⏵';
                     zoomSlider.value = 2;
                     zoomValue.textContent = '2';
@@ -233,19 +274,19 @@
                 }
             });
 
-            // Control del slider manual
+            // Control manual del slider
             zoomSlider.addEventListener('input', (e) => {
                 const zoomLevel = parseFloat(e.target.value);
                 map.setZoom(zoomLevel);
                 zoomValue.textContent = zoomLevel.toFixed(1);
 
-                // Si el usuario mueve el slider manualmente y no está en el valor máximo, volver a play
+                // Resetear a modo play si no está en máximo
                 if (zoomLevel < zoomSlider.max && toggleBtn.textContent === '⏪︎') {
                     toggleBtn.textContent = '⏵';
                 }
             });
 
-            // Sincronizar el slider con el zoom del mapa (solo cuando no se usa el slider o la animación)
+            // Sincronizar slider con zoom del mapa
             map.on('zoom', () => {
                 if (!animationInterval && !zoomSlider.matches(':active')) {
                     const currentZoom = map.getZoom();
@@ -254,92 +295,80 @@
                 }
             });
 
-            // Cargar capa GeoJSON
-            const geojsonURL = 'https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson';
-
+            // Cargar GeoJSON
             try {
-                const response = await fetch(geojsonURL);
+                const response = await fetch('https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson');
                 const geojsonData = await response.json();
 
-                map.addSource('manzanas', {
-                    type: 'geojson',
-                    data: geojsonData
-                });
+                // Cargar datos iniciales
+                const defaultFeature = geojsonData.features.find(f => f.properties.Manzana === "SB01");
+                if (defaultFeature) {
+                    const props = defaultFeature.properties;
+                    const perfilesConLetra = [
+                        { id: props.Perfil_A, letra: 'A' },
+                        { id: props.Perfil_B, letra: 'B' },
+                        { id: props.Perfil_C, letra: 'C' },
+                        { id: props.Perfil_D, letra: 'D' }
+                    ].filter(p => p.id && p.id !== "None");
+                    
+                    updateCarousel(perfilesConLetra, props.Manzana);
+                }
 
-                map.addLayer({
-                    id: 'manzanas-fill',
-                    type: 'fill',
-                    source: 'manzanas',
-                    paint: {
-                        'fill-color': '#007BFF',
-                        'fill-opacity': 0.5
-                    }
-                });
+                // Añadir capa al mapa
+                map.addSource('manzanas', { type: 'geojson', data: geojsonData });
+                map.addLayer({ id: 'manzanas-fill', type: 'fill', source: 'manzanas', paint: { 'fill-color': '#007BFF', 'fill-opacity': 0.5 } });
+                map.addLayer({ id: 'manzanas-outline', type: 'line', source: 'manzanas', paint: { 'line-color': '#0056b3', 'line-width': 2 } });
 
-                map.addLayer({
-                    id: 'manzanas-outline',
-                    type: 'line',
-                    source: 'manzanas',
-                    paint: {
-                        'line-color': '#0056b3',
-                        'line-width': 2
-                    }
-                });
-
-                const popup = new maplibregl.Popup({
-                    closeButton: true,
-                    closeOnClick: true
-                });
-
+                // Evento click
+                const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
                 map.on('click', 'manzanas-fill', function(e) {
                     const feature = e.features[0];
                     if (!feature) return;
 
-                    // Calcular el centroide de la geometría
+                    // Actualizar componentes
+                    const props = feature.properties;
+                    const manzana = props.Manzana;
+
+                    // Crear array de perfiles con sus letras
+                    const perfilesConLetra = [
+                        { id: props.Perfil_A, letra: 'A' },
+                        { id: props.Perfil_B, letra: 'B' },
+                        { id: props.Perfil_C, letra: 'C' },
+                        { id: props.Perfil_D, letra: 'D' }
+                    ].filter(p => p.id && p.id !== "None");
+                    
+                    // Actualizar componentes
+                    updateCarousel(perfilesConLetra, manzana);
+                    updateModelViewer(props.Modelo3D);
+                    updateHotspots([
+                        props.Hotspot_1,
+                        props.Hotspot_2,
+                        props.Hotspot_3,
+                        props.Hotspot_4
+                    ], manzana);
+
+                    // Mostrar popup
                     const centroid = turf.centroid(feature);
                     const [lng, lat] = centroid.geometry.coordinates;
-
-                    // Calcular área y perímetro
-                    const area = turf.area(feature); // Devuelve el área en metros cuadrados
-                    const perimeter = turf.length(feature, {
-                        units: 'meters'
-                    }); // Devuelve el perímetro en metros
-
-                    // Extraer las propiedades deseadas
-                    const props = feature.properties;
-                    const vecindario = props["Vecindario"] || "Desconocido";
-                    const manzana = props["Manzana"] || "Desconocida";
-
-                    // Formatear la información
-                    const description = `
-                    <strong>Vecindario:</strong> ${vecindario}<br>
-                    <strong>Manzana:</strong> ${manzana}<br>
-                    <strong>Área:</strong> ${area.toFixed(2)} m²<br>
-                    <strong>Perímetro:</strong> ${perimeter.toFixed(2)} m
-                `;
-
-                    // Mostrar el popup con la información filtrada
                     popup.setLngLat([lng, lat])
-                        .setHTML(`<div style="color: black;">${description}</div>`)
+                        .setHTML(`<div style="color: black; font-family: 'DM Sans', sans-serif;">
+                            <strong>Vecindario:</strong> ${props.Vecindario}<br>
+                            <strong>Manzana:</strong> ${props.Manzana}<br>
+                            <strong>Área:</strong> ${turf.area(feature).toFixed(2)} m²<br>
+                            <strong>Perímetro:</strong> ${turf.length(feature, {units: 'meters'}).toFixed(2)} m
+                        </div>`)
                         .addTo(map);
 
-                    // Centrar el mapa en el centroide y ajustar el zoom a 18
-                    map.flyTo({
-                        center: [lng, lat],
-                        zoom: 18,
-                        speed: 1.5,
-                        curve: 1,
-                        essential: true
-                    });
+                    map.flyTo({ center: [lng, lat], zoom: 18, speed: 1.5 });
                 });
 
                 map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
                 map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
+                
             } catch (error) {
-                console.error('Error cargando el GeoJSON:', error);
+                console.error('Error:', error);
             }
         });
     </script>
 </body>
-
 </html>
