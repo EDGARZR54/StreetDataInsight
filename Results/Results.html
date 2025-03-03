@@ -286,6 +286,13 @@
                     ].filter(p => p.id && p.id !== "None");
                     
                     updateCarousel(perfilesConLetra, props.Manzana);
+                    updateModelViewer(props.Modelo3D); // <-- Aquí se carga el modelo 3D por defecto
+                    updateHotspots([
+                        props.Hotspot_1,
+                        props.Hotspot_2,
+                        props.Hotspot_3,
+                        props.Hotspot_4
+                    ], props.Manzana);
                 }
 
                 // Añadir capa al mapa
