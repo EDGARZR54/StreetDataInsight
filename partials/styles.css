@@ -283,6 +283,7 @@ model-viewer {
     pointer-events: none;
     z-index: 1000;
     overflow: hidden;
+    border: 2px solid white;
 }
 
 #large-image {
