@@ -291,11 +291,6 @@ model-viewer {
     will-change: transform;
 }
 
-/* Ocultar el cursor por defecto */
-body {
-    cursor: none; /* Ocultar el cursor cuando la cruz está activa */
-}
-
 /* Estilos para el contenedor del model-viewer */
 .model-container {
   position: relative;
