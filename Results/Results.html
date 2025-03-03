@@ -36,11 +36,6 @@
         </div>
         <p class="image-url">Cargando...</p>
 
-        <!-- Popup de imagen -->
-        <div class="image-popup">
-            <img src="" alt="Imagen ampliada">
-        </div>
-
         <!-- Visor 3D -->
         <div class="model-container">
             <model-viewer id="model-viewer" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
@@ -115,7 +110,6 @@
             }
         }
 
-
         function updateModelViewer(modelURL) {
             const modelViewer = document.querySelector("model-viewer#model-viewer");
             if (modelURL && modelURL !== "None") {
@@ -168,26 +162,6 @@
             currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
             showImage(currentIndex, 'prev');
         }
-
-        // Popup de imagen
-        const imagePopup = document.querySelector(".image-popup");
-        const popupImage = imagePopup.querySelector("img");
-
-        // Popup de imagen
-        document.querySelector(".carousel-container").addEventListener("click", (e) => {
-            // Obtener la imagen activa actual
-            const activeImage = document.querySelector(".carousel img.active");
-            if (activeImage) {
-                popupImage.src = activeImage.src;
-                imagePopup.classList.add("active");
-            }
-        });
-
-        imagePopup.addEventListener("click", (e) => {
-            if (e.target === imagePopup) {
-                imagePopup.classList.remove("active");
-            }
-        });
 
         // Navbar
         fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
