@@ -235,7 +235,6 @@ model-viewer {
   transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
   opacity: 0;
   filter: saturate(1.5);
-  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
 }
 
 .carousel img.active {
