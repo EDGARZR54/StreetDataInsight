@@ -2,203 +2,217 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreetData Insight | Resultados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetData Insight | Resultados</title>
 
-    <!-- Fuentes y librerías externas -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
-    <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-    <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- Fuentes y librerías externas -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-    <!-- Estilos externos -->
-    <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/styles.css">
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/styles.css">
 </head>
 
 <body>
-    <!-- Navbar -->
-    <div id="navbar-placeholder"></div>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
 
-    <div id="main-content">
-        <h1>StreetData Insight</h1>
+  <div id="main-content">
+    <h1>StreetData Insight</h1>
 
-        <!-- Mapa -->
-        <div id="map"></div>
+    <!-- Mapa -->
+    <div id="map"></div>
 
-        <!-- Carrusel de Imágenes -->
-        <div class="carousel-container">
-            <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
-            <div class="carousel"></div>
-            <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
-        </div>
-        <p class="image-url">Cargando...</p>
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel-container">
+      <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
+      <div class="carousel"></div>
+      <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
+    </div>
+    <p class="image-url">Cargando...</p>
 
-        <!-- Visor 3D -->
-        <div class="model-container">
-            <model-viewer id="model-viewer" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
+    <!-- Visor 3D -->
+    <div class="model-container">
+      <model-viewer id="model-viewer" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
 
-                <button class="Hotspot" slot="hotspot-1" data-position data-normal data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation"></div>
-                </button>
-                <button class="Hotspot" slot="hotspot-2" data-position data-normal data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation"></div>
-                </button>
-                <button class="Hotspot" slot="hotspot-3" data-position data-normal data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation"></div>
-                </button>
-                <button class="Hotspot" slot="hotspot-4" data-position data-normal data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation"></div>
-                </button>
-                
-                <div class="progress-bar hide" slot="progress-bar">
-                    <div class="update-bar"></div>
-                </div>
+        <button class="Hotspot" slot="hotspot-1" data-position data-normal data-visibility-attribute="visible">
+          <div class="HotspotAnnotation"></div>
+        </button>
+        <button class="Hotspot" slot="hotspot-2" data-position data-normal data-visibility-attribute="visible">
+          <div class="HotspotAnnotation"></div>
+        </button>
+        <button class="Hotspot" slot="hotspot-3" data-position data-normal data-visibility-attribute="visible">
+          <div class="HotspotAnnotation"></div>
+        </button>
+        <button class="Hotspot" slot="hotspot-4" data-position data-normal data-visibility-attribute="visible">
+          <div class="HotspotAnnotation"></div>
+        </button>
 
-                <button slot="ar-button" id="ar-button">View in your space</button>
-            </model-viewer>
-
-            <div class="model-credits">
-                Fotogrametría: Arq. Alejandro Marambio, 2023.<br>
-                Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.
-            </div>
-
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
         </div>
 
-        <!-- Créditos -->
-        <div class="credits">
-            <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
-            <p>
-                Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
-                Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
-                Todos los derechos de las imágenes corresponden a Google.
-                Año de publicación: 2025.
-            </p>
-        </div>
+        <button slot="ar-button" id="ar-button">View in your space</button>
+      </model-viewer>
+
+      <div class="model-credits">
+        Fotogrametría: Arq. Alejandro Marambio, 2023.<br>
+        Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.
+      </div>
+
     </div>
 
-    <!-- Scripts -->
-    <script>
-        // Variables globales
-        let currentIndex = 0;
-        let carouselImages = [];
-    
-        // Funciones de actualización
-        function updateCarousel(perfilesConLetra, manzana) {
-            const imagesContainer = document.querySelector('.carousel');
-            imagesContainer.innerHTML = '';
-            
-            // Almacenar la manzana en el contenedor
-            imagesContainer.dataset.manzana = manzana;
-    
-            perfilesConLetra.forEach(perfil => {
-                const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
-                const imgElement = document.createElement("img");
-                imgElement.src = imgUrl;
-                imgElement.dataset.letraPerfil = perfil.letra;  // Almacenar la letra del perfil
-                imagesContainer.appendChild(imgElement);
-            });
-    
-            carouselImages = document.querySelectorAll(".carousel img");
-            currentIndex = 0;
-            if (carouselImages.length > 0) {
-                showImage(currentIndex, 'next');
-            } else {
-                document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
-            }
+    <!-- Créditos -->
+    <div class="credits">
+      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <p>
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
+        Todos los derechos de las imágenes corresponden a Google.
+        Año de publicación: 2025.
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Variables globales
+    let currentIndex = 0;
+    let carouselImages = [];
+
+    // Función para obtener y mostrar las dimensiones de la imagen activa
+    function logActiveImageDimensions() {
+      const activeImage = document.querySelector('.carousel img.active');
+      if (activeImage) {
+        const rect = activeImage.getBoundingClientRect();
+        console.log('Ancho:', rect.width, 'Alto:', rect.height);
+        // Opcional: puedes actualizar un elemento en la página con estas dimensiones.
+      } else {
+        console.log('No se encontró una imagen activa.');
+      }
+    }
+
+    // Funciones de actualización
+    function updateCarousel(perfilesConLetra, manzana) {
+      const imagesContainer = document.querySelector('.carousel');
+      imagesContainer.innerHTML = '';
+
+      // Almacenar la manzana en el contenedor
+      imagesContainer.dataset.manzana = manzana;
+
+      perfilesConLetra.forEach(perfil => {
+        const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
+        const imgElement = document.createElement("img");
+        imgElement.src = imgUrl;
+        imgElement.dataset.letraPerfil = perfil.letra;  // Almacenar la letra del perfil
+        imagesContainer.appendChild(imgElement);
+      });
+
+      carouselImages = document.querySelectorAll(".carousel img");
+      currentIndex = 0;
+      if (carouselImages.length > 0) {
+        showImage(currentIndex, 'next');
+      } else {
+        document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
+      }
+    }
+
+    function updateModelViewer(modelURL) {
+      const modelViewer = document.querySelector("model-viewer#model-viewer");
+      if (modelURL && modelURL !== "None") {
+        modelViewer.src = modelURL;
+      }
+    }
+
+    function updateHotspots(hotspots, manzana) {
+      for (let i = 0; i < 4; i++) {
+        const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
+        if (hotspot && hotspots[i]) {
+          const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
+          hotspot.dataset.position = `${x}m ${y}m ${z}m`;
+          const annotation = hotspot.querySelector('.HotspotAnnotation');
+          if (annotation) {
+            annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
+          }
         }
+      }
+    }
 
-        function updateModelViewer(modelURL) {
-            const modelViewer = document.querySelector("model-viewer#model-viewer");
-            if (modelURL && modelURL !== "None") {
-                modelViewer.src = modelURL;
-            }
+    // Carrusel de imágenes
+    function showImage(index, direction) {
+      carouselImages.forEach((img, i) => {
+        img.classList.remove("active");
+        if (i === index) {
+          img.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
+          setTimeout(() => {
+            img.classList.add("active");
+            img.style.transform = 'translateX(0)';
+
+            // Obtener datos para el texto
+            const manzana = document.querySelector('.carousel').dataset.manzana;
+            const letraPerfil = img.dataset.letraPerfil;
+            document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
+
+            // Actualizar dimensiones de la imagen activa
+            logActiveImageDimensions();
+          }, 50);
         }
+      });
+    }
 
-        function updateHotspots(hotspots, manzana) {
-            for (let i = 0; i < 4; i++) {
-                const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
-                if (hotspot && hotspots[i]) {
-                    const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
-                    hotspot.dataset.position = `${x}m ${y}m ${z}m`;
-                    const annotation = hotspot.querySelector('.HotspotAnnotation');
-                    if (annotation) {
-                        annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
-                    }
-                }
-            }
-        }
+    function nextImage() {
+      if (carouselImages.length === 0) return;
+      currentIndex = (currentIndex + 1) % carouselImages.length;
+      showImage(currentIndex, 'next');
+    }
 
-        // Carrusel de imágenes
-        function showImage(index, direction) {
-            carouselImages.forEach((img, i) => {
-                img.classList.remove("active");
-                if (i === index) {
-                    img.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
-                    setTimeout(() => {
-                        img.classList.add("active");
-                        img.style.transform = 'translateX(0)';
-                        
-                        // Obtener datos para el texto
-                        const manzana = document.querySelector('.carousel').dataset.manzana;
-                        const letraPerfil = img.dataset.letraPerfil;
-                        
-                        document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
-                    }, 50);
-                }
-            });
-        }
+    function prevImage() {
+      if (carouselImages.length === 0) return;
+      currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+      showImage(currentIndex, 'prev');
+    }
 
-        function nextImage() {
-            if (carouselImages.length === 0) return;
-            currentIndex = (currentIndex + 1) % carouselImages.length;
-            showImage(currentIndex, 'next');
-        }
+    // Navbar
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el navbar:', error));
 
-        function prevImage() {
-            if (carouselImages.length === 0) return;
-            currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-            showImage(currentIndex, 'prev');
-        }
+    // Configuración del modelo 3D
+    const modelViewer = document.querySelector("model-viewer#model-viewer");
+    modelViewer.addEventListener('load', (ev) => {
+      let material = modelViewer.model.materials[0];
+      material.pbrMetallicRoughness.setRoughnessFactor(1);
+      material.pbrMetallicRoughness.setMetallicFactor(0.5);
+    });
+  </script>
 
-        // Navbar
-        fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error al cargar el navbar:', error));
+  <!-- Mapa y Turf.js -->
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json',
+      center: [-69.88745587021114, 18.47668346661841],
+      zoom: 2,
+      bearing: 0,
+      antialias: true,
+      maplibreLogo: false
+    });
 
-        // Configuración del modelo 3D
-        const modelViewer = document.querySelector("model-viewer#model-viewer");
-        modelViewer.addEventListener('load', (ev) => {
-            let material = modelViewer.model.materials[0];
-            material.pbrMetallicRoughness.setRoughnessFactor(1);
-            material.pbrMetallicRoughness.setMetallicFactor(0.5);
-        });
-    </script>
-
-    <!-- Mapa y Turf.js -->
-    <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
-    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-    <script>
-        const map = new maplibregl.Map({
-            container: 'map',
-            style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json',
-            center: [-69.88745587021114, 18.47668346661841],
-            zoom: 2,
-            bearing: 0,
-            antialias: true,
-            maplibreLogo: false
-        });
-
-        map.on('load', async function() {
-            // Controles del slider
-            const sliderContainer = document.createElement('div');
-            sliderContainer.classList.add('slider-container');
-            sliderContainer.innerHTML = `
+    map.on('load', async function () {
+      // Controles del slider
+      const sliderContainer = document.createElement('div');
+      sliderContainer.classList.add('slider-container');
+      sliderContainer.innerHTML = `
                 <h2>Caso de estudio - Santo Domingo, RD</h2>
                 <div class="slider-controls">
                     <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
@@ -206,150 +220,152 @@
                     <button id="toggleBtn">⏵</button>
                 </div>
             `;
-            document.getElementById('map').appendChild(sliderContainer);
+      document.getElementById('map').appendChild(sliderContainer);
 
-            // Control de zoom
-            const zoomSlider = document.getElementById('zoomSlider');
-            const zoomValue = document.getElementById('zoomValue');
-            const toggleBtn = document.getElementById('toggleBtn');
-            let animationInterval;
+      // Control de zoom
+      const zoomSlider = document.getElementById('zoomSlider');
+      const zoomValue = document.getElementById('zoomValue');
+      const toggleBtn = document.getElementById('toggleBtn');
+      let animationInterval;
 
-            // Control de animación
-            toggleBtn.addEventListener('click', () => {
-                if (toggleBtn.textContent === '⏵') {
-                    toggleBtn.textContent = '⏸';
-                    animationInterval = setInterval(() => {
-                        let currentValue = parseFloat(zoomSlider.value);
-                        if (currentValue < zoomSlider.max) {
-                            zoomSlider.value = (currentValue + 0.1).toFixed(1);
-                            map.easeTo({ 
-                                center: [-69.88745587021114, 18.47668346661841], 
-                                zoom: zoomSlider.value, 
-                                duration: 300 
-                            });
-                            zoomValue.textContent = zoomSlider.value;
-                        } else {
-                            clearInterval(animationInterval);
-                            toggleBtn.textContent = '⏪︎';
-                        }
-                    }, 100);
-                } else if (toggleBtn.textContent === '⏸') {
-                    toggleBtn.textContent = '⏵';
-                    clearInterval(animationInterval);
-                } else if (toggleBtn.textContent === '⏪︎') {
-                    toggleBtn.textContent = '⏵';
-                    zoomSlider.value = 2;
-                    zoomValue.textContent = '2';
-                    map.easeTo({
-                        center: [-69.88745587021114, 18.47668346661841],
-                        zoom: 2,
-                        duration: 0
-                    });
-                }
-            });
+      // Control de animación
+      toggleBtn.addEventListener('click', () => {
+        if (toggleBtn.textContent === '⏵') {
+          toggleBtn.textContent = '⏸';
+          animationInterval = setInterval(() => {
+            let currentValue = parseFloat(zoomSlider.value);
+            if (currentValue < zoomSlider.max) {
+              zoomSlider.value = (currentValue + 0.1).toFixed(1);
+              map.easeTo({
+                center: [-69.88745587021114, 18.47668346661841],
+                zoom: zoomSlider.value,
+                duration: 300
+              });
+              zoomValue.textContent = zoomSlider.value;
+            } else {
+              clearInterval(animationInterval);
+              toggleBtn.textContent = '⏪︎';
+            }
+          }, 100);
+        } else if (toggleBtn.textContent === '⏸') {
+          toggleBtn.textContent = '⏵';
+          clearInterval(animationInterval);
+        } else if (toggleBtn.textContent === '⏪︎') {
+          toggleBtn.textContent = '⏵';
+          zoomSlider.value = 2;
+          zoomValue.textContent = '2';
+          map.easeTo({
+            center: [-69.88745587021114, 18.47668346661841],
+            zoom: 2,
+            duration: 0
+          });
+        }
+      });
 
-            // Control manual del slider
-            zoomSlider.addEventListener('input', (e) => {
-                const zoomLevel = parseFloat(e.target.value);
-                map.setZoom(zoomLevel);
-                zoomValue.textContent = zoomLevel.toFixed(1);
+      // Control manual del slider
+      zoomSlider.addEventListener('input', (e) => {
+        const zoomLevel = parseFloat(e.target.value);
+        map.setZoom(zoomLevel);
+        zoomValue.textContent = zoomLevel.toFixed(1);
 
-                // Resetear a modo play si no está en máximo
-                if (zoomLevel < zoomSlider.max && toggleBtn.textContent === '⏪︎') {
-                    toggleBtn.textContent = '⏵';
-                }
-            });
+        // Resetear a modo play si no está en máximo
+        if (zoomLevel < zoomSlider.max && toggleBtn.textContent === '⏪︎') {
+          toggleBtn.textContent = '⏵';
+        }
+      });
 
-            // Sincronizar slider con zoom del mapa
-            map.on('zoom', () => {
-                if (!animationInterval && !zoomSlider.matches(':active')) {
-                    const currentZoom = map.getZoom();
-                    zoomSlider.value = currentZoom.toFixed(1);
-                    zoomValue.textContent = currentZoom.toFixed(1);
-                }
-            });
+      // Sincronizar slider con zoom del mapa
+      map.on('zoom', () => {
+        if (!animationInterval && !zoomSlider.matches(':active')) {
+          const currentZoom = map.getZoom();
+          zoomSlider.value = currentZoom.toFixed(1);
+          zoomValue.textContent = currentZoom.toFixed(1);
+        }
+      });
 
-            // Cargar GeoJSON
-            try {
-                const response = await fetch('https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson');
-                const geojsonData = await response.json();
+      // Cargar GeoJSON
+      try {
+        const response = await fetch('https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson');
+        const geojsonData = await response.json();
 
-                // Cargar datos iniciales
-                const defaultFeature = geojsonData.features.find(f => f.properties.Manzana === "SB01");
-                if (defaultFeature) {
-                    const props = defaultFeature.properties;
-                    const perfilesConLetra = [
-                        { id: props.Perfil_A, letra: 'A' },
-                        { id: props.Perfil_B, letra: 'B' },
-                        { id: props.Perfil_C, letra: 'C' },
-                        { id: props.Perfil_D, letra: 'D' }
-                    ].filter(p => p.id && p.id !== "None");
-                    
-                    updateCarousel(perfilesConLetra, props.Manzana);
-                    updateModelViewer(props.Modelo3D); // <-- Aquí se carga el modelo 3D por defecto
-                    updateHotspots([
-                        props.Hotspot_1,
-                        props.Hotspot_2,
-                        props.Hotspot_3,
-                        props.Hotspot_4
-                    ], props.Manzana);
-                }
+        // Cargar datos iniciales
+        const defaultFeature = geojsonData.features.find(f => f.properties.Manzana === "SB01");
+        if (defaultFeature) {
+          const props = defaultFeature.properties;
+          const perfilesConLetra = [
+            { id: props.Perfil_A, letra: 'A' },
+            { id: props.Perfil_B, letra: 'B' },
+            { id: props.Perfil_C, letra: 'C' },
+            { id: props.Perfil_D, letra: 'D' }
+          ].filter(p => p.id && p.id !== "None");
 
-                // Añadir capa al mapa
-                map.addSource('manzanas', { type: 'geojson', data: geojsonData });
-                map.addLayer({ id: 'manzanas-fill', type: 'fill', source: 'manzanas', paint: { 'fill-color': '#007BFF', 'fill-opacity': 0.5 } });
-                map.addLayer({ id: 'manzanas-outline', type: 'line', source: 'manzanas', paint: { 'line-color': '#0056b3', 'line-width': 2 } });
+          updateCarousel(perfilesConLetra, props.Manzana);
+        updateCarousel(perfilesConLetra, props.Manzana);
+        updateModelViewer(props.Modelo3D); // <-- Aquí se carga el modelo 3D por defecto
+        updateHotspots([
+            props.Hotspot_1,
+            props.Hotspot_2,
+            props.Hotspot_3,
+            props.Hotspot_4
+        ], props.Manzana);
+        }
 
-                // Evento click
-                const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
-                map.on('click', 'manzanas-fill', function(e) {
-                    const feature = e.features[0];
-                    if (!feature) return;
+        // Añadir capa al mapa
+        map.addSource('manzanas', { type: 'geojson', data: geojsonData });
+        map.addLayer({ id: 'manzanas-fill', type: 'fill', source: 'manzanas', paint: { 'fill-color': '#007BFF', 'fill-opacity': 0.5 } });
+        map.addLayer({ id: 'manzanas-outline', type: 'line', source: 'manzanas', paint: { 'line-color': '#0056b3', 'line-width': 2 } });
 
-                    // Actualizar componentes
-                    const props = feature.properties;
-                    const manzana = props.Manzana;
+        // Evento click
+        const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
+        map.on('click', 'manzanas-fill', function (e) {
+          const feature = e.features[0];
+          if (!feature) return;
 
-                    // Crear array de perfiles con sus letras
-                    const perfilesConLetra = [
-                        { id: props.Perfil_A, letra: 'A' },
-                        { id: props.Perfil_B, letra: 'B' },
-                        { id: props.Perfil_C, letra: 'C' },
-                        { id: props.Perfil_D, letra: 'D' }
-                    ].filter(p => p.id && p.id !== "None");
-                    
-                    // Actualizar componentes
-                    updateCarousel(perfilesConLetra, manzana);
-                    updateModelViewer(props.Modelo3D);
-                    updateHotspots([
-                        props.Hotspot_1,
-                        props.Hotspot_2,
-                        props.Hotspot_3,
-                        props.Hotspot_4
-                    ], manzana);
+          // Actualizar componentes
+          const props = feature.properties;
+          const manzana = props.Manzana;
 
-                    // Mostrar popup
-                    const centroid = turf.centroid(feature);
-                    const [lng, lat] = centroid.geometry.coordinates;
-                    popup.setLngLat([lng, lat])
-                        .setHTML(`<div style="color: black; font-family: 'DM Sans', sans-serif;">
+          // Crear array de perfiles con sus letras
+          const perfilesConLetra = [
+            { id: props.Perfil_A, letra: 'A' },
+            { id: props.Perfil_B, letra: 'B' },
+            { id: props.Perfil_C, letra: 'C' },
+            { id: props.Perfil_D, letra: 'D' }
+          ].filter(p => p.id && p.id !== "None");
+
+          // Actualizar componentes
+          updateCarousel(perfilesConLetra, manzana);
+          updateModelViewer(props.Modelo3D);
+          updateHotspots([
+            props.Hotspot_1,
+            props.Hotspot_2,
+            props.Hotspot_3,
+            props.Hotspot_4
+          ], manzana);
+
+          // Mostrar popup
+          const centroid = turf.centroid(feature);
+          const [lng, lat] = centroid.geometry.coordinates;
+          popup.setLngLat([lng, lat])
+            .setHTML(`<div style="color: black; font-family: 'DM Sans', sans-serif;">
                             <strong>Vecindario:</strong> ${props.Vecindario}<br>
                             <strong>Manzana:</strong> ${props.Manzana}<br>
                             <strong>Área:</strong> ${turf.area(feature).toFixed(2)} m²<br>
                             <strong>Perímetro:</strong> ${turf.length(feature, {units: 'meters'}).toFixed(2)} m
                         </div>`)
-                        .addTo(map);
+            .addTo(map);
 
-                    map.flyTo({ center: [lng, lat], zoom: 18, speed: 1.5 });
-                });
-
-                map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
-                map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
-                
-            } catch (error) {
-                console.error('Error:', error);
-            }
+          map.flyTo({ center: [lng, lat], zoom: 18, speed: 1.5 });
         });
-    </script>
+
+        map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
+        map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
 </body>
+
 </html>
