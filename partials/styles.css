@@ -274,38 +274,38 @@ model-viewer {
   box-sizing: border-box;
 }
 
-    /* Capa verde semitransparente */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 50%; /* Centra el rectángulo horizontalmente */
-      transform: translateX(-50%); /* Ajusta la posición para centrarlo */
-      height: 100%;
-      background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
-      pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
-    }
+/* Capa verde semitransparente */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 50%; /* Centra el rectángulo horizontalmente */
+  transform: translateX(-50%); /* Ajusta la posición para centrarlo */
+  height: 100%;
+  background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
+  pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
+}
 
-    /* Contenedor de la imagen grande para el zoom */
-    #large-image-container {
-      display: none;
-      position: absolute;
-      width: 180px; /* Aumentar el ancho */
-      height: 180px; /* Aumentar la altura */
-      pointer-events: none;
-      z-index: 1000;
-      overflow: hidden;
-      border: 2px solid white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
+/* Contenedor de la imagen grande para el zoom */
+#large-image-container {
+  display: none;
+  position: absolute;
+  width: 180px; /* Aumentar el ancho */
+  height: 180px; /* Aumentar la altura */
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    #large-image {
-      position: absolute;
-      will-change: transform;
-      width: auto;
-      height: auto;
-      max-width: none;
-      max-height: none;
-    }
+#large-image {
+  position: absolute;
+  will-change: transform;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+}
 
 /* Estilos para el contenedor del model-viewer */
 .model-container {
