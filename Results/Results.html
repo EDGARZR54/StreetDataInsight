@@ -453,6 +453,14 @@
     });
   </script>
   <script type="module" src="https://edgarzr54.github.io/StreetData-Insight/partials/cameraControlsModel.js"></script>
+  <script>
+    const mv = document.querySelector("#model-viewer");
+    const annotationClicked = (a) => {
+      let ds = a.parentNode.dataset;
+      mv.cameraTarget = ds.target;
+      mv.cameraOrbit = ds.orbit;
+      if (ds.fov !== undefined) mv.fieldOfView = ds.fov;
+    };
+  </script>  
 </body>
-
 </html>
