@@ -1,67 +1,3 @@
-/* Estilos para eliminar márgenes y padding predeterminados */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: black; /* Fondo negro */
-  color: white; /* Texto blanco */
-  font-family: 'Open Sans', sans-serif;
-  overflow: hidden; /* Evitar el scroll vertical */
-}
-
-/* Ajustar el contenedor principal para dar espacio al navbar */
-#main-content {
-  margin-top: 100px; /* Ajuste según el tamaño de tu navbar */
-  height: calc(100vh - 100px); /* Ajustar la altura para el navbar */
-  overflow-y: auto; /* Permitir scroll solo dentro del contenido principal */
-}
-
-/* Contenedor del navbar */
-#navbar-placeholder {
-  height: auto; /* Asegura que el contenedor tenga altura */
-  position: relative; /* Asegura que el navbar esté dentro del flujo */
-}
-
-/* Navbar */
-.navbar {
-  position: fixed;      
-  top: 0;       
-  left: 0;
-  width: 100%; /* Asegura que el navbar ocupe el ancho completo */
-  background-color: white; /* Fondo blanco para el navbar */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-/* Logo en el navbar */
-.navbar img {
-  height: 80px; /* Reducir el tamaño para móviles */
-  margin-right: 15px;
-}
-
-/* Contenedor de botones en la navbar */
-.navbar-links {
-  display: flex;
-  gap: 10px; /* Reducir el espacio entre botones */
-  flex-wrap: wrap; /* Permitir que los botones se envuelvan en móviles */
-}
-/* Añadir un margen derecho solo al último enlace en la navbar */
-.navbar-links a:last-child {
-  margin-right: 50px; /* Ajusta el valor según sea necesario */
-}
-
-/* Estilo de los botones */
-.navbar-links a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  font-size: 14px; /* Reducir el tamaño de la fuente */
-}
-
 /* Título e imágenes */
 h1 {
   text-align: center;
@@ -133,28 +69,6 @@ h1 {
   color: black;
   cursor: pointer;
   padding: 5px;
-}
-
-/* Estilo para los créditos y logos */
-.credits {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-}
-
-.credits img {
-  height: 40px; /* Reducir el tamaño de los logos */
-  margin: 10px 0;
-}
-
-.credits p {
-  font-size: 14px;
-  margin-top: 10px;
-  text-align: justify;
-  line-height: 1.6;
-  font-weight: 300; /* Cambiar a light/regular */
 }
 
 /* Contenedor del número de zoom */
