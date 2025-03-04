@@ -1,12 +1,3 @@
-/* Título e imágenes */
-h1 {
-  text-align: center;
-  margin-top: 20px;
-  display: flex; /* Usar flexbox para alineación precisa */
-  justify-content: center; /* Centrar horizontalmente */
-  width: 100%;
-}
-
 /* Contenedor del mapa */
 #map {
   height: 600px; /* Aumenta la altura del mapa */
