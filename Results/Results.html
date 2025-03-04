@@ -16,6 +16,19 @@
 
   <!-- Estilos externos -->
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/styles.css">
+  <style>
+    /* Capa verde semitransparente */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 50%; /* Centra el rectángulo horizontalmente */
+      transform: translateX(-50%); /* Ajusta la posición para centrarlo */
+      height: 100%;
+      background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
+      pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
+    }
+
+  </style>
 </head>
 
 <body>
@@ -32,9 +45,19 @@
     <div class="carousel-container">
       <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
       <div class="carousel"></div>
+      <div class="overlay"></div>
       <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
     </div>
-    <p class="image-url">Cargando...</p>
+
+    <!-- Contenedor de la imagen grande para el zoom -->
+    <div id="large-image-container">
+      <img id="large-image" src="" alt="Imagen grande">
+    </div>
+
+    <!-- Nueva sección de información de imagen -->
+    <div class="image-info">
+      <p class="image-url">Cargando...</p>
+    </div>
 
     <!-- Visor 3D -->
     <div class="model-container">
@@ -60,11 +83,10 @@
         <button slot="ar-button" id="ar-button">View in your space</button>
       </model-viewer>
 
-      <div class="model-credits">
-        Fotogrametría: Arq. Alejandro Marambio, 2023.<br>
-        Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.
-      </div>
-
+    <div class="model-credits">
+        <span>Fotogrametría: Arq. Alejandro Marambio, 2023.</span>
+        <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
+    </div>
     </div>
 
     <!-- Créditos -->
@@ -85,18 +107,6 @@
     let currentIndex = 0;
     let carouselImages = [];
 
-    // Función para obtener y mostrar las dimensiones de la imagen activa
-    function logActiveImageDimensions() {
-      const activeImage = document.querySelector('.carousel img.active');
-      if (activeImage) {
-        const rect = activeImage.getBoundingClientRect();
-        console.log('Ancho:', rect.width, 'Alto:', rect.height);
-        // Opcional: puedes actualizar un elemento en la página con estas dimensiones.
-      } else {
-        console.log('No se encontró una imagen activa.');
-      }
-    }
-
     // Funciones de actualización
     function updateCarousel(perfilesConLetra, manzana) {
       const imagesContainer = document.querySelector('.carousel');
@@ -109,7 +119,7 @@
         const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
         const imgElement = document.createElement("img");
         imgElement.src = imgUrl;
-        imgElement.dataset.letraPerfil = perfil.letra;  // Almacenar la letra del perfil
+        imgElement.dataset.letraPerfil = perfil.letra;
         imagesContainer.appendChild(imgElement);
       });
 
@@ -148,19 +158,38 @@
       carouselImages.forEach((img, i) => {
         img.classList.remove("active");
         if (i === index) {
-          img.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
-          setTimeout(() => {
-            img.classList.add("active");
-            img.style.transform = 'translateX(0)';
+          img.classList.add("active");
+          img.style.transform = 'translateX(0)';
 
-            // Obtener datos para el texto
-            const manzana = document.querySelector('.carousel').dataset.manzana;
-            const letraPerfil = img.dataset.letraPerfil;
-            document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
+          // Obtener datos para el texto
+          const manzana = document.querySelector('.carousel').dataset.manzana;
+          const letraPerfil = img.dataset.letraPerfil;
+          document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
 
-            // Actualizar dimensiones de la imagen activa
-            logActiveImageDimensions();
-          }, 50);
+          // Función para actualizar dimensiones
+          const updateDimensions = (imageElement) => {
+            const naturalWidth = imageElement.naturalWidth;
+            const naturalHeight = imageElement.naturalHeight;
+
+            // Calcular dimensiones proporcionales basado en altura fija de 350px
+            const aspectRatio = naturalWidth / naturalHeight;
+            const renderedHeight = 350; // Altura fija del carrusel
+            const renderedWidth = Math.round(aspectRatio * renderedHeight);
+
+            // Actualizar el ancho del rectángulo verde
+            const overlay = document.querySelector('.overlay');
+            overlay.style.width = `${renderedWidth}px`;
+
+          };
+
+          // Verificar si la imagen ya está cargada
+          if (img.complete) {
+            updateDimensions(img);
+          } else {
+            img.onload = function () {
+              updateDimensions(this);
+            };
+          }
         }
       });
     }
@@ -177,6 +206,60 @@
       showImage(currentIndex, 'prev');
     }
 
+    // Configuración del zoom
+    function setupZoom() {
+      const overlay = document.querySelector('.overlay');
+      const largeImageContainer = document.getElementById('large-image-container');
+      const largeImage = document.getElementById('large-image');
+
+      overlay.addEventListener('mouseenter', () => {
+        // Cargar la imagen grande correspondiente
+        const activeImage = document.querySelector('.carousel img.active');
+        if (activeImage) {
+          largeImage.src = activeImage.src;
+          largeImageContainer.style.display = 'block';
+          document.body.style.cursor = 'crosshair'; // Cambiar el cursor a "crosshair"
+        }
+      });
+
+      overlay.addEventListener('mousemove', (e) => {
+        // Obtener las dimensiones y posición del overlay
+        const rectOverlay = overlay.getBoundingClientRect();
+
+        // Calcular la posición relativa del cursor sobre el overlay
+        const relX = e.clientX - rectOverlay.left;
+        const relY = e.clientY - rectOverlay.top;
+
+        // Normalizar las coordenadas (-1 a 1)
+        const normalizedX = (relX - rectOverlay.width / 2) / (rectOverlay.width / 2);
+        const normalizedY = (relY - rectOverlay.height / 2) / (rectOverlay.height / 2);
+
+        // Obtener dimensiones reales de la imagen grande
+        const largeImageWidth = largeImage.naturalWidth;
+        const largeImageHeight = largeImage.naturalHeight;
+
+        // Mapear la posición normalizada a la imagen grande
+        const mappedX = (normalizedX + 1) / 2 * largeImageWidth;
+        const mappedY = (normalizedY + 1) / 2 * largeImageHeight;
+
+        // Ajustar la posición del contenedor grande al cursor
+        largeImageContainer.style.left = `${e.clientX - largeImageContainer.offsetWidth / 2}px`;
+        largeImageContainer.style.top = `${e.clientY - largeImageContainer.offsetHeight / 2}px`;
+
+        // Aplicar la transformación en la imagen grande para hacer el zoom
+        const offsetX = -mappedX + largeImageContainer.offsetWidth / 2;
+        const offsetY = -mappedY + largeImageContainer.offsetHeight / 2;
+
+        largeImage.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+
+      overlay.addEventListener('mouseleave', () => {
+        // Ocultar el contenedor de la imagen grande y restaurar el cursor
+        largeImageContainer.style.display = 'none';
+        document.body.style.cursor = 'default';
+      });
+    }
+
     // Navbar
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
       .then(response => response.text())
@@ -191,6 +274,11 @@
       let material = modelViewer.model.materials[0];
       material.pbrMetallicRoughness.setRoughnessFactor(1);
       material.pbrMetallicRoughness.setMetallicFactor(0.5);
+    });
+
+    // Inicializar el zoom al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+      setupZoom();
     });
   </script>
 
@@ -300,14 +388,13 @@
           ].filter(p => p.id && p.id !== "None");
 
           updateCarousel(perfilesConLetra, props.Manzana);
-        updateCarousel(perfilesConLetra, props.Manzana);
-        updateModelViewer(props.Modelo3D); // <-- Aquí se carga el modelo 3D por defecto
-        updateHotspots([
-            props.Hotspot_1,
-            props.Hotspot_2,
-            props.Hotspot_3,
-            props.Hotspot_4
-        ], props.Manzana);
+          updateModelViewer(props.Modelo3D);
+          updateHotspots([
+              props.Hotspot_1,
+              props.Hotspot_2,
+              props.Hotspot_3,
+              props.Hotspot_4
+          ], props.Manzana);
         }
 
         // Añadir capa al mapa
