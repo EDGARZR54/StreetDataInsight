@@ -9,6 +9,15 @@ body, html {
   overflow: hidden; /* Evitar el scroll vertical */
 }
 
+/* Título e imágenes */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  display: flex; /* Usar flexbox para alineación precisa */
+  justify-content: center; /* Centrar horizontalmente */
+  width: 100%;
+}
+
 /* Ajustar el contenedor principal para dar espacio al navbar */
 #main-content {
   margin-top: 100px;
