@@ -49,6 +49,10 @@ body, html {
   gap: 10px; /* Reducir el espacio entre botones */
   flex-wrap: wrap; /* Permitir que los botones se envuelvan en móviles */
 }
+/* Añadir un margen derecho solo al último enlace en la navbar */
+.navbar-links a:last-child {
+  margin-right: 50px; /* Ajusta el valor según sea necesario */
+}
 
 /* Estilo de los botones */
 .navbar-links a {
