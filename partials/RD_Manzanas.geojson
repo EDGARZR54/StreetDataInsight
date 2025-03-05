@@ -18,10 +18,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -98,10 +98,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -183,10 +183,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -278,10 +278,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -353,10 +353,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -423,10 +423,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -483,10 +483,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -553,10 +553,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -653,10 +653,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -743,10 +743,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -808,10 +808,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "None",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -898,10 +898,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "41.633201386m, 12.437981445m, -1.395115753m, 90deg, 175.964488deg, 90deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "41.633201386m, 12.437981445m, -1.395115753m"
       },
       "geometry": {
         "type": "Polygon",
@@ -988,10 +988,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "None",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1183,10 +1183,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1308,10 +1308,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1383,10 +1383,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1458,10 +1458,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1523,10 +1523,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1593,10 +1593,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1668,10 +1668,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1728,10 +1728,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1818,10 +1818,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1888,10 +1888,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -1953,10 +1953,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2023,10 +2023,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2108,10 +2108,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2208,10 +2208,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2328,10 +2328,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2403,10 +2403,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2503,10 +2503,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2598,10 +2598,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2663,10 +2663,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2748,10 +2748,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2828,10 +2828,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2883,10 +2883,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -2938,10 +2938,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3008,10 +3008,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3068,10 +3068,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3128,10 +3128,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3183,10 +3183,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3243,10 +3243,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3298,10 +3298,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3378,10 +3378,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3458,10 +3458,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3513,10 +3513,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
@@ -3583,10 +3583,10 @@
         "Seg_Perfil_B": "URL_2",
         "Seg_Perfil_C": "URL_3",
         "Seg_Perfil_D": "URL_4",
-        "Hotspot_1": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_2": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_3": "0m, 0m, 0m, 0deg, 0deg, 0deg",
-        "Hotspot_4": "0m, 0m, 0m, 0deg, 0deg, 0deg"
+        "Hotspot_1": "0m, 0m, 0m",
+        "Hotspot_2": "0m, 0m, 0m",
+        "Hotspot_3": "0m, 0m, 0m",
+        "Hotspot_4": "0m, 0m, 0m"
       },
       "geometry": {
         "type": "Polygon",
