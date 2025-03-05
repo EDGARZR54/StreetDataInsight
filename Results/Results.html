@@ -28,20 +28,15 @@
       background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
       pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
     }
-
   </style>
 </head>
-
 <body>
   <!-- Navbar -->
   <div id="navbar-placeholder"></div>
-
   <div id="main-content">
     <h1>StreetData Insight</h1>
-
     <!-- Mapa -->
     <div id="map"></div>
-
     <!-- Carrusel de Imágenes -->
     <div class="carousel-container">
       <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
@@ -49,17 +44,14 @@
       <div class="overlay"></div>
       <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
     </div>
-
     <!-- Contenedor de la imagen grande para el zoom -->
     <div id="large-image-container">
       <img id="large-image" src="" alt="Imagen grande">
     </div>
-
     <!-- Nueva sección de información de imagen -->
     <div class="image-info">
       <p class="image-url">Cargando...</p>
     </div>
-
     <!-- Visor 3D -->
     <div class="model-container">
       <model-viewer id="model-viewer" src="" camera-controls tone-mapping="neutral" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
@@ -84,7 +76,6 @@
         <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
     </div>
     </div>
-
     <!-- Créditos -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
@@ -96,7 +87,6 @@
       </p>
     </div>
   </div>
-
   <!-- Scripts -->
   <script>
     // Variables globales
@@ -477,20 +467,7 @@
       }
     });
   </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const overlay = document.querySelector('.overlay');
-      const largeImage = document.getElementById('large-image');
-    
-      overlay.addEventListener('click', () => {
-        console.log('Click en overlay');
-        if (largeImage.src) {
-          console.log('Abriendo URL:', largeImage.src);
-          window.open(largeImage.src, '_blank');
-        }
-      });
-    });
-  </script>
+  <script src="https://edgarzr54.github.io/StreetData-Insight/partials/ZoomView.js"></script>
   <script type="module" src="https://edgarzr54.github.io/StreetData-Insight/partials/cameraControlsModel.js"></script>
   <script>
     const mv = document.querySelector("#model-viewer");
