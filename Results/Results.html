@@ -156,27 +156,54 @@
         if (i === index) {
           img.classList.add("active");
           img.style.transform = 'translateX(0)';
-
+    
           // Obtener datos para el texto
           const manzana = document.querySelector('.carousel').dataset.manzana;
           const letraPerfil = img.dataset.letraPerfil;
           document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
+    
+            // Función para actualizar dimensiones
+            const updateDimensions = (imageElement) => {
+                // Dimensiones del contenedor (fijas por CSS)
+                const containerWidth = imageElement.parentElement.clientWidth;
+                const containerHeight = imageElement.parentElement.clientHeight;
 
-          // Función para actualizar dimensiones
-          const updateDimensions = (imageElement) => {
-            const naturalWidth = imageElement.naturalWidth;
-            const naturalHeight = imageElement.naturalHeight;
-
-            // Calcular dimensiones proporcionales basado en altura fija de 350px
-            const aspectRatio = naturalWidth / naturalHeight;
-            const renderedHeight = 350; // Altura fija del carrusel
-            const renderedWidth = Math.round(aspectRatio * renderedHeight);
-
-            // Actualizar el ancho del rectángulo verde
-            const overlay = document.querySelector('.overlay');
-            overlay.style.width = `${renderedWidth}px`;
-
-          };
+                // Relación de aspecto de la imagen original
+                const naturalAspectRatio = imageElement.naturalWidth / imageElement.naturalHeight;
+            
+                // Relación de aspecto del contenedor
+                const containerAspectRatio = containerWidth / containerHeight;
+            
+                // Calcular dimensiones reales de la imagen escalada
+                let renderedWidth, renderedHeight;
+            
+                if (naturalAspectRatio > containerAspectRatio) {
+                    // La imagen es más ancha que el contenedor: usa ancho completo
+                    renderedWidth = containerWidth;
+                    renderedHeight = containerWidth / naturalAspectRatio;
+                } else {
+                    // La imagen es más alta que el contenedor: usa altura completa
+                    renderedHeight = containerHeight;
+                    renderedWidth = containerHeight * naturalAspectRatio;
+                }
+                // Aplicar al overlay
+                const overlay = document.querySelector('.overlay');
+                if (overlay) {
+                    overlay.style.width = `${renderedWidth}px`;
+                    overlay.style.height = `${renderedHeight}px`;
+                }
+                console.log("Imagen escalada:", renderedWidth, "x", renderedHeight);
+                const carouselContainer = document.querySelector('.carousel-container');
+                if (carouselContainer) {
+                    const containerRect = carouselContainer.getBoundingClientRect();
+                    // Calcular posición centrada
+                    const leftPosition = (containerRect.width - renderedWidth) / 2;
+                    const topPosition = (containerRect.height - renderedHeight) / 2;
+            
+                    // Aplicar al overlay
+                    overlay.style.top = `${topPosition}px`;
+                }
+            };
 
           // Verificar si la imagen ya está cargada
           if (img.complete) {
@@ -189,6 +216,7 @@
         }
       });
     }
+
 
     function nextImage() {
       if (carouselImages.length === 0) return;
