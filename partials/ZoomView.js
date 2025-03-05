@@ -1,13 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.querySelector('.overlay');
-  const largeImageContainer = document.getElementById('large-image-container');
-  const largeImage = document.getElementById('large-image');
+  const overlay = document.querySelector(".overlay");
+  const largeImageContainer = document.getElementById("large-image-container");
+  const largeImage = document.getElementById("large-image");
 
   let size = 180; // Tamaño inicial del contenedor
   const minSize = 180;
   const maxSize = 500;
 
-  overlay.addEventListener('wheel', (event) => {
+  // Evento de clic en overlay para abrir la imagen en nueva pestaña
+  overlay.addEventListener("click", () => {
+    console.log("Click en overlay");
+    if (largeImage.src) {
+      console.log("Abriendo URL:", largeImage.src);
+      window.open(largeImage.src, "_blank");
+    }
+  });
+
+  // Evento de scroll para hacer zoom en el contenedor
+  overlay.addEventListener("wheel", (event) => {
     event.preventDefault(); // Evita el scroll de la página
 
     const prevSize = size;
