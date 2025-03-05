@@ -477,6 +477,20 @@
       }
     });
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.querySelector('.overlay');
+      const largeImage = document.getElementById('large-image');
+    
+      overlay.addEventListener('click', () => {
+        console.log('Click en overlay');
+        if (largeImage.src) {
+          console.log('Abriendo URL:', largeImage.src);
+          window.open(largeImage.src, '_blank');
+        }
+      });
+    });
+  </script>
   <script type="module" src="https://edgarzr54.github.io/StreetData-Insight/partials/cameraControlsModel.js"></script>
   <script>
     const mv = document.querySelector("#model-viewer");
