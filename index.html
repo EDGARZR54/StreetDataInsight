@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>StreetData Insight | Inicio</title>
-  
+
   <!-- Incluir Open Sans desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
   <!-- Incluir el CDN para la librería Before/After Slider -->
   <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
- <!-- Estilos externos -->
+  <!-- Estilos externos -->
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
 
   <style>
+    /* Variables CSS */
+    :root {
+      --container-width: 250px; /* Ancho de los contenedores */
+      --container-spacing: 20px; /* Espacio entre los contenedores */
+    }
+
     /* Centrar sliders */
     #slider1, #slider2 {
       margin: 0 auto;
@@ -43,19 +49,88 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
+    /* Estilo para el nuevo contenedor blanco */
+    .banner-container {
+      height: 450px;
+      background-color: white;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Contenedores de los SVGs y texto */
+    .logo-container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--container-width); /* Usar variable para el ancho */
+      height: var(--container-width); /* Usar variable para la altura */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 1s ease;
+    }
+
+    /* Ajustar el tamaño de los SVGs */
+    .logo-container img {
+      max-height: var(--container-width); /* Usar variable para la altura máxima */
+      width: auto; /* Ancho proporcional */
+    }
+
+    #logo1 {
+      left: calc(50% - var(--container-width) - var(--container-spacing)); /* Posición inicial: -250px - 20px desde el centro */
+    }
+
+    #logo2 {
+      left: calc(50% + var(--container-spacing)); /* Posición inicial: 20px desde el centro */
+    }
+
+    #logo3 {
+      left: 100%; /* Fuera de la pantalla inicialmente */
+      opacity: 0;
+      width: 1200px;
+      text-align: justify;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #333;
+      transition: all 1s ease;
+    }
+
+    /* Animación para el segundo SVG */
+    @keyframes slideIn {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #logo2 svg {
+      animation: slideIn 2s ease-in-out;
+      animation-delay: 1s; /* Retrasar la animación 1 segundo */
+    }
   </style>
-  
 </head>
 <body>
   <!-- Incluir el navbar desde un archivo externo -->
   <div id="navbar-placeholder"></div>
   <div id="main-content">
-    <h1>
-      <img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37" 
-        alt="Title Image" 
-        style="max-width: 100%; height: auto;">
-    </h1>
-    <h1 class="open-sans-bold">Segmentación por deep learning RTFP</h1>
+    <!-- Contenedor blanco en lugar de la imagen del banner -->
+    <div class="banner-container">
+      <!-- Primer contenedor con el primer SVG -->
+      <div id="logo1" class="logo-container">
+        <img src="https://github.com/EDGARZR54/StreetData-Insight/raw/Street-Data-Insight/Imagotype/Logo.svg" alt="Logo">
+      </div>
+      <!-- Segundo contenedor con el segundo SVG animado -->
+      <div id="logo2" class="logo-container">
+        <img src="https://github.com/EDGARZR54/StreetData-Insight/raw/Street-Data-Insight/Imagotype/SDI_ANIMATED.svg" alt="SDI Animated">
+      </div>
+      <!-- Tercer contenedor con el texto -->
+      <div id="logo3" class="logo-container">En el proceso de planificar una intervención urbano-arquitectónica en el espacio público, es crucial disponer de una comprensión sólida de la ciudad o del paisaje circundante. Este estudio presenta una metodología que emplea la adquisición y procesamiento de datos geoespaciales obtenidos a partir de imágenes a nivel de calle para reconstruir digitalmente perfiles urbanos, con el objetivo de analizar y planificar el espacio público. En este contexto, Street Data Insight, un complemento de Grasshopper, se ofrece como una herramienta clave para que los planificadores urbanos y arquitectos puedan reconstruir estos perfiles de calles de manera digital.</div>
+    </div>
+    <h1 class="open-sans-bold">Síntesis del flujo metodológico</h1>
     <div id="slider1"></div>
     <!-- Configuración de los sliders -->
     <script>
@@ -69,8 +144,26 @@
           height: "500px",
           line: true
         });
+
+        // Obtener los contenedores
+        const logo1 = document.getElementById('logo1');
+        const logo2 = document.getElementById('logo2');
+        const logo3 = document.getElementById('logo3');
+
+        // Desplazar los contenedores
+    
+        setTimeout(() => {
+          const containerWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--container-width'));
+          const containerSpacing = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--container-spacing'));
+
+          logo1.style.left = `${containerSpacing}px`;
+          logo2.style.left = `${containerSpacing + containerWidth + containerSpacing}px`;
+          logo3.style.left = '33.33%';
+          logo3.style.opacity = '1';
+        }, 3800);
       };
     </script>
+
     <!-- Cargar el navbar externo -->
     <script>
       fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
@@ -80,6 +173,7 @@
         })
         .catch(error => console.error('Error al cargar el navbar:', error));
     </script>
+
     <!-- Créditos y logos al final de la página -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
