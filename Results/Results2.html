@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StreetData Insight | Resultados</title>
+
   <!-- Fuentes y librerías externas -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -11,21 +12,33 @@
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
   <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <!-- Estilos externos -->
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+
   <style>
-    * {
+    @font-face {
+      font-family: 'Europa-Bold';
+      src: url('http://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Europa-Regular';
+      src: url('http://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-regular-webfont.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Europa-Light';
+      src: url('http://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-light-webfont.ttf') format('truetype');
+    }
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
     }
-
     /* Navbar */
     #navbar-placeholder {
       position: fixed;
@@ -62,15 +75,14 @@
 
     #primer {
       background-color: transparent !important;
-      height: 100%;
-      width: calc(100% - 20px); /* Margen de 10px a cada lado */
-      border: 6px solid #388E3C;
-      box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+      height: calc(100% - 13px); /* Restamos 8px arriba y 5px abajo */
+      width: calc(100% - 10px);  /* Restamos 5px izquierda y derecha */
+    
+      border: 0px solid #388E3C;
       position: relative;
       z-index: 2;
-      margin: 0 auto;
+      margin: 8px 5px 5px 5px; /* Margen: 8px arriba, 5px derecha, 5px abajo, 5px izquierda */
     }
-
     /* Sección de contenido */
     #content-section {
       position: relative;
@@ -83,12 +95,10 @@
       width: calc(100% - 20px); /* Margen de 10px a cada lado */
       margin: 0 auto;
     }
-
     /* Estilos del carrusel */
     .carousel-container {
       background: transparent;
-      border: 6px solid #1976D2; /* Azul */
-      box-shadow: 0 0 15px rgba(33, 150, 243, 0.8);
+      border: 0px solid #1976D2; /* Azul */
       padding: 10px;
       margin: 0 auto;
       height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
@@ -132,7 +142,7 @@
       padding: 10px 20px;
       font-size: 24px;
       cursor: pointer;
-      z-index: 10;
+      z-index: 600; /* Mayor que el overlay (500) */
     }
 
     .btn-left { left: 20px; }
@@ -141,15 +151,14 @@
     /* Visor 3D */
     .model-container {
       background: transparent;
-      border: 6px solid #D32F2F; /* Rojo */
-      box-shadow: 0 0 15px rgba(244, 67, 54, 0.8);
-      padding: 10px;
+      border: 2px solid #ffffff;
       margin: 0 auto;
       height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
       width: 100%;
       z-index: 1;
-    }
+      position: relative; /* Asegura que los elementos dentro de él se posicionen correctamente */
 
+    }
     /* Estilos para el model-viewer */
     model-viewer {
       width: 100%;
@@ -211,67 +220,37 @@
       position: absolute;
       top: 0;
       height: 100%;
-      width: 50%; /* Mitad del ancho del contenedor verde */
     }
 
     #map {
-      background: rgba(255, 165, 0, 0.3); /* Naranja semitransparente */
-      border: 4px solid #FFA500;
+      width: 60%;
+      border: 0px #FFA500;
       right: 0;
     }
     
-    .slider-container {
-      position: absolute; /* Tomará referencia del contenedor #map */
-      top: 20px; /* Se coloca en la parte superior del mapa */
-      left: 20px;
-      background-color: white;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      width: 450px; /* Establecer ancho a 350px */
-      display: flex;
-      flex-direction: column; /* Disposición en columna */
-      justify-content: space-between; /* Distribuir los elementos de forma equidistante */
-      gap: 10px; /* Espaciado entre los elementos */
-      z-index: 10; /* Asegura que el slider esté por encima del mapa */
-    }
     /* Título dentro del slider */
     .slider-container h2 {
       color: black; /* Texto en negro */
       margin: 0;
-      text-align: center;
+      text-align: left;
+      font-size: 1.5em; /* Tamaño relativo */
     }
 
+    /* Etiquetas y controles */
     .slider-container label {
       color: black; /* Texto en negro */
       display: inline-flex; /* Asegura que el label y el span estén en una sola línea */
       align-items: center;
       justify-content: center;
+      font-size: 1em; /* Tamaño relativo */
     }
 
-    .slider-container input {
-      width: 100%;
+    /* Slider */
+    .slider-container input[type="range"] {
+      width: 100%; /* Ocupa todo el ancho disponible */
       height: 5px;
       background-color: transparent;
       cursor: ew-resize;
-    }
-
-    /* Distribución horizontal de los elementos en la parte inferior del slider */
-    .slider-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-
-    /* Estilo para el botón de play/pause */
-    .toggle-btn {
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: black;
-      cursor: pointer;
-      padding: 5px;
     }
 
     /* Contenedor del número de zoom */
@@ -284,21 +263,74 @@
     }
 
     #purple-container {
-      background: rgba(128, 0, 128, 0.3); /* Morado semitransparente */
-      border: 4px solid #800080;
-      left: 0; /* Alineado a la derecha */
+      border: 0px solid #800080;
+      left: 0;
+      width: calc(40% - 10px); /* Ajusta el ancho */
+      color: white;
+      margin-right: 10px;
+      box-sizing: border-box;
+      position: relative;
+      text-align: right;
+      padding: 0; /* Eliminamos el padding del contenedor */
+
     }
+    /* Título */
+    #case-title {
+      font-family: 'Europa-Bold', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+      text-align: right; /* Alinea el título a la derecha */
+    }
+
+    #sub-title {
+      font-family: 'Europa-Regular', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+      margin: 0;
+      text-align: right;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+    }
+    
+    /* Subtítulo - Mapa Interactivo */
+    #interactive-map-title {
+      font-family: 'Europa-Light', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+
+      text-align: right;
+    }
+    #study-area-description {
+      text-align: justify; /* Justifica el texto */
+      font-size: 16px; /* Tamaño de fuente de 16px */
+      font-family: 'Europa-Regular', sans-serif; /* Fuente europa-regular */
+      position: relative;
+      top: 10%; /* Mueve el contenido hacia abajo un 50% */
+    }
+
     .overlay {
       position: absolute;
       left: 50%; /* Centra el rectángulo horizontalmente */
+      top: 0;
       transform: translateX(-50%); /* Ajusta la posición para centrarlo */
       height: 100%;
-      background: rgba(0, 255, 0, 0.5); /* Verde semitransparente */
+      background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
       pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
       z-index: 500; /* Asegura que el slider esté por encima del mapa */
 
     } 
-    /* Contenedor de la imagen grande para el zoom */
+    .image-info {
+      position: absolute;
+      right: 50px; /* Ajusta la distancia desde la parte izquierda */
+      top: 50%;               /* Centrado verticalmente */
+      transform: translateY(-50%) rotate(-90deg); /* Centrado vertical y rotado 90 grados antihorario */
+      transform-origin: center center; /* Punto de origen centrado para la rotación */
+      z-index: 600;           /* Por encima del overlay */
+      font-size: clamp(1em, 5vw, 2.5em); /* Tamaño de fuente responsive */
+      font-family: 'Europa-Bold', sans-serif; /* Fuente en negrita */
+      color: white;           /* Color del texto */
+      text-align: center;     /* Alineación del texto */
+    }
     #large-image-container {
       display: none;
       position: absolute;
@@ -319,7 +351,69 @@
       max-width: none;
       max-height: none;
     }
+    .slider-container {
+      position: absolute; /* Tomará referencia del contenedor #map */
+      top: 20px; /* Se coloca en la parte superior del mapa */
+      left: 20px;
+      background-color: white;
+      padding: 15px; /* Valor mayor del segundo estilo */
+      border-radius: 5px; /* Redondeo de bordes del segundo estilo */
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Se mantiene la sombra del primer estilo */
+      width: 100%; /* Se asegura que ocupe todo el ancho disponible */
+      max-width: 450px; /* Limita el ancho máximo */
+      display: flex; /* Se usa flex para distribuir elementos */
+      flex-direction: column; /* Mantener distribución en columna */
+      justify-content: space-between; /* Distribuir los elementos de forma equidistante */
+      gap: 15px; /* Se usa el valor mayor del segundo estilo para el espaciado entre elementos */
+      z-index: 10; /* Asegura que el slider esté por encima del mapa */
+    }
+    /* Contenedor de controles (zoom, slider, botón) */
 
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px; /* Espacio entre los controles */
+      align-items: center;
+      width: 100%;
+    }
+
+    #zoomSlider {
+      width: calc(100% - 60px); /* Asegura que el slider ocupe todo el ancho disponible, restando espacio para el botón */
+      height: 6px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    #toggleBtn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: black;
+      cursor: pointer;
+      padding: 5px;
+      min-width: 80px; /* Ancho mínimo para el botón */
+      height: 40px; /* Mantener un tamaño adecuado para el botón */
+    }
+    .gallery-title {
+      position: absolute;
+      bottom: 10px; /* Ajusta la distancia desde la parte inferior */
+      right: 70px;  /* Ajusta la distancia desde la parte derecha */
+      font-size: clamp(1em, 5vw, 2.5em);
+      font-family: 'Europa-Bold', sans-serif;
+      color: white; /* Color del texto */
+      text-transform: uppercase; /* Convierte el texto a mayúsculas */
+      z-index: 499; /* Asegura que el título quede encima del contenido del carrusel */
+    }
+    .model3dtitle {
+      position: absolute;
+      top: 10px; /* Ajusta la distancia desde la parte superior */
+      left: 50px; /* Ajusta la distancia desde la parte izquierda */
+      font-size: clamp(1em, 5vw, 2.5em); /* Tamaño de fuente responsive */
+      font-family: 'Europa-Bold', sans-serif; /* Fuente en negrita */
+      color: black; /* Color del texto */
+      text-transform: uppercase; /* Convierte el texto a mayúsculas */
+      z-index: 500; /* Asegura que el título quede encima del contenido del visualizador */
+    }
 </style>
 </head>
 <body>
@@ -333,7 +427,18 @@
         <!-- Contenedor naranja -->
         <div id="map" class="inner-container"></div>
         <!-- Contenedor morado -->
-        <div id="purple-container" class="inner-container"></div>
+        <div id="purple-container" class="inner-container">
+          <div id="case-title">CASO DE ESTUDIO:</div>
+          <div id="sub-title">República Dominicana, Santo Domingo</div>
+          <div id="interactive-map-title">Mapa Interactivo</div>
+          <!-- Nuevo texto agregado -->
+          <div id="study-area-description">
+            <br>
+            <p>El área de estudio se ubica en la República Dominicana, en la región de Ozama, dentro del Distrito Nacional, específicamente delimitado al norte de la Ciudad Colonial. Este escenario ha sido elegido debido a su relevancia como parte del núcleo urbano ‘‘Ciudad Colonial”, incorporada a la lista del Patrimonio Mundial de la Humanidad de la UNESCO en 1990 (UNESCO, 2012). La inclusión del conjunto arquitectónico se justifica por su valor histórico y cultural, reflejando influencias de estilos arquitectónicos que incluyen elementos vernáculos, coloniales, españoles, victorianos y caribeños.</p>
+            <br>
+            <p>El área de estudio se delimita al norte por la Av. México, al oeste por la Av. Mella y la C. Palo Hincado, al este por la C. La Atarazana y la C. Isabel la Católica, y al sur por la C. Mercedes. Con una superficie aproximada de 329,775.37 m2, comprendiendo 15,341.47 metros lineales de recorrido distribuidos en 172 calles y 43 manzanas, agrupados en los vecindarios[36] de San Lázaro (SL), San Miguel (SM), Santa Bárbara (SB) y San Antón (SA). Para facilitar la referencia de las manzanas dentro del área de estudio, se ha asignado un número a cada manzana en relación con su código de vecindario. En consecuencia, para identificar los perfiles urbanos, se emplea la nomenclatura de la manzana junto con una letra (A, B, C o D) por lado de manzana, comenzando por el lado norte y ordenadas en sentido antihorario. Por ejemplo, para referirse al perfil oeste de la primera manzana en el vecindario de Santa Bárbara, se utiliza “SB01_B”.</p>
+        </div>
+        </div>
       </div>
     </div>
     <!-- Sección de Contenido -->
@@ -344,14 +449,11 @@
         <div class="carousel"></div>
         <div class="overlay"></div>
         <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
-      </div>
-      <!-- Contenedor de la imagen grande para el zoom -->
-      <div id="large-image-container">
-        <img id="large-image" src="" alt="Imagen grande">
-      </div>
-      <!-- Nueva sección de información de imagen -->
-      <div class="image-info">
-        <p class="image-url">Cargando...</p>
+        <!-- Nueva sección de información de imagen, movida dentro de carousel-container -->
+        <div class="image-info">
+          <p class="image-url">Cargando...</p>
+        </div>
+        <div class="gallery-title">GALERÍA PERFILES URBANOS</div>
       </div>
       <!-- Visor 3D -->
       <div class="model-container">
@@ -361,12 +463,17 @@
                       max-camera-orbit="auto 90deg auto">
           <!-- Hotspots... -->
         </model-viewer>
+        <div class="model3dtitle">LEVANTAMIENTO FOTOGRAMÉTRICO</div>        
         <div class="model-credits">
           <span>Fotogrametría: Arq. Alejandro Marambio, 2023.</span>
           <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
         </div>
       </div>
     </div>
+  </div>
+  <!-- Contenedor de la imagen grande para el zoom -->
+  <div id="large-image-container">
+    <img id="large-image" src="" alt="Imagen grande">
   </div>
   <!-- Créditos -->
   <div class="credits">
@@ -570,7 +677,6 @@
     document.addEventListener("DOMContentLoaded", function () {
       setupZoom();
     });
-
    </script>
   <!-- Mapa y Turf.js -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
@@ -592,7 +698,7 @@
       const sliderContainer = document.createElement('div');
       sliderContainer.classList.add('slider-container');
       sliderContainer.innerHTML = `
-                <h2>Mapa Interactivo</h2>
+                <h2>Animación por niveles geográficos</h2>
                 <div class="slider-controls">
                     <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
                     <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
@@ -812,21 +918,24 @@
 
     // Control con teclado (flechas izquierda y derecha)
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === '1') {
         handleScroll('prev'); // Flecha izquierda: retroceder
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === '2') {
         handleScroll('next'); // Flecha derecha: avanzar
       }
     });
+
     // Ajustar el ancho del contenedor rojo al ancho del contenedor azul
     function adjustRedContainerWidth() {
       const blueContainer = document.querySelector('.carousel-container');
       const redContainer = document.querySelector('.model-container');
+
       if (blueContainer && redContainer) {
         const blueContainerWidth = window.getComputedStyle(blueContainer).width;
         redContainer.style.width = blueContainerWidth;
       }
     }
+
     window.addEventListener('load', adjustRedContainerWidth);
     window.addEventListener('resize', adjustRedContainerWidth);
   </script>
