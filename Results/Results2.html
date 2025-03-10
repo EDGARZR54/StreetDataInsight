@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetData Insight | Resultados</title>
+  <!-- Fuentes y librerías externas -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Navbar */
+    #navbar-placeholder {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 1000;
+      background: #333;
+    }
+
+    /* Contenedor principal */
+    #main-content {
+      display: flex;
+      height: calc(100vh - 250px); /* 100px navbar + 150px créditos */
+      margin-top: 100px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      overflow: visible !important;
+    }
+
+    /* Secciones */
+    .section {
+      flex: 0 0 100vw;
+      height: 100%;
+      position: relative;
+      overflow: visible !important;
+    }
+
+    /* Primer pagina */
+    #primer-section {
+      background: transparent;
+      padding: 10px;
+    }
+
+    #primer {
+      background-color: transparent !important;
+      height: 100%;
+      width: calc(100% - 20px); /* Margen de 10px a cada lado */
+      border: 6px solid #388E3C;
+      box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+    }
+
+    /* Sección de contenido */
+    #content-section {
+      position: relative;
+      padding: 10px;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: calc(100% - 20px); /* Margen de 10px a cada lado */
+      margin: 0 auto;
+    }
+
+    /* Estilos del carrusel */
+    .carousel-container {
+      background: transparent;
+      border: 6px solid #1976D2; /* Azul */
+      box-shadow: 0 0 15px rgba(33, 150, 243, 0.8);
+      padding: 10px;
+      margin: 0 auto;
+      height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
+      width: 100%;
+      z-index: 1;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .carousel {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+       z-index: 2;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+      filter: saturate(1.5);
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .btn-carousel {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .btn-left { left: 20px; }
+    .btn-right { right: 20px; }
+
+    /* Visor 3D */
+    .model-container {
+      background: transparent;
+      border: 6px solid #D32F2F; /* Rojo */
+      box-shadow: 0 0 15px rgba(244, 67, 54, 0.8);
+      padding: 10px;
+      margin: 0 auto;
+      height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
+      width: 100%;
+      z-index: 1;
+    }
+
+    /* Estilos para el model-viewer */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+      background-color: white; /* Fondo blanco para el visor 3D */
+      margin: auto; /* Centrar el model-viewer */
+      border: 2px solid white; /* Contorno blanco */
+      position: relative;
+      object-fit: contain; /* Ajusta el contenido al tamaño del contenedor */
+    }
+
+    .model-credits {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: black;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 12px;
+      border-radius: 4px;
+      z-index: 10;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .model-credits span {
+        display: block;
+    }
+
+    /* Créditos */
+    .credits {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      z-index: 1000;
+      background: #222;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .credits img {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .credits p {
+      text-align: center;
+      max-width: 800px;
+      font-size: 14px;
+    }
+    .inner-container {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50%; /* Mitad del ancho del contenedor verde */
+    }
+
+    #map {
+      background: rgba(255, 165, 0, 0.3); /* Naranja semitransparente */
+      border: 4px solid #FFA500;
+      right: 0;
+    }
+    
+    .slider-container {
+      position: absolute; /* Tomará referencia del contenedor #map */
+      top: 20px; /* Se coloca en la parte superior del mapa */
+      left: 20px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      width: 450px; /* Establecer ancho a 350px */
+      display: flex;
+      flex-direction: column; /* Disposición en columna */
+      justify-content: space-between; /* Distribuir los elementos de forma equidistante */
+      gap: 10px; /* Espaciado entre los elementos */
+      z-index: 10; /* Asegura que el slider esté por encima del mapa */
+    }
+    /* Título dentro del slider */
+    .slider-container h2 {
+      color: black; /* Texto en negro */
+      margin: 0;
+      text-align: center;
+    }
+
+    .slider-container label {
+      color: black; /* Texto en negro */
+      display: inline-flex; /* Asegura que el label y el span estén en una sola línea */
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-container input {
+      width: 100%;
+      height: 5px;
+      background-color: transparent;
+      cursor: ew-resize;
+    }
+
+    /* Distribución horizontal de los elementos en la parte inferior del slider */
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Estilo para el botón de play/pause */
+    .toggle-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    /* Contenedor del número de zoom */
+    #zoomValue {
+      display: inline-block;
+      min-width: 40px;  /* Establecer un ancho mínimo para el valor */
+      text-align: right; /* Alineación a la derecha */
+      padding-left: 5px; /* Espacio adicional para evitar que el texto se pegue */
+      font-weight: bold;
+    }
+
+    #purple-container {
+      background: rgba(128, 0, 128, 0.3); /* Morado semitransparente */
+      border: 4px solid #800080;
+      left: 0; /* Alineado a la derecha */
+    }
+    .overlay {
+      position: absolute;
+      left: 50%; /* Centra el rectángulo horizontalmente */
+      transform: translateX(-50%); /* Ajusta la posición para centrarlo */
+      height: 100%;
+      background: rgba(0, 255, 0, 0.5); /* Verde semitransparente */
+      pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
+      z-index: 500; /* Asegura que el slider esté por encima del mapa */
+
+    } 
+    /* Contenedor de la imagen grande para el zoom */
+    #large-image-container {
+      display: none;
+      position: absolute;
+      width: 180px; /* Aumentar el ancho */
+      height: 180px; /* Aumentar la altura */
+      pointer-events: none;
+      z-index: 1000;
+      overflow: hidden;
+      border: 2px solid white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #large-image {
+      position: absolute;
+      will-change: transform;
+      width: auto;
+      height: auto;
+      max-width: none;
+      max-height: none;
+    }
+
+</style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+  <!-- Contenido principal -->
+  <div id="main-content">
+    <!-- Primera sección -->
+    <div class="section" id="primer-section">
+      <div id="primer">
+        <!-- Contenedor naranja -->
+        <div id="map" class="inner-container"></div>
+        <!-- Contenedor morado -->
+        <div id="purple-container" class="inner-container"></div>
+      </div>
+    </div>
+    <!-- Sección de Contenido -->
+    <div class="section" id="content-section">
+      <!-- Carrusel de Imágenes -->
+      <div class="carousel-container">
+        <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
+        <div class="carousel"></div>
+        <div class="overlay"></div>
+        <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
+      </div>
+      <!-- Contenedor de la imagen grande para el zoom -->
+      <div id="large-image-container">
+        <img id="large-image" src="" alt="Imagen grande">
+      </div>
+      <!-- Nueva sección de información de imagen -->
+      <div class="image-info">
+        <p class="image-url">Cargando...</p>
+      </div>
+      <!-- Visor 3D -->
+      <div class="model-container">
+        <model-viewer id="model-viewer" src="" camera-controls tone-mapping="neutral" 
+                      auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" 
+                      camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" 
+                      max-camera-orbit="auto 90deg auto">
+          <!-- Hotspots... -->
+        </model-viewer>
+        <div class="model-credits">
+          <span>Fotogrametría: Arq. Alejandro Marambio, 2023.</span>
+          <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Créditos -->
+  <div class="credits">
+    <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+    <p>
+      Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
+      Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
+      Todos los derechos de las imágenes corresponden a Google.
+      Año de publicación: 2025.
+    </p>
+  </div>
+
+  <!-- Scripts -->
+   <script>
+      // Variables globales
+      let currentIndex = 0;
+      let carouselImages = [];
+      // Funciones de actualización
+      function updateCarousel(perfilesConLetra, manzana) {
+        const imagesContainer = document.querySelector('.carousel');
+        imagesContainer.innerHTML = '';
+        // Almacenar la manzana en el contenedor
+        imagesContainer.dataset.manzana = manzana;
+        perfilesConLetra.forEach(perfil => {
+          const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
+          const imgElement = document.createElement("img");
+          imgElement.src = imgUrl;
+          imgElement.dataset.letraPerfil = perfil.letra;
+          imagesContainer.appendChild(imgElement);
+        });
+        carouselImages = document.querySelectorAll(".carousel img");
+        currentIndex = 0;
+        if (carouselImages.length > 0) {
+          showImage(currentIndex, 'next');
+        } else {
+          document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
+        }
+      }
+      function updateModelViewer(modelURL) {
+        const modelViewer = document.querySelector("model-viewer#model-viewer");
+        if (modelURL && modelURL !== "None") {
+          modelViewer.src = modelURL;
+        }
+      }
+      function updateHotspots(hotspots, manzana) {
+        for (let i = 0; i < 4; i++) {
+          const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
+          if (hotspot && hotspots[i]) {
+            const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
+            hotspot.dataset.position = `${x}m ${y}m ${z}m`;
+            const annotation = hotspot.querySelector('.HotspotAnnotation');
+            if (annotation) {
+              annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
+            }
+          }
+        }
+      }
+      // Carrusel de imágenes
+      function showImage(index, direction) {
+        carouselImages.forEach((img, i) => {
+          img.classList.remove("active");
+          if (i === index) {
+            img.classList.add("active");
+            img.style.transform = 'translateX(0)';
+      
+            // Obtener datos para el texto
+            const manzana = document.querySelector('.carousel').dataset.manzana;
+            const letraPerfil = img.dataset.letraPerfil;
+            document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
+      
+              // Función para actualizar dimensiones
+              const updateDimensions = (imageElement) => {
+                  // Dimensiones del contenedor (fijas por CSS)
+                  const containerWidth = imageElement.parentElement.clientWidth;
+                  const containerHeight = imageElement.parentElement.clientHeight;
+                  // Relación de aspecto de la imagen original
+                  const naturalAspectRatio = imageElement.naturalWidth / imageElement.naturalHeight;
+             
+                  // Relación de aspecto del contenedor
+                  const containerAspectRatio = containerWidth / containerHeight;
+              
+                  // Calcular dimensiones reales de la imagen escalada
+                  let renderedWidth, renderedHeight;
+              
+                  if (naturalAspectRatio > containerAspectRatio) {
+                      // La imagen es más ancha que el contenedor: usa ancho completo
+                      renderedWidth = containerWidth;
+                      renderedHeight = containerWidth / naturalAspectRatio;
+                  } else {
+                      // La imagen es más alta que el contenedor: usa altura completa
+                      renderedHeight = containerHeight;
+                      renderedWidth = containerHeight * naturalAspectRatio;
+                  }
+                  // Aplicar al overlay
+                  const overlay = document.querySelector('.overlay');
+                  if (overlay) {
+                      overlay.style.width = `${renderedWidth}px`;
+                      overlay.style.height = `${renderedHeight}px`;
+                  }
+                  console.log("Imagen escalada:", renderedWidth, "x", renderedHeight);
+                  const carouselContainer = document.querySelector('.carousel-container');
+                  if (carouselContainer) {
+                      const containerRect = carouselContainer.getBoundingClientRect();
+                      // Calcular posición centrada
+                      const leftPosition = (containerRect.width - renderedWidth) / 2;
+                      const topPosition = (containerRect.height - renderedHeight) / 2;
+              
+                      // Aplicar al overlay
+                      overlay.style.top = `${topPosition}px`;
+                  }
+              };
+
+            // Verificar si la imagen ya está cargada
+            if (img.complete) {
+              updateDimensions(img);
+            } else {
+              img.onload = function () {
+                updateDimensions(this);
+              };
+            }
+          }
+        });
+      }
+
+
+      function nextImage() {
+        if (carouselImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % carouselImages.length;
+        showImage(currentIndex, 'next');
+      }
+
+      function prevImage() {
+        if (carouselImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+        showImage(currentIndex, 'prev');
+      }
+
+
+      // Configuración del modelo 3D
+      const modelViewer = document.querySelector("model-viewer#model-viewer");
+      modelViewer.addEventListener('load', (ev) => {
+        let material = modelViewer.model.materials[0];
+        material.pbrMetallicRoughness.setRoughnessFactor(1);
+        material.pbrMetallicRoughness.setMetallicFactor(0.5);
+      });
+
+      // Configuración del zoom
+      function setupZoom() {
+        const overlay = document.querySelector('.overlay');
+        const largeImageContainer = document.getElementById('large-image-container');
+        const largeImage = document.getElementById('large-image');
+
+        overlay.addEventListener('mouseenter', () => {
+          // Cargar la imagen grande correspondiente
+          const activeImage = document.querySelector('.carousel img.active');
+          if (activeImage) {
+            largeImage.src = activeImage.src;
+            largeImageContainer.style.display = 'block';
+            document.body.style.cursor = 'crosshair'; // Cambiar el cursor a "crosshair"
+          }
+        });
+
+        overlay.addEventListener('mousemove', (e) => {
+          // Obtener las dimensiones y posición del overlay
+          const rectOverlay = overlay.getBoundingClientRect();
+
+          // Calcular la posición relativa del cursor sobre el overlay
+          const relX = e.clientX - rectOverlay.left;
+          const relY = e.clientY - rectOverlay.top;
+
+          // Normalizar las coordenadas (-1 a 1)
+          const normalizedX = (relX - rectOverlay.width / 2) / (rectOverlay.width / 2);
+          const normalizedY = (relY - rectOverlay.height / 2) / (rectOverlay.height / 2);
+
+          // Obtener dimensiones reales de la imagen grande
+          const largeImageWidth = largeImage.naturalWidth;
+          const largeImageHeight = largeImage.naturalHeight;
+
+          // Mapear la posición normalizada a la imagen grande
+          const mappedX = (normalizedX + 1) / 2 * largeImageWidth;
+          const mappedY = (normalizedY + 1) / 2 * largeImageHeight;
+
+          // Ajustar la posición del contenedor grande al cursor
+          largeImageContainer.style.left = `${e.clientX - largeImageContainer.offsetWidth / 2}px`;
+          largeImageContainer.style.top = `${e.clientY - largeImageContainer.offsetHeight / 2}px`;
+
+          // Aplicar la transformación en la imagen grande para hacer el zoom
+          const offsetX = -mappedX + largeImageContainer.offsetWidth / 2;
+          const offsetY = -mappedY + largeImageContainer.offsetHeight / 2;
+
+          largeImage.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
+
+        overlay.addEventListener('mouseleave', () => {
+          // Ocultar el contenedor de la imagen grande y restaurar el cursor
+          largeImageContainer.style.display = 'none';
+          document.body.style.cursor = 'default';
+        });
+      }
+    // Inicializar el zoom al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+      setupZoom();
+    });
+
+   </script>
+  <!-- Mapa y Turf.js -->
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+  <!-- Cargar mapa -->
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://cdn.jsdelivr.net/gh/EDGARZR54/StreetData-Insight@bd42c38ea76ee06d0735ef857563f3e8cd73d0d3/partials/MapStyle.json',
+      center: [-69.88745587021114, 18.47668346661841],
+      zoom: 2,
+      bearing: 0,
+      antialias: true,
+      maplibreLogo: false
+    });
+
+    map.on('load', async function () {
+      // Controles del slider
+      const sliderContainer = document.createElement('div');
+      sliderContainer.classList.add('slider-container');
+      sliderContainer.innerHTML = `
+                <h2>Mapa Interactivo</h2>
+                <div class="slider-controls">
+                    <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
+                    <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
+                    <button id="toggleBtn">⏵</button>
+                </div>
+            `;
+      document.getElementById('map').appendChild(sliderContainer);
+      // Control de zoom
+      const zoomSlider = document.getElementById('zoomSlider');
+      const zoomValue = document.getElementById('zoomValue');
+      const toggleBtn = document.getElementById('toggleBtn');
+      let animationInterval;
+
+      // Control de animación
+      toggleBtn.addEventListener('click', () => {
+        if (toggleBtn.textContent === '⏵') {
+          toggleBtn.textContent = '⏸';
+          animationInterval = setInterval(() => {
+            let currentValue = parseFloat(zoomSlider.value);
+            if (currentValue < zoomSlider.max) {
+              zoomSlider.value = (currentValue + 0.1).toFixed(1);
+              map.easeTo({
+                center: [-69.88745587021114, 18.47668346661841],
+                zoom: zoomSlider.value,
+                duration: 300
+              });
+              zoomValue.textContent = zoomSlider.value;
+            } else {
+              clearInterval(animationInterval);
+              toggleBtn.textContent = '⏪︎';
+            }
+          }, 100);
+        } else if (toggleBtn.textContent === '⏸') {
+          toggleBtn.textContent = '⏵';
+          clearInterval(animationInterval);
+        } else if (toggleBtn.textContent === '⏪︎') {
+          toggleBtn.textContent = '⏵';
+          zoomSlider.value = 2;
+          zoomValue.textContent = '2';
+          map.easeTo({
+            center: [-69.88745587021114, 18.47668346661841],
+            zoom: 2,
+            duration: 0
+          });
+        }
+      });
+
+      // Control manual del slider
+      zoomSlider.addEventListener('input', (e) => {
+        const zoomLevel = parseFloat(e.target.value);
+        map.setZoom(zoomLevel);
+        zoomValue.textContent = zoomLevel.toFixed(1);
+
+        // Resetear a modo play si no está en máximo
+        if (zoomLevel < zoomSlider.max && toggleBtn.textContent === '⏪︎') {
+          toggleBtn.textContent = '⏵';
+        }
+      });
+
+      // Sincronizar slider con zoom del mapa
+      map.on('zoom', () => {
+        if (!animationInterval && !zoomSlider.matches(':active')) {
+          const currentZoom = map.getZoom();
+          zoomSlider.value = currentZoom.toFixed(1);
+          zoomValue.textContent = currentZoom.toFixed(1);
+        }
+      });
+
+      // Cargar GeoJSON
+      try {
+        const response = await fetch('https://edgarzr54.github.io/StreetData-Insight/partials/RD_Manzanas.geojson');
+        const geojsonData = await response.json();
+
+        // Cargar datos iniciales
+        const defaultFeature = geojsonData.features.find(f => f.properties.Manzana === "SB01");
+        if (defaultFeature) {
+          const props = defaultFeature.properties;
+          const perfilesConLetra = [
+            { id: props.Perfil_A, letra: 'A' },
+            { id: props.Perfil_B, letra: 'B' },
+            { id: props.Perfil_C, letra: 'C' },
+            { id: props.Perfil_D, letra: 'D' }
+          ].filter(p => p.id && p.id !== "None");
+
+          updateCarousel(perfilesConLetra, props.Manzana);
+          updateModelViewer(props.Modelo3D);
+          updateHotspots([
+              props.Hotspot_1,
+              props.Hotspot_2,
+              props.Hotspot_3,
+              props.Hotspot_4
+          ], props.Manzana);
+        }
+
+        // Añadir capa al mapa
+        map.addSource('manzanas', { type: 'geojson', data: geojsonData });
+        map.addLayer({ id: 'manzanas-fill', type: 'fill', source: 'manzanas', paint: { 'fill-color': '#007BFF', 'fill-opacity': 0.5 } });
+        map.addLayer({ id: 'manzanas-outline', type: 'line', source: 'manzanas', paint: { 'line-color': '#0056b3', 'line-width': 2 } });
+
+        // Evento click
+        const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true });
+        map.on('click', 'manzanas-fill', function (e) {
+          const feature = e.features[0];
+          if (!feature) return;
+
+          // Actualizar componentes
+          const props = feature.properties;
+          const manzana = props.Manzana;
+
+          // Crear array de perfiles con sus letras
+          const perfilesConLetra = [
+            { id: props.Perfil_A, letra: 'A' },
+            { id: props.Perfil_B, letra: 'B' },
+            { id: props.Perfil_C, letra: 'C' },
+            { id: props.Perfil_D, letra: 'D' }
+          ].filter(p => p.id && p.id !== "None");
+
+          // Actualizar componentes
+          updateCarousel(perfilesConLetra, manzana);
+          updateModelViewer(props.Modelo3D);
+          updateHotspots([
+            props.Hotspot_1,
+            props.Hotspot_2,
+            props.Hotspot_3,
+            props.Hotspot_4
+          ], manzana);
+
+          // Mostrar popup
+          const centroid = turf.centroid(feature);
+          const [lng, lat] = centroid.geometry.coordinates;
+          popup.setLngLat([lng, lat])
+            .setHTML(`<div style="color: black; font-family: 'DM Sans', sans-serif;">
+                            <strong>Vecindario:</strong> ${props.Vecindario}<br>
+                            <strong>Manzana:</strong> ${props.Manzana}<br>
+                            <strong>Área:</strong> ${turf.area(feature).toFixed(2)} m²<br>
+                            <strong>Perímetro:</strong> ${turf.length(feature, {units: 'meters'}).toFixed(2)} m
+                        </div>`)
+            .addTo(map);
+
+          map.flyTo({ center: [lng, lat], zoom: 18, speed: 1.5 });
+        });
+        map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
+        map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+  <!-- Cargar navbar -->
+  <script>
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+
+    // Verificación de overflow
+    function checkOverflow() {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.style.overflow = 'hidden';
+        if (section.scrollHeight > section.clientHeight) {
+          section.style.height = `${section.clientHeight}px`;
+        }
+      });
+    }
+
+    window.addEventListener('load', checkOverflow);
+    window.addEventListener('resize', checkOverflow);
+
+    // Control de scroll horizontal
+    let currentSection = 0;
+    let isAnimating = false;
+
+    function handleScroll(direction) {
+      if (isAnimating) return;
+      
+      const newSection = direction === 'next' ? 1 : 0;
+      if (newSection === currentSection) return;
+
+      isAnimating = true;
+      currentSection = newSection;
+      document.getElementById('main-content').style.transform = 
+        `translateX(-${currentSection * 100}vw)`;
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+
+    // Scroll horizontal con rueda del mouse
+    window.addEventListener('wheel', (e) => {
+      // Solo actuar en scroll horizontal
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        handleScroll(e.deltaX > 0 ? 'next' : 'prev');
+        e.preventDefault(); // Prevenir scroll horizontal nativo
+      } else {
+        // Bloquear scroll vertical en la página principal
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Control táctil para scroll horizontal
+    let touchStartX = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    window.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const delta = touchStartX - touchEndX;
+      if (Math.abs(delta) > 50) {
+        handleScroll(delta > 0 ? 'next' : 'prev');
+      }
+    });
+
+    // Control con teclado (flechas izquierda y derecha)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        handleScroll('prev'); // Flecha izquierda: retroceder
+      } else if (e.key === 'ArrowRight') {
+        handleScroll('next'); // Flecha derecha: avanzar
+      }
+    });
+    // Ajustar el ancho del contenedor rojo al ancho del contenedor azul
+    function adjustRedContainerWidth() {
+      const blueContainer = document.querySelector('.carousel-container');
+      const redContainer = document.querySelector('.model-container');
+      if (blueContainer && redContainer) {
+        const blueContainerWidth = window.getComputedStyle(blueContainer).width;
+        redContainer.style.width = blueContainerWidth;
+      }
+    }
+    window.addEventListener('load', adjustRedContainerWidth);
+    window.addEventListener('resize', adjustRedContainerWidth);
+  </script>
+
+  <!-- Scripts -->
+  <script src="https://edgarzr54.github.io/StreetData-Insight/partials/ZoomView.js"></script>
+  <script type="module" src="https://edgarzr54.github.io/StreetData-Insight/partials/cameraControlsModel.js"></script>
+</body>
+</html>
