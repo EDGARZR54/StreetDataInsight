@@ -32,16 +32,13 @@
       position: fixed;
       top: 0;
       width: 100%;
-      height: 60px;
       z-index: 1000;
     }
 
     #pantalla-bienvenida {
       position: fixed;
-      top: 60px;
       left: 0;
       width: 100%;
-      height: calc(100vh - 60px - 100px - 20px); /* Ajuste de altura */
       background-color: black;
       color: white;
       z-index: 900;
@@ -51,6 +48,7 @@
       justify-content: center;
       text-align: center;
       padding: 20px;
+      overflow: hidden;
     }
 
     #pantalla-bienvenida h1 {
@@ -73,6 +71,7 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     #pantalla-bienvenida button:hover {
@@ -81,10 +80,8 @@
 
     a-scene {
       position: fixed;
-      top: 60px;
       left: 0;
       width: 100vw;
-      height: calc(100vh - 60px - 100px - 20px); /* Ajuste de altura */
       z-index: 500;
     }
 
@@ -97,7 +94,6 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      min-height: 100px;
       background: #333;
       font-size: 12px;
       padding: 15px 10px;
@@ -175,28 +171,67 @@
 
   <!-- Scripts -->
   <script>
+    function calculateHeights() {
+      const navbar = document.getElementById('navbar-placeholder');
+      const credits = document.querySelector('.credits');
+      const scene = document.querySelector('a-scene');
+      const welcome = document.getElementById('pantalla-bienvenida');
+      
+      if (!navbar || !credits || !scene || !welcome) return;
+
+      const navbarHeight = navbar.offsetHeight;
+      const creditsHeight = credits.offsetHeight;
+      const welcomePadding = parseFloat(getComputedStyle(welcome).paddingTop) + 
+                           parseFloat(getComputedStyle(welcome).paddingBottom);
+
+      const viewportHeight = window.innerHeight;
+      const availableHeight = viewportHeight - navbarHeight - creditsHeight - welcomePadding;
+
+      // Aplicar alturas
+      scene.style.height = `${availableHeight}px`;
+      scene.style.top = `${navbarHeight}px`;
+      
+      welcome.style.height = `${availableHeight}px`;
+      welcome.style.top = `${navbarHeight}px`;
+    }
+
+    // Control de redimensionamiento
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(calculateHeights, 150);
+    });
+
+    // Cargar navbar y configurar
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        
+        // Esperar a que se renderice el navbar
+        const observer = new MutationObserver(() => {
+          calculateHeights();
+          observer.disconnect();
+        });
+        
+        observer.observe(document.getElementById('navbar-placeholder'), {
+          childList: true,
+          subtree: true
+        });
+      })
+      .catch(error => console.error('Error al cargar navbar:', error));
+
+    // Evento de inicio
     document.getElementById("comenzar").addEventListener("click", () => {
       document.getElementById("pantalla-bienvenida").style.display = "none";
       document.querySelector("a-scene").setAttribute("visible", "true");
+      calculateHeights();
     });
 
-    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el navbar:', error));
-
-    // Nuevo control de redimensionamiento
-    window.addEventListener('resize', () => {
-      const scene = document.querySelector('a-scene');
-      if (scene.is('vr-mode')) return;
-      
-      const navbarHeight = document.getElementById('navbar-placeholder').offsetHeight;
-      const creditsHeight = document.querySelector('.credits').offsetHeight;
-      
-      scene.style.height = `calc(100vh - ${navbarHeight + creditsHeight + 20}px)`;
-      document.getElementById('pantalla-bienvenida').style.height = `calc(100vh - ${navbarHeight + creditsHeight + 20}px)`;
+    // Inicialización final
+    window.addEventListener('load', () => {
+      calculateHeights();
+      setTimeout(calculateHeights, 500); // Doble verificación
     });
   </script>
 </body>
