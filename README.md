@@ -68,7 +68,7 @@ and copy the file StreetData_Insight.ghpy to the Grasshopper Libraries folder (*
 Initially, a georeferenced route is obtained, which is interpolated into segments to make queries through the "Street View Static" API in order to obtain available panoramas. Next, orientation parameters are calculated, and thumbnails of facades, as well as equirectangular panoramas, are obtained. After preprocessing steps involving image projection, distortion correction, and homography, they are combined into a unified urban profile, providing a valuable tool for spatial understanding and informed decision-making regarding public space.
 
 -------------------------------------
-# Article and Citation Information
+# Citation Information
 An article about the ......... is available on ........ If the ....... helped you in your research, please cite:
 
     @inproceedings{python-control2021,
