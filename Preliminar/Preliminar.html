@@ -6,24 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>StreetData Insight | Fuentes Preliminares</title>
 
-  <!-- Incluir Open Sans desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-  <!-- Estilos externos -->
-  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
-
+  <!-- Fuente personalizada -->
   <style>
+    @font-face {
+      font-family: 'Europa-Bold';
+      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
+    }
+
     /* Estilos simplificados */
     :root {
       --container-spacing: 30px;
-    }
-
-    .banner-container {
-      height: 200px; /* Altura reducida */
-      background-color: transparent;
-      position: relative;
-      margin: 20px 0;
     }
 
     /* Estilos para la tabla */
@@ -72,15 +64,33 @@
       border-radius: 4px;
       text-align: center;
     }
+
+    /* Estilo para el título con fuente personalizada */
+    .csv-title {
+      font-family: 'Europa-Bold', sans-serif;
+      color: white;
+      text-align: center; /* Alineación al centro */
+      font-size: 2.2em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      width: 100%; /* Asegura que ocupe todo el ancho disponible */
+      margin-left: 0; /* Elimina el margen izquierdo anterior */
+    }
+    
   </style>
+  
+  <!-- Resto de enlaces -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
 </head>
 <body>
   <div id="navbar-placeholder"></div>
   <div id="main-content">
-
     <!-- Contenedor para la tabla CSV -->
     <div class="csv-table-container">
-      <h2 style="color: white; margin-left: 20px;">Fuentes de Datos Preliminares</h2>
+      <h2 class="csv-title">Fuentes de Datos Preliminares</h2>
       <div id="tableContainer">
         <div class="loading">Cargando datos...</div>
       </div>
@@ -98,6 +108,7 @@
     </div>
   </div>
 
+  <!-- Scripts (se mantienen igual) -->
   <script>
     // Cargar navbar
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
