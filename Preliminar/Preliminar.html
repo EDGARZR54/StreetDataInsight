@@ -13,12 +13,16 @@
       src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
     }
 
-    /* Estilos simplificados */
     :root {
       --container-spacing: 30px;
     }
 
-    /* Estilos para la tabla */
+    body {
+      background-color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+
     .csv-table-container {
       margin: 20px auto;
       width: 95%;
@@ -38,15 +42,16 @@
       text-align: left;
       border: 1px solid white;
       white-space: nowrap;
+      transition: background-color 0.2s ease;
     }
 
     th {
       font-weight: 700;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: #4586FF;
     }
 
-    tr:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+    td.hover-column, th.hover-column {
+      background-color: rgba(69, 134, 255, 0.5);
     }
 
     .loading {
@@ -65,22 +70,33 @@
       text-align: center;
     }
 
-    /* Estilo para el título con fuente personalizada */
     .csv-title {
       font-family: 'Europa-Bold', sans-serif;
       color: white;
-      text-align: center; /* Alineación al centro */
+      text-align: center;
       font-size: 2.2em;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 25px;
-      width: 100%; /* Asegura que ocupe todo el ancho disponible */
-      margin-left: 0; /* Elimina el margen izquierdo anterior */
+      width: 100%;
     }
-    
+
+    .credits {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .credits img {
+      height: 60px;
+      margin-bottom: 15px;
+    }
   </style>
   
-  <!-- Resto de enlaces -->
+  <!-- Enlaces externos -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
@@ -88,7 +104,6 @@
 <body>
   <div id="navbar-placeholder"></div>
   <div id="main-content">
-    <!-- Contenedor para la tabla CSV -->
     <div class="csv-table-container">
       <h2 class="csv-title">Fuentes de Datos Preliminares</h2>
       <div id="tableContainer">
@@ -96,19 +111,17 @@
       </div>
     </div>
 
-    <!-- Sección de créditos -->
     <div class="credits">
       <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
       <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
-        Todos los derechos de las imágenes corresponden a Google. 
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.<br>
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.<br>
+        Todos los derechos de las imágenes corresponden a Google.<br>
         Año de publicación: 2025.
       </p>
     </div>
   </div>
 
-  <!-- Scripts (se mantienen igual) -->
   <script>
     // Cargar navbar
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
@@ -151,6 +164,26 @@
               });
             }
           }
+
+          // Añadir efecto hover por columna
+          const allCells = table.querySelectorAll('td, th');
+          allCells.forEach(cell => {
+            cell.addEventListener('mouseover', () => {
+              const columnIndex = cell.cellIndex;
+              table.querySelectorAll('tr').forEach(row => {
+                const targetCell = row.cells[columnIndex];
+                if(targetCell) targetCell.classList.add('hover-column');
+              });
+            });
+            
+            cell.addEventListener('mouseout', () => {
+              const columnIndex = cell.cellIndex;
+              table.querySelectorAll('tr').forEach(row => {
+                const targetCell = row.cells[columnIndex];
+                if(targetCell) targetCell.classList.remove('hover-column');
+              });
+            });
+          });
 
           document.getElementById('tableContainer').innerHTML = '';
           document.getElementById('tableContainer').appendChild(table);
