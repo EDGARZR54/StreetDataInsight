@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StreetData Insight | AR</title>
 
+  <!-- A-Frame y MindAR -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <!-- Tipografía y estilos externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css" />
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+
+  <style>
+    @font-face {
+      font-family: 'Europa-Bold';
+      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #navbar-placeholder {
+      height: 60px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    #pantalla-bienvenida {
+      position: fixed;
+      z-index: 10;
+      top: 60px;
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 60px - 100px);
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #pantalla-bienvenida h1 {
+      font-family: 'Europa-Bold', sans-serif;
+      color: white;
+      margin: 0 15px;
+      font-size: 2.5rem;
+    }
+
+    #pantalla-bienvenida p {
+      color: #ccc;
+      margin: 15px 20px;
+      max-width: 500px;
+    }
+
+    #pantalla-bienvenida button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    #pantalla-bienvenida button:hover {
+      background-color: #0056b3;
+    }
+
+    a-scene {
+      position: fixed;
+      top: 60px;
+      bottom: 100px;
+      left: 0;
+      width: 100vw;
+      height: auto;
+      z-index: 5;
+    }
+
+    .credits {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      min-height: 100px;
+      background: #333;
+      font-size: 12px;
+      padding: 15px 10px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      gap: 12px;
+    }
+
+    .credits img {
+      height: 45px;
+      margin-bottom: 8px;
+    }
+
+    .credits p {
+      margin: 0;
+      max-width: 600px;
+      line-height: 1.4;
+      padding: 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar externo -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Pantalla de inicio -->
+  <div id="pantalla-bienvenida">
+    <h1>Anexo de Realidad Aumentada</h1>
+    <p>Visualiza contenido complementario escaneando imágenes del documento</p>
+    <button id="comenzar">Comenzar</button>
+  </div>
+
+  <!-- Escena A-Frame + MindAR -->
+  <a-scene
+    mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;"
+    color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights, alpha: true"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false"
+    embedded
+    id="escena-ar"
+    visible="false"
+    background="color: black">
+
+    <a-assets>
+      <img id="card" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+      <a-asset-item id="avatarModel" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+      <a-gltf-model
+        rotation="0 0 0"
+        position="0 0 0.1"
+        scale="0.005 0.005 0.005"
+        src="#avatarModel"
+        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+      </a-gltf-model>
+    </a-entity>
+  </a-scene>
+
+  <!-- Créditos -->
+  <div class="credits">
+    <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo" />
+    <p>
+      Este proyecto es de carácter académico. Se ha utilizado material visual de Google Street View con fines educativos. Todos los derechos pertenecen a Google. Año: 2025.
+    </p>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById("comenzar").addEventListener("click", () => {
+      document.getElementById("pantalla-bienvenida").style.display = "none";
+      document.querySelector("a-scene").setAttribute("visible", "true");
+      
+      // Ajuste final de altura
+      const scene = document.querySelector('a-scene');
+      scene.style.height = 'calc(100vh - 60px - 100px)';
+    });
+
+    // Carga dinámica del navbar
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        
+        // Ajuste de alturas después de cargar el navbar
+        const navbarHeight = document.getElementById('navbar-placeholder').offsetHeight;
+        document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
+      })
+      .catch(error => console.error('Error al cargar el navbar:', error));
+  </script>
+</body>
+</html>
