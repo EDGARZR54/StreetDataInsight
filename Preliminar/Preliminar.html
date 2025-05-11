@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>StreetData Insight | Fuentes Preliminares</title>
 
+  <!-- Incluir Open Sans desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+
+  <style>
+    /* Estilos simplificados */
+    :root {
+      --container-spacing: 30px;
+    }
+
+    .banner-container {
+      height: 200px; /* Altura reducida */
+      background-color: transparent;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    /* Estilos para la tabla */
+    .csv-table-container {
+      margin: 20px auto;
+      width: 95%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid white;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border: 1px solid white;
+      white-space: nowrap;
+    }
+
+    th {
+      font-weight: 700;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .loading {
+      padding: 20px;
+      font-style: italic;
+      color: white;
+      text-align: center;
+    }
+
+    .error {
+      color: #ffcccc;
+      background-color: #660000;
+      padding: 15px;
+      margin: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div id="main-content">
+
+    <!-- Contenedor para la tabla CSV -->
+    <div class="csv-table-container">
+      <h2 style="color: white; margin-left: 20px;">Fuentes de Datos Preliminares</h2>
+      <div id="tableContainer">
+        <div class="loading">Cargando datos...</div>
+      </div>
+    </div>
+
+    <!-- Sección de créditos -->
+    <div class="credits">
+      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <p>
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View. 
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos. 
+        Todos los derechos de las imágenes corresponden a Google. 
+        Año de publicación: 2025.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Cargar navbar
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el navbar:', error));
+
+    // Cargar CSV y generar tabla
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const csvUrl = 'https://edgarzr54.github.io/StreetData-Insight/Preliminar/Preliminar_Sources.csv';
+      
+      fetch(csvUrl)
+        .then(response => response.text())
+        .then(csvData => {
+          const rows = csvData.split('\n');
+          const table = document.createElement('table');
+          
+          // Crear encabezados
+          const headerRow = rows[0].split(',');
+          const thead = table.createTHead();
+          const headerTr = thead.insertRow();
+          
+          headerRow.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText.trim();
+            headerTr.appendChild(th);
+          });
+
+          // Crear cuerpo de la tabla
+          const tbody = table.createTBody();
+          for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].split(',');
+            if (cells.length === headerRow.length) {
+              const row = tbody.insertRow();
+              cells.forEach(cellText => {
+                const cell = row.insertCell();
+                cell.textContent = cellText.trim();
+              });
+            }
+          }
+
+          document.getElementById('tableContainer').innerHTML = '';
+          document.getElementById('tableContainer').appendChild(table);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('tableContainer').innerHTML = 
+            '<div class="error">Error cargando los datos. Por favor intenta recargar la página.</div>';
+        });
+    });
+  </script>
+</body>
+</html>
