@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,290 +14,674 @@
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <!-- Estilos externos -->
-  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/results_styles.css">
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+
   <style>
-    /* Capa verde semitransparente */
-    .overlay {
+    @font-face {
+      font-family: 'Europa-Bold';
+      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Europa-Regular';
+      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-regular-webfont.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Europa-Light';
+      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-light-webfont.ttf') format('truetype');
+    }
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    /* Navbar */
+    #navbar-placeholder {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 1000;
+      background: #333;
+    }
+
+    /* Contenedor principal */
+    #main-content {
+      display: flex;
+      height: calc(100vh - 250px); /* 100px navbar + 150px créditos */
+      margin-top: 100px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      overflow: visible !important;
+    }
+
+    /* Secciones */
+    .section {
+      flex: 0 0 100vw;
+      height: 100%;
+      position: relative;
+      overflow: visible !important;
+    }
+
+    /* Primer pagina */
+    #primer-section {
+      background: transparent;
+      padding: 10px;
+    }
+
+    #primer {
+      background-color: transparent !important;
+      height: calc(100% - 13px); /* Restamos 8px arriba y 5px abajo */
+      width: calc(100% - 10px);  /* Restamos 5px izquierda y derecha */
+    
+      border: 0px solid #388E3C;
+      position: relative;
+      z-index: 2;
+      margin: 8px 5px 5px 5px; /* Margen: 8px arriba, 5px derecha, 5px abajo, 5px izquierda */
+    }
+    /* Sección de contenido */
+    #content-section {
+      position: relative;
+      padding: 10px;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: calc(100% - 20px); /* Margen de 10px a cada lado */
+      margin: 0 auto;
+    }
+    /* Estilos del carrusel */
+    .carousel-container {
+      background: transparent;
+      border: 0px solid #1976D2; /* Azul */
+      padding: 10px;
+      margin: 0 auto;
+      height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
+      width: 100%;
+      z-index: 1;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .carousel {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+       z-index: 2;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+      filter: saturate(1.5);
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .btn-carousel {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 600; /* Mayor que el overlay (500) */
+    }
+
+    .btn-left { left: 20px; }
+    .btn-right { right: 20px; }
+
+    /* Visor 3D */
+    .model-container {
+      background: transparent;
+      border: 2px solid #ffffff;
+      margin: 0 auto;
+      height: calc(50% - 5px); /* Mitad de la altura disponible menos 5px de margen */
+      width: 100%;
+      z-index: 1;
+      position: relative; /* Asegura que los elementos dentro de él se posicionen correctamente */
+
+    }
+    /* Estilos para el model-viewer */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+      background-color: white; /* Fondo blanco para el visor 3D */
+      margin: auto; /* Centrar el model-viewer */
+      border: 2px solid white; /* Contorno blanco */
+      position: relative;
+      object-fit: contain; /* Ajusta el contenido al tamaño del contenedor */
+    }
+
+    .model-credits {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: black;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 12px;
+      border-radius: 4px;
+      z-index: 10;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .model-credits span {
+        display: block;
+    }
+
+    /* Créditos */
+    .credits {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      z-index: 1000;
+      background: #222;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .credits img {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .credits p {
+      text-align: center;
+      max-width: 800px;
+      font-size: 14px;
+    }
+    .inner-container {
       position: absolute;
       top: 0;
+      height: 100%;
+    }
+
+    #map {
+      width: 60%;
+      border: 0px #FFA500;
+      right: 0;
+    }
+    
+    /* Título dentro del slider */
+    .slider-container h2 {
+      color: black; /* Texto en negro */
+      margin: 0;
+      text-align: left;
+      font-size: 1.5em; /* Tamaño relativo */
+    }
+
+    /* Etiquetas y controles */
+    .slider-container label {
+      color: black; /* Texto en negro */
+      display: inline-flex; /* Asegura que el label y el span estén en una sola línea */
+      align-items: center;
+      justify-content: center;
+      font-size: 1em; /* Tamaño relativo */
+    }
+
+    /* Slider */
+    .slider-container input[type="range"] {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      height: 5px;
+      background-color: transparent;
+      cursor: ew-resize;
+    }
+
+    /* Contenedor del número de zoom */
+    #zoomValue {
+      display: inline-block;
+      min-width: 40px;  /* Establecer un ancho mínimo para el valor */
+      text-align: right; /* Alineación a la derecha */
+      padding-left: 5px; /* Espacio adicional para evitar que el texto se pegue */
+      font-weight: bold;
+    }
+
+    #purple-container {
+      border: 0px solid #800080;
+      left: 0;
+      width: calc(40% - 10px); /* Ajusta el ancho */
+      color: white;
+      margin-right: 10px;
+      box-sizing: border-box;
+      position: relative;
+      text-align: right;
+      padding: 0; /* Eliminamos el padding del contenedor */
+
+    }
+    /* Título */
+    #case-title {
+      font-family: 'Europa-Bold', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+      text-align: right; /* Alinea el título a la derecha */
+    }
+
+    #sub-title {
+      font-family: 'Europa-Regular', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+      margin: 0;
+      text-align: right;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+    }
+    
+    /* Subtítulo - Mapa Interactivo */
+    #interactive-map-title {
+      font-family: 'Europa-Light', sans-serif;
+      font-size: clamp(1em, 5vw, 2.5em);
+
+      text-align: right;
+    }
+    #study-area-description {
+      text-align: justify; /* Justifica el texto */
+      font-size: 16px; /* Tamaño de fuente de 16px */
+      font-family: 'Europa-Regular', sans-serif; /* Fuente europa-regular */
+      position: relative;
+      top: 10%; /* Mueve el contenido hacia abajo un 50% */
+    }
+
+    .overlay {
+      position: absolute;
       left: 50%; /* Centra el rectángulo horizontalmente */
+      top: 0;
       transform: translateX(-50%); /* Ajusta la posición para centrarlo */
       height: 100%;
       background: rgba(0, 255, 0, 0.0); /* Verde semitransparente */
       pointer-events: all; /* Permite que los eventos pasen al contenido debajo */
+      z-index: 500; /* Asegura que el slider esté por encima del mapa */
+
+    } 
+    .image-info {
+      position: absolute;
+      right: 50px; /* Ajusta la distancia desde la parte izquierda */
+      top: 50%;               /* Centrado verticalmente */
+      transform: translateY(-50%) rotate(-90deg); /* Centrado vertical y rotado 90 grados antihorario */
+      transform-origin: center center; /* Punto de origen centrado para la rotación */
+      z-index: 600;           /* Por encima del overlay */
+      font-size: clamp(1em, 5vw, 2.5em); /* Tamaño de fuente responsive */
+      font-family: 'Europa-Bold', sans-serif; /* Fuente en negrita */
+      color: white;           /* Color del texto */
+      text-align: center;     /* Alineación del texto */
     }
-  </style>
+    #large-image-container {
+      display: none;
+      position: absolute;
+      width: 180px; /* Aumentar el ancho */
+      height: 180px; /* Aumentar la altura */
+      pointer-events: none;
+      z-index: 1000;
+      overflow: hidden;
+      border: 2px solid white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #large-image {
+      position: absolute;
+      will-change: transform;
+      width: auto;
+      height: auto;
+      max-width: none;
+      max-height: none;
+    }
+    .slider-container {
+      position: absolute; /* Tomará referencia del contenedor #map */
+      top: 20px; /* Se coloca en la parte superior del mapa */
+      left: 20px;
+      background-color: white;
+      padding: 15px; /* Valor mayor del segundo estilo */
+      border-radius: 5px; /* Redondeo de bordes del segundo estilo */
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Se mantiene la sombra del primer estilo */
+      width: 100%; /* Se asegura que ocupe todo el ancho disponible */
+      max-width: 450px; /* Limita el ancho máximo */
+      display: flex; /* Se usa flex para distribuir elementos */
+      flex-direction: column; /* Mantener distribución en columna */
+      justify-content: space-between; /* Distribuir los elementos de forma equidistante */
+      gap: 15px; /* Se usa el valor mayor del segundo estilo para el espaciado entre elementos */
+      z-index: 10; /* Asegura que el slider esté por encima del mapa */
+    }
+    /* Contenedor de controles (zoom, slider, botón) */
+
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px; /* Espacio entre los controles */
+      align-items: center;
+      width: 100%;
+    }
+
+    #zoomSlider {
+      width: calc(100% - 60px); /* Asegura que el slider ocupe todo el ancho disponible, restando espacio para el botón */
+      height: 6px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    #toggleBtn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: black;
+      cursor: pointer;
+      padding: 5px;
+      min-width: 80px; /* Ancho mínimo para el botón */
+      height: 40px; /* Mantener un tamaño adecuado para el botón */
+    }
+    .gallery-title {
+      position: absolute;
+      bottom: 10px; /* Ajusta la distancia desde la parte inferior */
+      right: 70px;  /* Ajusta la distancia desde la parte derecha */
+      font-size: clamp(1em, 5vw, 2.5em);
+      font-family: 'Europa-Bold', sans-serif;
+      color: white; /* Color del texto */
+      text-transform: uppercase; /* Convierte el texto a mayúsculas */
+      z-index: 499; /* Asegura que el título quede encima del contenido del carrusel */
+    }
+    .model3dtitle {
+      position: absolute;
+      top: 10px; /* Ajusta la distancia desde la parte superior */
+      left: 50px; /* Ajusta la distancia desde la parte izquierda */
+      font-size: clamp(1em, 5vw, 2.5em); /* Tamaño de fuente responsive */
+      font-family: 'Europa-Bold', sans-serif; /* Fuente en negrita */
+      color: black; /* Color del texto */
+      text-transform: uppercase; /* Convierte el texto a mayúsculas */
+      z-index: 500; /* Asegura que el título quede encima del contenido del visualizador */
+    }
+</style>
 </head>
 <body>
   <!-- Navbar -->
   <div id="navbar-placeholder"></div>
+  <!-- Contenido principal -->
   <div id="main-content">
-    <h1>StreetData Insight</h1>
-    <!-- Mapa -->
-    <div id="map"></div>
-    <!-- Carrusel de Imágenes -->
-    <div class="carousel-container">
-      <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
-      <div class="carousel"></div>
-      <div class="overlay"></div>
-      <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
-    </div>
-    <!-- Contenedor de la imagen grande para el zoom -->
-    <div id="large-image-container">
-      <img id="large-image" src="" alt="Imagen grande">
-    </div>
-    <!-- Nueva sección de información de imagen -->
-    <div class="image-info">
-      <p class="image-url">Cargando...</p>
-    </div>
-    <!-- Visor 3D -->
-    <div class="model-container">
-      <model-viewer id="model-viewer" src="" camera-controls tone-mapping="neutral" auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" max-camera-orbit="auto 90deg auto">
-        <button class="Hotspot" slot="hotspot-1" data-position data-normal data-visibility-attribute="visible">
-          <div class="HotspotAnnotation"></div>
-        </button>
-        <button class="Hotspot" slot="hotspot-2" data-position data-normal data-visibility-attribute="visible">
-          <div class="HotspotAnnotation"></div>
-        </button>
-        <button class="Hotspot" slot="hotspot-3" data-position data-normal data-visibility-attribute="visible">
-          <div class="HotspotAnnotation"></div>
-        </button>
-        <button class="Hotspot" slot="hotspot-4" data-position data-normal data-visibility-attribute="visible">
-          <div class="HotspotAnnotation"></div>
-        </button>
-        <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
+    <!-- Primera sección -->
+    <div class="section" id="primer-section">
+      <div id="primer">
+        <!-- Contenedor naranja -->
+        <div id="map" class="inner-container"></div>
+        <!-- Contenedor morado -->
+        <div id="purple-container" class="inner-container">
+          <div id="case-title">CASO DE ESTUDIO:</div>
+          <div id="sub-title">República Dominicana, Santo Domingo</div>
+          <div id="interactive-map-title">Mapa Interactivo</div>
+          <!-- Nuevo texto agregado -->
+          <div id="study-area-description">
+            <br>
+            <p>El área de estudio se ubica en la República Dominicana, en la región de Ozama, dentro del Distrito Nacional, específicamente delimitado al norte de la Ciudad Colonial. Este escenario ha sido elegido debido a su relevancia como parte del núcleo urbano ‘‘Ciudad Colonial”, incorporada a la lista del Patrimonio Mundial de la Humanidad de la UNESCO en 1990 (UNESCO, 2012). La inclusión del conjunto arquitectónico se justifica por su valor histórico y cultural, reflejando influencias de estilos arquitectónicos que incluyen elementos vernáculos, coloniales, españoles, victorianos y caribeños.</p>
+            <br>
+            <p>El área de estudio se delimita al norte por la Av. México, al oeste por la Av. Mella y la C. Palo Hincado, al este por la C. La Atarazana y la C. Isabel la Católica, y al sur por la C. Mercedes. Con una superficie aproximada de 329,775.37 m2, comprendiendo 15,341.47 metros lineales de recorrido distribuidos en 172 calles y 43 manzanas, agrupados en los vecindarios[36] de San Lázaro (SL), San Miguel (SM), Santa Bárbara (SB) y San Antón (SA). Para facilitar la referencia de las manzanas dentro del área de estudio, se ha asignado un número a cada manzana en relación con su código de vecindario. En consecuencia, para identificar los perfiles urbanos, se emplea la nomenclatura de la manzana junto con una letra (A, B, C o D) por lado de manzana, comenzando por el lado norte y ordenadas en sentido antihorario. Por ejemplo, para referirse al perfil oeste de la primera manzana en el vecindario de Santa Bárbara, se utiliza “SB01_B”.</p>
         </div>
-      </model-viewer>
-    <div class="model-credits">
-        <span>Fotogrametría: Arq. Alejandro Marambio, 2023.</span>
-        <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
+        </div>
+      </div>
     </div>
-    </div>
-    <!-- Créditos -->
-    <div class="credits">
-      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
-      <p>
-        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
-        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
-        Todos los derechos de las imágenes corresponden a Google.
-        Año de publicación: 2025.
-      </p>
+    <!-- Sección de Contenido -->
+    <div class="section" id="content-section">
+      <!-- Carrusel de Imágenes -->
+      <div class="carousel-container">
+        <button class="btn-carousel btn-left" onclick="prevImage()">&#10094;</button>
+        <div class="carousel"></div>
+        <div class="overlay"></div>
+        <button class="btn-carousel btn-right" onclick="nextImage()">&#10095;</button>
+        <!-- Nueva sección de información de imagen, movida dentro de carousel-container -->
+        <div class="image-info">
+          <p class="image-url">Cargando...</p>
+        </div>
+        <div class="gallery-title">GALERÍA PERFILES URBANOS</div>
+      </div>
+      <!-- Visor 3D -->
+      <div class="model-container">
+        <model-viewer id="model-viewer" src="" camera-controls tone-mapping="neutral" 
+                      auto-rotate exposure="0.8" shadow-intensity="1" shadow-softness="1" 
+                      camera-orbit="73.5deg 100.2deg 225.7m" field-of-view="17.6deg" 
+                      max-camera-orbit="auto 90deg auto">
+          <!-- Hotspots... -->
+        </model-viewer>
+        <div class="model3dtitle">LEVANTAMIENTO FOTOGRAMÉTRICO</div>        
+        <div class="model-credits">
+          <span>Fotogrametría: Arq. Alejandro Marambio, 2023.</span>
+          <span>Drone DJI Mavic 2 Pro, 60 m AGL, 5 cm/px.</span>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- Contenedor de la imagen grande para el zoom -->
+  <div id="large-image-container">
+    <img id="large-image" src="" alt="Imagen grande">
+  </div>
+  <!-- Créditos -->
+  <div class="credits">
+    <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+    <p>
+      Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
+      Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
+      Todos los derechos de las imágenes corresponden a Google.
+      Año de publicación: 2025.
+    </p>
+  </div>
+
   <!-- Scripts -->
-  <script>
-    // Variables globales
-    let currentIndex = 0;
-    let carouselImages = [];
+   <script>
+      // Variables globales
+      let currentIndex = 0;
+      let carouselImages = [];
+      // Funciones de actualización
+      function updateCarousel(perfilesConLetra, manzana) {
+        const imagesContainer = document.querySelector('.carousel');
+        imagesContainer.innerHTML = '';
+        // Almacenar la manzana en el contenedor
+        imagesContainer.dataset.manzana = manzana;
+        perfilesConLetra.forEach(perfil => {
+          const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
+          const imgElement = document.createElement("img");
+          imgElement.src = imgUrl;
+          imgElement.dataset.letraPerfil = perfil.letra;
+          imagesContainer.appendChild(imgElement);
+        });
+        carouselImages = document.querySelectorAll(".carousel img");
+        currentIndex = 0;
+        if (carouselImages.length > 0) {
+          showImage(currentIndex, 'next');
+        } else {
+          document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
+        }
+      }
+      function updateModelViewer(modelURL) {
+        const modelViewer = document.querySelector("model-viewer#model-viewer");
+        if (modelURL && modelURL !== "None") {
+          modelViewer.src = modelURL;
+        }
+      }
+      function updateHotspots(hotspots, manzana) {
+        for (let i = 0; i < 4; i++) {
+          const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
+          if (hotspot && hotspots[i]) {
+            const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
+            hotspot.dataset.position = `${x}m ${y}m ${z}m`;
+            const annotation = hotspot.querySelector('.HotspotAnnotation');
+            if (annotation) {
+              annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
+            }
+          }
+        }
+      }
+      // Carrusel de imágenes
+      function showImage(index, direction) {
+        carouselImages.forEach((img, i) => {
+          img.classList.remove("active");
+          if (i === index) {
+            img.classList.add("active");
+            img.style.transform = 'translateX(0)';
+      
+            // Obtener datos para el texto
+            const manzana = document.querySelector('.carousel').dataset.manzana;
+            const letraPerfil = img.dataset.letraPerfil;
+            document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
+      
+              // Función para actualizar dimensiones
+              const updateDimensions = (imageElement) => {
+                  // Dimensiones del contenedor (fijas por CSS)
+                  const containerWidth = imageElement.parentElement.clientWidth;
+                  const containerHeight = imageElement.parentElement.clientHeight;
+                  // Relación de aspecto de la imagen original
+                  const naturalAspectRatio = imageElement.naturalWidth / imageElement.naturalHeight;
+             
+                  // Relación de aspecto del contenedor
+                  const containerAspectRatio = containerWidth / containerHeight;
+              
+                  // Calcular dimensiones reales de la imagen escalada
+                  let renderedWidth, renderedHeight;
+              
+                  if (naturalAspectRatio > containerAspectRatio) {
+                      // La imagen es más ancha que el contenedor: usa ancho completo
+                      renderedWidth = containerWidth;
+                      renderedHeight = containerWidth / naturalAspectRatio;
+                  } else {
+                      // La imagen es más alta que el contenedor: usa altura completa
+                      renderedHeight = containerHeight;
+                      renderedWidth = containerHeight * naturalAspectRatio;
+                  }
+                  // Aplicar al overlay
+                  const overlay = document.querySelector('.overlay');
+                  if (overlay) {
+                      overlay.style.width = `${renderedWidth}px`;
+                      overlay.style.height = `${renderedHeight}px`;
+                  }
+                  console.log("Imagen escalada:", renderedWidth, "x", renderedHeight);
+                  const carouselContainer = document.querySelector('.carousel-container');
+                  if (carouselContainer) {
+                      const containerRect = carouselContainer.getBoundingClientRect();
+                      // Calcular posición centrada
+                      const leftPosition = (containerRect.width - renderedWidth) / 2;
+                      const topPosition = (containerRect.height - renderedHeight) / 2;
+              
+                      // Aplicar al overlay
+                      overlay.style.top = `${topPosition}px`;
+                  }
+              };
 
-    // Funciones de actualización
-    function updateCarousel(perfilesConLetra, manzana) {
-      const imagesContainer = document.querySelector('.carousel');
-      imagesContainer.innerHTML = '';
+            // Verificar si la imagen ya está cargada
+            if (img.complete) {
+              updateDimensions(img);
+            } else {
+              img.onload = function () {
+                updateDimensions(this);
+              };
+            }
+          }
+        });
+      }
 
-      // Almacenar la manzana en el contenedor
-      imagesContainer.dataset.manzana = manzana;
 
-      perfilesConLetra.forEach(perfil => {
-        const imgUrl = `https://lh3.googleusercontent.com/d/${perfil.id}=s0`;
-        const imgElement = document.createElement("img");
-        imgElement.src = imgUrl;
-        imgElement.dataset.letraPerfil = perfil.letra;
-        imagesContainer.appendChild(imgElement);
-      });
-
-      carouselImages = document.querySelectorAll(".carousel img");
-      currentIndex = 0;
-      if (carouselImages.length > 0) {
+      function nextImage() {
+        if (carouselImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % carouselImages.length;
         showImage(currentIndex, 'next');
-      } else {
-        document.querySelector(".image-url").textContent = "No hay imágenes disponibles";
       }
-    }
 
-    function updateModelViewer(modelURL) {
+      function prevImage() {
+        if (carouselImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+        showImage(currentIndex, 'prev');
+      }
+
+
+      // Configuración del modelo 3D
       const modelViewer = document.querySelector("model-viewer#model-viewer");
-      if (modelURL && modelURL !== "None") {
-        modelViewer.src = modelURL;
-      }
-    }
+      modelViewer.addEventListener('load', (ev) => {
+        let material = modelViewer.model.materials[0];
+        material.pbrMetallicRoughness.setRoughnessFactor(1);
+        material.pbrMetallicRoughness.setMetallicFactor(0.5);
+      });
 
-    function updateHotspots(hotspots, manzana) {
-      for (let i = 0; i < 4; i++) {
-        const hotspot = document.querySelector(`button[slot="hotspot-${i + 1}"]`);
-        if (hotspot && hotspots[i]) {
-          const [x, y, z] = hotspots[i].split(' ').filter(v => v.endsWith('m')).map(v => parseFloat(v));
-          hotspot.dataset.position = `${x}m ${y}m ${z}m`;
-          const annotation = hotspot.querySelector('.HotspotAnnotation');
-          if (annotation) {
-            annotation.textContent = `${manzana}${String.fromCharCode(65 + i)}`;
+      // Configuración del zoom
+      function setupZoom() {
+        const overlay = document.querySelector('.overlay');
+        const largeImageContainer = document.getElementById('large-image-container');
+        const largeImage = document.getElementById('large-image');
+
+        overlay.addEventListener('mouseenter', () => {
+          // Cargar la imagen grande correspondiente
+          const activeImage = document.querySelector('.carousel img.active');
+          if (activeImage) {
+            largeImage.src = activeImage.src;
+            largeImageContainer.style.display = 'block';
+            document.body.style.cursor = 'crosshair'; // Cambiar el cursor a "crosshair"
           }
-        }
+        });
+
+        overlay.addEventListener('mousemove', (e) => {
+          // Obtener las dimensiones y posición del overlay
+          const rectOverlay = overlay.getBoundingClientRect();
+
+          // Calcular la posición relativa del cursor sobre el overlay
+          const relX = e.clientX - rectOverlay.left;
+          const relY = e.clientY - rectOverlay.top;
+
+          // Normalizar las coordenadas (-1 a 1)
+          const normalizedX = (relX - rectOverlay.width / 2) / (rectOverlay.width / 2);
+          const normalizedY = (relY - rectOverlay.height / 2) / (rectOverlay.height / 2);
+
+          // Obtener dimensiones reales de la imagen grande
+          const largeImageWidth = largeImage.naturalWidth;
+          const largeImageHeight = largeImage.naturalHeight;
+
+          // Mapear la posición normalizada a la imagen grande
+          const mappedX = (normalizedX + 1) / 2 * largeImageWidth;
+          const mappedY = (normalizedY + 1) / 2 * largeImageHeight;
+
+          // Ajustar la posición del contenedor grande al cursor
+          largeImageContainer.style.left = `${e.clientX - largeImageContainer.offsetWidth / 2}px`;
+          largeImageContainer.style.top = `${e.clientY - largeImageContainer.offsetHeight / 2}px`;
+
+          // Aplicar la transformación en la imagen grande para hacer el zoom
+          const offsetX = -mappedX + largeImageContainer.offsetWidth / 2;
+          const offsetY = -mappedY + largeImageContainer.offsetHeight / 2;
+
+          largeImage.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
+
+        overlay.addEventListener('mouseleave', () => {
+          // Ocultar el contenedor de la imagen grande y restaurar el cursor
+          largeImageContainer.style.display = 'none';
+          document.body.style.cursor = 'default';
+        });
       }
-    }
-
-    // Carrusel de imágenes
-    function showImage(index, direction) {
-      carouselImages.forEach((img, i) => {
-        img.classList.remove("active");
-        if (i === index) {
-          img.classList.add("active");
-          img.style.transform = 'translateX(0)';
-    
-          // Obtener datos para el texto
-          const manzana = document.querySelector('.carousel').dataset.manzana;
-          const letraPerfil = img.dataset.letraPerfil;
-          document.querySelector(".image-url").textContent = `${manzana}${letraPerfil}`;
-    
-            // Función para actualizar dimensiones
-            const updateDimensions = (imageElement) => {
-                // Dimensiones del contenedor (fijas por CSS)
-                const containerWidth = imageElement.parentElement.clientWidth;
-                const containerHeight = imageElement.parentElement.clientHeight;
-
-                // Relación de aspecto de la imagen original
-                const naturalAspectRatio = imageElement.naturalWidth / imageElement.naturalHeight;
-            
-                // Relación de aspecto del contenedor
-                const containerAspectRatio = containerWidth / containerHeight;
-            
-                // Calcular dimensiones reales de la imagen escalada
-                let renderedWidth, renderedHeight;
-            
-                if (naturalAspectRatio > containerAspectRatio) {
-                    // La imagen es más ancha que el contenedor: usa ancho completo
-                    renderedWidth = containerWidth;
-                    renderedHeight = containerWidth / naturalAspectRatio;
-                } else {
-                    // La imagen es más alta que el contenedor: usa altura completa
-                    renderedHeight = containerHeight;
-                    renderedWidth = containerHeight * naturalAspectRatio;
-                }
-                // Aplicar al overlay
-                const overlay = document.querySelector('.overlay');
-                if (overlay) {
-                    overlay.style.width = `${renderedWidth}px`;
-                    overlay.style.height = `${renderedHeight}px`;
-                }
-                console.log("Imagen escalada:", renderedWidth, "x", renderedHeight);
-                const carouselContainer = document.querySelector('.carousel-container');
-                if (carouselContainer) {
-                    const containerRect = carouselContainer.getBoundingClientRect();
-                    // Calcular posición centrada
-                    const leftPosition = (containerRect.width - renderedWidth) / 2;
-                    const topPosition = (containerRect.height - renderedHeight) / 2;
-            
-                    // Aplicar al overlay
-                    overlay.style.top = `${topPosition}px`;
-                }
-            };
-
-          // Verificar si la imagen ya está cargada
-          if (img.complete) {
-            updateDimensions(img);
-          } else {
-            img.onload = function () {
-              updateDimensions(this);
-            };
-          }
-        }
-      });
-    }
-
-
-    function nextImage() {
-      if (carouselImages.length === 0) return;
-      currentIndex = (currentIndex + 1) % carouselImages.length;
-      showImage(currentIndex, 'next');
-    }
-
-    function prevImage() {
-      if (carouselImages.length === 0) return;
-      currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-      showImage(currentIndex, 'prev');
-    }
-
-    // Configuración del zoom
-    function setupZoom() {
-      const overlay = document.querySelector('.overlay');
-      const largeImageContainer = document.getElementById('large-image-container');
-      const largeImage = document.getElementById('large-image');
-
-      overlay.addEventListener('mouseenter', () => {
-        // Cargar la imagen grande correspondiente
-        const activeImage = document.querySelector('.carousel img.active');
-        if (activeImage) {
-          largeImage.src = activeImage.src;
-          largeImageContainer.style.display = 'block';
-          document.body.style.cursor = 'crosshair'; // Cambiar el cursor a "crosshair"
-        }
-      });
-
-      overlay.addEventListener('mousemove', (e) => {
-        // Obtener las dimensiones y posición del overlay
-        const rectOverlay = overlay.getBoundingClientRect();
-
-        // Calcular la posición relativa del cursor sobre el overlay
-        const relX = e.clientX - rectOverlay.left;
-        const relY = e.clientY - rectOverlay.top;
-
-        // Normalizar las coordenadas (-1 a 1)
-        const normalizedX = (relX - rectOverlay.width / 2) / (rectOverlay.width / 2);
-        const normalizedY = (relY - rectOverlay.height / 2) / (rectOverlay.height / 2);
-
-        // Obtener dimensiones reales de la imagen grande
-        const largeImageWidth = largeImage.naturalWidth;
-        const largeImageHeight = largeImage.naturalHeight;
-
-        // Mapear la posición normalizada a la imagen grande
-        const mappedX = (normalizedX + 1) / 2 * largeImageWidth;
-        const mappedY = (normalizedY + 1) / 2 * largeImageHeight;
-
-        // Ajustar la posición del contenedor grande al cursor
-        largeImageContainer.style.left = `${e.clientX - largeImageContainer.offsetWidth / 2}px`;
-        largeImageContainer.style.top = `${e.clientY - largeImageContainer.offsetHeight / 2}px`;
-
-        // Aplicar la transformación en la imagen grande para hacer el zoom
-        const offsetX = -mappedX + largeImageContainer.offsetWidth / 2;
-        const offsetY = -mappedY + largeImageContainer.offsetHeight / 2;
-
-        largeImage.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-      });
-
-      overlay.addEventListener('mouseleave', () => {
-        // Ocultar el contenedor de la imagen grande y restaurar el cursor
-        largeImageContainer.style.display = 'none';
-        document.body.style.cursor = 'default';
-      });
-    }
-
-    // Navbar
-    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el navbar:', error));
-
-    // Configuración del modelo 3D
-    const modelViewer = document.querySelector("model-viewer#model-viewer");
-    modelViewer.addEventListener('load', (ev) => {
-      let material = modelViewer.model.materials[0];
-      material.pbrMetallicRoughness.setRoughnessFactor(1);
-      material.pbrMetallicRoughness.setMetallicFactor(0.5);
-    });
-
     // Inicializar el zoom al cargar la página
     document.addEventListener("DOMContentLoaded", function () {
       setupZoom();
     });
-  </script>
-
+   </script>
   <!-- Mapa y Turf.js -->
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+  <!-- Cargar mapa -->
   <script>
     const map = new maplibregl.Map({
       container: 'map',
@@ -315,7 +698,7 @@
       const sliderContainer = document.createElement('div');
       sliderContainer.classList.add('slider-container');
       sliderContainer.innerHTML = `
-                <h2>Caso de estudio - Santo Domingo, RD</h2>
+                <h2>Animación por niveles geográficos</h2>
                 <div class="slider-controls">
                     <label id="zoomLabel">Zoom: <span id="zoomValue">2</span></label>
                     <input type="range" id="zoomSlider" min="2" max="15.2" value="2" step="0.1">
@@ -323,7 +706,6 @@
                 </div>
             `;
       document.getElementById('map').appendChild(sliderContainer);
-
       // Control de zoom
       const zoomSlider = document.getElementById('zoomSlider');
       const zoomValue = document.getElementById('zoomValue');
@@ -458,7 +840,6 @@
 
           map.flyTo({ center: [lng, lat], zoom: 18, speed: 1.5 });
         });
-
         map.on('mouseenter', 'manzanas-fill', () => map.getCanvas().style.cursor = 'pointer');
         map.on('mouseleave', 'manzanas-fill', () => map.getCanvas().style.cursor = '');
 
@@ -467,16 +848,100 @@
       }
     });
   </script>
+  <!-- Cargar navbar -->
+  <script>
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+
+    // Verificación de overflow
+    function checkOverflow() {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.style.overflow = 'hidden';
+        if (section.scrollHeight > section.clientHeight) {
+          section.style.height = `${section.clientHeight}px`;
+        }
+      });
+    }
+
+    window.addEventListener('load', checkOverflow);
+    window.addEventListener('resize', checkOverflow);
+
+    // Control de scroll horizontal
+    let currentSection = 0;
+    let isAnimating = false;
+
+    function handleScroll(direction) {
+      if (isAnimating) return;
+      
+      const newSection = direction === 'next' ? 1 : 0;
+      if (newSection === currentSection) return;
+
+      isAnimating = true;
+      currentSection = newSection;
+      document.getElementById('main-content').style.transform = 
+        `translateX(-${currentSection * 100}vw)`;
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+
+    // Scroll horizontal con rueda del mouse
+    window.addEventListener('wheel', (e) => {
+      // Solo actuar en scroll horizontal
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        handleScroll(e.deltaX > 0 ? 'next' : 'prev');
+        e.preventDefault(); // Prevenir scroll horizontal nativo
+      } else {
+        // Bloquear scroll vertical en la página principal
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Control táctil para scroll horizontal
+    let touchStartX = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    window.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const delta = touchStartX - touchEndX;
+      if (Math.abs(delta) > 50) {
+        handleScroll(delta > 0 ? 'next' : 'prev');
+      }
+    });
+
+    // Control con teclado (flechas izquierda y derecha)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '1') {
+        handleScroll('prev'); // Flecha izquierda: retroceder
+      } else if (e.key === '2') {
+        handleScroll('next'); // Flecha derecha: avanzar
+      }
+    });
+
+    // Ajustar el ancho del contenedor rojo al ancho del contenedor azul
+    function adjustRedContainerWidth() {
+      const blueContainer = document.querySelector('.carousel-container');
+      const redContainer = document.querySelector('.model-container');
+
+      if (blueContainer && redContainer) {
+        const blueContainerWidth = window.getComputedStyle(blueContainer).width;
+        redContainer.style.width = blueContainerWidth;
+      }
+    }
+
+    window.addEventListener('load', adjustRedContainerWidth);
+    window.addEventListener('resize', adjustRedContainerWidth);
+  </script>
+
+  <!-- Scripts -->
   <script src="https://edgarzr54.github.io/StreetData-Insight/partials/ZoomView.js"></script>
   <script type="module" src="https://edgarzr54.github.io/StreetData-Insight/partials/cameraControlsModel.js"></script>
-  <script>
-    const mv = document.querySelector("#model-viewer");
-    const annotationClicked = (a) => {
-      let ds = a.parentNode.dataset;
-      mv.cameraTarget = ds.target;
-      mv.cameraOrbit = ds.orbit;
-      if (ds.fov !== undefined) mv.fieldOfView = ds.fov;
-    };
-  </script>  
 </body>
 </html>
