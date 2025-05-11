@@ -9,7 +9,7 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
-  <!-- Tipografía y estilos externos -->
+  <!-- Estilos y tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css" />
   <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
@@ -20,50 +20,49 @@
       src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
     }
 
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: white;
-      font-family: 'Open Sans', sans-serif;
-      height: 100%;
       overflow: hidden;
+      font-family: 'Open Sans', sans-serif;
+      background: transparent;
     }
 
     #navbar-placeholder {
-      height: 60px;
       position: fixed;
       top: 0;
       width: 100%;
+      height: 60px;
       z-index: 1000;
     }
 
     #pantalla-bienvenida {
       position: fixed;
-      z-index: 10;
       top: 60px;
       left: 0;
-      width: 100vw;
-      height: calc(100vh - 60px - 100px);
-      background: black;
+      width: 100%;
+      height: calc(100vh - 60px - 100px - 20px); /* Ajuste de altura */
+      background-color: black;
+      color: white;
+      z-index: 900;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 20px;
     }
 
     #pantalla-bienvenida h1 {
       font-family: 'Europa-Bold', sans-serif;
-      color: white;
-      margin: 0 15px;
       font-size: 2.5rem;
+      margin: 0 0 20px 0;
     }
 
     #pantalla-bienvenida p {
       color: #ccc;
-      margin: 15px 20px;
       max-width: 500px;
+      margin: 0 auto 20px;
     }
 
     #pantalla-bienvenida button {
@@ -74,8 +73,6 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s;
     }
 
     #pantalla-bienvenida button:hover {
@@ -85,11 +82,15 @@
     a-scene {
       position: fixed;
       top: 60px;
-      bottom: 100px;
       left: 0;
       width: 100vw;
-      height: auto;
-      z-index: 5;
+      height: calc(100vh - 60px - 100px - 20px); /* Ajuste de altura */
+      z-index: 500;
+    }
+
+    .a-canvas {
+      width: 100% !important;
+      height: 100% !important;
     }
 
     .credits {
@@ -123,10 +124,11 @@
   </style>
 </head>
 <body>
+
   <!-- Navbar externo -->
   <div id="navbar-placeholder"></div>
 
-  <!-- Pantalla de inicio -->
+  <!-- Pantalla de bienvenida -->
   <div id="pantalla-bienvenida">
     <h1>Anexo de Realidad Aumentada</h1>
     <p>Visualiza contenido complementario escaneando imágenes del documento</p>
@@ -137,13 +139,12 @@
   <a-scene
     mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;"
     color-space="sRGB"
-    renderer="colorManagement: true, physicallyCorrectLights, alpha: true"
+    renderer="colorManagement: true, physicallyCorrectLights"
     vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false"
     embedded
     id="escena-ar"
-    visible="false"
-    background="color: black">
+    visible="false">
 
     <a-assets>
       <img id="card" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
@@ -177,23 +178,26 @@
     document.getElementById("comenzar").addEventListener("click", () => {
       document.getElementById("pantalla-bienvenida").style.display = "none";
       document.querySelector("a-scene").setAttribute("visible", "true");
-      
-      // Ajuste final de altura
-      const scene = document.querySelector('a-scene');
-      scene.style.height = 'calc(100vh - 60px - 100px)';
     });
 
-    // Carga dinámica del navbar
     fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
-        
-        // Ajuste de alturas después de cargar el navbar
-        const navbarHeight = document.getElementById('navbar-placeholder').offsetHeight;
-        document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
       })
       .catch(error => console.error('Error al cargar el navbar:', error));
+
+    // Nuevo control de redimensionamiento
+    window.addEventListener('resize', () => {
+      const scene = document.querySelector('a-scene');
+      if (scene.is('vr-mode')) return;
+      
+      const navbarHeight = document.getElementById('navbar-placeholder').offsetHeight;
+      const creditsHeight = document.querySelector('.credits').offsetHeight;
+      
+      scene.style.height = `calc(100vh - ${navbarHeight + creditsHeight + 20}px)`;
+      document.getElementById('pantalla-bienvenida').style.height = `calc(100vh - ${navbarHeight + creditsHeight + 20}px)`;
+    });
   </script>
 </body>
 </html>
