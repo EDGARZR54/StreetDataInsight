@@ -8,6 +8,7 @@
   <!-- A-Frame y MindAR -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
 
   <!-- Estilos y tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -144,7 +145,7 @@
 
     <a-assets>
       <img id="card" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
-      <a-asset-item id="avatarModel" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      <a-asset-item id="avatarModel" crossorigin="anonymous" src="https://cdn.glitch.me/cf57c429-6f82-4cc2-8387-d3f003bd320b/3EsferaLoop.glb?v=1747065714145"></a-asset-item>
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -152,11 +153,12 @@
     <a-entity mindar-image-target="targetIndex: 0">
       <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
       <a-gltf-model
-        rotation="0 0 0"
-        position="0 0 0.1"
-        scale="0.005 0.005 0.005"
-        src="#avatarModel"
-        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+          id="modelo-esfera"
+          src="#avatarModel"
+          position="0 0 0.1"
+          rotation="90 0 0"
+          scale="0.005 0.005 0.005"
+          animation-mixer>
       </a-gltf-model>
     </a-entity>
   </a-scene>
