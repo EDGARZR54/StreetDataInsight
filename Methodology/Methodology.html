@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>MapLibre con mapa base</title>
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
-  <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    #map { height: 100%; width: 100%; }
-  </style>
-</head>
-<body>
+<html>
+  <head>
+    <title>Capa de Cobertura de Street View</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV-uPYOVaneIuz3vvNJWFwppdFV7KQprg"></script>
+    <style>
+      #map {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 20, lng: 0 },  // Centro aproximado del mundo
+          zoom: 2,                      // Zoom mundial
+          mapTypeId: "roadmap",
+        });
 
-<div id="map"></div>
+        const coverageLayer = new google.maps.ImageMapType({
+          getTileUrl: function (coord, zoom) {
+            return `https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i${zoom}!2i${coord.x}!3i${coord.y}!4i256!2m8!1e2!2ssvv!4m2!1scb_client!2sapp!4m2!1scc!2s*211m3*211e3*212b1*213e2*211m3*211e2*212b1*213e2!3m3!3sUS!12m1!1e68!4e0`;
+          },
+          tileSize: new google.maps.Size(256, 256),
+          name: "Cobertura Street View",
+          maxZoom: 20
+        });
 
-<script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
-<script>
-  const map = new maplibregl.Map({
-    container: 'map',
-    style: {
-      version: 8,
-      sources: {
-        openmaptiles: {
-          type: 'raster',
-          tiles: [
-            'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-          ],
-          tileSize: 256,
-          attribution: '© OpenStreetMap contributors'
-        }
-      },
-      layers: [{
-        id: 'osm-tiles',
-        type: 'raster',
-        source: 'openmaptiles',
-        minzoom: 0,
-        maxzoom: 19
-      }]
-    },
-    center: [2.2945, 48.8584], // Torre Eiffel
-    zoom: 17
-  });
-</script>
+        map.overlayMapTypes.insertAt(0, coverageLayer);
+      }
 
-</body>
+      window.onload = initMap;
+    </script>
+  </body>
 </html>
