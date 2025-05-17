@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MapLibre + 2ssvv</title>
+  <title>MapLibre con mapa base</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <link href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; }
-    #map { width: 100%; height: 100%; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    #map { height: 100%; width: 100%; }
   </style>
 </head>
 <body>
@@ -21,28 +21,25 @@
     style: {
       version: 8,
       sources: {
-        googleTiles: {
+        openmaptiles: {
           type: 'raster',
           tiles: [
-            // Nota: el URL puede no funcionar por limitaciones de Google
-            'https://mts1.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m8!1e2!2ssvv!4m2!1scb_client!2sapp!4m2!1scc!2s*211m3*211e3*212b1*213e2*211m3*211e2*212b1*213e2!3m3!3sUS!12m1!1e68!4e0'
+            'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
           ],
           tileSize: 256,
-          attribution: 'Experimental Google SVV Layer',
+          attribution: '© OpenStreetMap contributors'
         }
       },
-      layers: [
-        {
-          id: 'googleLayer',
-          type: 'raster',
-          source: 'googleTiles',
-          minzoom: 0,
-          maxzoom: 21
-        }
-      ]
+      layers: [{
+        id: 'osm-tiles',
+        type: 'raster',
+        source: 'openmaptiles',
+        minzoom: 0,
+        maxzoom: 19
+      }]
     },
-    center: [2.2945, 48.8584], // París, Torre Eiffel
-    zoom: 16
+    center: [2.2945, 48.8584], // Torre Eiffel
+    zoom: 17
   });
 </script>
 
