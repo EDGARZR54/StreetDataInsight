@@ -338,7 +338,7 @@
         flex: 1;
         height: 100vh;
         position: relative;
-        background: white;
+        background: black;
     }
 
     #viewer-canvas {
@@ -370,6 +370,23 @@
     }
     .toggle-input { transform: scale(1.2); cursor: pointer; }
     .toggle-label { font-size: 0.95em; cursor: pointer; }
+
+    .viewer-legend {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      max-width: 400;
+      padding: 8px 12px;
+      font-size: 18px;
+      color: white;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .viewer-legend p {
+      margin: 0;
+      line-height: 1.4;
+    }
+    
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -437,6 +454,13 @@
         </div>
         <div class="viewer-panel">
             <canvas id="viewer-canvas"></canvas>
+                <div class="viewer-legend">
+      <p>
+        <strong>Nota:</strong> El norte geográfico se ha fijado a <strong>90°</strong> del <strong>rumbo</strong> para simplificar la visualización.<br>
+        Imagen de ejemplo: Mingyu Kim — <strong>@WoodNeck</strong>
+      </p>
+    </div>
+
         </div>        
         <div class="vertical-panel right-panel">
             <div class="panel-section">
@@ -466,14 +490,14 @@
         
           <div class="control-group">
             <label class="control-label" for="planeOpacitySlider">
-              Opacidad del Plano Verde: <span id="planeOpacityValue">0.4</span>
+              Opacidad del Plano Verde: <span id="planeOpacityValue">0.1</span>
             </label>
             <div class="slider-container">
               <input type="range"
                      id="planeOpacitySlider"
                      min="0" max="1" step="0.1"
                      value="0.1">
-              <div class="value-display" id="planeOpacityDisplay">0.40</div>
+              <div class="value-display" id="planeOpacityDisplay">0.10</div>
             </div>
           </div>
         
@@ -574,10 +598,17 @@
         
             const texture = textureLoader.load(
                 currentTexture,
-                undefined,
+                function (texture) {
+                    // Espejar horizontalmente la textura
+                    texture.repeat.x = -1;
+                    texture.offset.x = 1;
+                    texture.wrapS = THREE.RepeatWrapping;
+                    texture.needsUpdate = true;
+                },
                 undefined,
                 (err) => console.error('Error al cargar textura:', err)
             );
+
         
             // Crear material con los parámetros dinámicos
             const material = new THREE.MeshPhongMaterial({
@@ -638,7 +669,7 @@
             objs.squarePlane = addMesh(new THREE.PlaneGeometry(1,1), new THREE.MeshBasicMaterial({
                 color: 0x00ff00,
                 side: THREE.DoubleSide,
-                opacity: 0.4,
+                opacity: 0.1,
                 transparent: true,
                 ...priorityMaterialSettings
             }));
@@ -651,7 +682,7 @@
             objs.squarePatch.renderOrder = 100;
         
             objs.northLine = addLine(new THREE.LineBasicMaterial({
-                color: 0x000000,
+                color: 0xffffff,
                 ...priorityMaterialSettings
             }), [[0,0,0],[0,0,1]]);
             objs.northLine.renderOrder = 100;
@@ -659,7 +690,7 @@
             // Crear etiqueta Norte
             const canvas = Object.assign(document.createElement('canvas'), { width: 64, height: 64 });
             const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = 'white';
             ctx.font = '60px sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -677,7 +708,7 @@
         
             // Flechas y elementos adicionales
             const arrowMatBlack = new THREE.MeshBasicMaterial({
-                color: 0x000000,
+                color: 0xffffff,
                 ...priorityMaterialSettings
             });
             
@@ -689,7 +720,7 @@
             scene.add(objs.arrowNorth);
         
             objs.arcLine = addLine(new THREE.LineBasicMaterial({
-                color: 0x000000,
+                color: 0xffffff,
                 ...priorityMaterialSettings
             }), []);
             objs.arcLine.renderOrder = 100;
@@ -731,11 +762,7 @@
             // Luz ambiental
             const ambientLight = new THREE.AmbientLight(0xffffff, 1);
             scene.add(ambientLight);
-            
-            // Luz puntual adicional
-            const pointLight = new THREE.PointLight(0x5599ff, 0, 0);
-            pointLight.position.set(-5, -3, -5);
-            scene.add(pointLight);
+        
         }
         
         // Manejar redimensionamiento de ventana
@@ -764,12 +791,15 @@
             renderer.render(scene, camera);
         }
         
-        // Función para cambiar la textura
         function changeTexture(imageUrl) {
             const textureLoader = new THREE.TextureLoader();
             textureLoader.crossOrigin = "Anonymous";
             
             textureLoader.load(imageUrl, (texture) => {
+                // Espejar la textura en el eje X
+                texture.repeat.x = -1;
+                texture.offset.x = 1;
+        
                 // Actualizar la textura de la esfera
                 objs.sphere.material.map = texture;
                 objs.sphere.material.needsUpdate = true;
@@ -1034,11 +1064,10 @@
             
             const headingLocation = gl.getUniformLocation(program, 'uHeading');
             gl.uniform1f(
-  headingLocation,
-  ((parseFloat(headingSlider.value) - 270 + 360) % 360) * Math.PI / 180
-);
+              headingLocation,
+              (270 - (parseFloat(headingSlider.value) % 360)) * Math.PI / 180
+            );
 
-            
             const pitchLocation = gl.getUniformLocation(program, 'uPitch');
             gl.uniform1f(pitchLocation, parseFloat(pitchSlider.value) * Math.PI / 180);
             
@@ -1181,7 +1210,7 @@
             
             const sampleImage = new Image();
             sampleImage.crossOrigin = 'Anonymous';
-            sampleImage.src = 'https://naver.github.io/egjs-view360/assets/images/equi-db91ac44ce4dcef8e6b9a1e1bb6865b0.jpg';
+            sampleImage.src = currentTexture;
             
             sampleImage.onload = function() {
                 // Mostrar imagen en el preview
@@ -1204,7 +1233,6 @@
                 updateStatus('Error al cargar imagen de muestra. Sube tu propia imagen.', true);
             };
         }
-        
         // Manejar carga de imagen
         imageUpload.addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
@@ -1305,14 +1333,7 @@
                 const isInside = sideToggle.checked;
         
                 objs.sphere.material.side = isInside ? THREE.BackSide : THREE.OneSide;
-        
-                // Invertir textura en X si se ve desde dentro
-                const tex = objs.sphere.material.map;
-                tex.repeat.x = isInside ? -1 : 1;
-                tex.offset.x = isInside ? 1 : 0;
-                tex.wrapS = THREE.RepeatWrapping;
-                tex.needsUpdate = true;
-        
+
                 objs.sphere.material.needsUpdate = true;
                 render();
             }
