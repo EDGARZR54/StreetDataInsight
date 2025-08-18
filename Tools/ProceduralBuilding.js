@@ -191,3 +191,4 @@ class MainProject {
         this.cubes = [];
     }
 }
+window.ProceduralCityGenerator = ProceduralCityGenerator;
