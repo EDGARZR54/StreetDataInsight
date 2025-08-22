@@ -1,3 +1,4 @@
 * linguist-language=Python
-*.glb filter=lfs diff=lfs merge=lfs -text
+- *.glb filter=lfs diff=lfs merge=lfs -text
++ # *.glb filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
