@@ -9,7 +9,10 @@
     "openmaptiles:version": "3.x",
     "maputnik:renderer": "mlgljs"
   },
-  "center": [-122.41877447993727, 37.7977350127602],
+  "center": [
+    -122.41877447993727,
+    37.7977350127602
+  ],
   "zoom": 10.5,
   "bearing": 0,
   "pitch": 0,
@@ -211,22 +214,10 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(255,255,255,0.3)",
+        "fill-color": "rgba(255,255,255,0.25)",
         "fill-opacity": 1,
         "fill-outline-color": "rgba(255,255,255,0.1)",
-        "fill-pattern": "hatch-t",
-        "fill-pattern-scale": {
-          "stops": [
-            [
-              14,
-              1
-            ],
-            [
-              20,
-              2
-            ]
-          ]
-        }
+        "fill-pattern": "hatch-t"
       }
     }
   ]
