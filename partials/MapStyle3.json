@@ -594,9 +594,7 @@
           "in",
           "class",
           "secondary",
-          "tertiary",
-          "minor",
-          "service"
+          "tertiary"
         ]
       ],
       "layout": {
@@ -649,8 +647,7 @@
             ]
           ]
         }
-      },
-      "maxzoom": 12
+      }
     },
     {
       "id": "road_primary",
