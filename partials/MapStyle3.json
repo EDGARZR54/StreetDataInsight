@@ -649,7 +649,8 @@
             ]
           ]
         }
-      }
+      },
+      "maxzoom": 12
     },
     {
       "id": "road_primary",
