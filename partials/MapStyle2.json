@@ -25,36 +25,37 @@
     {
       "id": "background",
       "type": "background",
-      "paint": {"background-color": "#000"}
-    },
-    {
-      "id": "building_pattern",
-      "type": "fill",
-      "metadata": {"mapbox:group": "1444849364238.8171"},
-      "source": "openmaptiles",
-      "source-layer": "building",
-      "minzoom": 14,
-      "layout": {"visibility": "visible"},
       "paint": {
-        "fill-color": "rgba(255, 255, 255, 0.3)",
-        "fill-opacity": 1,
-        "fill-outline-color": "rgba(255, 255, 255, 0.1)",
-        "fill-pattern": "hatch-t",
-        "fill-pattern-scale": {"stops": [[14, 1], [20, 2]]}
+        "background-color": "#000000"
       }
     },
     {
       "id": "landcover_grass_fill",
       "type": "fill",
-      "metadata": {"mapbox:group": "1444849388993.3071"},
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
       "source": "openmaptiles",
       "source-layer": "landcover",
       "minzoom": 10,
-      "filter": ["==", "class", "grass"],
+      "filter": [
+        "==",
+        "class",
+        "grass"
+      ],
       "paint": {
         "fill-antialias": true,
         "fill-color": {
-          "stops": [[10, "rgba(255, 255, 255, 0.3)"], [16, "rgba(255, 255, 255, 1)"]]
+          "stops": [
+            [
+              10,
+              "rgba(255, 255, 255, 0.3)"
+            ],
+            [
+              16,
+              "rgba(255, 255, 255, 1)"
+            ]
+          ]
         },
         "fill-opacity": 1,
         "fill-outline-color": "rgba(255, 255, 255, 0)"
@@ -63,14 +64,31 @@
     {
       "id": "landcover_grass_pattern",
       "type": "fill",
-      "metadata": {"mapbox:group": "1444849388993.3071"},
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
       "source": "openmaptiles",
       "source-layer": "landcover",
       "minzoom": 10,
-      "filter": ["==", "class", "grass"],
+      "filter": [
+        "==",
+        "class",
+        "grass"
+      ],
       "paint": {
         "fill-antialias": true,
-        "fill-opacity": {"stops": [[10, 0.75], [14, 1]]},
+        "fill-opacity": {
+          "stops": [
+            [
+              10,
+              0.75
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        },
         "fill-outline-color": "rgba(161, 161, 161, 0)",
         "fill-pattern": "dash-t"
       }
@@ -81,8 +99,14 @@
       "source": "openmaptiles",
       "source-layer": "landcover",
       "minzoom": 10,
-      "filter": ["==", "class", "wood"],
-      "layout": {"visibility": "visible"},
+      "filter": [
+        "==",
+        "class",
+        "wood"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
         "fill-antialias": true,
         "fill-color": "rgba(255, 255, 255, 1)",
@@ -95,8 +119,14 @@
       "source": "openmaptiles",
       "source-layer": "landcover",
       "minzoom": 10,
-      "filter": ["==", "class", "wood"],
-      "layout": {"visibility": "visible"},
+      "filter": [
+        "==",
+        "class",
+        "wood"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
         "fill-antialias": true,
         "fill-color": "rgba(255, 255, 255, 1)",
@@ -110,11 +140,29 @@
       "source": "openmaptiles",
       "source-layer": "landuse",
       "minzoom": 10,
-      "filter": ["all", ["==", "class", "cemetery"]],
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "cemetery"
+        ]
+      ],
       "paint": {
         "fill-antialias": true,
         "fill-color": "rgba(99, 99, 99, 1)",
-        "fill-opacity": {"stops": [[10, 0.75], [14, 1]]},
+        "fill-opacity": {
+          "stops": [
+            [
+              10,
+              0.75
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        },
         "fill-outline-color": "rgba(180, 180, 180, 1)"
       }
     },
@@ -123,15 +171,63 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "filter": ["all", ["==", "class", "cemetery"]],
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "cemetery"
+        ]
+      ],
       "paint": {
         "fill-antialias": true,
         "fill-color": "rgba(19, 20, 20, 0)",
-        "fill-opacity": {"stops": [[10, 0.75], [14, 1]]},
+        "fill-opacity": {
+          "stops": [
+            [
+              10,
+              0.75
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        },
         "fill-outline-color": "rgba(180, 180, 180, 0)",
         "fill-pattern": "cross-t"
       }
+    },
+    {
+      "id": "building_pattern",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849364238.8171"
+      },
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "minzoom": 14,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(255,255,255,0.3)",
+        "fill-opacity": 1,
+        "fill-outline-color": "rgba(255,255,255,0.1)",
+        "fill-pattern": "hatch-t",
+        "fill-pattern-scale": {
+          "stops": [
+            [
+              14,
+              1
+            ],
+            [
+              20,
+              2
+            ]
+          ]
+        }
+      }
     }
-    /* Resto de capas se mantiene igual */
   ]
 }
