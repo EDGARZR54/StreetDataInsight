@@ -570,7 +570,7 @@
       }
     },
     {
-      "id": "road_secondary_main",
+      "id": "road_secondary",
       "type": "line",
       "metadata": {},
       "source": "openmaptiles",
@@ -594,85 +594,7 @@
           "in",
           "class",
           "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
-      },
-      "paint": {
-        "line-color": {
-          "stops": [
-            [
-              10,
-              "rgba(255, 255, 255, 0.3)"
-            ],
-            [
-              12,
-              "rgba(255, 255, 255, 0.5)"
-            ],
-            [
-              15,
-              "rgba(255, 255, 255, 1)"
-            ]
-          ]
-        },
-        "line-opacity": {
-          "stops": [
-            [
-              8.5,
-              0
-            ],
-            [
-              10,
-              1
-            ]
-          ]
-        },
-        "line-width": {
-          "stops": [
-            [
-              13,
-              0.5
-            ],
-            [
-              15,
-              3
-            ],
-            [
-              17,
-              8
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_secondary_small",
-      "type": "line",
-      "metadata": {},
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "!in",
-          "class",
-          "pier",
-          "rail",
-          "path",
-          "primary"
-        ],
-        [
-          "in",
-          "class",
+          "tertiary",
           "minor",
           "service"
         ]
@@ -680,7 +602,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "line-color": {
