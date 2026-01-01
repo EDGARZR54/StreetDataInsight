@@ -37,6 +37,7 @@
       },
       "source": "openmaptiles",
       "source-layer": "landcover",
+      "minzoom": 8,
       "filter": [
         "==",
         "class",
@@ -67,6 +68,7 @@
       },
       "source": "openmaptiles",
       "source-layer": "landcover",
+      "minzoom": 8,
       "filter": [
         "==",
         "class",
@@ -90,6 +92,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landcover",
+      "minzoom": 8,
       "filter": [
         "==",
         "class",
@@ -114,6 +117,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landcover",
+      "minzoom": 8,
       "filter": [
         "==",
         "class",
@@ -139,6 +143,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
+      "minzoom": 8,
       "filter": [
         "all",
         [
@@ -165,6 +170,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
+      "minzoom": 8,
       "filter": [
         "all",
         [
@@ -229,6 +235,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
+      "minzoom": 10,
       "filter": [
         "all",
         [
@@ -254,6 +261,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 11,
       "filter": [
         "all",
         [
@@ -291,6 +299,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -421,6 +430,7 @@
       "metadata": {},
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -461,6 +471,7 @@
       "metadata": {},
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 8,
       "filter": [
         "all",
         [
@@ -519,6 +530,7 @@
       "metadata": {},
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 6,
       "filter": [
         "all",
         [
@@ -573,6 +585,7 @@
       "metadata": {},
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 6,
       "filter": [
         "all",
         [
@@ -629,6 +642,7 @@
       },
       "source": "openmaptiles",
       "source-layer": "building",
+      "minzoom": 12,
       "layout": {
         "visibility": "visible"
       },
@@ -655,6 +669,7 @@
       },
       "source": "openmaptiles",
       "source-layer": "building",
+      "minzoom": 12,
       "layout": {
         "visibility": "visible"
       },
@@ -808,6 +823,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "water_name",
+      "minzoom": 5,
       "filter": [
         "all",
         [
@@ -846,6 +862,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "waterway",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -888,6 +905,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "water_name",
+      "minzoom": 2,
       "filter": [
         "all",
         [
@@ -967,6 +985,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
+      "minzoom": 14,
       "filter": [
         "in",
         "class",
@@ -1003,7 +1022,7 @@
         "text-opacity": {
           "stops": [
             [14, 0],
-            [15, 1]
+            [16, 1]
           ]
         }
       }
@@ -1013,6 +1032,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -1053,8 +1073,8 @@
         "text-halo-width": 3,
         "text-opacity": {
           "stops": [
-            [13.5, 0],
-            [14.5, 1]
+            [13, 0],
+            [15, 1]
           ]
         }
       }
@@ -1064,6 +1084,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "park",
+      "minzoom": 9,
       "filter": ["all"],
       "layout": {
         "symbol-placement": "point",
@@ -1092,6 +1113,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
+      "minzoom": 10,
       "filter": [
         "all",
         [
@@ -1239,6 +1261,7 @@
       },
       "source": "openmaptiles",
       "source-layer": "place",
+      "minzoom": 2,
       "filter": [
         "all",
         [
