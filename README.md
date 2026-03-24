@@ -1,4 +1,4 @@
-# StreetData Insight
+# Street Data Insight
 [![121132Artboard 2](https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37)](https://edgarzr54.github.io/StreetData-Insight/)
 
 When planning an urban-architectural intervention in public space, it is essential to have a solid understanding of the environment in which it is located, in order to fully appreciate its relationship with the city or the surrounding landscape. This study presents a methodology based on the acquisition and processing of geospatial data to digitally reconstruct urban profiles, with the aim of analyzing and planning public space.
