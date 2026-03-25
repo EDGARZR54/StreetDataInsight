@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetData Insight | Documentación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: auto;
+      background-color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font: 62.5% arial, helvetica, clean, sans-serif;
+    }
+
+    #main-content {
+      height: auto;
+      overflow-y: visible;
+      overflow-x: hidden;
+      margin-top: 100px;
+      width: 100%;
+    }
+
+    .open-sans-bold {
+      font-weight: 700; 
+      text-align: center; 
+      color: white; 
+      margin-bottom: 20px; 
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .gh-ribbon-wrapper {
+      background-color: #E2E2E2; 
+      border-bottom: 1px solid #999; 
+      width: 100%;
+      display: flex; 
+      justify-content: flex-start; 
+      padding: 30px 20px 15px 20px; 
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .gh-ribbon { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: flex-start; 
+      gap: 6px; 
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .ghgroup {
+      display: inline-flex; 
+      flex-direction: column; 
+      background: white;
+      border: 1px solid #000; 
+      border-radius: 4px; 
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      font-family: 'Segoe UI', sans-serif; 
+      flex-shrink: 0;
+    }
+
+    .gh-columns-container { 
+      display: flex; 
+      padding: 2px; 
+      background: #FDFDFD; 
+      align-items: center; 
+      min-height: 56px;
+      flex-wrap: wrap;
+    }
+
+    .gh-column { 
+      display: flex; 
+      flex-direction: column; 
+    }
+
+    .gh-separator { 
+      width: 1px; 
+      height: 44px; 
+      background-color: #D0D0D0; 
+      margin: 0 4px; 
+      flex-shrink: 0;
+    }
+
+    .gh-icon-btn {
+      width: 28px; 
+      height: 28px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      border: 1px solid transparent; 
+      box-sizing: border-box; 
+      cursor: pointer; 
+      position: relative;
+      background-size: 24px 24px; 
+      background-repeat: no-repeat; 
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    .gh-icon-btn:hover, .gh-icon-btn.active { 
+      background-color: #ffc10a; 
+      border-color: #cc9a00; 
+      border-radius: 3px; 
+    }
+
+    .gh-icon-btn[data-tooltip]:hover::after {
+      content: attr(data-tooltip); 
+      position: absolute; 
+      bottom: 135%; 
+      left: 50%; 
+      transform: translateX(-50%);
+      background-color: rgba(17,17,17,0.95); 
+      color: #fff; 
+      font-size: 11px; 
+      font-weight: 500;
+      padding: 4px 12px; 
+      border-radius: 20px; 
+      white-space: nowrap; 
+      width: max-content;
+      z-index: 9999; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4); 
+      pointer-events: none; 
+      display: block;
+    }
+
+    .gh-icon-btn[data-tooltip]:hover::before {
+      content: ""; 
+      position: absolute; 
+      bottom: 115%; 
+      left: 50%; 
+      transform: translateX(-50%);
+      border-width: 6px 6px 0 6px; 
+      border-style: solid;
+      border-color: rgba(17,17,17,0.95) transparent transparent transparent; 
+      z-index: 9999;
+    }
+
+    .ghgroup-title { 
+      background-color: Black; 
+      color: white; 
+      font-size: 10px; 
+      text-align: center; 
+      padding: 1px 4px; 
+      border-top: 1px solid #000; 
+      pointer-events: none; 
+    }
+
+    /* ADDON INFO SECTION - After Ribbon */
+    .addon-info-section {
+      background-color: #ccc;
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      margin: 0;
+      font-family: "Open Sans", Verdana, Arial, sans-serif;
+      font-weight: normal;
+      font-size: 10pt;
+      line-height: 1.8;
+      color: #363636;
+      text-align: left !important;
+    }
+
+    /* TITULO DEL ADDON */
+    .addon-info-section h1 {
+      font-family: "Open Sans", Verdana, Arial, sans-serif;
+      font-weight: normal;
+      line-height: 1.6em;
+      font-size: 2.4em;
+      margin: 0;
+      margin-bottom: 0.1em;
+      padding: 0;
+      clear: left;
+      color: #1a1a1a;
+      text-align: left !important;
+      text-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px;
+      display: block;
+      width: 100%;
+    }
+
+    .addon-info-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+      margin-top: 8px;
+      font-size: 14px;
+      color: #4b5563;
+      font-family: 'Open Sans', sans-serif;
+      text-align: left !important;
+      padding: 0;
+    }
+
+    .addon-info-meta span {
+      display: inline;
+    }
+
+    .addon-info-meta b {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .addon-info-description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #4b5563;
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: justify;
+    }
+
+    /* COMPONENTS TABLES SECTION */
+    .categories-wrapper {
+      background-color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+      gap: 20px;
+    }
+
+    .cchild {
+      background-color: white;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cchild h3 {
+      font-family: "Open Sans", Verdana, Arial, sans-serif;
+      font-weight: normal;
+      font-size: 16pt;
+      margin: 0 0 15px 0;
+      padding: 0;
+      color: #1a1a1a;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    /* ── CAMBIO 1: borde exterior visible en la tabla ── */
+    .addon-compos {
+      width: auto;
+      table-layout: auto;
+      border-collapse: collapse;
+      margin: 0;
+      font: 62.5% arial, helvetica, clean, sans-serif;
+      border: 1px solid #bbb;
+    }
+
+    .addon-compos tbody {
+      display: table-row-group;
+    }
+
+    .addon-compos tr {
+      display: table-row;
+      height: 56px;
+    }
+
+    .addon-compos tr td {
+      padding-bottom: 15px;
+      padding-top: 15px;
+      border-bottom: 1px solid #bbb;
+      vertical-align: middle;
+    }
+
+    .addon-compos tr:last-child td {
+      border-bottom: none;
+      padding-bottom: 15px;
+    }
+
+    .addon-compos tr:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    /* ── CAMBIO 3: franjas grises alternadas ── */
+    .addon-compos tbody tr:nth-child(odd) td {
+      background-color: #ffffff;
+    }
+
+    .addon-compos tbody tr:nth-child(even) td {
+      background-color: #f0f0f0;
+    }
+
+    .addon-compos tr:hover td {
+      background-color: #e8f0fe;
+    }
+
+    .addon-compos td {
+      margin: 0;
+      text-align: left;
+      font-family: "Open Sans", Verdana, Arial, sans-serif;
+      font-weight: normal;
+      font-size: 10pt;
+      color: #363636;
+      line-height: 1.6;
+    }
+
+    .ccol_1 {
+      width: 48px;
+      min-width: 48px;
+      padding: 8px 0 !important;
+      text-align: center;
+      vertical-align: middle;
+      display: table-cell;
+      border-right: 1px solid #bbb;
+    }
+
+    .ccol_1 a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      cursor: pointer;
+      line-height: 0;
+    }
+
+    .ccol_1 .ghsprite {
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .ghsprite {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background-size: 24px 24px;
+      background-repeat: no-repeat;
+    }
+
+    .ccol_2 {
+      width: auto;
+      white-space: normal;
+    }
+
+    .ccol_2 a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 11pt;
+    }
+
+    .ccol_2 a:hover {
+      text-decoration: underline;
+    }
+
+    .desc {
+      display: block;
+      font-size: 9pt;
+      color: #666;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .details-container { 
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      background: white;
+    }
+
+    .detail-card { 
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    /* Franja superior: icono + nombre del componente */
+    .detail-header { 
+      background: #ffffff; 
+      color: #1a1a1a; 
+      padding: 12px 16px; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px;
+      flex-wrap: nowrap;
+      border-radius: 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .detail-icon-wrap { 
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .detail-icon { 
+      width: 24px; 
+      height: 24px; 
+      background-size: 24px 24px; 
+      background-repeat: no-repeat; 
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    .detail-name { 
+      font-size: 18px; 
+      font-weight: 700; 
+      margin: 0;
+      font-family: "Open Sans", Arial, sans-serif;
+    }
+
+    /* Descripción: fuera del header, debajo */
+    .detail-description-bar {
+      background: white;
+      padding: 10px 16px;
+      border-bottom: 1px solid #ccc;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-size: 13px;
+      color: #363636;
+    }
+
+    .detail-body { 
+      display: flex;
+      flex-direction: column;
+      gap: 20px; 
+      padding: 16px; 
+      box-sizing: border-box;
+      width: 100%;
+      background: white;
+    }
+
+    @media (max-width: 1200px) {
+      .categories-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) { 
+      .categories-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .detail-body { 
+        grid-template-columns: 1fr; 
+      }
+      .detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .io-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 8px 0;
+      padding: 0;
+      border: none;
+      font-family: "Open Sans", Arial, sans-serif;
+    }
+
+    /* PARAMS TABLE */
+    .params-table {
+      width: auto;
+      table-layout: auto;
+      border-collapse: collapse;
+      background: white;
+      margin: 0 0 4px 0;
+      font-size: 13px;
+      font-family: "Open Sans", Arial, sans-serif;
+      border: 1px solid #ccc;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .params-table thead {
+      background: #4caf82;
+    }
+
+    .params-table thead tr th {
+      padding: 7px 12px;
+      text-align: left;
+      border: 1px solid #ccc;
+      font-size: 12px;
+      color: white;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .params-table tbody tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .params-table tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .params-table tbody tr td {
+      padding: 8px 12px;
+      vertical-align: top;
+      color: #333;
+      font-size: 13px;
+      line-height: 1.5;
+      border: 1px solid #ccc;
+    }
+
+    .params-table tbody tr td:first-child b {
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .params-table .badge-type {
+      display: inline-block;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      white-space: nowrap;
+      font-weight: normal;
+    }
+
+
+
+    .input-params thead {
+      background: #4285F4;
+    }
+
+    .input-params tbody tr:hover {
+      background-color: #e8f0fe;
+    }
+
+    .output-params thead {
+      background: #4285F4;
+    }
+
+    .output-params tbody tr:hover {
+      background-color: #e8f0fe;
+    }
+
+    .input-params .badge-type {
+      color: #333;
+    }
+
+    .output-params .badge-type {
+      color: #333;
+    }
+
+    [x-cloak] { 
+      display: none !important; 
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb-wrapper {
+      background-color: #E2E2E2;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .breadcrumb {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 5px;
+      border: solid 1px #ccc;
+      display: inline-flex;
+      max-width: 100%;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+      outline: none;
+      display: block;
+      float: left;
+      line-height: 36px;
+      color: black;
+      padding: 0 10px 0 40px;
+      background: #fff;
+      position: relative;
+      white-space: nowrap;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 100ms, color 100ms;
+    }
+
+    .breadcrumb a:first-child {
+      padding-left: 20px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .breadcrumb a:last-child {
+      border-radius: 0 5px 5px 0;
+      padding-right: 20px;
+    }
+
+    .breadcrumb a:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -18px;
+      width: 36px;
+      height: 36px;
+      transform: scale(0.707) rotate(45deg);
+      z-index: 1;
+      background: #fff;
+      box-shadow:
+        2px -2px 0 2px rgba(0,0,0,0.4),
+        3px -3px 0 2px rgba(255,255,255,0.1);
+      border-radius: 0 5px 0 50px;
+      transition: background-color 100ms;
+    }
+
+    .breadcrumb a:hover,
+    .breadcrumb a.active,
+    .breadcrumb a:hover:after,
+    .breadcrumb a.active:after {
+      background: #4285F4;
+      color: #fff;
+    }
+
+    .breadcrumb a:last-child:after {
+      content: none;
+    }
+
+    .breadcrumb-nolink,
+    .breadcrumb-nolink:after {
+      background: #adadad !important;
+      color: #333 !important;
+      cursor: default !important;
+      display: inline-flex !important;
+      align-items: center;
+    }
+
+    .breadcrumb-nolink:hover,
+    .breadcrumb-nolink:hover:after {
+      background: #adadad !important;
+      color: #333 !important;
+    }
+
+    /* ── VIEWS ── */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* Vista de categoría: lista de componentes en cards */
+    .category-view-wrapper {
+      background: white;
+      padding: 30px 20px;
+      box-sizing: border-box;
+    }
+
+    .category-view-wrapper h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18pt;
+      font-weight: normal;
+      color: #1a1a1a;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      margin: 0 0 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div id="main-content" x-data="ribbonHandler()">
+
+    <h1 class="open-sans-bold">Documentación del plugin Street Data Insight para Grasshopper</h1>
+
+    <!-- ══ BREADCRUMB ══ -->
+    <div class="breadcrumb-wrapper" x-show="!loading" x-cloak>
+      <nav class="breadcrumb">
+        <!-- Siempre visible: Grasshopper Addons -->
+        <a @click.prevent="goHome()" :class="view === 'home' ? 'active' : ''">Grasshopper Addons</a>
+        <!-- Siempre visible: Street Data Insight -->
+        <a @click.prevent="goHome()" :class="view === 'home' && !selectedCategory ? 'active' : ''">Street Data Insight</a>
+        <!-- Categoría (visible en vista de categoría o componente) -->
+        <template x-if="selectedCategory || selectedComponent">
+          <a @click.prevent="goCategory(selectedCategory || selectedComponent?.subcategory)"
+             :class="view === 'category' ? 'active' : ''"
+             x-text="selectedCategory || selectedComponent?.subcategory">
+          </a>
+        </template>
+        <!-- Componente (visible solo en vista de componente) -->
+        <template x-if="selectedComponent">
+          <a class="breadcrumb-nolink" style="display:flex;align-items:center;gap:6px;">
+            <div class="ghsprite" :style="{ backgroundImage: 'url(data:image/png;base64,' + selectedComponent.icon_base64 + ')' }"></div>
+            <span x-text="selectedComponent.name"></span>
+          </a>
+        </template>
+      </nav>
+    </div>
+
+    <!-- ══ RIBBON ══ -->
+    <div class="gh-ribbon-wrapper" x-show="!loading" x-cloak>
+      <header class="gh-ribbon">
+        <template x-for="catName in sortedCategoryNames" :key="catName">
+          <div class="ghgroup">
+            <div class="gh-columns-container">
+              <template x-for="(exposureItems, idx) in groups[catName]" :key="idx">
+                <div style="display:flex;align-items:center;">
+                  <template x-if="idx > 0"><div class="gh-separator"></div></template>
+                  <div style="display:flex;">
+                    <template x-for="col in chunkIcons(exposureItems)" :key="Math.random()">
+                      <div class="gh-column">
+                        <template x-for="comp in col" :key="comp.guid">
+                          <div class="gh-icon-btn"
+                            :class="selectedComponent?.guid === comp.guid ? 'active' : ''"
+                            :data-tooltip="comp.name"
+                            @click="goComponent(comp)"
+                            :style="{ backgroundImage: 'url(data:image/png;base64,' + comp.icon_base64 + ')' }">
+                          </div>
+                        </template>
+                        <template x-if="col.length === 1">
+                          <div style="width:28px;height:28px;flex-shrink:0;"></div>
+                        </template>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div class="ghgroup-title" x-text="catName"></div>
+          </div>
+        </template>
+      </header>
+    </div>
+
+    <!-- ══ VISTA: HOME (addon info + grid de categorías) ══ -->
+    <div :class="view === 'home' ? 'view active' : 'view'">
+
+      <!-- ADDON INFO SECTION -->
+      <div class="addon-info-section">
+        <h1>Street Data Insight</h1>
+        <div class="addon-info-meta">
+          <span>ADDON. Version <b>1.0.1</b>.</span>
+          <span>Released on <b>20-Feb-2023</b>.</span>
+          <span>Provides <b>70</b> components.</span>
+          <span>Created by <b>@EDGARZR54</b>.</span>
+        </div>
+        <p class="addon-info-description">
+          Street Data Insight is an experimental toolset for urban planners and architects, providing custom components to reconstruct, visualize, and process street environments, including geolocation, geospatial orientation, and georeferenced operations on street networks and blocks, while leveraging panoramic and spatial imagery data, computer vision, and the capabilities of Rhino, Grasshopper, and related frameworks.
+        </p>
+      </div>
+
+      <!-- COMPONENTS TABLES BY CATEGORY (GRID LAYOUT) -->
+      <div class="categories-wrapper">
+        <template x-for="category in getComponentsByCategory()" :key="category.name">
+          <div class="cchild">
+            <h3>
+              <a @click.prevent="goCategory(category.name)"
+                 x-text="category.name"
+                 style="color:#0066cc;cursor:pointer;text-decoration:none;"
+                 onmouseover="this.style.textDecoration='underline'"
+                 onmouseout="this.style.textDecoration='none'">
+              </a>
+            </h3>
+            <table class="addon-compos">
+              <tbody>
+                <template x-for="comp in category.components" :key="comp.guid">
+                  <tr>
+                    <td class="ccol_1" valign="middle" align="center">
+                      <a @click.prevent="goComponent(comp)" :title="comp.name">
+                        <div class="ghsprite" :style="{ backgroundImage: 'url(data:image/png;base64,' + comp.icon_base64 + ')' }"></div>
+                      </a>
+                    </td>
+                    <td class="ccol_2">
+                      <a @click.prevent="goComponent(comp)" x-text="comp.name"></a>
+                      <span class="desc" x-html="fmtDesc(comp.description)"></span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </template>
+      </div>
+    </div><!-- /view home -->
+
+    <!-- ══ VISTA: CATEGORÍA ══ -->
+    <div :class="view === 'category' ? 'view active' : 'view'">
+      <div class="category-view-wrapper">
+        <h2 x-text="selectedCategory"></h2>
+        <div class="categories-wrapper" style="padding:0;">
+          <div class="cchild" style="padding:0;">
+            <table class="addon-compos">
+              <tbody>
+                <template x-for="comp in getCategoryComponents()" :key="comp.guid">
+                  <tr>
+                    <td class="ccol_1" valign="middle" align="center">
+                      <a @click.prevent="goComponent(comp)" :title="comp.name">
+                        <div class="ghsprite" :style="{ backgroundImage: 'url(data:image/png;base64,' + comp.icon_base64 + ')' }"></div>
+                      </a>
+                    </td>
+                    <td class="ccol_2">
+                      <a @click.prevent="goComponent(comp)" x-text="comp.name"></a>
+                      <span class="desc" x-html="fmtDesc(comp.description)"></span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div><!-- /view category -->
+
+    <!-- ══ VISTA: COMPONENTE ══ -->
+    <div :class="view === 'component' ? 'view active' : 'view'">
+      <main class="details-container" x-show="selectedComponent">
+        <div class="detail-card">
+          <div class="detail-header">
+            <div class="detail-icon-wrap">
+              <div class="detail-icon" :style="{ backgroundImage: 'url(data:image/png;base64,' + selectedComponent?.icon_base64 + ')' }"></div>
+            </div>
+            <p class="detail-name" x-text="selectedComponent?.name"></p>
+          </div>
+          <div class="detail-description-bar">
+            <span x-html="fmtDesc(selectedComponent?.description)"></span>
+          </div>
+          <div class="detail-body">
+            <div class="io-section">
+              <h3>Inputs</h3>
+              <table class="params-table input-params">
+                <thead>
+                  <tr><th>Name</th><th>Description</th><th>Type</th><th>Access</th><th>Optional</th></tr>
+                </thead>
+                <tbody>
+                  <template x-for="input in selectedComponent?.inputs">
+                    <tr>
+                      <td><b x-text="input.name"></b></td>
+                      <td x-html="fmtDesc(input.description)"></td>
+                      <td><span class="badge-type" x-text="input.type"></span></td>
+                      <td>
+                        <span class="badge-type"
+                          x-text="input.access ? input.access.charAt(0).toUpperCase() + input.access.slice(1) : 'Item'">
+                        </span>
+                      </td>
+                      <td>
+                        <span class="badge-type"
+                          x-text="input.optional ? 'Yes' : 'No'">
+                        </span>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <div class="io-section">
+              <h3>Outputs</h3>
+              <table class="params-table output-params">
+                <thead>
+                  <tr><th>Name</th><th>Description</th><th>Type</th></tr>
+                </thead>
+                <tbody>
+                  <template x-for="output in selectedComponent?.outputs">
+                    <tr>
+                      <td><b x-text="output.name"></b></td>
+                      <td x-html="fmtDesc(output.description)"></td>
+                      <td><span class="badge-type" x-text="output.type"></span></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div><!-- /view component -->
+
+    <div class="credits">
+      <img src="https://raw.githubusercontent.com/EDGARZR54/StreetData-Insight/refs/heads/Street-Data-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <p>
+        Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
+        Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
+        Todos los derechos de las imágenes corresponden a Google.
+        Año de publicación: 2025.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+      .then(r => r.text()).then(d => { document.getElementById('navbar-placeholder').innerHTML = d; })
+      .catch(e => console.error(e));
+
+    function ribbonHandler() {
+      return {
+        groups: {}, 
+        sortedCategoryNames: [], 
+        loading: true, 
+        selectedComponent: null,
+        selectedCategory: null,
+        allComponents: [],
+        view: 'home',   // 'home' | 'category' | 'component'
+        exposurePriority: { "primary":1,"secondary":2,"tertiary":3,"quarternary":4,"quinary":5,"senary":6,"septenary":7,"obscure":10,"hidden":100 },
+
+        /* ── NAVEGACIÓN ── */
+        goHome() {
+          this.selectedComponent = null;
+          this.selectedCategory = null;
+          this.view = 'home';
+          history.pushState({view:'home'}, '', '#');
+          window.scrollTo(0, 0);
+        },
+        goCategory(catName) {
+          this.selectedCategory = catName;
+          this.selectedComponent = null;
+          this.view = 'category';
+          history.pushState({view:'category', category: catName}, '', '#cat=' + encodeURIComponent(catName));
+          window.scrollTo(0, 0);
+        },
+        goComponent(comp) {
+          this.selectedCategory = comp.subcategory;
+          this.selectedComponent = comp;
+          this.view = 'component';
+          history.pushState({view:'component', guid: comp.guid}, '', '#comp=' + encodeURIComponent(comp.guid));
+          window.scrollTo(0, 0);
+        },
+
+        /* Restaurar estado desde la URL al cargar / navegar con flechas */
+        restoreFromHash() {
+          const hash = decodeURIComponent(window.location.hash.slice(1));
+          if (!hash || hash === '') {
+            this.view = 'home';
+            this.selectedComponent = null;
+            this.selectedCategory = null;
+          } else if (hash.startsWith('comp=')) {
+            const guid = hash.slice(5);
+            const comp = this.allComponents.find(c => c.guid === guid);
+            if (comp) {
+              this.selectedComponent = comp;
+              this.selectedCategory = comp.subcategory;
+              this.view = 'component';
+            }
+          } else if (hash.startsWith('cat=')) {
+            const cat = hash.slice(4);
+            this.selectedCategory = cat;
+            this.selectedComponent = null;
+            this.view = 'category';
+          }
+        },
+
+        fmtDesc(text) {
+          if (!text) return '';
+          let s = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;');
+          // "=== This script" → <hr> + "This script"
+          s = s.replace(/\n?[ \t]*={4,}[ \t]*\n?[ \t]*(This script)/g,
+            '<hr style="border:none;border-top:1px solid #ccc;margin:6px 0;">$1');
+          // "====..." al final (línea de cierre sola)
+          s = s.replace(/\n?[ \t]*={4,}[ \t]*$/g,
+            '<hr style="border:none;border-top:1px solid #ccc;margin:6px 0;">');
+          // Número + flecha → nueva línea
+          s = s.replace(/\n[ \t]*(\d+)[ \t]*\u2192[ \t]*/g, '<br><b>$1</b> → ');
+          s = s.replace(/(\d+)[ \t]*\u2192[ \t]*/g, '<br><b>$1</b> → ');
+          // Resto de \n
+          s = s.replace(/\n[ \t]*/g, '<br>');
+          // Limpiar inicio y duplicados
+          s = s.replace(/^(<br>|<hr[^>]*>)+/, '');
+          s = s.replace(/(<hr[^>]*>)(<br>)+/g, '$1');
+          s = s.replace(/(<br>)+(<hr[^>]*>)/g, '$2');
+          return s;
+        },
+
+        getCategoryComponents() {
+          if (!this.selectedCategory) return [];
+          return this.allComponents.filter(c => c.subcategory === this.selectedCategory)
+            .sort((a,b) => a.name.localeCompare(b.name));
+        },
+
+        async init() {
+          try {
+            const res = await fetch('https://edgarzr54.github.io/StreetData-Insight/Tools/StreetDataInsight_Docs.json');
+            const data = await res.json();
+            this.allComponents = data.components;
+            
+            const tempGroups = {};
+            data.components.forEach(c => {
+              const sub = c.subcategory, exp = (c.exposure||'primary').toLowerCase();
+              if (!tempGroups[sub]) tempGroups[sub] = {};
+              if (!tempGroups[sub][exp]) tempGroups[sub][exp] = [];
+              tempGroups[sub][exp].push(c);
+            });
+            
+            for (let cat in tempGroups) {
+              this.groups[cat] = Object.keys(tempGroups[cat])
+                .sort((a,b)=>(this.exposurePriority[a]||99)-(this.exposurePriority[b]||99))
+                .map(k=>tempGroups[cat][k].sort((a,b)=>a.name.localeCompare(b.name)));
+            }
+            
+            this.sortedCategoryNames = Object.keys(this.groups).sort((a,b)=>(parseInt(a.split('|')[0])||0)-(parseInt(b.split('|')[0])||0));
+            this.loading = false;
+
+            // Restaurar vista desde hash (si venía con un enlace directo)
+            this.restoreFromHash();
+
+            // Escuchar flechas del navegador (popstate)
+            window.addEventListener('popstate', () => {
+              this.restoreFromHash();
+              window.scrollTo(0, 0);
+            });
+
+          } catch(e) { console.error(e); }
+        },
+        
+        chunkIcons(arr) { 
+          let c=[]; 
+          for(let i=0;i<arr.length;i+=2) c.push(arr.slice(i,i+2)); 
+          return c; 
+        },
+        
+        getComponentsByCategory() {
+          const categories = {};
+          this.allComponents.forEach(comp => {
+            const cat = comp.subcategory || 'Uncategorized';
+            if (!categories[cat]) categories[cat] = { name: cat, components: [] };
+            categories[cat].components.push(comp);
+          });
+          // Ordenar categorías por número de prefijo
+          const sorted = Object.values(categories).sort((a, b) => {
+            const aNum = parseInt(a.name.split('|')[0]) || 999;
+            const bNum = parseInt(b.name.split('|')[0]) || 999;
+            return aNum - bNum;
+          });
+          // Ordenar componentes dentro de cada categoría: por exposure, luego alfabético
+          sorted.forEach(cat => {
+            cat.components.sort((a, b) => {
+              const ea = this.exposurePriority[(a.exposure||'primary').toLowerCase()] || 99;
+              const eb = this.exposurePriority[(b.exposure||'primary').toLowerCase()] || 99;
+              if (ea !== eb) return ea - eb;
+              return a.name.localeCompare(b.name);
+            });
+          });
+          return sorted;
+        },
+
+        getCategoryComponents() {
+          if (!this.selectedCategory) return [];
+          return this.allComponents
+            .filter(c => c.subcategory === this.selectedCategory)
+            .sort((a, b) => {
+              const ea = this.exposurePriority[(a.exposure||'primary').toLowerCase()] || 99;
+              const eb = this.exposurePriority[(b.exposure||'primary').toLowerCase()] || 99;
+              if (ea !== eb) return ea - eb;
+              return a.name.localeCompare(b.name);
+            });
+        }
+      }
+    }
+  </script>
+</body>
+</html>
