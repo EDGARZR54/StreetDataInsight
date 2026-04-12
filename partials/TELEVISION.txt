@@ -1,597 +1,397 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="AZTECAUNO" tvg-name="AZTECA UNO" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/azteca_uno-mediano.png" group-title="TV ABIERTA", AZTECA UNO 1.1 
 https://mdstrm.com/live-stream-playlist/609b243156cca108312822a6.m3u8?
-
 #EXTINF:-1 tvg-id="AZTECAUNO" tvg-name="AZTECA UNO" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/azteca_uno-mediano.png" group-title="TV ABIERTA", AZTECA UNO 1.1 -1h
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=4833
-
 #EXTINF:-1 tvg-id="LASESTRELLAS" tvg-name="LAS ESTRELLAS" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c0/Las_Estrellas_2017_Navidad.svg/revision/latest/scale-to-width-down/250?cb=20230202024114&path-prefix=es" group-title="TV ABIERTA", LAS ESTRELLAS 2.1 
 https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index_6.m3u8
-
 #EXTINF:-1 tvg-id="FOROTV" tvg-name="FORO TV II" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/foro_tv-mediano.png" group-title="TV ABIERTA", FORO 4.1
 https://notusaauth.univision.com/api/v3/akamai-auth/token-auth?url=https://channel02secure-notusa.akamaized.net/hls/live/2023914/event01/index_6.m3u8&redirect=true
-
 #EXTINF:-1 tvg-id="FOROTV" tvg-name="FORO TV II" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/foro_tv-mediano.png" group-title="TV ABIERTA", N+ 4.2
 https://notusaauth.univision.com/api/v3/akamai-auth/token-auth?url=https://channel07secure-notusa.akamaized.net/hls/live/2036971/event01/index.m3u8&redirect=true
-
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/xhctmx.png" group-title="TV ABIERTA", IMAGEN TV+
 https://igd-it-runtime.otteravision.com/igd/it/it_720.m3u8
-
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/xhctmx.png" group-title="TV ABIERTA", IMAGEN TV+
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=6149
-
 #EXTINF:-1 group-title="TV ABIERTA", RADIO Y TELEVISIÓN DE HIDALGO 
 https://live20.bozztv.com/akamaissh101/ssh101/rythtest/chunks.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", CLARO SPORTS
 https://dai.google.com/linear/hls/event/yINISWAPQ0CPhPixe-40wQ/master.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", CGTN ESPAÑOL 
 https://espanol-livews.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd/playlist.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", TELEDIARIO NOW
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=11014&avod=1&coppa=0&is_lat=0&dnt=0&td=6&us_privacy=1ynn&did=3dafe10496907bcf3d5a3415a3135845&ifa_type=sessionid&app_bundle=com.canela.ott&app_store_url=https%3A%2F%2Fwww.canela.tv%2Fdevices&app_domain=canela.tv&app_name=canelatv&custom_targeting=web&custom_4=internal&player_height=720&player_width=1280&content_channel=canelatv&content_dist_name=internal&device_make=&device_model=&device_os=web&preferred_language=en&consent=1&gdpr=0&custom_12=0&custom_15=es&custom_16=en&custom_17=es&country=mx&country_region=mexico%20city&postal_code=07890&site_page=https%253a%252f%252fwww.canela.tv%252fes%252flinear%252ftelediario-now&gender=not_specified&yob=0&livestream=1&custom_param_0=&custom_param_1=handset&custom_param_2=&custom_param_3=&custom_param_4=internal&custom_param_5=web&timestamp=1726015280&id=69276&ip=2806%3A2f0%3Aa2a0%3Afb1d%3A7121%3A79d4%3Ac454%3A16ac&override_expiration=1500&deliveryProfileId=23762&sign=1MztDmTEi0FHwHXT9qSFpZNa08kwr6CgtXl8ZbK0rIs%3D
-
 #EXTINF:-1 tvg-id="MULTIMEDIOSPLUS" tvg-name="MULTIMEDIOS PLUS II" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/multimedios_plus-mediano.png" group-title="TV ABIERTA", CDMX CANAL 6.1
 https://mdstrm.com/live-stream-playlist/5f2d9d6ff17144074bd8a284.m3u8?
-
 #EXTINF:-1 tvg-id="MILENIOTV" tvg-name="MILENIO TV" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/milenio_tv-mediano.png" group-title="TV ABIERTA", MILENIO 6.2
 https://mdstrm.com/live-stream-playlist/610178c7db32a4112d994650.m3u8?uid=2i2bzPvKsEJ65OkOU6MbUwS0nQjEAxB7&sid=HN5SEWatl6lcA0kVSszqu3mpk35ney4P&pid=7RwOzwLBfqdEpmIE5PoQHI6Y6Sq2nmni&an=screen&at=web-app&av=v5.2.201&ref=https%3A%2F%2Fwww.multimedios.com%2F&res=300x150&without_cookies=false&dnt=true.m3u8
-
 #EXTINF:-1 tvg-id="ADN40" tvg-name="ADN 40" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/adn_40-mediano.png" group-title="TV ABIERTA", ADN 40 
 https://mdstrm.com/live-stream-playlist/60b578b060947317de7b57ac.m3u8?
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2018/07/Teleformula-en-vivo-Online-218x150.png" group-title="TV ABIERTA", TELEFORMULA 
 https://mdstrm.com/live-stream-playlist/62f2c855f7981b5a5a2d8763.m3u8?
-
 #EXTINF:-1 group-title="TV ABIERTA", AL DW 
 https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/index.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", HISPAN TV 
 https://live.presstv.ir/hls/hispantv.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", RS RT 
 https://rt-esp.rttv.com/live/rtesp/playlist.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", TV BRICS
 https://espbrics.mediacdn.ru:443/cdn/brics/spanish/tracks-v1a1/mono.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", UNIVISION 24|7
 https://d2c043ja5c3fzo.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-kbmx2rye8x0uq/server/distrib/0d5L5aFqyXYNTJbA/zuvPJYoOOdEMDNF2j2mvmg.XD-5XW7bmDpD5yWfV328oU9NWPX1Y7dhiYqJY3ymkerRKjKvBm9YaKmRu09CS8ak3vKkgVwPUO3_k0fGhRTEqm9C52Akmi0bMrtkdFN-ApwGS5bzMeefjZWDmajrGpA-z7QefASsKjTkWAe3BlRJ_vz3lQhvxyaR-gTRDOtaBmPVj7kcBaZplJ2o86Rm6t4OZaOmdnH6WiW1GoB__4qhQJvpE8uBN8i_t4EJLrXsgpMTqttdcsGYmhH3W1nRYhFZ7tHSwWnrpfbk73-fLrtWcw/manifest.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", UNIVISION 24|7
 https://linear-254.frequency.stream:443/mt/studio/254/hls/master/playlist_1280x720.m3u8
-
 #EXTINF:-1 tvg-id="Azteca7.mx" tvg-logo="https://i.imgur.com/UtFXjIn.png" group-title="TV ABIERTA", AZTECA 7
 https://mdstrm.com/live-stream-playlist/609ad46a7a441137107d7a81.m3u8
-
 #EXTINF:-1 tvg-id="APRENDETV" tvg-name="AZTECA 7.2" tvg-logo="http://codiceenlinea.com/wp-content/uploads/2020/08/Aprende-en-Casa_2_LOGO2-792x445.png" group-title="TV ABIERTA", AZ+ 7.2 
 https://mdstrm.com/live-stream-playlist/60b56be1000ea50835fa1e63.m3u8
-
 #EXTINF:-1 tvg-logo="https://mvstv.com/wp-content/uploads/2020/08/cropped-mvstv_logo_wt-3.png" group-title="TV ABIERTA", MVS TV 6.4
 https://dish.akamaized.net/Content/HLS_HLS_CLR/Live/channel(mvs)/variant.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", POPCORN CENTRAL 6.4
 https://freetv.stream.olympusatmedia.com:443/index1080p/partial.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", TURISTIK TV
 https://cdn1.cef-technology.com/stream_web/turistik/chunks.m3u8?nimblesessionid=4178860
-
 #EXTINF:-1 group-title="TV ABIERTA", SONY CHANNEL
 https://fl3.moveonjoy.com/Sony_Movie_Channel/index.m3u8
-
 #EXTINF:-1 tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/once_tv_mexico-mediano.png" group-title="TV ABIERTA", ONCE.3 Señal Digital 
 https://vivo.canaloncelive.tv/oncedos/ngrp:pruebachunks_all/playlist.m3u8?
-
 #EXTINF:-1 tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/once_tv_mexico-mediano.png" group-title="TV ABIERTA", ONCE MÉXICO 
 https://vivo.canaloncelive.tv:443/alivepkgr3/ngrp:cepro_all/chunklist_b2098304.m3u8
-
 #EXTINF:-1 tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/once_tv_mexico-mediano.png" group-title="TV ABIERTA", ONCE MÉXICO 1.11
 https://vivo.canaloncelive.tv/oncedos/ngrp:pruebachunks_all/chunklist_b2098304.m3u8
-
 #EXTINF:-1 tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/once_tv_mexico-mediano.png" group-title="TV ABIERTA", ONCE 11.1
 https://s5.mexside.net:1936/stream/stream/chunklist_w533253457.m3u8
-
 #EXTINF:-1 tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/once_tv_mexico-mediano.png" group-title="TV ABIERTA", ONCE 11.1
 https://s5.mexside.net:1936/stream/stream/index.m3u8
-
 #EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/bb/XHSPR-TDT_%28Canal_14_MX%29.png/revision/latest?cb=20200410213940" group-title="TV ABIERTA", CANAL CATORCE 
 https://s5.mexside.net:1936/canal14/canal14/chunklist.m3u8
-
 #EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/bb/XHSPR-TDT_%28Canal_14_MX%29.png/revision/latest?cb=20200410213940" group-title="TV ABIERTA", TV MIGRANTE
 https://s5.mexside.net:1936/tvmigrante/tvmigrante/chunklist_w850318408.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", CANAL DEL CONGRESO JALISCO 
 https://60417ddeaf0d9.streamlock.net/srtc/smil:srtc.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://iconape.com/wp-content/png_logo_vector/justiciatv-logo.png" group-title="TV ABIERTA", JUSTICIA TV 
 https://live-scjn.ovp-vivaro.digital:443/ovp-origin/638a22b47746d/chunklist.m3u8
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.1-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.1 
 https://5ca3e84a76d30.streamlock.net/tv4/smil:tv4.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.1-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.1 UHD
 https://5f1af61612fb5.streamlock.net/tv4/smil:tv4.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.2-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.2 
 https://5f2c1b0d880e5.streamlock.net/tv42/smil:tv42.smil/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.2-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.2 
-https://5f2c1b0d880e5.streamlock.net/tv42/smil:tv42.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.3-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.3 UHD 
 https://5f1af61612fb5.streamlock.net/tv43gto/smil:tv43gto.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/TV-Cuatro-Canal-4.1-Guanajuato-en-vivo-Online-218x150.png" group-title="TV ABIERTA", GTO TV4.4 UHD 
 https://5ca3e84a76d30.streamlock.net/tv44gto/smil:tv44gto.smil/playlist.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", EXPRESA TV CELAYA 
 https://5ca9af4645e15.streamlock.net:443/teleradio/smil:teleradio.smil/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://i.imgur.com/i4N1CVp.png" group-title="TV ABIERTA", CHP Canal 10
 https://5ca9af4645e15.streamlock.net/chiapas/videochiapas/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_Tv_UNAM.png" group-title="TV ABIERTA", TV UNAM 20.1
 https://5e50264bd6766.streamlock.net/tvunam/videotvunam/chunklist_w1747392996_DVR.m3u8
-
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/capital.png" group-title="TV ABIERTA", CAPITAL21 
 https://video.cdmx.gob.mx/redes/stream.m3u8?
-
 #EXTINF:-1 tvg-logo="http://manualdeimagen.canal22.org.mx/img/original.png" group-title="TV ABIERTA", CANAL 22.1
 https://5fc584f3f19c9.streamlock.net/canal22/smil:canal22.smil/playlist.m3u8?
-
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/can222.png" group-title="TV ABIERTA", CANAL 22.2 
 https://5fc584f3f19c9.streamlock.net/canal222/smil:canal222.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9Ny81LzIwMjMgMTE6MDM6MTQgUE0maGFzaF92YWx1ZT12K01UNWdtZWkzSERVdFJGNUN2UXFnPT0mdmFsaWRtaW51dGVzPTUmaWQ9
-
 #EXTINF:-1 tvg-name="MEXIQUENSE" tvg-logo="https://s3.amazonaws.com/rytvmx/wpmedia/2020/07/14141848/logoNew.png" group-title="TV ABIERTA", MEXIQUENSE Tv 34.1
 https://5e50264bd6766.streamlock.net/mexiquense/videomexiquense/playlist.m3u8?
-
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_Tv_UNAM.png" group-title="TV ABIERTA", ILCE
 https://live-ilce.ovp-vivaro.digital/ovp-origin-abr/ngrp:6359ef999f3fb_all/.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", EXAtv
 https://mvs.daioncdn.net:443/exatv/exatv_1080p.m3u8?&sid=76arxwhpzqio&app=188fff62-593e-43fb-8604-34d30d693c1e&ce=2
-
 #EXTINF:-1 group-title="TV ABIERTA", MTVHist
 http://45.88.92.3/tr3_MTVHits_SD/index.m3u8?token=test
-
 #EXTINF:-1 group-title="TV ABIERTA", STINGRAY CLASSICA
 https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8
-
-#EXTINF:-1 group-title="TV ABIERTA", EWTN
-https://cdn3.wowza.com/1/SmVrQmZCUXZhVDgz/b3J3MFJv/hls/l4hjmzyf/720/chunklist.m3u8
-
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/tlr.png" group-title="TV ABIERTA", TELERITMO 6.3
 https://mdstrm.com/live-stream-playlist/57b4dc126338448314449d0c.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", TELEHIT 
 https://streamer1.nexgen.bz/TELEHIT/index.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 
 http://belami.top/DATAS/arm/plays.php?ch=96&f=.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 
 http://190.11.225.124:5000/live/universo_hd/playlist.m3u8
-
 #EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_dvr_1080.m3u8
-
 #EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_1080.m3u8
-
 #EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/a8w1QRn.png" group-title="TV ABIERTA", STAR TVE AMERICA HD 
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/star_main_dvr_1080.m3u8
-
 #EXTINF:-1 group-title="TV ABIERTA", TASTEMADE
 https://amg00047-tastemade-tastemadees16international24i-ono-h4pdz.amagi.tv/playlist/amg00047-tastemade-tastemadees16international24i-ono/cb513d177b6c638c84cb3678d1d3d091a65928d80b6c852a6ab454876dbd4607c0f4fad39c15bb2a03c64bce600e66413e1ad668db7907b2ce08ed0868280811fa99c365db9a1309b2dd112a2ab4710e16b81705a165137edcde1f0aae34a1365040bf473d0072c59621c90b2ed99056d2247c9bda88326222434ff9081fa6f901fde0e54345c81ff9f34315c03044e4835cc9ca1abc87dc459d4a960bae46c4cea59bb041d4d7d33ab652b163470b743fddd57d919f04b78c9b243bce702c0b4f04e3a5defc193e870a4759feac9aea35a94b978a71b39d56d176f09f0b8aeb11c83a91a32585a1fbec434d2fa5c0547355d88fc2a4da45fe39fb99d884f37c6e8dfe54594acc7fd1212a42e3952aaf3ea267fa85228bf45a1c34d69041948ff0c4875036f0fd57a8f4c7e241664b730510925caf9f63cf269d7cad8e2020520d77ac9643c582d64c7a021dcfe85aa578ce7fc22c8a942e423077e798ab4deffb4f1fed39696eec2ef8d51960b6150b89233cff5727baf69dd2ec948ad4ff0f37b9df8817b13faffd26dbf817b1367c780cb7e02356410c2c84b5263e1d34e210b185efa1551c09e0f382cbf00219496b44035cdbb7a920cbd99b690a0088130770641c12a101d442d61406557d9e5080fa493cae2e1500caeb7f5153679388968484ddc50df549d6ddee3020351637f363450566c1b9805cb269182f340dce593314e549091baab8c6e7908c6b8eaf65ac39701d2c90a3400f5a04010e60fcb166d34ced9a19cbf99b08b6afe775768431b0141e99a2bb5ff9e092d24108d2c67a16659edf22854325c819d121eb83298da834e67d86b4ec18e8b569a5e3a2b80530c43835f6d0022220/195/1920x1080_4716800/index.m3u8
-
 #EXTINF:-1 group-title="NOTICIAS", BBC News
 http://187.245.231.226:8000/play/a0rw/index.m3u8
-
 #EXTINF:-1 group-title="NOTICIAS", BBC World
 http://187.245.231.226:8000/play/a0ly/index.m3u8
-
 #EXTINF:-1 group-title="NOTICIAS", CNNE
 http://187.245.231.226:8000/play/a0lx/index.m3u8
-
 #EXTINF:-1 group-title="NOTICIAS", France24
 http://187.245.231.226:8000/play/a0lz/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Claro Sports 1 HD
 http://187.245.231.226:8000/play/a0qe/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Claro Sports 3 HD
 http://187.245.231.226:8000/play/a0us/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", DHE
 http://187.245.231.226:8000/play/a0qb/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", DHE HD
 http://187.245.231.226:8000/play/a0mh/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN
 http://187.245.231.226:8000/play/a0o6/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN HD
 http://187.245.231.226:8000/play/a0tj/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 2
 http://187.245.231.226:8000/play/a0o7/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 2 HD
 http://187.245.231.226:8000/play/a0tk/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 3
 http://187.245.231.226:8000/play/a0tf/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 3 HD
 http://187.245.231.226:8000/play/a0tl/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 4
 http://187.245.231.226:8000/play/a0tg/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 4 HD
 http://187.245.231.226:8000/play/a0ti/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 5
 http://187.245.231.226:8000/play/a0u9/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 5 HD
 http://187.245.231.226:8000/play/a0um/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 6
 http://187.245.231.226:8000/play/a0th/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", ESPN 6 HD
 http://187.245.231.226:8000/play/a0tm/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", FOX SPORTS 3 HD
 http://187.245.231.226:8000/play/a0pw/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Fox Sport 3
 http://187.245.231.226:8000/play/a0lr/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Fox Sport Premium
 http://187.245.231.226:8000/play/a0uy/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Golf Channel HD
 http://187.245.231.226:8000/play/a0mk/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Latin America Sport
 http://187.245.231.226:8000/play/a0nd/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", Tigo Sports HD
 http://187.245.231.226:8000/play/a0og/index.m3u8
-
 #EXTINF:-1 group-title="DEPORTES", TUDN
 http://187.245.231.226:8000/play/a0ut/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", A&E
 http://187.245.231.226:8000/play/a0o0/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", A&E HD
 http://187.245.231.226:8000/play/a0mb/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AMC
 http://187.245.231.226:8000/play/a0lw/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AMC HD
 http://187.245.231.226:8000/play/a0mc/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AXN
 http://187.245.231.226:8000/play/a0lu/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AXN HD
 http://187.245.231.226:8000/play/a0uk/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Adult Swim
 http://187.245.231.226:8000/play/a0tc/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AZ click HD
 http://187.245.231.226:8000/play/a0mi/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Azcorazon
 http://187.245.231.226:8000/play/a0ll/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Azmundo
 http://187.245.231.226:8000/play/a0nw/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Azteca 7
 http://187.245.231.226:8000/play/a0uw/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CANAL KDRAMA
 http://187.245.231.226:8000/play/a0v0/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Comedy Central HD
 http://187.245.231.226:8000/play/a0on/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Concert Channel
 http://187.245.231.226:8000/play/a0ub/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", E!
 http://187.245.231.226:8000/play/a0nz/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", E! Entertainment HD
 http://187.245.231.226:8000/play/a0m9/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", EURO Channel
 http://187.245.231.226:8000/play/a0n6/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Exa TV
 http://187.245.231.226:8000/play/a0o8/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", FX
 http://187.245.231.226:8000/play/a0n4/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", FX HD
 http://187.245.231.226:8000/play/a0me/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Golden
 http://187.245.231.226:8000/play/a0nh/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HOLA! TV HD
 http://187.245.231.226:8000/play/a0om/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HTV
 http://187.245.231.226:8000/play/a0ng/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Imagen Tv
 http://187.245.231.226:8000/play/a0v2/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", LAS ESTRELLAS
 http://187.245.231.226:8000/play/a0uu/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", LIFE TIME
 http://187.245.231.226:8000/play/a0lq/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Multimedios
 http://187.245.231.226:8000/play/a0l3/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Mexicanal
 http://187.245.231.226:8000/play/a0uz/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", RCN Novelas
 http://187.245.231.226:8000/play/a0n5/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", SONY
 http://187.245.231.226:8000/play/a0nx/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", SONY HD
 http://187.245.231.226:8000/play/a0oc/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", SPACE
 http://187.245.231.226:8000/play/a0lm/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", SPACE HD
 http://187.245.231.226:8000/play/a0ul/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", STAR CHANNEL
 http://187.245.231.226:8000/play/a0u3/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", STAR CHANNEL HD
 http://187.245.231.226:8000/play/a0oa/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Sony Movies HD
 http://187.245.231.226:8000/play/a0mg/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Star TVE HD
 http://187.245.231.226:8000/play/a0mj/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Studio Universal
 http://187.245.231.226:8000/play/a0ug/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Sun Channel
 http://187.245.231.226:8000/play/a0n9/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TCM
 http://187.245.231.226:8000/play/a0ni/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TLNOVELAS
 http://187.245.231.226:8000/play/a0uv/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT
 http://187.245.231.226:8000/play/a0lv/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT HD
 http://187.245.231.226:8000/play/a0oj/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Novelas
 http://187.245.231.226:8000/play/a0rv/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Series
 http://187.245.231.226:8000/play/a0ln/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Series HD
 http://187.245.231.226:8000/play/a0pz/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Tooncast
 http://187.245.231.226:8000/play/a0nv/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Tru TV
 http://187.245.231.226:8000/play/a0lj/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Tv Largato
 http://187.245.231.226:8000/play/a0v3/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TVE
 http://187.245.231.226:8000/play/a0ui/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Telemundo
 http://187.245.231.226:8000/play/a0lk/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Telemundo HD
 http://187.245.231.226:8000/play/a0md/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Universal
 http://187.245.231.226:8000/play/a0uc/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL CINEMA ESTE HD
 http://187.245.231.226:8000/play/a0q5/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL COMEDY HD
 http://187.245.231.226:8000/play/a0ou/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL CRIME HD
 http://187.245.231.226:8000/play/a0ot/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL PREMIERE HD
 http://187.245.231.226:8000/play/a0oq/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL PREMIERE O HD
 http://187.245.231.226:8000/play/a0or/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL REALITY HD
 http://187.245.231.226:8000/play/a0os/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Univision HD
 http://187.245.231.226:8000/play/a0q3/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", WARNER HD
 http://187.245.231.226:8000/play/a0ob/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Warner
 http://187.245.231.226:8000/play/a0ny/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Banda Max
 http://187.245.231.226:8000/play/a0v1/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Canal Claro
 http://187.245.231.226:8000/play/a0lc/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Canal del Congreso
 http://187.245.231.226:8000/play/a0ts/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Canal5
 http://187.245.231.226:8000/play/a0v7/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Cine Latino
 http://187.245.231.226:8000/play/a0ue/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CineCanal
 http://187.245.231.226:8000/play/a0uh/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CINECANAL HD
 http://187.245.231.226:8000/play/a0od/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CineMax
 http://187.245.231.226:8000/play/a0uf/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CINE MEXICANO
 http://187.245.231.226:8000/play/a0ux/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", D Pelicula
 http://187.245.231.226:8000/play/a0v4/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", DISTRITO COMEDIA
 http://187.245.231.226:8000/play/a0v5/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", El Gourmet
 http://187.245.231.226:8000/play/a0n8/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Europa HD
 http://187.245.231.226:8000/play/a0mf/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Film & Arts
 http://187.245.231.226:8000/play/a0l6/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Film & arts HD
 http://187.245.231.226:8000/play/a0ma/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO Family HD
 http://187.245.231.226:8000/play/a0mt/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO HD
 http://187.245.231.226:8000/play/a0mq/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO Plus HD
 http://187.245.231.226:8000/play/a0ms/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO XTREME
 http://187.245.231.226:8000/play/a0mu/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO2 HD
 http://187.245.231.226:8000/play/a0qj/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Multicinema
 http://187.245.231.226:8000/play/a0sk/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Multipremier
 http://187.245.231.226:8000/play/a0ud/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", Pasiones HD
 http://187.245.231.226:8000/play/a0q2/index.m3u8
-
 #EXTINF:-1 group-title="ENTRETENIMIENTO", QATAR en vivo
 http://187.245.231.226:8000/play/a0r1/index.m3u8
-
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Canal Azteca - GUA
-http://187.245.231.226:8000/play/a0nr/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Animal Planet
 http://187.245.231.226:8000/play/a0o3/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Animal Planet HD
 http://187.245.231.226:8000/play/a0m8/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", DISC THEATHER HD
 http://187.245.231.226:8000/play/a0ok/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery Channel
 http://187.245.231.226:8000/play/a0o2/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery Channel HD
 http://187.245.231.226:8000/play/a0q0/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery Home & Health
 http://187.245.231.226:8000/play/a0u5/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery ID HD
 http://187.245.231.226:8000/play/a0q4/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery Turbo
 http://187.245.231.226:8000/play/a0u4/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Discovery World HD
 http://187.245.231.226:8000/play/a0q1/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", H2
 http://187.245.231.226:8000/play/a0n7/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", History Channel
 http://187.245.231.226:8000/play/a0o4/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", History HD
 http://187.245.231.226:8000/play/a0ml/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Home & Health HD
 http://187.245.231.226:8000/play/a0ol/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", ID
 http://187.245.231.226:8000/play/a0u6/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", National Geographic
 http://187.245.231.226:8000/play/a0lp/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", Nat Geo HD
 http://187.245.231.226:8000/play/a0px/index.m3u8
-
 #EXTINF:-1 group-title="DOCUMENTALES", TLC
 http://187.245.231.226:8000/play/a0o5/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", Baby First
 http://187.245.231.226:8000/play/a0n3/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", Cartoon Network
 http://187.245.231.226:8000/play/a0le/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", CARTOON NT HD
 http://187.245.231.226:8000/play/a0mp/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", Cartoonito
 http://187.245.231.226:8000/play/a0lg/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", Discovery Kids
 http://187.245.231.226:8000/play/a0u0/index.m3u8
-
 #EXTINF:-1 group-title="INFANTIL", Disney
 http://187.245.231.226:8000/play/a0u2/index.m3u8
+#EXTINF:-1 group-title="INFANTIL", Disney JR
+http://187.245.231.226:8000/play/a0lh/index.m3u8
+#EXTINF:-1 group-title="INFANTIL", SEMILLITAS
+http://187.245.231.226:8000/play/a0li/index.m3u8
