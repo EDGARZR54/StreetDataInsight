@@ -5,7 +5,8 @@
       "type": "Feature",
       "properties": {
         "id": 8916026,
-        "highway": "service"
+        "highway": "service",
+        "name": "Lurmont Terrace"
       },
       "geometry": {
         "type": "LineString",
@@ -25,7 +26,8 @@
       "type": "Feature",
       "properties": {
         "id": 8916880,
-        "highway": "residential"
+        "highway": "residential",
+        "name": "Montclair Terrace"
       },
       "geometry": {
         "type": "LineString",
@@ -89,7 +91,8 @@
       "type": "Feature",
       "properties": {
         "id": 8920642,
-        "highway": "service"
+        "highway": "service",
+        "name": "Southard Place"
       },
       "geometry": {
         "type": "LineString",
@@ -109,7 +112,8 @@
       "type": "Feature",
       "properties": {
         "id": 23157849,
-        "highway": "tertiary"
+        "highway": "tertiary",
+        "name": "Lombard Street"
       },
       "geometry": {
         "type": "LineString",
@@ -149,7 +153,8 @@
       "type": "Feature",
       "properties": {
         "id": 87297164,
-        "highway": "tertiary"
+        "highway": "tertiary",
+        "name": "Hyde Street"
       },
       "geometry": {
         "type": "LineString",
@@ -201,7 +206,8 @@
       "type": "Feature",
       "properties": {
         "id": 88396406,
-        "highway": "tertiary"
+        "highway": "tertiary",
+        "name": "Hyde Street"
       },
       "geometry": {
         "type": "LineString",
@@ -253,7 +259,8 @@
       "type": "Feature",
       "properties": {
         "id": 110803260,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -285,7 +292,8 @@
       "type": "Feature",
       "properties": {
         "id": 110803261,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -305,7 +313,8 @@
       "type": "Feature",
       "properties": {
         "id": 119458100,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -329,7 +338,8 @@
       "type": "Feature",
       "properties": {
         "id": 119458101,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -373,7 +383,8 @@
       "type": "Feature",
       "properties": {
         "id": 179749155,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -405,7 +416,8 @@
       "type": "Feature",
       "properties": {
         "id": 179749156,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -449,7 +461,8 @@
       "type": "Feature",
       "properties": {
         "id": 198877614,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -525,7 +538,8 @@
       "type": "Feature",
       "properties": {
         "id": 402111597,
-        "highway": "residential"
+        "highway": "residential",
+        "name": "Lombard Street"
       },
       "geometry": {
         "type": "LineString",
@@ -625,7 +639,8 @@
       "type": "Feature",
       "properties": {
         "id": 691835287,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -645,7 +660,8 @@
       "type": "Feature",
       "properties": {
         "id": 691835288,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -665,7 +681,8 @@
       "type": "Feature",
       "properties": {
         "id": 691835289,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -689,7 +706,8 @@
       "type": "Feature",
       "properties": {
         "id": 691835290,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -713,7 +731,8 @@
       "type": "Feature",
       "properties": {
         "id": 775130292,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -733,7 +752,8 @@
       "type": "Feature",
       "properties": {
         "id": 775130295,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -753,7 +773,8 @@
       "type": "Feature",
       "properties": {
         "id": 951848647,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -785,7 +806,8 @@
       "type": "Feature",
       "properties": {
         "id": 966201482,
-        "highway": "residential"
+        "highway": "residential",
+        "name": "Lombard Street"
       },
       "geometry": {
         "type": "LineString",
@@ -1341,7 +1363,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562121,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1365,7 +1388,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562122,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1385,7 +1409,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562123,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1421,7 +1446,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562124,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1453,7 +1479,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562125,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1477,7 +1504,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562126,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1501,7 +1529,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562127,
-        "highway": "service"
+        "highway": "service",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1525,7 +1554,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562143,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1545,7 +1575,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562144,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1569,7 +1600,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562145,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1593,7 +1625,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562146,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1617,7 +1650,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562147,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1641,7 +1675,8 @@
       "type": "Feature",
       "properties": {
         "id": 1011562148,
-        "highway": "steps"
+        "highway": "steps",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1661,7 +1696,8 @@
       "type": "Feature",
       "properties": {
         "id": 1319131049,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1685,7 +1721,8 @@
       "type": "Feature",
       "properties": {
         "id": 1319131050,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
@@ -1709,7 +1746,8 @@
       "type": "Feature",
       "properties": {
         "id": 1319131051,
-        "highway": "footway"
+        "highway": "footway",
+        "name": null
       },
       "geometry": {
         "type": "LineString",
