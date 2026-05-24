@@ -5,18 +5,24 @@ https://mdstrm.com/live-stream-playlist/609b243156cca108312822a6.m3u8?
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=4833
 #EXTINF:-1 tvg-id="LASESTRELLAS" tvg-name="LAS ESTRELLAS" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c0/Las_Estrellas_2017_Navidad.svg/revision/latest/scale-to-width-down/250?cb=20230202024114&path-prefix=es" group-title="TV ABIERTA", LAS ESTRELLAS 2.1 
 https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index_6.m3u8
+#EXTINF:-1 tvg-id="LASESTRELLAS" tvg-name="LAS ESTRELLAS" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c0/Las_Estrellas_2017_Navidad.svg/revision/latest/scale-to-width-down/250?cb=20230202024114&path-prefix=es" group-title="TV ABIERTA", LAS ESTRELLAS
+http://187.245.231.226:8000/play/a0uu/index.m3u8
 #EXTINF:-1 tvg-id="FOROTV" tvg-name="FORO TV II" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/foro_tv-mediano.png" group-title="NOTICIAS", FORO 4.1
 https://notusaauth.univision.com/api/v3/akamai-auth/token-auth?url=https://channel02secure-notusa.akamaized.net/hls/live/2023914/event01/index_6.m3u8&redirect=true
 #EXTINF:-1 tvg-id="FOROTV" tvg-name="FORO TV II" tvg-logo="https://imagenes.gatotv.com/logos/canales/oscuros/foro_tv-mediano.png" group-title="NOTICIAS", N+ 4.2
 https://notusaauth.univision.com/api/v3/akamai-auth/token-auth?url=https://channel07secure-notusa.akamaized.net/hls/live/2036971/event01/index.m3u8&redirect=true
+#EXTINF:-1 group-title="NOTICIAS", MEXICO - FORO TV 1
+http://185417-f.akamaihd.net/i/n0tf0r0_1@81283/index_1200_av-b.m3u8
+#EXTINF:-1 tvg-id="Foro.mx_SD" tvg-name="Foro TV (1080p)" group-title="NOTICIAS" source-url="https://iptv-org.github.io/iptv/index.m3u" content-type="application/x-mpegurl" archived-at="2026-03-01T11:06:13.428Z" tvg-logo="https://i.imgur.com/dDFrONz.png" indexer="playlist-harvester", FORO TV 2 (1080P)
+https://channel02-notusa.akamaized.net/hls/live/2023914/event01/index.m3u8
+#EXTINF:-1 group-title="NOTICIAS", FORO TV 3
+http://200.76.77.237/LIVE/H01/CANAL104/PROFILE03.m3u8?
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/xhctmx.png" group-title="TV ABIERTA", IMAGEN TV+
 https://igd-it-runtime.otteravision.com/igd/it/it_720.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/ivantapia882804/rasta12/main/Emblems/xhctmx.png" group-title="TV ABIERTA", IMAGEN TV+
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=6149
 #EXTINF:-1 group-title="TV ABIERTA", RADIO Y TELEVISIÓN DE HIDALGO 
 https://live20.bozztv.com/akamaissh101/ssh101/rythtest/chunks.m3u8
-#EXTINF:-1 group-title="TV ABIERTA", CLARO SPORTS
-https://dai.google.com/linear/hls/event/yINISWAPQ0CPhPixe-40wQ/master.m3u8
 #EXTINF:-1 group-title="TV ABIERTA", CGTN ESPAÑOL 
 https://espanol-livews.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd/playlist.m3u8
 #EXTINF:-1 group-title="TV ABIERTA", TELEDIARIO NOW
@@ -37,12 +43,14 @@ https://live.presstv.ir/hls/hispantv.m3u8
 https://rt-esp.rttv.com/live/rtesp/playlist.m3u8
 #EXTINF:-1 group-title="TV ABIERTA", TV BRICS
 https://espbrics.mediacdn.ru:443/cdn/brics/spanish/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="NOTICIAS", UNIVISION 24|7
+#EXTINF:-1 group-title="NOTICIAS", UNIVISION 24/7 1
 https://d2c043ja5c3fzo.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-kbmx2rye8x0uq/server/distrib/0d5L5aFqyXYNTJbA/zuvPJYoOOdEMDNF2j2mvmg.XD-5XW7bmDpD5yWfV328oU9NWPX1Y7dhiYqJY3ymkerRKjKvBm9YaKmRu09CS8ak3vKkgVwPUO3_k0fGhRTEqm9C52Akmi0bMrtkdFN-ApwGS5bzMeefjZWDmajrGpA-z7QefASsKjTkWAe3BlRJ_vz3lQhvxyaR-gTRDOtaBmPVj7kcBaZplJ2o86Rm6t4OZaOmdnH6WiW1GoB__4qhQJvpE8uBN8i_t4EJLrXsgpMTqttdcsGYmhH3W1nRYhFZ7tHSwWnrpfbk73-fLrtWcw/manifest.m3u8
-#EXTINF:-1 group-title="NOTICIAS", UNIVISION 24|7
+#EXTINF:-1 group-title="NOTICIAS", UNIVISION 24/7 2
 https://linear-254.frequency.stream:443/mt/studio/254/hls/master/playlist_1280x720.m3u8
-#EXTINF:-1 tvg-id="Azteca7.mx" tvg-logo="https://i.imgur.com/UtFXjIn.png" group-title="TV ABIERTA", AZTECA 7
+#EXTINF:-1 tvg-id="Azteca7.mx" tvg-logo="https://i.imgur.com/UtFXjIn.png" group-title="TV ABIERTA", AZTECA 7 1
 https://mdstrm.com/live-stream-playlist/609ad46a7a441137107d7a81.m3u8
+#EXTINF:-1 tvg-id="Azteca7.mx" tvg-logo="https://i.imgur.com/UtFXjIn.png" group-title="TV ABIERTA", AZTECA 7 2
+http://187.245.231.226:8000/play/a0uw/index.m3u8
 #EXTINF:-1 tvg-id="APRENDETV" tvg-name="AZTECA 7.2" tvg-logo="http://codiceenlinea.com/wp-content/uploads/2020/08/Aprende-en-Casa_2_LOGO2-792x445.png" group-title="TV ABIERTA", AZ+ 7.2 
 https://mdstrm.com/live-stream-playlist/60b56be1000ea50835fa1e63.m3u8
 #EXTINF:-1 tvg-logo="https://mvstv.com/wp-content/uploads/2020/08/cropped-mvstv_logo_wt-3.png" group-title="TV ABIERTA", MVS TV 6.4
@@ -97,9 +105,9 @@ https://5fc584f3f19c9.streamlock.net/canal222/smil:canal222.smil/playlist.m3u8?w
 https://5e50264bd6766.streamlock.net/mexiquense/videomexiquense/playlist.m3u8?
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_Tv_UNAM.png" group-title="TV ABIERTA", ILCE
 https://live-ilce.ovp-vivaro.digital/ovp-origin-abr/ngrp:6359ef999f3fb_all/.m3u8
-#EXTINF:-1 group-title="TV ABIERTA", EXAtv
+#EXTINF:-1 group-title="TV ABIERTA", EXATV
 https://mvs.daioncdn.net:443/exatv/exatv_1080p.m3u8?&sid=76arxwhpzqio&app=188fff62-593e-43fb-8604-34d30d693c1e&ce=2
-#EXTINF:-1 group-title="TV ABIERTA", MTVHist
+#EXTINF:-1 group-title="TV ABIERTA", MTVHITS
 http://45.88.92.3/tr3_MTVHits_SD/index.m3u8?token=test
 #EXTINF:-1 group-title="TV ABIERTA", STINGRAY CLASSICA
 https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8
@@ -107,165 +115,165 @@ https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/maste
 https://mdstrm.com/live-stream-playlist/57b4dc126338448314449d0c.m3u8
 #EXTINF:-1 group-title="TV ABIERTA", TELEHIT 
 https://streamer1.nexgen.bz/TELEHIT/index.m3u8
-#EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 
+#EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 1
 http://belami.top/DATAS/arm/plays.php?ch=96&f=.m3u8
-#EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 
+#EXTINF:-1 group-title="TV ABIERTA", UNIVERSO 2
 http://190.11.225.124:5000/live/universo_hd/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 1
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_dvr_1080.m3u8
-#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/ITx8bTj.png" group-title="TV ABIERTA", TVE INTERNACIONAL AMERICA HD 2
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_1080.m3u8
 #EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/a8w1QRn.png" group-title="TV ABIERTA", STAR TVE AMERICA HD 
 https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/star_main_dvr_1080.m3u8
 #EXTINF:-1 group-title="TV ABIERTA", TASTEMADE
 https://amg00047-tastemade-tastemadees16international24i-ono-h4pdz.amagi.tv/playlist/amg00047-tastemade-tastemadees16international24i-ono/cb513d177b6c638c84cb3678d1d3d091a65928d80b6c852a6ab454876dbd4607c0f4fad39c15bb2a03c64bce600e66413e1ad668db7907b2ce08ed0868280811fa99c365db9a1309b2dd112a2ab4710e16b81705a165137edcde1f0aae34a1365040bf473d0072c59621c90b2ed99056d2247c9bda88326222434ff9081fa6f901fde0e54345c81ff9f34315c03044e4835cc9ca1abc87dc459d4a960bae46c4cea59bb041d4d7d33ab652b163470b743fddd57d919f04b78c9b243bce702c0b4f04e3a5defc193e870a4759feac9aea35a94b978a71b39d56d176f09f0b8aeb11c83a91a32585a1fbec434d2fa5c0547355d88fc2a4da45fe39fb99d884f37c6e8dfe54594acc7fd1212a42e3952aaf3ea267fa85228bf45a1c34d69041948ff0c4875036f0fd57a8f4c7e241664b730510925caf9f63cf269d7cad8e2020520d77ac9643c582d64c7a021dcfe85aa578ce7fc22c8a942e423077e798ab4deffb4f1fed39696eec2ef8d51960b6150b89233cff5727baf69dd2ec948ad4ff0f37b9df8817b13faffd26dbf817b1367c780cb7e02356410c2c84b5263e1d34e210b185efa1551c09e0f382cbf00219496b44035cdbb7a920cbd99b690a0088130770641c12a101d442d61406557d9e5080fa493cae2e1500caeb7f5153679388968484ddc50df549d6ddee3020351637f363450566c1b9805cb269182f340dce593314e549091baab8c6e7908c6b8eaf65ac39701d2c90a3400f5a04010e60fcb166d34ced9a19cbf99b08b6afe775768431b0141e99a2bb5ff9e092d24108d2c67a16659edf22854325c819d121eb83298da834e67d86b4ec18e8b569a5e3a2b80530c43835f6d0022220/195/1920x1080_4716800/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Claro Sports 1 HD
+#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 1 HD
 http://187.245.231.226:8000/play/a0qe/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Claro Sports 3 HD
+#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 2 HD
 http://187.245.231.226:8000/play/a0us/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", DHE
+#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 3
+http://45.5.117.57:8999/play/a03z/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 4
+https://dai.google.com/linear/hls/event/yINISWAPQ0CPhPixe-40wQ/master.m3u8
+#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 5 2
+http://45.5.117.57:8999/play/a05n/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", DHE 1
 http://187.245.231.226:8000/play/a0qb/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", DHE HD
+#EXTINF:-1 group-title="DEPORTES", DHE 2 HD
 http://187.245.231.226:8000/play/a0mh/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN
-http://187.245.231.226:8000/play/a0o6/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN HD
-http://187.245.231.226:8000/play/a0tj/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 2
-http://187.245.231.226:8000/play/a0o7/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 2 HD
-http://187.245.231.226:8000/play/a0tk/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 3
-http://187.245.231.226:8000/play/a0tf/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 3 HD
-http://187.245.231.226:8000/play/a0tl/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 4
-http://187.245.231.226:8000/play/a0tg/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 4 HD
-http://187.245.231.226:8000/play/a0ti/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 5
-http://187.245.231.226:8000/play/a0u9/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 5 HD
-http://187.245.231.226:8000/play/a0um/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 6
-http://187.245.231.226:8000/play/a0th/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 6 HD
-http://187.245.231.226:8000/play/a0tm/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 3 HD
-http://187.245.231.226:8000/play/a0pw/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Fox Sport 3
-http://187.245.231.226:8000/play/a0lr/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Fox Sport Premium
-http://187.245.231.226:8000/play/a0uy/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Golf Channel HD
-http://187.245.231.226:8000/play/a0mk/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Latin America Sport
-http://187.245.231.226:8000/play/a0nd/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", Tigo Sports HD
-http://187.245.231.226:8000/play/a0og/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", TUDN
-http://187.245.231.226:8000/play/a0ut/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", TUDN.
-https://streaming.alwaysdata.net/tudn.php
-#EXTINF:-1 group-title="DEPORTES", TUDN usa
-http://tvmate.icu:8080/Alan/Alan1234/82241
-#EXTINF:-1 group-title="DEPORTES", TUDN 4K
-http://go.iptvhn.net:25461/7619/7619/1980
-#EXTINF:-1 group-title="DEPORTES", TUDN USA
-http://go.iptvhn.net:25461/7619/7619/2727
-#EXTINF:-1 group-title="DEPORTES", TUDN LATINO 2
-http://go.iptvhn.net:25461/7619/7619/3333
-#EXTINF:-1 group-title="DEPORTES", TUDN
-http://45.5.117.57:8999/play/a04t/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", TUDN
-http://45.228.234.30:16000/play/a02x/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", TUDN VIX
-http://go.iptvhn.net:25461/7619/7619/3334
-#EXTINF:-1 group-title="DEPORTES", FOX SPORTS PREMIUM
-http://go.iptvhn.net:25461/7619/7619/2464
-#EXTINF:-1 group-title="DEPORTES", Fox Sports en Espanol 
-https://live-manifest.production-public.tubi.io/live/d906efca-1302-4e29-b0d9-9a1d7a305d69/playlist.m3u8
-#EXTINF:-1 group-title="DEPORTES", FOX SPORT 1 
-http://go.iptvhn.net:25461/7619/7619/2357
-#EXTINF:-1 group-title="DEPORTES", FOX SPORT 2 MEXICO
-http://go.iptvhn.net:25461/7619/7619/2464
-#EXTINF:-1 group-title="DEPORTES", Fox Sports 2
-http://45.5.117.57:8200/play/a058/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", FOX Sports 2 HD 
-http://181.114.57.246:4000/play/eGhTK4fJJR5p5M3N/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN Plus+ 
-http://181.114.57.246:4000/play/7mZEEEBQpQGypd9c/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN HD 
-http://181.114.57.246:4000/play/Z5TWRUY3869wGRLG/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN MX
-http://45.5.117.57:8200/play/a031/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN
-http://181.205.130.194:4000/play/a08n
 #EXTINF:-1 group-title="DEPORTES", ESPN 1
+http://187.245.231.226:8000/play/a0o6/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 2 HD
+http://187.245.231.226:8000/play/a0tj/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 3
+http://187.245.231.226:8000/play/a0o7/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 4 HD
+http://187.245.231.226:8000/play/a0tk/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 5
+http://187.245.231.226:8000/play/a0tf/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 6 HD
+http://187.245.231.226:8000/play/a0tl/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 7
+http://187.245.231.226:8000/play/a0tg/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 8 HD
+http://187.245.231.226:8000/play/a0ti/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 9
+http://187.245.231.226:8000/play/a0u9/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 10 HD
+http://187.245.231.226:8000/play/a0um/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 11
+http://187.245.231.226:8000/play/a0th/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 12 HD
+http://187.245.231.226:8000/play/a0tm/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 13 PLUS+
+http://181.114.57.246:4000/play/7mZEEEBQpQGypd9c/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 14 HD
+http://181.114.57.246:4000/play/Z5TWRUY3869wGRLG/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 15 MX
+http://45.5.117.57:8200/play/a031/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", ESPN 16
+http://181.205.130.194:4000/play/a08n
+#EXTINF:-1 group-title="DEPORTES", ESPN 17
 http://181.205.130.194:4000/play/a07j
-#EXTINF:-1 group-title="DEPORTES", ESPN 1  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 18 HD
 http://go.iptvhn.net:25461/7619/7619/836
-#EXTINF:-1 group-title="DEPORTES", ESPN 2 MX
+#EXTINF:-1 group-title="DEPORTES", ESPN 19 2 MX
 http://45.5.117.57:8200/play/a032/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 2
+#EXTINF:-1 group-title="DEPORTES", ESPN 20 2
 http://181.205.130.194:4000/play/a07i
-#EXTINF:-1 group-title="DEPORTES", ESPN 2  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 21 HD 2
 http://go.iptvhn.net:25461/7619/7619/837
-#EXTINF:-1 group-title="DEPORTES", ESPN 2 
+#EXTINF:-1 group-title="DEPORTES", ESPN 22
 http://181.114.57.246:4000/play/3jZRN66nDhuZwLbW/index.m3u8 
-#EXTINF:-1 group-title="DEPORTES", ESPN 3  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 23 HD 3
 http://go.iptvhn.net:25461/7619/7619/838
-#EXTINF:-1 group-title="DEPORTES", ESPN3 HD 
+#EXTINF:-1 group-title="DEPORTES", ESPN 24 HD 3
 http://181.114.57.246:4000/play/4hrEpujghmYgjET8/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 4  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 25 HD 4
 http://go.iptvhn.net:25461/7619/7619/909
-#EXTINF:-1 group-title="DEPORTES", ESPN 4 NUEVO STRIM 
+#EXTINF:-1 group-title="DEPORTES", ESPN 26 NUEVO STREAM 4
 http://181.114.57.246:4000/play/zxCvBnM159QsGhk5/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 5  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 27 HD 5
 http://go.iptvhn.net:25461/7619/7619/1069
-#EXTINF:-1 group-title="DEPORTES",  ESPN 5
+#EXTINF:-1 group-title="DEPORTES", ESPN 28 5
 http://38.41.8.1:8000/play/a07b
-#EXTINF:-1 group-title="DEPORTES", ESPN 5 
+#EXTINF:-1 group-title="DEPORTES", ESPN 29
 http://181.114.57.246:4000/play/zMbqBSS3gramuTPy/index.m3u8 
-#EXTINF:-1 group-title="DEPORTES", ESPN 6  HD
+#EXTINF:-1 group-title="DEPORTES", ESPN 30 HD 6
 http://go.iptvhn.net:25461/7619/7619/1072
-#EXTINF:-1 group-title="DEPORTES", ESPN 6
+#EXTINF:-1 group-title="DEPORTES", ESPN 31 6
 http://181.205.130.194:4000/play/a07t
-#EXTINF:-1 group-title="DEPORTES", ESPN 6 
+#EXTINF:-1 group-title="DEPORTES", ESPN 32
 http://181.114.57.246:4000/play/G5zcc3HYpdc5AjMs/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", ESPN 7 mx
+#EXTINF:-1 group-title="DEPORTES", ESPN 33 7 MX
 http://181.205.130.194:4000/play/a07s
-#EXTINF:-1 group-title="DEPORTES", LIGA DE CAMPEONES 4K (R)
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 1 3 HD
+http://187.245.231.226:8000/play/a0pw/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 2 3
+http://187.245.231.226:8000/play/a0lr/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 3 PREMIUM
+http://187.245.231.226:8000/play/a0uy/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 4 PREMIUM
+http://go.iptvhn.net:25461/7619/7619/2464
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 5 EN ESPANOL
+https://live-manifest.production-public.tubi.io/live/d906efca-1302-4e29-b0d9-9a1d7a305d69/playlist.m3u8
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 6 1
+http://go.iptvhn.net:25461/7619/7619/2357
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 7 2 MEXICO
+http://go.iptvhn.net:25461/7619/7619/2464
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 8 2
+http://45.5.117.57:8200/play/a058/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", FOX SPORTS 9 2 HD
+http://181.114.57.246:4000/play/eGhTK4fJJR5p5M3N/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", GOLF CHANNEL HD
+http://187.245.231.226:8000/play/a0mk/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", LATIN AMERICA SPORT
+http://187.245.231.226:8000/play/a0nd/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", TIGO SPORTS HD
+http://187.245.231.226:8000/play/a0og/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", TUDN 1
+http://187.245.231.226:8000/play/a0ut/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", TUDN 2
+https://streaming.alwaysdata.net/tudn.php
+#EXTINF:-1 group-title="DEPORTES", TUDN 3 4K
+http://go.iptvhn.net:25461/7619/7619/1980
+#EXTINF:-1 group-title="DEPORTES", TUDN 4 USA
+http://go.iptvhn.net:25461/7619/7619/2727
+#EXTINF:-1 group-title="DEPORTES", TUDN 5 LATINO 2
+http://go.iptvhn.net:25461/7619/7619/3333
+#EXTINF:-1 group-title="DEPORTES", TUDN 6
+http://45.228.234.30:16000/play/a02x/index.m3u8
+#EXTINF:-1 tvg-id="tudn_2" tvg-logo="https://img.teleclub.xyz/tudn.png" group-title="DEPORTES", TUDN 7
+http://tv.teleclub.xyz/stream/server_2/deportes/tudn/master.m3u8
+#EXTINF:-1 group-title="DEPORTES", TUDN 8
+http://45.5.117.57:8999/play/a04t/index.m3u8
+#EXTINF:-1 group-title="DEPORTES", TUDN 9 4K
 http://go.iptvhn.net:25461/7619/7619/1947
-#EXTINF:-1 group-title="DEPORTES", SKY SPORT  LA LIGA
+#EXTINF:-1 group-title="DEPORTES", SKY SPORT LA LIGA
 http://go.iptvhn.net:25461/7619/7619/1983
 #EXTINF:-1 group-title="DEPORTES", SKY LA LIGA
 http://190.92.10.66:4000/play/a001/index.m3u8
 #EXTINF:-1 group-title="DEPORTES", SKY BUNDESLIGA 4K (R)
 http://go.iptvhn.net:25461/7619/7619/2504
-#EXTINF:-1 group-title="DEPORTES", KY BUNDESLIGA
+#EXTINF:-1 group-title="DEPORTES", SKY BUNDESLIGA
 http://190.92.10.66:4000/play/a006/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", TVC Deportes HD
+#EXTINF:-1 group-title="DEPORTES", TVC DEPORTES HD
 http://148.230.149.45:1020/play/a01d
 #EXTINF:-1 group-title="DEPORTES", DEPORTES TVC 
 http://go.iptvhn.net:25461/7619/7619/1928
-#EXTINF:-1 group-title="DEPORTES", DIREC TV 4k (R)
+#EXTINF:-1 group-title="DEPORTES", DIREC TV 4K (R)
 http://go.iptvhn.net:25461/7619/7619/1946
-#EXTINF:-1 group-title="DEPORTES", Azteca Deportes
+#EXTINF:-1 group-title="DEPORTES", AZTECA DEPORTES
 http://148.230.149.45:1020/play/a026
 #EXTINF:-1 group-title="DEPORTES", ITV DEPORTES 
 https://thm-it-roku.otteravision.com/thm/it/it.
-#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS
-http://45.5.117.57:8999/play/a03z/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", CLARO SPORTS 2
-http://45.5.117.57:8999/play/a05n/index.m3u8
-#EXTINF:-1 group-title="DEPORTES", FIFA+ Hispanic America
+#EXTINF:-1 group-title="DEPORTES", FIFA+ HISPANIC AMERICA
 https://6c849fb3.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/TEctbXhfRklGQVBsdXNTcGFuaXNoLTFfSExT/playlist.m3u8
-#EXTINF:-1 group-title="DEPORTES", FIFA+ Spain
+#EXTINF:-1 group-title="DEPORTES", FIFA+ SPAIN
 https://d63fabad.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWVzX0ZJRkFQbHVzU3BhbmlzaF9ITFM/playlist.m3u8
-#EXTINF:-1 group-title="DEPORTES", FIFA+ United States
+#EXTINF:-1 group-title="DEPORTES", FIFA+ UNITED STATES
 https://d2w9q46ikgrcwx.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-of5cbk3sav3w5/v1/sysdata_s_p_a_fifa_7/samsungheadend_us/latest/main/hls/playlist.m3u8
-#EXTINF:-1 group-title="DEPORTES", beIN Sports XTRA en Espanol 
+#EXTINF:-1 group-title="DEPORTES", BEIN SPORTS XTRA EN ESPANOL 
 https://dc1644a9jazgj.cloudfront.net/beIN_Sports_Xtra_Espanol.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", A&E
 http://187.245.231.226:8000/play/a0o0/index.m3u8
@@ -279,51 +287,47 @@ http://187.245.231.226:8000/play/a0mc/index.m3u8
 http://187.245.231.226:8000/play/a0lu/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", AXN HD
 http://187.245.231.226:8000/play/a0uk/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Adult Swim
+#EXTINF:-1 group-title="ENTRETENIMIENTO", ADULT SWIM
 http://187.245.231.226:8000/play/a0tc/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", AZ click HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", AZ CLICK HD
 http://187.245.231.226:8000/play/a0mi/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Azcorazon
+#EXTINF:-1 group-title="ENTRETENIMIENTO", AZCORAZON
 http://187.245.231.226:8000/play/a0ll/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Azmundo
+#EXTINF:-1 group-title="ENTRETENIMIENTO", AZMUNDO
 http://187.245.231.226:8000/play/a0nw/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Azteca 7
-http://187.245.231.226:8000/play/a0uw/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CANAL KDRAMA
 http://187.245.231.226:8000/play/a0v0/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Comedy Central HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", COMEDY CENTRAL HD
 http://187.245.231.226:8000/play/a0on/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Concert Channel
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CONCERT CHANNEL
 http://187.245.231.226:8000/play/a0ub/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", E!
 http://187.245.231.226:8000/play/a0nz/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", E! Entertainment HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", E! ENTERTAINMENT HD
 http://187.245.231.226:8000/play/a0m9/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", EURO Channel
+#EXTINF:-1 group-title="ENTRETENIMIENTO", EURO CHANNEL
 http://187.245.231.226:8000/play/a0n6/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Exa TV
+#EXTINF:-1 group-title="ENTRETENIMIENTO", EXA TV
 http://187.245.231.226:8000/play/a0o8/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", FX
 http://187.245.231.226:8000/play/a0n4/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", FX HD
 http://187.245.231.226:8000/play/a0me/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Golden
+#EXTINF:-1 group-title="ENTRETENIMIENTO", GOLDEN
 http://187.245.231.226:8000/play/a0nh/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HOLA! TV HD
 http://187.245.231.226:8000/play/a0om/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HTV
 http://187.245.231.226:8000/play/a0ng/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Imagen Tv
+#EXTINF:-1 group-title="ENTRETENIMIENTO", IMAGEN TV
 http://187.245.231.226:8000/play/a0v2/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", LAS ESTRELLAS
-http://187.245.231.226:8000/play/a0uu/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", LIFE TIME
 http://187.245.231.226:8000/play/a0lq/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Multimedios
+#EXTINF:-1 group-title="ENTRETENIMIENTO", MULTIMEDIOS
 http://187.245.231.226:8000/play/a0l3/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Mexicanal
+#EXTINF:-1 group-title="ENTRETENIMIENTO", MEXICANAL
 http://187.245.231.226:8000/play/a0uz/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", RCN Novelas
+#EXTINF:-1 group-title="ENTRETENIMIENTO", RCN NOVELAS
 http://187.245.231.226:8000/play/a0n5/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", SONY
 http://187.245.231.226:8000/play/a0nx/index.m3u8
@@ -337,13 +341,13 @@ http://187.245.231.226:8000/play/a0ul/index.m3u8
 http://187.245.231.226:8000/play/a0u3/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", STAR CHANNEL HD
 http://187.245.231.226:8000/play/a0oa/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Sony Movies HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", SONY MOVIES HD
 http://187.245.231.226:8000/play/a0mg/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Star TVE HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", STAR TVE HD
 http://187.245.231.226:8000/play/a0mj/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Studio Universal
+#EXTINF:-1 group-title="ENTRETENIMIENTO", STUDIO UNIVERSAL
 http://187.245.231.226:8000/play/a0ug/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Sun Channel
+#EXTINF:-1 group-title="ENTRETENIMIENTO", SUN CHANNEL
 http://187.245.231.226:8000/play/a0n9/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TCM
 http://187.245.231.226:8000/play/a0ni/index.m3u8
@@ -353,25 +357,25 @@ http://187.245.231.226:8000/play/a0uv/index.m3u8
 http://187.245.231.226:8000/play/a0lv/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TNT HD
 http://187.245.231.226:8000/play/a0oj/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Novelas
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT NOVELAS
 http://187.245.231.226:8000/play/a0rv/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Series
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT SERIES
 http://187.245.231.226:8000/play/a0ln/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT Series HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TNT SERIES HD
 http://187.245.231.226:8000/play/a0pz/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Tooncast
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TOONCAST
 http://187.245.231.226:8000/play/a0nv/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Tru TV
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TRU TV
 http://187.245.231.226:8000/play/a0lj/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Tv Largato
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TV LARGATO
 http://187.245.231.226:8000/play/a0v3/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", TVE
 http://187.245.231.226:8000/play/a0ui/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Telemundo
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TELEMUNDO
 http://187.245.231.226:8000/play/a0lk/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Telemundo HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", TELEMUNDO HD
 http://187.245.231.226:8000/play/a0md/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Universal
+#EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL
 http://187.245.231.226:8000/play/a0uc/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL CINEMA ESTE HD
 http://187.245.231.226:8000/play/a0q5/index.m3u8
@@ -385,103 +389,101 @@ http://187.245.231.226:8000/play/a0oq/index.m3u8
 http://187.245.231.226:8000/play/a0or/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVERSAL REALITY HD
 http://187.245.231.226:8000/play/a0os/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Univision HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", UNIVISION HD
 http://187.245.231.226:8000/play/a0q3/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", WARNER HD
 http://187.245.231.226:8000/play/a0ob/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Warner
+#EXTINF:-1 group-title="ENTRETENIMIENTO", WARNER
 http://187.245.231.226:8000/play/a0ny/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Banda Max
+#EXTINF:-1 group-title="ENTRETENIMIENTO", BANDA MAX
 http://187.245.231.226:8000/play/a0v1/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Canal Claro
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CANAL CLARO
 http://187.245.231.226:8000/play/a0lc/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Canal del Congreso
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CANAL DEL CONGRESO
 http://187.245.231.226:8000/play/a0ts/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Canal5
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CANAL5
 http://187.245.231.226:8000/play/a0v7/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Cine Latino
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CINE LATINO
 http://187.245.231.226:8000/play/a0ue/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", CineCanal
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CINECANAL
 http://187.245.231.226:8000/play/a0uh/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CINECANAL HD
 http://187.245.231.226:8000/play/a0od/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", CineMax
+#EXTINF:-1 group-title="ENTRETENIMIENTO", CINEMAX
 http://187.245.231.226:8000/play/a0uf/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", CINE MEXICANO
 http://187.245.231.226:8000/play/a0ux/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", D Pelicula
+#EXTINF:-1 group-title="ENTRETENIMIENTO", D PELICULA
 http://187.245.231.226:8000/play/a0v4/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", DISTRITO COMEDIA
 http://187.245.231.226:8000/play/a0v5/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", El Gourmet
+#EXTINF:-1 group-title="ENTRETENIMIENTO", EL GOURMET
 http://187.245.231.226:8000/play/a0n8/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Europa HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", EUROPA HD
 http://187.245.231.226:8000/play/a0mf/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Film & Arts
+#EXTINF:-1 group-title="ENTRETENIMIENTO", FILM & ARTS
 http://187.245.231.226:8000/play/a0l6/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Film & arts HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", FILM & ARTS HD
 http://187.245.231.226:8000/play/a0ma/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", HBO Family HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", HBO FAMILY HD
 http://187.245.231.226:8000/play/a0mt/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO HD
 http://187.245.231.226:8000/play/a0mq/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", HBO Plus HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", HBO PLUS HD
 http://187.245.231.226:8000/play/a0ms/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO XTREME
 http://187.245.231.226:8000/play/a0mu/index.m3u8
 #EXTINF:-1 group-title="ENTRETENIMIENTO", HBO2 HD
 http://187.245.231.226:8000/play/a0qj/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Multicinema
+#EXTINF:-1 group-title="ENTRETENIMIENTO", MULTICINEMA
 http://187.245.231.226:8000/play/a0sk/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Multipremier
+#EXTINF:-1 group-title="ENTRETENIMIENTO", MULTIPREMIER
 http://187.245.231.226:8000/play/a0ud/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", Pasiones HD
+#EXTINF:-1 group-title="ENTRETENIMIENTO", PASIONES HD
 http://187.245.231.226:8000/play/a0q2/index.m3u8
-#EXTINF:-1 group-title="ENTRETENIMIENTO", QATAR en vivo
-http://187.245.231.226:8000/play/a0r1/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Animal Planet
+#EXTINF:-1 group-title="DOCUMENTALES", ANIMAL PLANET
 http://187.245.231.226:8000/play/a0o3/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Animal Planet HD
+#EXTINF:-1 group-title="DOCUMENTALES", ANIMAL PLANET HD
 http://187.245.231.226:8000/play/a0m8/index.m3u8
 #EXTINF:-1 group-title="DOCUMENTALES", DISC THEATHER HD
 http://187.245.231.226:8000/play/a0ok/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery Channel
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY CHANNEL
 http://187.245.231.226:8000/play/a0o2/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery Channel HD
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY CHANNEL HD
 http://187.245.231.226:8000/play/a0q0/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery Home & Health
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY HOME & HEALTH
 http://187.245.231.226:8000/play/a0u5/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery ID HD
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY ID HD
 http://187.245.231.226:8000/play/a0q4/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery Turbo
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY TURBO
 http://187.245.231.226:8000/play/a0u4/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Discovery World HD
+#EXTINF:-1 group-title="DOCUMENTALES", DISCOVERY WORLD HD
 http://187.245.231.226:8000/play/a0q1/index.m3u8
 #EXTINF:-1 group-title="DOCUMENTALES", H2
 http://187.245.231.226:8000/play/a0n7/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", History Channel
+#EXTINF:-1 group-title="DOCUMENTALES", HISTORY CHANNEL
 http://187.245.231.226:8000/play/a0o4/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", History HD
+#EXTINF:-1 group-title="DOCUMENTALES", HISTORY HD
 http://187.245.231.226:8000/play/a0ml/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Home & Health HD
+#EXTINF:-1 group-title="DOCUMENTALES", HOME & HEALTH HD
 http://187.245.231.226:8000/play/a0ol/index.m3u8
 #EXTINF:-1 group-title="DOCUMENTALES", ID
 http://187.245.231.226:8000/play/a0u6/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", National Geographic
+#EXTINF:-1 group-title="DOCUMENTALES", NATIONAL GEOGRAPHIC
 http://187.245.231.226:8000/play/a0lp/index.m3u8
-#EXTINF:-1 group-title="DOCUMENTALES", Nat Geo HD
+#EXTINF:-1 group-title="DOCUMENTALES", NAT GEO HD
 http://187.245.231.226:8000/play/a0px/index.m3u8
 #EXTINF:-1 group-title="DOCUMENTALES", TLC
 http://187.245.231.226:8000/play/a0o5/index.m3u8
-#EXTINF:-1 group-title="INFANTIL", Cartoon Network
+#EXTINF:-1 group-title="INFANTIL", CARTOON NETWORK
 http://187.245.231.226:8000/play/a0le/index.m3u8
 #EXTINF:-1 group-title="INFANTIL", CARTOON NT HD
 http://187.245.231.226:8000/play/a0mp/index.m3u8
-#EXTINF:-1 group-title="INFANTIL", Cartoonito
+#EXTINF:-1 group-title="INFANTIL", CARTOONITO
 http://187.245.231.226:8000/play/a0lg/index.m3u8
-#EXTINF:-1 group-title="INFANTIL", Discovery Kids
+#EXTINF:-1 group-title="INFANTIL", DISCOVERY KIDS
 http://187.245.231.226:8000/play/a0u0/index.m3u8
-#EXTINF:-1 group-title="INFANTIL", Disney
+#EXTINF:-1 group-title="INFANTIL", DISNEY
 http://187.245.231.226:8000/play/a0u2/index.m3u8
-#EXTINF:-1 group-title="INFANTIL", Disney JR
+#EXTINF:-1 group-title="INFANTIL", DISNEY JR
 http://187.245.231.226:8000/play/a0lh/index.m3u8
