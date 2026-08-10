@@ -842,19 +842,15 @@
               <h3>Inputs</h3>
               <table class="params-table input-params">
                 <thead>
-                  <tr><th>Name</th><th>Description</th><th>Type</th><th>Access</th><th>Optional</th></tr>
+                  <tr><th>Name</th><th>Nickname</th><th>Description</th><th>Type</th><th>Access</th></tr>
                 </thead>
                 <tbody>
                   <template x-for="input in selectedComponent?.inputs">
                     <tr>
                       <td><b x-text="input.name"></b></td>
+                      <td x-text="input.nickname"></td>
                       <td x-html="fmtDesc(input.description)"></td>
                       <td><span class="badge-type" x-text="input.type"></span></td>
-                      <td>
-                        <span class="badge-type"
-                          x-text="input.access ? input.access.charAt(0).toUpperCase() + input.access.slice(1) : 'Item'">
-                        </span>
-                      </td>
                       <td>
                         <span class="badge-type"
                           x-text="input.optional ? 'Yes' : 'No'">
@@ -869,12 +865,13 @@
               <h3>Outputs</h3>
               <table class="params-table output-params">
                 <thead>
-                  <tr><th>Name</th><th>Description</th><th>Type</th></tr>
+                  <tr><th>Name</th><th>Nickname</th><th>Description</th><th>Type</th></tr>
                 </thead>
                 <tbody>
                   <template x-for="output in selectedComponent?.outputs">
                     <tr>
                       <td><b x-text="output.name"></b></td>
+                      <td x-text="output.nickname"></td>
                       <td x-html="fmtDesc(output.description)"></td>
                       <td><span class="badge-type" x-text="output.type"></span></td>
                     </tr>
