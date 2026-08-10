@@ -997,11 +997,16 @@
             this.allComponents = data.components;
             
             const tempGroups = {};
+            const keyMap = {}; // lowercase -> primera grafía encontrada (canónica)
             data.components.forEach(c => {
-              const sub = c.subcategory, exp = (c.exposure||'primary').toLowerCase();
-              if (!tempGroups[sub]) tempGroups[sub] = {};
-              if (!tempGroups[sub][exp]) tempGroups[sub][exp] = [];
-              tempGroups[sub][exp].push(c);
+              const sub = c.subcategory;
+              if (!sub || !sub.includes(' | ')) return; // descarta subcategorías sin " | " (p.ej. "Script")
+              const lowerKey = sub.trim().toLowerCase();
+              const canonical = keyMap[lowerKey] || (keyMap[lowerKey] = sub);
+              const exp = (c.exposure||'primary').toLowerCase();
+              if (!tempGroups[canonical]) tempGroups[canonical] = {};
+              if (!tempGroups[canonical][exp]) tempGroups[canonical][exp] = [];
+              tempGroups[canonical][exp].push(c);
             });
             
             for (let cat in tempGroups) {
@@ -1033,11 +1038,16 @@
         
         getComponentsByCategory() {
           const categories = {};
+          const keyMap = {};
           this.allComponents.forEach(comp => {
-            const cat = comp.subcategory || 'Uncategorized';
-            if (!categories[cat]) categories[cat] = { name: cat, components: [] };
-            categories[cat].components.push(comp);
+            const cat = comp.subcategory;
+            if (!cat || !cat.includes(' | ')) return; // descarta sin " | "
+            const lowerKey = cat.trim().toLowerCase();
+            const canonical = keyMap[lowerKey] || (keyMap[lowerKey] = cat);
+            if (!categories[canonical]) categories[canonical] = { name: canonical, components: [] };
+            categories[canonical].components.push(comp);
           });
+
           // Ordenar categorías por número de prefijo
           const sorted = Object.values(categories).sort((a, b) => {
             const aNum = parseInt(a.name.split('|')[0]) || 999;
@@ -1058,8 +1068,9 @@
 
         getCategoryComponents() {
           if (!this.selectedCategory) return [];
+          const target = this.selectedCategory.trim().toLowerCase();
           return this.allComponents
-            .filter(c => c.subcategory === this.selectedCategory)
+            .filter(c => c.subcategory && c.subcategory.trim().toLowerCase() === target)
             .sort((a, b) => {
               const ea = this.exposurePriority[(a.exposure||'primary').toLowerCase()] || 99;
               const eb = this.exposurePriority[(b.exposure||'primary').toLowerCase()] || 99;
