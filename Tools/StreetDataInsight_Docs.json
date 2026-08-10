@@ -10,6 +10,7 @@
           "access": "list",
           "description": "Breps.",
           "name": "Breps",
+          "nickname": "B",
           "optional": true,
           "type": "Brep"
         },
@@ -17,6 +18,7 @@
           "access": "list",
           "description": "Spherical view origins.",
           "name": "Origins",
+          "nickname": "O",
           "optional": true,
           "type": "Point"
         },
@@ -24,6 +26,7 @@
           "access": "item",
           "description": "Mesh subdivision size.",
           "name": "Size",
+          "nickname": "Size",
           "optional": false,
           "type": "Number"
         },
@@ -31,6 +34,7 @@
           "access": "item",
           "description": "Ray origin offset distance from face center.",
           "name": "Offset",
+          "nickname": "Of",
           "optional": false,
           "type": "Number"
         },
@@ -38,6 +42,7 @@
           "access": "item",
           "description": "Intersection tolerance.",
           "name": "Tolerance",
+          "nickname": "Tol",
           "optional": false,
           "type": "Number"
         },
@@ -45,6 +50,7 @@
           "access": "item",
           "description": "A boolean value to trigger the analysis.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -55,26 +61,31 @@
         {
           "description": "Subdivided mesh.",
           "name": "Mesh",
+          "nickname": "M",
           "type": "Mesh"
         },
         {
           "description": "Mesh colored by assigned origin.",
           "name": "Color Mesh",
+          "nickname": "CM",
           "type": "Mesh"
         },
         {
           "description": "Assigned origin index per face, -1 if none.",
           "name": "Index",
+          "nickname": "Idx",
           "type": "Integer"
         },
         {
           "description": "1.0 if visible from at least one origin, 0.0 if occluded.",
           "name": "Visibility",
+          "nickname": "Vis",
           "type": "Number"
         },
         {
           "description": "Color assigned to each origin.",
           "name": "Color",
+          "nickname": "Color",
           "type": "Colour"
         }
       ],
@@ -90,6 +101,7 @@
           "access": "item",
           "description": "Set to true to read the active viewport. Updates automatically when the camera moves.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -100,31 +112,37 @@
         {
           "description": "Rectangle in lon/lat space.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Corner points of the bounding rectangle.",
           "name": "Bound Corners",
+          "nickname": "BndCrn",
           "type": "Point"
         },
         {
           "description": "Rectangles per map tile in lon/lat space.",
           "name": "Tile Bound",
+          "nickname": "TileBnd",
           "type": "Rectangle"
         },
         {
           "description": "Tile identifiers in the format 'Zoom/x/y'.",
           "name": "Tile ID",
+          "nickname": "TileID",
           "type": "Text"
         },
         {
           "description": "Total number of tiles covering the area.",
           "name": "Tile Count",
+          "nickname": "TileCnt",
           "type": "Integer"
         },
         {
           "description": "Tile zoom level derived from viewport scale.",
           "name": "Zoom",
+          "nickname": "Zoom",
           "type": "Integer"
         }
       ],
@@ -140,6 +158,7 @@
           "access": "list",
           "description": "A list of curves to be divided. Curves must be defined in geographic coordinates (longitude, latitude).",
           "name": "Street Polyline",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         },
@@ -147,6 +166,7 @@
           "access": "item",
           "description": "Length of segments in meters.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": false,
           "type": "Number"
         },
@@ -154,6 +174,7 @@
           "access": "item",
           "description": "Integer parameter controlling curve direction normalization: 0 -> Align all curves to the +Y axis (North), 1 -> Align all curves to the -Y axis (South), 2 -> Flip all curves to match the direction of the first curve, 3 -> Flip all curves to match the direction of the second curve.",
           "name": "Orientation",
+          "nickname": "Orient",
           "optional": false,
           "type": "Integer"
         }
@@ -164,16 +185,19 @@
         {
           "description": "Division points.",
           "name": "Points",
+          "nickname": "Pts",
           "type": "Point"
         },
         {
           "description": "Tangent vectors at division points.",
           "name": "Tangents",
+          "nickname": "Tg",
           "type": "Vector"
         },
         {
           "description": "Parameter values at division points.",
           "name": "Parameters",
+          "nickname": "Param",
           "type": "Number"
         }
       ],
@@ -189,6 +213,7 @@
           "access": "list",
           "description": "Source image paths.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -196,6 +221,7 @@
           "access": "tree",
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll.",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": false,
           "type": "Vector"
         },
@@ -203,6 +229,7 @@
           "access": "item",
           "description": "Angle in degrees to expand the vertical field of view.",
           "name": "Tolerance",
+          "nickname": "Tol",
           "optional": false,
           "type": "Number"
         }
@@ -213,6 +240,7 @@
         {
           "description": "Estimated vertical FOV in degrees.",
           "name": "FOV",
+          "nickname": "FOV",
           "type": "Number"
         }
       ],
@@ -228,6 +256,7 @@
           "access": "tree",
           "description": "The coordinates in the format \"latitude,longitude\" to visit the nearest available panorama.",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -235,6 +264,7 @@
           "access": "tree",
           "description": "The compass heading of the camera in degrees, accepted values range from 0 to 360 (Default is 360).",
           "name": "Heading",
+          "nickname": "Hdg",
           "optional": true,
           "type": "Number"
         },
@@ -242,6 +272,7 @@
           "access": "tree",
           "description": "The pitch angle of the camera with respect to the Street View vehicle (Default is 0).",
           "name": "Pitch",
+          "nickname": "Pitch",
           "optional": true,
           "type": "Number"
         }
@@ -252,6 +283,7 @@
         {
           "description": "Constructed query URLs.",
           "name": "URL",
+          "nickname": "URL",
           "type": "Text"
         }
       ],
@@ -267,6 +299,7 @@
           "access": "item",
           "description": "The text query representing the address to be geolocated.",
           "name": "Site",
+          "nickname": "Site",
           "optional": true,
           "type": "Text"
         }
@@ -277,6 +310,7 @@
         {
           "description": "A tuple containing the latitude and longitude coordinates of the interpreted location.",
           "name": "Location",
+          "nickname": "Loc",
           "type": "Text"
         }
       ],
@@ -292,6 +326,7 @@
           "access": "tree",
           "description": "The curve(s) to evaluate.",
           "name": "Street",
+          "nickname": "Street",
           "optional": true,
           "type": "Curve"
         },
@@ -299,6 +334,7 @@
           "access": "tree",
           "description": "The list of points to evaluate along the curve(s).",
           "name": "Points",
+          "nickname": "Pts",
           "optional": true,
           "type": "Point"
         },
@@ -306,6 +342,7 @@
           "access": "item",
           "description": "A boolean value to reverse the direction of the curve.",
           "name": "Flip",
+          "nickname": "Flip",
           "optional": false,
           "type": "Boolean"
         }
@@ -316,16 +353,19 @@
         {
           "description": "The list of midpoints of the tangent line segments.",
           "name": "Mid Points",
+          "nickname": "MidPts",
           "type": "Point"
         },
         {
           "description": "The list of tangent rotation angles clockwise from the curve (in degrees).",
           "name": "Headings",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "The list of tangent line segments.",
           "name": "Lines",
+          "nickname": "Ln",
           "type": "Line"
         }
       ],
@@ -341,6 +381,7 @@
           "access": "item",
           "description": "Plane to apply transformations.",
           "name": "Plane",
+          "nickname": "Pln",
           "optional": true,
           "type": "Plane"
         }
@@ -351,6 +392,7 @@
         {
           "description": "Transformation settings as JSON.",
           "name": "Settings",
+          "nickname": "Setup",
           "type": "Text"
         }
       ],
@@ -366,6 +408,7 @@
           "access": "list",
           "description": "Breps to drape over.",
           "name": "Breps",
+          "nickname": "B",
           "optional": true,
           "type": "Geometry"
         },
@@ -373,6 +416,7 @@
           "access": "item",
           "description": "Projection plane.",
           "name": "Plane",
+          "nickname": "Pln",
           "optional": false,
           "type": "Plane"
         },
@@ -380,6 +424,7 @@
           "access": "item",
           "description": "Grid divisions in UV.",
           "name": "UV",
+          "nickname": "UV",
           "optional": false,
           "type": "Integer"
         },
@@ -387,6 +432,7 @@
           "access": "item",
           "description": "Set to True to execute the drape operation.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -397,11 +443,13 @@
         {
           "description": "Trimmed drape surface fitted to geometry.",
           "name": "Trimmed",
+          "nickname": "Trim",
           "type": "Brep"
         },
         {
           "description": "Untrimmed drape surface.",
           "name": "Untrimmed",
+          "nickname": "Untrim",
           "type": "Brep"
         }
       ],
@@ -417,6 +465,7 @@
           "access": "list",
           "description": "Images to display.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -424,6 +473,7 @@
           "access": "item",
           "description": "Linear array direction and interval.",
           "name": "Gap",
+          "nickname": "Gap",
           "optional": false,
           "type": "Vector"
         },
@@ -431,6 +481,7 @@
           "access": "item",
           "description": "Image index to start from.",
           "name": "Index",
+          "nickname": "Idx",
           "optional": false,
           "type": "Integer"
         },
@@ -438,6 +489,7 @@
           "access": "item",
           "description": "Number of elements in array.",
           "name": "Count",
+          "nickname": "Cnt",
           "optional": false,
           "type": "Integer"
         }
@@ -457,6 +509,7 @@
           "access": "tree",
           "description": "Plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "optional": true,
           "type": "Integer"
         },
@@ -464,6 +517,7 @@
           "access": "tree",
           "description": "Plane normals [nx,ny,nz] from depth maps.",
           "name": "Planes",
+          "nickname": "Plne",
           "optional": true,
           "type": "Number"
         },
@@ -471,6 +525,7 @@
           "access": "tree",
           "description": "Camera heading angle in degrees (0° = North, 90° = East) (Default is 0).",
           "name": "Heading",
+          "nickname": "Hdg",
           "optional": true,
           "type": "Number"
         }
@@ -481,16 +536,19 @@
         {
           "description": "Aligned camera heading angle (in degrees) to view surface perpendicularly.",
           "name": "Heading",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "Index of the plane the camera is pointing at.",
           "name": "PlaneIndex",
+          "nickname": "PlnIdx",
           "type": "Integer"
         },
         {
           "description": "UV coordinates in the depth map where camera is pointing.",
           "name": "UV",
+          "nickname": "UV",
           "type": "Point"
         }
       ],
@@ -506,6 +564,7 @@
           "access": "list",
           "description": "Breps to orthogonalize.",
           "name": "Breps",
+          "nickname": "B",
           "optional": true,
           "type": "Brep"
         },
@@ -513,6 +572,7 @@
           "access": "item",
           "description": "Maximum angle deviation (degrees) for a segment to be considered a continuation of the same direction.",
           "name": "Angle",
+          "nickname": "Angle",
           "optional": false,
           "type": "Number"
         },
@@ -520,6 +580,7 @@
           "access": "item",
           "description": "Tolerance (degrees) to preserve intentional oblique walls (~45 degrees). 0 = orthogonalize everything.",
           "name": "Skew",
+          "nickname": "Skew",
           "optional": false,
           "type": "Number"
         },
@@ -527,6 +588,7 @@
           "access": "item",
           "description": "World up direction used to orient the construction planes.",
           "name": "UpAxis",
+          "nickname": "UpAx",
           "optional": false,
           "type": "Vector"
         },
@@ -534,6 +596,7 @@
           "access": "item",
           "description": "If true, builds an upright plane useful for vertical facades.",
           "name": "UpRight",
+          "nickname": "UpR",
           "optional": false,
           "type": "Boolean"
         }
@@ -544,11 +607,13 @@
         {
           "description": "Orthogonalized planar surface per face.",
           "name": "Breps",
+          "nickname": "B",
           "type": "Brep"
         },
         {
           "description": "Aligned construction plane per face (affected by Straighten toggle).",
           "name": "Planes",
+          "nickname": "Pln",
           "type": "Plane"
         }
       ],
@@ -564,6 +629,7 @@
           "access": "item",
           "description": "Camera direction vector.",
           "name": "Forward",
+          "nickname": "Fwd",
           "optional": true,
           "type": "Vector"
         },
@@ -571,6 +637,7 @@
           "access": "item",
           "description": "Camera up vector (mainly affects Roll).",
           "name": "Up",
+          "nickname": "Up",
           "optional": false,
           "type": "Vector"
         },
@@ -578,6 +645,7 @@
           "access": "item",
           "description": "North reference vector.",
           "name": "North",
+          "nickname": "North",
           "optional": false,
           "type": "Vector"
         }
@@ -588,6 +656,7 @@
         {
           "description": "Camera orientation as Vector (X=Heading, Y=Pitch, Z=Roll).",
           "name": "Camera",
+          "nickname": "Camera",
           "type": "Vector"
         }
       ],
@@ -603,6 +672,7 @@
           "access": "list",
           "description": "Searchable text options.",
           "name": "Values",
+          "nickname": "Values",
           "optional": true,
           "type": "Text"
         }
@@ -613,11 +683,13 @@
         {
           "description": "Matched string.",
           "name": "Key",
+          "nickname": "Key",
           "type": "Text"
         },
         {
           "description": "Index of the matched string in the input list.",
           "name": "Index",
+          "nickname": "Idx",
           "type": "Integer"
         }
       ],
@@ -633,6 +705,7 @@
           "access": "item",
           "description": "Path to the image file.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -640,6 +713,7 @@
           "access": "item",
           "description": "Boundary curve to create the surface.",
           "name": "Bound",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Curve"
         }
@@ -650,11 +724,13 @@
         {
           "description": "Surface created from the boundary curve with aligned UV coordinates.",
           "name": "Surface",
+          "nickname": "Srf",
           "type": "Surface"
         },
         {
           "description": "Display material with the image texture.",
           "name": "Material",
+          "nickname": "Mat",
           "type": "Generic Data"
         }
       ],
@@ -670,6 +746,7 @@
           "access": "item",
           "description": "The coordinates in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\").",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -677,6 +754,7 @@
           "access": "item",
           "description": "Radius in meters from the Location point.",
           "name": "Radius",
+          "nickname": "Rad",
           "optional": true,
           "type": "Number"
         },
@@ -684,6 +762,7 @@
           "access": "item",
           "description": "Scale level for tile calculation (Maximum: 25).",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": true,
           "type": "Integer"
         }
@@ -694,31 +773,37 @@
         {
           "description": "A rectangle representing the bounding area centered on (Lon, Lat).",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Corner points of the bounding rectangle.",
           "name": "Bound Corners",
+          "nickname": "BndCrn",
           "type": "Point"
         },
         {
           "description": "Rectangles representing the bounds of each map tile.",
           "name": "Tile Bound",
+          "nickname": "TileBnd",
           "type": "Rectangle"
         },
         {
           "description": "Tile ID in the format 'Zoom/x/y'.",
           "name": "Tile ID",
+          "nickname": "TileID",
           "type": "Text"
         },
         {
           "description": "Estimated total number of tiles required to cover the area.",
           "name": "Tile Count",
+          "nickname": "TileCnt",
           "type": "Integer"
         },
         {
           "description": "Summary report of the area and tile calculation.",
           "name": "AreaInfo",
+          "nickname": "AInf",
           "type": "Text"
         }
       ],
@@ -734,6 +819,7 @@
           "access": "list",
           "description": "The coordinates of each anchor point in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\"). Minimum 2 points required.",
           "name": "Anchors",
+          "nickname": "Anc",
           "optional": true,
           "type": "Point"
         },
@@ -741,6 +827,7 @@
           "access": "list",
           "description": "Local positions of anchor points in the source coordinate system.",
           "name": "Relative",
+          "nickname": "Rltv",
           "optional": true,
           "type": "Point"
         },
@@ -748,6 +835,7 @@
           "access": "list",
           "description": "The coordinates of each point to locate in the format \"latitude,longitude\".",
           "name": "Locations",
+          "nickname": "Loc",
           "optional": true,
           "type": "Point"
         },
@@ -755,6 +843,7 @@
           "access": "list",
           "description": "Optional origin points of the second system.",
           "name": "Centroids",
+          "nickname": "Ce",
           "optional": true,
           "type": "Point"
         },
@@ -762,6 +851,7 @@
           "access": "item",
           "description": "A boolean value to trigger the transformation calculation.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -772,21 +862,25 @@
         {
           "description": "Reference plane at the local world origin (Latitude=0°, Longitude=0°).",
           "name": "Origin",
+          "nickname": "O",
           "type": "Plane"
         },
         {
           "description": "Transformed centroids in the local coordinate system.",
           "name": "Centroids",
+          "nickname": "Ce",
           "type": "Point"
         },
         {
           "description": "Transformation matrices for positioning.",
           "name": "Transform",
+          "nickname": "Xform",
           "type": "Transform"
         },
         {
           "description": "Transformation details and statistics (Scale factor, rotation angle, point counts).",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         }
       ],
@@ -802,6 +896,7 @@
           "access": "item",
           "description": "Initial latitude and longitude as \"lat, lon\". Only read when the browser is (re)started.",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -809,6 +904,7 @@
           "access": "item",
           "description": "Initial camera orientation as Vector (Heading, Pitch, Roll). Only read when the browser is (re)started. Roll is currently ignored.",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": false,
           "type": "Vector"
         },
@@ -816,6 +912,7 @@
           "access": "item",
           "description": "A boolean value to trigger opening the Street Side browser and start navigation tracking.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -826,21 +923,25 @@
         {
           "description": "Visited panorama keys.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "type": "Text"
         },
         {
           "description": "Visited georeferenced locations (lat,lon).",
           "name": "Locations",
+          "nickname": "Loc",
           "type": "Text"
         },
         {
           "description": "Route curve reconstructed from tracked points.",
           "name": "Route",
+          "nickname": "Route",
           "type": "Curve"
         },
         {
           "description": "Camera orientation vectors (Heading, Pitch, Roll) at each tracked point.",
           "name": "Camera",
+          "nickname": "Camera",
           "type": "Vector"
         }
       ],
@@ -856,6 +957,7 @@
           "access": "list",
           "description": "Geographic coordinates as text (lat,lon,elev) or geometry (Points, Curves, Polylines).",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Generic Data"
         }
@@ -866,6 +968,7 @@
         {
           "description": "Local coordinates as text (x,y,z) or transformed geometry.",
           "name": "Local",
+          "nickname": "Lcl",
           "type": "Generic Data"
         }
       ],
@@ -881,6 +984,7 @@
           "access": "tree",
           "description": "Point cloud(s) to deconstruct. Accepts a single item, a list, or a tree.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "optional": true,
           "type": "Point Cloud"
         }
@@ -891,21 +995,25 @@
         {
           "description": "Point locations for each cloud.",
           "name": "Point",
+          "nickname": "Pt",
           "type": "Point"
         },
         {
           "description": "Normal vectors for each cloud.",
           "name": "Normal",
+          "nickname": "Nrm",
           "type": "Vector"
         },
         {
           "description": "Colours for each cloud.",
           "name": "Color",
+          "nickname": "Color",
           "type": "Colour"
         },
         {
           "description": "Visibility flags for each cloud.",
           "name": "Hidden",
+          "nickname": "H",
           "type": "Boolean"
         }
       ],
@@ -921,6 +1029,7 @@
           "access": "item",
           "description": "The coordinates in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\").",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -928,6 +1037,7 @@
           "access": "item",
           "description": "The radius of query from the Location point in meters.",
           "name": "Radius",
+          "nickname": "Rad",
           "optional": false,
           "type": "Number"
         },
@@ -935,6 +1045,7 @@
           "access": "item",
           "description": "A boolean value to trigger the street network construction.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -945,26 +1056,31 @@
         {
           "description": "The nearest location on a detected street, returned as a tuple (longitude, latitude) for visualization. Units depend on the Projection selected via the right-click context menu: degrees for Plate Carrée, meters for Web Mercator/Metric.",
           "name": "Point Coordinates",
+          "nickname": "PtCoord",
           "type": "Point"
         },
         {
           "description": "The list of unique street names within the specified radius.",
           "name": "Street Names",
+          "nickname": "StNm",
           "type": "Text"
         },
         {
           "description": "The data tree containing street polylines. Units depend on the Projection selected via the right-click context menu: degrees for Plate Carrée, meters for Web Mercator/Metric.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "type": "Curve"
         },
         {
           "description": "OSM 'highway' road type per curve in Street_Polylines (same tree shape -- branch and item count match exactly, so Street_Types[i] always corresponds to Street_Polylines[i]). If a street's segments carry more than one highway tag, the highest-ranked one is used (motorway > trunk > primary > secondary > tertiary > unclassified > residential > living_street > pedestrian > others).",
           "name": "Street Types",
+          "nickname": "StType",
           "type": "Text"
         },
         {
           "description": "The time taken to build the street network.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -980,6 +1096,7 @@
           "access": "item",
           "description": "Viewport background color.",
           "name": "Color",
+          "nickname": "Color",
           "optional": true,
           "type": "Colour"
         }
@@ -999,6 +1116,7 @@
           "access": "tree",
           "description": "Plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "optional": true,
           "type": "Integer"
         },
@@ -1006,6 +1124,7 @@
           "access": "tree",
           "description": "Plane normals [Nx, Ny, Nz] from depth maps.",
           "name": "Planes",
+          "nickname": "Pln",
           "optional": true,
           "type": "Number"
         },
@@ -1013,6 +1132,7 @@
           "access": "tree",
           "description": "Plane distances from origin.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": true,
           "type": "Number"
         },
@@ -1020,6 +1140,7 @@
           "access": "tree",
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll (in degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -1027,6 +1148,7 @@
           "access": "item",
           "description": "A boolean value to trigger the rotational remapping process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1037,11 +1159,13 @@
         {
           "description": "Remapped plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "type": "Integer"
         },
         {
           "description": "Rotated plane normals [Nx, Ny, Nz].",
           "name": "Planes",
+          "nickname": "Pln",
           "type": "Number"
         }
       ],
@@ -1057,6 +1181,7 @@
           "access": "list",
           "description": "(Optional) Centroid points for each detected urban block.",
           "name": "Block Centroids",
+          "nickname": "BlkCe",
           "optional": true,
           "type": "Point"
         },
@@ -1064,6 +1189,7 @@
           "access": "list",
           "description": "Selection criterion. Can be:\r\n- An index (Int, float, numeric string).\r\n- A point (Finds closest block).\r\n- A curve (Finds blocks within the curve boundary).",
           "name": "Reference",
+          "nickname": "Ref",
           "optional": true,
           "type": "Generic Data"
         },
@@ -1071,6 +1197,7 @@
           "access": "list",
           "description": "The list of polylines representing the geometric edges of each urban block.",
           "name": "Block Polylines",
+          "nickname": "BlkPoly",
           "optional": true,
           "type": "Curve"
         }
@@ -1081,11 +1208,13 @@
         {
           "description": "The centroids corresponding to the resulting (filtered or sorted) block list.",
           "name": "Block Centroids",
+          "nickname": "BlkCe",
           "type": "Point"
         },
         {
           "description": "The resulting polylines, after search or sorting based on the reference.",
           "name": "Block Polyline",
+          "nickname": "BlkPoly",
           "type": "Curve"
         }
       ],
@@ -1101,6 +1230,7 @@
           "access": "item",
           "description": "The full directory or file path.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -1108,6 +1238,7 @@
           "access": "item",
           "description": "Offset from the end of the path. A value of zero leaves the path unchanged.",
           "name": "Depth",
+          "nickname": "Depth",
           "optional": false,
           "type": "Integer"
         }
@@ -1118,6 +1249,7 @@
         {
           "description": "The resulting clipped directory path.",
           "name": "Clip",
+          "nickname": "Clip",
           "type": "Text"
         }
       ],
@@ -1133,6 +1265,7 @@
           "access": "tree",
           "description": "Bing Streetside panorama IDs for which metadata will be extracted.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "optional": true,
           "type": "Text"
         },
@@ -1140,6 +1273,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the metadata JSON files.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         }
@@ -1150,11 +1284,13 @@
         {
           "description": "A boolean value indicating whether the extraction finished correctly.",
           "name": "Success",
+          "nickname": "Success",
           "type": "Boolean"
         },
         {
           "description": "Path to the JSON file containing detailed panorama metadata.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         }
       ],
@@ -1170,6 +1306,7 @@
           "access": "list",
           "description": "Geometry to include (Curves, Breps, Surfaces, Meshes and Points).",
           "name": "Geometry",
+          "nickname": "Geo",
           "optional": true,
           "type": "Geometry"
         },
@@ -1177,6 +1314,7 @@
           "access": "item",
           "description": "Camera origin point.",
           "name": "Origin",
+          "nickname": "O",
           "optional": false,
           "type": "Point"
         },
@@ -1184,6 +1322,7 @@
           "access": "item",
           "description": "Camera forward direction.",
           "name": "Forward",
+          "nickname": "Fwd",
           "optional": false,
           "type": "Vector"
         },
@@ -1191,6 +1330,7 @@
           "access": "item",
           "description": "Camera up vector.",
           "name": "Up",
+          "nickname": "Up",
           "optional": false,
           "type": "Vector"
         },
@@ -1198,6 +1338,7 @@
           "access": "item",
           "description": "Radius of the projection disc.",
           "name": "Radius",
+          "nickname": "Rad",
           "optional": false,
           "type": "Number"
         },
@@ -1205,6 +1346,7 @@
           "access": "item",
           "description": "Whether or not to compute visible/hidden classification.",
           "name": "HiddenLine",
+          "nickname": "HidLn",
           "optional": false,
           "type": "Boolean"
         }
@@ -1215,36 +1357,43 @@
         {
           "description": "Square 1:1 output frame.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Visible geometry.",
           "name": "Visible",
+          "nickname": "V",
           "type": "Geometry"
         },
         {
           "description": "For each visible geometry, index of source object.",
           "name": "VisibleIndex",
+          "nickname": "V",
           "type": "Integer"
         },
         {
           "description": "For each visible geometry, type description.",
           "name": "VisibleType",
+          "nickname": "Vt",
           "type": "Text"
         },
         {
           "description": "Hidden geometry.",
           "name": "Hidden",
+          "nickname": "H",
           "type": "Geometry"
         },
         {
           "description": "For each hidden geometry, index of source object.",
           "name": "HiddenIndex",
+          "nickname": "Hi",
           "type": "Integer"
         },
         {
           "description": "For each hidden geometry, type description.",
           "name": "HiddenType",
+          "nickname": "Ht",
           "type": "Text"
         }
       ],
@@ -1260,6 +1409,7 @@
           "access": "list",
           "description": "The list of street names corresponding to the geometries to be processed.",
           "name": "Street Names",
+          "nickname": "StNm",
           "optional": true,
           "type": "Text"
         },
@@ -1267,6 +1417,7 @@
           "access": "tree",
           "description": "The list containing street polylines, as geometry or GUIDs.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         }
@@ -1277,16 +1428,19 @@
         {
           "description": "Street names corresponding to the geometries.",
           "name": "Street Names",
+          "nickname": "StNm",
           "type": "Text"
         },
         {
           "description": "Mapping from original indices to reconstructed street indices.",
           "name": "Index Map",
+          "nickname": "IdxMap",
           "type": "Integer"
         },
         {
           "description": "Cleaned, aligned, or reconstructed street polylines.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "type": "Curve"
         }
       ],
@@ -1302,6 +1456,7 @@
           "access": "list",
           "description": "Geometry to include (Curves, Breps, Surfaces, Meshes and Points).",
           "name": "Geometry",
+          "nickname": "Geo",
           "optional": true,
           "type": "Geometry"
         },
@@ -1309,6 +1464,7 @@
           "access": "item",
           "description": "Camera origin point.",
           "name": "Origin",
+          "nickname": "O",
           "optional": false,
           "type": "Point"
         },
@@ -1316,6 +1472,7 @@
           "access": "item",
           "description": "Camera forward direction.",
           "name": "Forward",
+          "nickname": "Fwd",
           "optional": false,
           "type": "Vector"
         },
@@ -1323,6 +1480,7 @@
           "access": "item",
           "description": "Camera up vector.",
           "name": "Up",
+          "nickname": "Up",
           "optional": false,
           "type": "Vector"
         },
@@ -1330,6 +1488,7 @@
           "access": "item",
           "description": "Height of the equirectangular frame.",
           "name": "Height",
+          "nickname": "Height",
           "optional": false,
           "type": "Number"
         },
@@ -1337,6 +1496,7 @@
           "access": "item",
           "description": "Whether or not to compute visible/hidden classification.",
           "name": "HiddenLine",
+          "nickname": "HidLn",
           "optional": false,
           "type": "Boolean"
         }
@@ -1347,36 +1507,43 @@
         {
           "description": "Equirectangular frame.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Visible geometry.",
           "name": "Visible",
+          "nickname": "V",
           "type": "Geometry"
         },
         {
           "description": "For each visible geometry, index of source object.",
           "name": "VisibleIndex",
+          "nickname": "Vi",
           "type": "Integer"
         },
         {
           "description": "For each visible geometry, type description.",
           "name": "VisibleType",
+          "nickname": "Vt",
           "type": "Text"
         },
         {
           "description": "Hidden geometry.",
           "name": "Hidden",
+          "nickname": "H",
           "type": "Geometry"
         },
         {
           "description": "For each hidden geometry, index of source object.",
           "name": "HiddenIndex",
+          "nickname": "Hi",
           "type": "Integer"
         },
         {
           "description": "For each hidden geometry, type description.",
           "name": "HiddenType",
+          "nickname": "Ht",
           "type": "Text"
         }
       ],
@@ -1392,6 +1559,7 @@
           "access": "item",
           "description": "Path to a JSON file or raw JSON string content.",
           "name": "JSON",
+          "nickname": "JSON",
           "optional": true,
           "type": "Text"
         }
@@ -1402,6 +1570,7 @@
         {
           "description": "Full JSON data structure.",
           "name": "Data",
+          "nickname": "Data",
           "type": "Generic Data"
         }
       ],
@@ -1417,6 +1586,7 @@
           "access": "item",
           "description": "Initial Google Street View or Maps URL to start panorama navigation.",
           "name": "URL",
+          "nickname": "URL",
           "optional": true,
           "type": "Text"
         },
@@ -1424,6 +1594,7 @@
           "access": "item",
           "description": "Boolean value to simplify the interface for a cleaner view.",
           "name": "Clean",
+          "nickname": "Clean",
           "optional": false,
           "type": "Boolean"
         },
@@ -1431,6 +1602,7 @@
           "access": "item",
           "description": "A boolean value to trigger opening the Street View browser and start navigation tracking.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1441,26 +1613,31 @@
         {
           "description": "Visited URLs.",
           "name": "URL",
+          "nickname": "URL",
           "type": "Text"
         },
         {
           "description": "Panorama IDs.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "type": "Text"
         },
         {
           "description": "Georeferenced locations.",
           "name": "Locations",
+          "nickname": "Loc",
           "type": "Text"
         },
         {
           "description": "Route curve reconstructed from the tracked locations.",
           "name": "Route",
+          "nickname": "Route",
           "type": "Curve"
         },
         {
           "description": "Camera direction vectors.",
           "name": "Camera",
+          "nickname": "Camera",
           "type": "Vector"
         }
       ],
@@ -1476,6 +1653,7 @@
           "access": "item",
           "description": "Path to the equirectangular image to process.",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -1483,6 +1661,7 @@
           "access": "item",
           "description": "Field of view in degrees.",
           "name": "FOV",
+          "nickname": "FOV",
           "optional": false,
           "type": "Number"
         },
@@ -1490,6 +1669,7 @@
           "access": "item",
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll (in degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": false,
           "type": "Vector"
         },
@@ -1497,6 +1677,7 @@
           "access": "item",
           "description": "Output image width in pixels.",
           "name": "Width",
+          "nickname": "Width",
           "optional": false,
           "type": "Integer"
         },
@@ -1504,6 +1685,7 @@
           "access": "item",
           "description": "Output image height in pixels.",
           "name": "Height",
+          "nickname": "Height",
           "optional": false,
           "type": "Integer"
         },
@@ -1511,6 +1693,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the projected image.\r\n- If it ends with an image extension (e.g., '.png', '.jpg'), it is treated as the full output file path.\r\n- If it is a directory or empty, the image will be saved with a timestamped name in that directory or in a temporary folder.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -1518,6 +1701,7 @@
           "access": "item",
           "description": "A boolean value to trigger the projection process at full resolution.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1528,11 +1712,13 @@
         {
           "description": "The path to the generated projected image.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Elapsed time generating a gnomonic projection.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -1548,6 +1734,7 @@
           "access": "list",
           "description": "Image file paths.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -1555,6 +1742,7 @@
           "access": "item",
           "description": "Base plane for the first rectangle and orientation of the grid.",
           "name": "Plane",
+          "nickname": "Pln",
           "optional": false,
           "type": "Plane"
         },
@@ -1562,6 +1750,7 @@
           "access": "item",
           "description": "Number of columns in the grid.",
           "name": "Columns",
+          "nickname": "Cols",
           "optional": false,
           "type": "Integer"
         },
@@ -1569,6 +1758,7 @@
           "access": "list",
           "description": "Horizontal spacing between columns (use negative values for overlap).",
           "name": "CellGapX",
+          "nickname": "CGX",
           "optional": true,
           "type": "Number"
         },
@@ -1576,6 +1766,7 @@
           "access": "list",
           "description": "Vertical spacing between rows (use negative values for overlap).",
           "name": "CellGapY",
+          "nickname": "CGY",
           "optional": true,
           "type": "Number"
         }
@@ -1586,16 +1777,19 @@
         {
           "description": "Rectangles representing the bounds of each image.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Positions (x, y) of each rectangle.",
           "name": "Positions",
+          "nickname": "Pos",
           "type": "Point"
         },
         {
           "description": "Image dimensions [width, height].",
           "name": "Dimensions",
+          "nickname": "Dim",
           "type": "Generic Data"
         }
       ],
@@ -1611,6 +1805,7 @@
           "access": "tree",
           "description": "Google Street View URLs to deconstruct.",
           "name": "URL",
+          "nickname": "URL",
           "optional": true,
           "type": "Text"
         }
@@ -1621,26 +1816,31 @@
         {
           "description": "Locations referenced in the URLs, in the format \"latitude,longitude\".",
           "name": "Location",
+          "nickname": "Loc",
           "type": "Text"
         },
         {
           "description": "Panorama IDs, when available.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "type": "Text"
         },
         {
           "description": "Camera compass headings in degrees.",
           "name": "Heading",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "Camera pitch angles in degrees.",
           "name": "Pitch",
+          "nickname": "Pitch",
           "type": "Number"
         },
         {
           "description": "Fields of view in degrees.",
           "name": "FOV",
+          "nickname": "FOV",
           "type": "Number"
         }
       ],
@@ -1658,6 +1858,7 @@
         {
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll (in degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "type": "Vector"
         }
       ],
@@ -1673,6 +1874,7 @@
           "access": "tree",
           "description": "The dates to be sorted.",
           "name": "Dates",
+          "nickname": "Dates",
           "optional": true,
           "type": "Generic Data"
         },
@@ -1680,6 +1882,7 @@
           "access": "item",
           "description": "The reference date used to sort the input dates by temporal proximity. Supported formats include:\r\n- A string in the format (YYYY-MM-DD), (YYYY-MM), or (YYYY).\r\n- A time data type.\r\nIf left empty, the current date will be used as the target.",
           "name": "Target",
+          "nickname": "Target",
           "optional": true,
           "type": "Generic Data"
         }
@@ -1690,11 +1893,13 @@
         {
           "description": "The dates sorted by proximity to the Target date.",
           "name": "Dates",
+          "nickname": "Dates",
           "type": "Time"
         },
         {
           "description": "Index map of the sorted dates.",
           "name": "Index Map",
+          "nickname": "IdxMap",
           "type": "Integer"
         }
       ],
@@ -1710,6 +1915,7 @@
           "access": "item",
           "description": "The name of the main road.",
           "name": "MainName",
+          "nickname": "MainNm",
           "optional": true,
           "type": "Text"
         },
@@ -1717,6 +1923,7 @@
           "access": "tree",
           "description": "The curve geometry of the main road.",
           "name": "MainCurves",
+          "nickname": "MainCrv",
           "optional": true,
           "type": "Curve"
         },
@@ -1724,6 +1931,7 @@
           "access": "item",
           "description": "The name of the first concurrent road.",
           "name": "CrossName | A",
+          "nickname": "CNmA",
           "optional": true,
           "type": "Text"
         },
@@ -1731,6 +1939,7 @@
           "access": "tree",
           "description": "The curve geometry of the first concurrent road.",
           "name": "CrossCurves | A",
+          "nickname": "CCrvA",
           "optional": true,
           "type": "Curve"
         },
@@ -1738,6 +1947,7 @@
           "access": "item",
           "description": "The name of the second concurrent road.",
           "name": "CrossName | B",
+          "nickname": "CNmB",
           "optional": true,
           "type": "Text"
         },
@@ -1745,6 +1955,7 @@
           "access": "tree",
           "description": "The curve geometry of the second concurrent road.",
           "name": "CrossCurves | B",
+          "nickname": "CCrvB",
           "optional": true,
           "type": "Curve"
         }
@@ -1755,11 +1966,13 @@
         {
           "description": "One or multiple curve segments of the main road, delimited by intersections with the concurrent roads.",
           "name": "Route",
+          "nickname": "Route",
           "type": "Curve"
         },
         {
           "description": "A textual message describing the intersection result or an error message if no intersections are found.",
           "name": "Message",
+          "nickname": "Msg",
           "type": "Text"
         }
       ],
@@ -1775,6 +1988,7 @@
           "access": "item",
           "description": "Video file.",
           "name": "Video",
+          "nickname": "Video",
           "optional": true,
           "type": "Text"
         },
@@ -1782,6 +1996,7 @@
           "access": "list",
           "description": "Frame indices to extract (e.g., 0, 10, 15).",
           "name": "Frames",
+          "nickname": "Frames",
           "optional": true,
           "type": "Integer"
         },
@@ -1789,6 +2004,7 @@
           "access": "item",
           "description": "Directory to save extracted frames and JSON.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -1796,6 +2012,7 @@
           "access": "item",
           "description": "Trigger the frame extraction.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1806,21 +2023,25 @@
         {
           "description": "The path to the generated JSON file.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Paths to the extracted frames.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Extracted frame names.",
           "name": "Image Name",
+          "nickname": "Name",
           "type": "Text"
         },
         {
           "description": "Execution time for frame extraction.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -1836,6 +2057,7 @@
           "access": "list",
           "description": "Source equirectangular image paths.",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -1843,6 +2065,7 @@
           "access": "item",
           "description": "Index of the image to preview.",
           "name": "Index",
+          "nickname": "Index",
           "optional": false,
           "type": "Integer"
         },
@@ -1850,6 +2073,7 @@
           "access": "list",
           "description": "Camera orientations stored as Vector3d, where X = Heading, Y = Pitch, and Z = Roll (degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -1857,6 +2081,7 @@
           "access": "item",
           "description": "Optional path for saving the remapped images.\r\n- If ends with image extension (.png, .jpg), used as base name.\r\n- If directory or empty, saves with timestamped names.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -1864,6 +2089,7 @@
           "access": "item",
           "description": "A boolean value to process at full resolution.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1874,11 +2100,13 @@
         {
           "description": "Paths to the remapped images.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Elapsed time performing the equirectangular image remapping process.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -1894,6 +2122,7 @@
           "access": "tree",
           "description": "Equirectangular panoramas to process.",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -1901,6 +2130,7 @@
           "access": "tree",
           "description": "Field of view for the transformation (Default is 90).",
           "name": "FOV",
+          "nickname": "FOV",
           "optional": true,
           "type": "Number"
         },
@@ -1908,6 +2138,7 @@
           "access": "tree",
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll (in degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -1915,6 +2146,7 @@
           "access": "tree",
           "description": "Output image width in pixels (Default is 3840).",
           "name": "Width",
+          "nickname": "Width",
           "optional": true,
           "type": "Integer"
         },
@@ -1922,6 +2154,7 @@
           "access": "tree",
           "description": "Output image height in pixels (Default is 2160).",
           "name": "Height",
+          "nickname": "Height",
           "optional": true,
           "type": "Integer"
         },
@@ -1929,6 +2162,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the rectilinear view.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -1936,6 +2170,7 @@
           "access": "item",
           "description": "A boolean value to trigger the gnomonic projection.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -1946,16 +2181,19 @@
         {
           "description": "The path to the generated JSON file with projection configuration.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Paths to the generated projected images.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Elapsed time generating gnomonic projections.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -1971,6 +2209,7 @@
           "access": "item",
           "description": "The path to the KMZ file.",
           "name": "Kmz",
+          "nickname": "Kmz",
           "optional": true,
           "type": "Text"
         }
@@ -1981,11 +2220,13 @@
         {
           "description": "A list of dictionaries with latitude, longitude, and altitude.",
           "name": "Location",
+          "nickname": "Loc",
           "type": "Text"
         },
         {
           "description": "A list of Rhino PolylineCurve objects.",
           "name": "Polyline",
+          "nickname": "Ply",
           "type": "Curve"
         }
       ],
@@ -2001,6 +2242,7 @@
           "access": "item",
           "description": "Bounding rectangle (X = Longitude, Y = Latitude) that defines the area to fetch 3D building tiles.",
           "name": "Bound",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -2008,6 +2250,7 @@
           "access": "item",
           "description": "Tile zoom level (17–20, minimum 17).",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": false,
           "type": "Integer"
         },
@@ -2015,6 +2258,7 @@
           "access": "item",
           "description": "A boolean value to trigger the tile download.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2025,21 +2269,25 @@
         {
           "description": "Bounding rectangle of each fetched tile in meters, placed at world origin.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Data tree of meshes: each branch {i} contains all buildings of tile i.",
           "name": "Buildings",
+          "nickname": "Bldgs",
           "type": "Mesh"
         },
         {
           "description": "Tile IDs in Zoom/X/Y format.",
           "name": "Tile ID",
+          "nickname": "TileID",
           "type": "Text"
         },
         {
           "description": "Elapsed time to process the request.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2055,6 +2303,7 @@
           "access": "item",
           "description": "Defines the main canvas area.",
           "name": "Canvas",
+          "nickname": "Canvas",
           "optional": true,
           "type": "Rectangle"
         },
@@ -2062,6 +2311,7 @@
           "access": "list",
           "description": "Positions for each image.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -2069,6 +2319,7 @@
           "access": "list",
           "description": "Paths to the images to place.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -2076,6 +2327,7 @@
           "access": "item",
           "description": "Canvas resolution.",
           "name": "DPI",
+          "nickname": "DPI",
           "optional": false,
           "type": "Integer"
         },
@@ -2083,6 +2335,7 @@
           "access": "item",
           "description": "PSD/PSB file save location.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": false,
           "type": "Text"
         },
@@ -2090,6 +2343,7 @@
           "access": "item",
           "description": "A boolean parameter to trigger the creation.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2100,21 +2354,25 @@
         {
           "description": "Operation status.",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         },
         {
           "description": "Details of created layers.",
           "name": "LayerInfo",
+          "nickname": "LyrInf",
           "type": "Text"
         },
         {
           "description": "File size in MB.",
           "name": "Size",
+          "nickname": "Size",
           "type": "Integer"
         },
         {
           "description": "Elapsed time creating the composition.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2130,6 +2388,7 @@
           "access": "list",
           "description": "Polylines representing each urban block.",
           "name": "Block Polyline",
+          "nickname": "BlkPoly",
           "optional": true,
           "type": "Curve"
         },
@@ -2137,6 +2396,7 @@
           "access": "item",
           "description": "If True the edge order will follow a clockwise orientation; if False, it will be counterclockwise.",
           "name": "Clockwise",
+          "nickname": "Cw",
           "optional": false,
           "type": "Boolean"
         }
@@ -2147,16 +2407,19 @@
         {
           "description": "Middle Edge Point.",
           "name": "Edge Midpoints",
+          "nickname": "EdgeMidpts",
           "type": "Point"
         },
         {
           "description": "Labels assigned to each edge ('A', 'B', 'C', 'D').",
           "name": "Block Letter",
+          "nickname": "BlkLtr",
           "type": "Text"
         },
         {
           "description": "The segmented edges of each block, ordered accordingly.",
           "name": "Block Edges",
+          "nickname": "BlkEdge",
           "type": "Curve"
         }
       ],
@@ -2172,6 +2435,7 @@
           "access": "tree",
           "description": "Google Street View panorama IDs for which metadata will be extracted.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "optional": true,
           "type": "Text"
         },
@@ -2179,6 +2443,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the metadata and depthmap files.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         }
@@ -2189,16 +2454,19 @@
         {
           "description": "A boolean value indicating whether the extraction finished correctly.",
           "name": "Success",
+          "nickname": "Success",
           "type": "Boolean"
         },
         {
           "description": "Path to the JSON file containing detailed panorama metadata.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Path to the .bin file containing the encoded depth map of the panorama.",
           "name": "Depth Map",
+          "nickname": "DMap",
           "type": "Text"
         }
       ],
@@ -2214,6 +2482,7 @@
           "access": "item",
           "description": "Video file",
           "name": "Video",
+          "nickname": "Video",
           "optional": true,
           "type": "Text"
         },
@@ -2221,6 +2490,7 @@
           "access": "item",
           "description": "Number of samples to generate for normalization.",
           "name": "Count",
+          "nickname": "Cnt",
           "optional": false,
           "type": "Integer"
         },
@@ -2228,6 +2498,7 @@
           "access": "item",
           "description": "Resolution reduction factor for processing images.",
           "name": "Scale",
+          "nickname": "Scale",
           "optional": false,
           "type": "Number"
         },
@@ -2235,6 +2506,7 @@
           "access": "item",
           "description": "Display a visualization window with detected features during processing.",
           "name": "Preview",
+          "nickname": "Preview",
           "optional": false,
           "type": "Boolean"
         },
@@ -2242,6 +2514,7 @@
           "access": "item",
           "description": "Controls analysis accuracy for feature detection and tracking [0-1].",
           "name": "Accuracy",
+          "nickname": "Acc",
           "optional": false,
           "type": "Number"
         },
@@ -2249,6 +2522,7 @@
           "access": "item",
           "description": "A boolean value to trigger the video odometry analysis.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2259,26 +2533,31 @@
         {
           "description": "Normalized positions [0-1] per analyzed sample.",
           "name": "Parameters",
+          "nickname": "Param",
           "type": "Number"
         },
         {
           "description": "Motion detected for each processed frame in pixels.",
           "name": "Motion",
+          "nickname": "Motion",
           "type": "Number"
         },
         {
           "description": "Cumulative progressive distance per frame, in pixels.",
           "name": "Distance",
+          "nickname": "Dist",
           "type": "Number"
         },
         {
           "description": "Indicates whether significant motion is present in each frame.",
           "name": "Moving",
+          "nickname": "Move",
           "type": "Boolean"
         },
         {
           "description": "Number of features actively tracked per frame.",
           "name": "Feature Tracks",
+          "nickname": "FTracks",
           "type": "Integer"
         }
       ],
@@ -2294,6 +2573,7 @@
           "access": "tree",
           "description": "File path(s) to equirectangular panoramic image(s).",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -2301,6 +2581,7 @@
           "access": "tree",
           "description": "Plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "optional": true,
           "type": "Integer"
         },
@@ -2308,6 +2589,7 @@
           "access": "tree",
           "description": "Plane normals extracted from depth maps.",
           "name": "Planes",
+          "nickname": "Pln",
           "optional": true,
           "type": "Number"
         },
@@ -2315,6 +2597,7 @@
           "access": "tree",
           "description": "Plane distances from origin.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": true,
           "type": "Number"
         },
@@ -2322,6 +2605,7 @@
           "access": "item",
           "description": "Launch the 360° panorama viewer window.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2341,6 +2625,7 @@
           "access": "list",
           "description": "A list of lines representing all matched keypoints between related images.",
           "name": "Matches",
+          "nickname": "Matches",
           "optional": true,
           "type": "Line"
         },
@@ -2348,6 +2633,7 @@
           "access": "list",
           "description": "Tuples (Source, Target) indicating the image indices for each match line.",
           "name": "Relations",
+          "nickname": "Rel",
           "optional": true,
           "type": "Text"
         },
@@ -2355,6 +2641,7 @@
           "access": "list",
           "description": "Bound index or list of indices to filter lines.",
           "name": "Index",
+          "nickname": "Index",
           "optional": true,
           "type": "Integer"
         }
@@ -2365,11 +2652,13 @@
         {
           "description": "A list of lines that arrive at the current bound(s).",
           "name": "InBounds",
+          "nickname": "In",
           "type": "Line"
         },
         {
           "description": "A list of lines that depart from the current bound(s).",
           "name": "OutBounds",
+          "nickname": "Out",
           "type": "Line"
         }
       ],
@@ -2385,6 +2674,7 @@
           "access": "list",
           "description": "Place names or addresses for geocoding.",
           "name": "Sites",
+          "nickname": "Sites",
           "optional": true,
           "type": "Text"
         },
@@ -2392,6 +2682,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the JSON file.\n- If it ends with '.json', it is treated as the full output file path.\n- If it is a directory or empty, a JSON file with a timestamped name will be created in that directory or in a temporary folder.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -2399,6 +2690,7 @@
           "access": "item",
           "description": "The character encoding for the JSON file (e.g., 'utf-8', 'latin-1').",
           "name": "Encode",
+          "nickname": "Enc",
           "optional": false,
           "type": "Text"
         },
@@ -2406,6 +2698,7 @@
           "access": "item",
           "description": "A boolean value to trigger the execution of the batch geocoding process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2416,16 +2709,19 @@
         {
           "description": "The path to the generated JSON file with the geocoded data.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Coordinate strings in the format \"lat,lon\"; entries are None if geocoding failed.",
           "name": "Location",
+          "nickname": "Loc",
           "type": "Text"
         },
         {
           "description": "Elapsed time to process the batch geocoding process.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2452,6 +2748,7 @@
           "access": "list",
           "description": "Depth Map Files.",
           "name": "Depth Map",
+          "nickname": "DMap",
           "optional": true,
           "type": "Text"
         },
@@ -2459,6 +2756,7 @@
           "access": "item",
           "description": "Index of the dept hmap to preview.",
           "name": "Index",
+          "nickname": "Index",
           "optional": false,
           "type": "Integer"
         },
@@ -2466,6 +2764,7 @@
           "access": "item",
           "description": "Folder path to save image (optional).",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -2473,6 +2772,7 @@
           "access": "item",
           "description": "A boolean parameter to process all depth maps and generate images.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2483,31 +2783,37 @@
         {
           "description": "Path to generated depth map images.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Depth values from depth maps.",
           "name": "Depth",
+          "nickname": "Depth",
           "type": "Number"
         },
         {
           "description": "Plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "type": "Integer"
         },
         {
           "description": "Plane normals extracted from depth maps.",
           "name": "Planes",
+          "nickname": "Pln",
           "type": "Number"
         },
         {
           "description": "Plane distances from origin.",
           "name": "Distance",
+          "nickname": "Dist",
           "type": "Number"
         },
         {
           "description": "Time taken to process all depth maps.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2523,6 +2829,7 @@
           "access": "list",
           "description": "Image bounds as rectangles.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -2530,6 +2837,7 @@
           "access": "list",
           "description": "Closed 4-sided curves for perspective correction.",
           "name": "Reference",
+          "nickname": "Ref",
           "optional": true,
           "type": "Curve"
         },
@@ -2537,6 +2845,7 @@
           "access": "item",
           "description": "A boolean value to trigger the perspective correction.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2547,26 +2856,31 @@
         {
           "description": "Deformed bounds with corrected perspective.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "type": "Curve"
         },
         {
           "description": "Deformed reference shapes with corrected perspective.",
           "name": "Reference",
+          "nickname": "Ref",
           "type": "Curve"
         },
         {
           "description": "Transformations calculated for each bound.",
           "name": "Transform",
+          "nickname": "Xform",
           "type": "Transform"
         },
         {
           "description": "Success status.",
           "name": "Success",
+          "nickname": "Success",
           "type": "Text"
         },
         {
           "description": "Elapsed time calculating the perspective corrections.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2582,6 +2896,7 @@
           "access": "list",
           "description": "Source rectilinear image paths.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -2589,6 +2904,7 @@
           "access": "item",
           "description": "Index of the image to preview.",
           "name": "Index",
+          "nickname": "Index",
           "optional": false,
           "type": "Integer"
         },
@@ -2596,6 +2912,7 @@
           "access": "list",
           "description": "Camera orientations stored as Vector3d, where X = Heading, Y = Pitch, and Z = Roll (degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -2603,6 +2920,7 @@
           "access": "item",
           "description": "Estimated field of view (X = Horizontal, Y = Vertical, in degrees). Z is ignored.",
           "name": "FOV",
+          "nickname": "FOV",
           "optional": true,
           "type": "Point"
         },
@@ -2610,6 +2928,7 @@
           "access": "item",
           "description": "Optional path for saving the projected images.\r\n- If ends with image extension (.png, .jpg), used as base name.\r\n- If directory or empty, saves with timestamped names.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -2617,6 +2936,7 @@
           "access": "item",
           "description": "A boolean value to process at full resolution.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2627,11 +2947,13 @@
         {
           "description": "Paths to the projected equirectangular images (RGBA, transparent outside the photo patch).",
           "name": "Panorama",
+          "nickname": "Pano",
           "type": "Text"
         },
         {
           "description": "Elapsed time performing the full-resolution projection.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2647,6 +2969,7 @@
           "access": "tree",
           "description": "The text address(es) to geocode. Accepts a single item, a list, or a tree -- one geocoding request is made per item, respecting the same structure on the Location output.",
           "name": "Site",
+          "nickname": "Site",
           "optional": true,
           "type": "Text"
         }
@@ -2657,6 +2980,7 @@
         {
           "description": "The interpreted \"latitude, longitude\" coordinates for each address in Site, in the same tree structure as Site. Empty for any address that could not be geocoded.",
           "name": "Location",
+          "nickname": "Loc",
           "type": "Text"
         }
       ],
@@ -2672,6 +2996,7 @@
           "access": "tree",
           "description": "Data tree of Bing Streetside panorama IDs to download.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "optional": true,
           "type": "Text"
         },
@@ -2679,6 +3004,7 @@
           "access": "item",
           "description": "Image quality level (0–4). Zoom 3 = highest guaranteed quality (8×8 tiles/face). Zoom 4 is probed automatically: if the first tile matches zoom 1 content it is treated as a placeholder and zoom 3 is used instead.",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": false,
           "type": "Integer"
         },
@@ -2686,6 +3012,7 @@
           "access": "item",
           "description": "Optional save path.\n- Ends with '.json' → used as summary file path.\n- Directory or empty  → files saved there / temp folder.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -2693,6 +3020,7 @@
           "access": "item",
           "description": "Set to True to start downloading.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2703,16 +3031,19 @@
         {
           "description": "Path to the summary JSON file.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Data tree of paths to the equirectangular PNG images.",
           "name": "Panorama",
+          "nickname": "Pano",
           "type": "Text"
         },
         {
           "description": "Total elapsed time.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2728,6 +3059,7 @@
           "access": "tree",
           "description": "The curves to evaluate.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         },
@@ -2735,6 +3067,7 @@
           "access": "list",
           "description": "Intersection point.",
           "name": "Point",
+          "nickname": "Pt",
           "optional": true,
           "type": "Point"
         }
@@ -2745,21 +3078,25 @@
         {
           "description": "Midpoints of the converging line segments.",
           "name": "Mid Points",
+          "nickname": "MidPts",
           "type": "Point"
         },
         {
           "description": "Clockwise rotation angles toward the convergence point (degrees).",
           "name": "Headings",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "Converging line segments.",
           "name": "Lines",
+          "nickname": "Ln",
           "type": "Line"
         },
         {
           "description": "Intersection points.",
           "name": "Anchors",
+          "nickname": "Anc",
           "type": "Point"
         }
       ],
@@ -2775,6 +3112,7 @@
           "access": "item",
           "description": "Path to the input equirectangular image.",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -2782,6 +3120,7 @@
           "access": "item",
           "description": "Zoom level.",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": false,
           "type": "Number"
         },
@@ -2789,6 +3128,7 @@
           "access": "item",
           "description": "Vector3d where X = Heading, Y = Pitch, Z = Roll (in degrees).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": false,
           "type": "Vector"
         },
@@ -2796,6 +3136,7 @@
           "access": "item",
           "description": "Output image width in pixels.",
           "name": "Width",
+          "nickname": "Width",
           "optional": false,
           "type": "Integer"
         },
@@ -2803,6 +3144,7 @@
           "access": "item",
           "description": "Output image height in pixels.",
           "name": "Height",
+          "nickname": "Height",
           "optional": false,
           "type": "Integer"
         },
@@ -2810,6 +3152,7 @@
           "access": "item",
           "description": "Optional path for saving the projected image.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -2817,6 +3160,7 @@
           "access": "item",
           "description": "Trigger projection at full resolution.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2827,11 +3171,13 @@
         {
           "description": "Path to the generated projected image.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Processing time in seconds.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2847,6 +3193,7 @@
           "access": "list",
           "description": "File paths to images in sequential order.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -2854,6 +3201,7 @@
           "access": "item",
           "description": "Index of the image to preview from Imeage.",
           "name": "Index",
+          "nickname": "Index",
           "optional": false,
           "type": "Integer"
         },
@@ -2861,6 +3209,7 @@
           "access": "list",
           "description": "3D rectangles defining position and scale of each image.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -2868,6 +3217,7 @@
           "access": "list",
           "description": "Intensity domains (0–255) for contour detection.",
           "name": "Threshold",
+          "nickname": "Thr",
           "optional": true,
           "type": "Domain"
         },
@@ -2875,6 +3225,7 @@
           "access": "item",
           "description": "Tolerance for simplifying polylines (0 = no simplification, Recommended: 0.001-0.01).",
           "name": "Tolerance",
+          "nickname": "Tol",
           "optional": false,
           "type": "Number"
         },
@@ -2882,6 +3233,7 @@
           "access": "item",
           "description": "A boolean value to trigger the edge detection.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2892,11 +3244,13 @@
         {
           "description": "Detected contours from each image organized by threshold domain.",
           "name": "Contours",
+          "nickname": "Cont",
           "type": "Curve"
         },
         {
           "description": "Processing time message or error.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -2912,6 +3266,7 @@
           "access": "tree",
           "description": "Point clouds.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "optional": true,
           "type": "Generic Data"
         },
@@ -2919,6 +3274,7 @@
           "access": "tree",
           "description": "Camera positions.",
           "name": "Centroid",
+          "nickname": "Ce",
           "optional": true,
           "type": "Point"
         },
@@ -2926,6 +3282,7 @@
           "access": "item",
           "description": "Geometric tolerance in meters. Scales RANSAC inlier threshold, edge snapping and cross-cloud plane merging.",
           "name": "Tolerance",
+          "nickname": "Tol",
           "optional": false,
           "type": "Number"
         },
@@ -2933,6 +3290,7 @@
           "access": "item",
           "description": "Minimum inlier count to accept a plane.",
           "name": "Min Points",
+          "nickname": "MinPts",
           "optional": false,
           "type": "Integer"
         },
@@ -2940,6 +3298,7 @@
           "access": "item",
           "description": "A boolean value to trigger the segmentantion.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -2950,26 +3309,31 @@
         {
           "description": "Reconstructed planar surfaces.",
           "name": "Breps",
+          "nickname": "B",
           "type": "Brep"
         },
         {
           "description": "Best-fit plane per surface.",
           "name": "Planes",
+          "nickname": "Pln",
           "type": "Plane"
         },
         {
           "description": "Floor | Wall_N | Wall_S | Wall_E | Wall_W",
           "name": "Types",
+          "nickname": "Types",
           "type": "Text"
         },
         {
           "description": "How many raw meshes were fused into each output surface.",
           "name": "Count",
+          "nickname": "Cnt",
           "type": "Integer"
         },
         {
           "description": "Detailed log per cloud + global merge summary.",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         }
       ],
@@ -2985,6 +3349,7 @@
           "access": "tree",
           "description": "Plane assignment for every pixel.",
           "name": "Map",
+          "nickname": "Map",
           "optional": true,
           "type": "Integer"
         },
@@ -2992,6 +3357,7 @@
           "access": "tree",
           "description": "Plane normals [nx,ny,nz] from depth maps.",
           "name": "Planes",
+          "nickname": "Pln",
           "optional": true,
           "type": "Number"
         },
@@ -2999,6 +3365,7 @@
           "access": "tree",
           "description": "Plane distances from origin.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": true,
           "type": "Number"
         },
@@ -3006,6 +3373,7 @@
           "access": "list",
           "description": "File paths to the equirectangular panoramic images.",
           "name": "Panorama",
+          "nickname": "Pano",
           "optional": true,
           "type": "Text"
         },
@@ -3013,6 +3381,7 @@
           "access": "list",
           "description": "The coordinates of each panorama in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\").",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -3020,6 +3389,7 @@
           "access": "list",
           "description": "Geographic north direction in the panorama in degrees.",
           "name": "North",
+          "nickname": "North",
           "optional": true,
           "type": "Number"
         },
@@ -3027,6 +3397,7 @@
           "access": "list",
           "description": "Elevation of the panorama above sea level, in meters.",
           "name": "Elevation",
+          "nickname": "Elev",
           "optional": true,
           "type": "Number"
         },
@@ -3034,6 +3405,7 @@
           "access": "item",
           "description": "A boolean value to trigger the point cloud reconstruction.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3044,21 +3416,25 @@
         {
           "description": "Point clouds with embedded colors.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "type": "Point Cloud"
         },
         {
           "description": "Local centroids (camera positions).",
           "name": "Centroids",
+          "nickname": "Ce",
           "type": "Point"
         },
         {
           "description": "Processing status and statistics.",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         },
         {
           "description": "Elapsed time for point cloud reconstruction.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3074,6 +3450,7 @@
           "access": "item",
           "description": "Number of samples to create within the interval.",
           "name": "Steps",
+          "nickname": "Stp",
           "optional": true,
           "type": "Integer"
         },
@@ -3081,6 +3458,7 @@
           "access": "item",
           "description": "Lower time limit of the interval (Default is 00:00:00).",
           "name": "Start",
+          "nickname": "Start",
           "optional": false,
           "type": "Time"
         },
@@ -3088,6 +3466,7 @@
           "access": "item",
           "description": "Upper time limit of the interval (Default is Duration).",
           "name": "End",
+          "nickname": "End",
           "optional": true,
           "type": "Time"
         },
@@ -3095,6 +3474,7 @@
           "access": "item",
           "description": "Time span of the sequence, expressed as a time value.",
           "name": "Duration",
+          "nickname": "Dur",
           "optional": true,
           "type": "Time"
         },
@@ -3102,6 +3482,7 @@
           "access": "item",
           "description": "Number of frames per second in the video.",
           "name": "FrameRate",
+          "nickname": "FrRate",
           "optional": false,
           "type": "Number"
         },
@@ -3109,6 +3490,7 @@
           "access": "list",
           "description": "Normalized positions [0–1] used to drive interpolation.",
           "name": "Parameters",
+          "nickname": "Param",
           "optional": true,
           "type": "Number"
         }
@@ -3119,11 +3501,13 @@
         {
           "description": "Integer indices of the selected frames.",
           "name": "Frames",
+          "nickname": "Frames",
           "type": "Integer"
         },
         {
           "description": "DateTime values corresponding to the sampled timecodes.",
           "name": "Times",
+          "nickname": "Times",
           "type": "Time"
         }
       ],
@@ -3139,6 +3523,7 @@
           "access": "tree",
           "description": "Point clouds to export.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "optional": true,
           "type": "Point Cloud"
         },
@@ -3146,6 +3531,7 @@
           "access": "tree",
           "description": "Optional centroids. If omitted derived from bounding box.",
           "name": "Centroid",
+          "nickname": "Ce",
           "optional": true,
           "type": "Point"
         },
@@ -3153,6 +3539,7 @@
           "access": "tree",
           "description": "Optional names for point clouds.",
           "name": "Name",
+          "nickname": "Name",
           "optional": true,
           "type": "Text"
         },
@@ -3160,6 +3547,7 @@
           "access": "item",
           "description": "Folder path to save JSON files. If empty, uses temp directory.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -3167,6 +3555,7 @@
           "access": "item",
           "description": "A boolean value to trigger the export.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3177,11 +3566,13 @@
         {
           "description": "Full path to the master JSON.GZ file.",
           "name": "Collection",
+          "nickname": "Collection",
           "type": "Text"
         },
         {
           "description": "Full paths to the generated compressed JSON.GZ files.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         }
       ],
@@ -3197,6 +3588,7 @@
           "access": "item",
           "description": "Bounding rectangle defining the area from which to fetch tiles.",
           "name": "Bound",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -3204,6 +3596,7 @@
           "access": "item",
           "description": "Zoom level of the tiles (each source may have a different valid range of levels).",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": false,
           "type": "Integer"
         },
@@ -3211,6 +3604,7 @@
           "access": "item",
           "description": "Optional path specifying where to store the downloaded tiles.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -3218,6 +3612,7 @@
           "access": "item",
           "description": "A boolean value to trigger the tile download.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3228,21 +3623,25 @@
         {
           "description": "Bounding rectangles of the downloaded tiles in geographic coordinates.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "File paths to the downloaded tile images.",
           "name": "Tile Path",
+          "nickname": "TilePth",
           "type": "Text"
         },
         {
           "description": "Downloaded tile IDs in the format Zoom/X/Y.",
           "name": "Tile ID",
+          "nickname": "TileID",
           "type": "Text"
         },
         {
           "description": "Total time taken to fetch the tiles.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3258,6 +3657,7 @@
           "access": "item",
           "description": "The distance value in meters to be converted.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": true,
           "type": "Number"
         }
@@ -3268,6 +3668,7 @@
         {
           "description": "The resulting factor expressed in decimal degrees.",
           "name": "Measure",
+          "nickname": "Ms",
           "type": "Number"
         }
       ],
@@ -3283,6 +3684,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the metadata and depth map files.\n- If it ends with \".json\", it's treated as the full output statistics file path\n- If it's a directory or empty, files will be created in that directory or in a temporary location.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -3290,6 +3692,7 @@
           "access": "tree",
           "description": "A data tree of geographic coordinates (latitude, longitude) to query.",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -3297,6 +3700,7 @@
           "access": "item",
           "description": "A boolean value to trigger the panorama metadata retrieval process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3307,21 +3711,25 @@
         {
           "description": "Path to the JSON file containing consolidated panorama statistics and metadata.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "A data tree of file paths to individual JSON metadata files for each panorama found.",
           "name": "Metadata",
+          "nickname": "Metadata",
           "type": "Text"
         },
         {
           "description": "A data tree of file paths to individual binary depth map files for each panorama found.",
           "name": "Depth Map",
+          "nickname": "DMap",
           "type": "Text"
         },
         {
           "description": "Elapsed time for the complete metadata retrieval process.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3337,6 +3745,7 @@
           "access": "item",
           "description": "Image to process: either a file path (string) or a Bitmap object.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Generic Data"
         },
@@ -3344,6 +3753,7 @@
           "access": "item",
           "description": "Sampling factor to reduce the number of pixels analyzed in the histogram.",
           "name": "Decimation",
+          "nickname": "Dec",
           "optional": false,
           "type": "Number"
         }
@@ -3354,21 +3764,25 @@
         {
           "description": "Red Channel intensity histogram.",
           "name": "Red",
+          "nickname": "Red",
           "type": "Number"
         },
         {
           "description": "Green Channel intensity histogram.",
           "name": "Green",
+          "nickname": "Green",
           "type": "Number"
         },
         {
           "description": "Blue Channel intensity histogram.",
           "name": "Blue",
+          "nickname": "Blue",
           "type": "Number"
         },
         {
           "description": "Histogram analysis summary.",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         }
       ],
@@ -3384,6 +3798,7 @@
           "access": "list",
           "description": "Path to JSON file(s). Accepts .json and .json.gz (compressed). Can be single point cloud files or master collection files.",
           "name": "JSON",
+          "nickname": "JSON",
           "optional": true,
           "type": "Text"
         }
@@ -3394,21 +3809,25 @@
         {
           "description": "Imported point clouds.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "type": "Point Cloud"
         },
         {
           "description": "Reference point per cloud.",
           "name": "Centroid",
+          "nickname": "Ce",
           "type": "Point"
         },
         {
           "description": "Names of the imported point clouds.",
           "name": "Name",
+          "nickname": "Name",
           "type": "Text"
         },
         {
           "description": "Import status and statistics.",
           "name": "Statistics",
+          "nickname": "Stats",
           "type": "Text"
         }
       ],
@@ -3424,6 +3843,7 @@
           "access": "tree",
           "description": "Point Cloud to reduce.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "optional": true,
           "type": "Point Cloud"
         },
@@ -3431,6 +3851,7 @@
           "access": "item",
           "description": "Fraction of points to keep (0.0 – 1.0).",
           "name": "Ratio",
+          "nickname": "Ratio",
           "optional": false,
           "type": "Number"
         },
@@ -3438,6 +3859,7 @@
           "access": "item",
           "description": "Random seed for reproducible results.",
           "name": "Seed",
+          "nickname": "Seed",
           "optional": false,
           "type": "Integer"
         },
@@ -3445,6 +3867,7 @@
           "access": "item",
           "description": "A boolean value to trigger the operation.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3455,16 +3878,19 @@
         {
           "description": "A subsample of the original point cloud.",
           "name": "Point Cloud",
+          "nickname": "Cloud",
           "type": "Point Cloud"
         },
         {
           "description": "Original point count per cloud.",
           "name": "Original Count",
+          "nickname": "OrigCnt",
           "type": "Integer"
         },
         {
           "description": "Filtered point count per cloud.",
           "name": "Reduced Count",
+          "nickname": "RedCnt",
           "type": "Integer"
         }
       ],
@@ -3480,6 +3906,7 @@
           "access": "item",
           "description": "Subdivided mesh from SphericalIsovist (RemeshedMesh output).",
           "name": "Mesh",
+          "nickname": "M",
           "optional": true,
           "type": "Mesh"
         },
@@ -3487,6 +3914,7 @@
           "access": "list",
           "description": "Assigned origin index per face from SphericalIsovist (-1 = occluded).",
           "name": "Index",
+          "nickname": "Idx",
           "optional": true,
           "type": "Integer"
         },
@@ -3494,6 +3922,7 @@
           "access": "list",
           "description": "Camera positions — must match the Origins list used in SphericalIsovist.",
           "name": "Origins",
+          "nickname": "O",
           "optional": true,
           "type": "Point"
         },
@@ -3501,6 +3930,7 @@
           "access": "list",
           "description": "Camera orientation per origin as Vector3d(Heading°, Pitch°, Roll°). Heading = yaw around World-Z. Pitch = tilt around local-X. Roll = roll around local-Y. HPR(0,0,0) points the camera toward +Y (North). One vector per camera.",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -3508,6 +3938,7 @@
           "access": "item",
           "description": "If true, outputs an extra sub-mesh at index [originCount] with faces that are occluded from all cameras (UV = 0,0).",
           "name": "Occluded",
+          "nickname": "Occl",
           "optional": true,
           "type": "Boolean"
         },
@@ -3515,6 +3946,7 @@
           "access": "list",
           "description": "Optional list of equirectangular photo paths, one per camera, in the same order as Origins. If provided, output [ImagePath] pairs each sub-mesh with its camera's photo — feed both directly into Human's Custom Preview Materials (Geometry + Diffuse Bitmap).",
           "name": "Images",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         }
@@ -3525,26 +3957,31 @@
         {
           "description": "One UV-mapped sub-mesh per camera origin. SubMeshes[i] contains all faces assigned to camera i with equirectangular UV coordinates projected from that camera. Feed each sub-mesh + its corresponding texture to Human.CustomPreviewMaterials or a material assignment node.",
           "name": "Mesh",
+          "nickname": "M",
           "type": "Mesh"
         },
         {
           "description": "Camera index corresponding to each output sub-mesh (matches CameraOrigins list).",
           "name": "Camera Index",
+          "nickname": "CamIdx",
           "type": "Integer"
         },
         {
           "description": "Number of faces in each sub-mesh.",
           "name": "Face Count",
+          "nickname": "FaceCnt",
           "type": "Integer"
         },
         {
           "description": "Sub-mesh of faces occluded from all cameras (no UV). Empty mesh if IncludeOccluded = false.",
           "name": "OccludedMesh",
+          "nickname": "OM",
           "type": "Mesh"
         },
         {
           "description": "Photo path corresponding to each output sub-mesh, aligned by index with the [Mesh] output. Empty string if no Images input was provided or if that camera has no photo assigned. Feed [Mesh] + [Image Path] directly into Custom Preview Materials as paired lists (Geometry = Mesh, Diffuse Bitmap = Image Path).",
           "name": "Image Path",
+          "nickname": "ImgPath",
           "type": "Text"
         }
       ],
@@ -3560,6 +3997,7 @@
           "access": "list",
           "description": "Source image paths.",
           "name": "Image",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -3567,6 +4005,7 @@
           "access": "item",
           "description": "Reference image path.",
           "name": "Target",
+          "nickname": "Target",
           "optional": true,
           "type": "Text"
         },
@@ -3574,6 +4013,7 @@
           "access": "item",
           "description": "Index of the image to preview.",
           "name": "Index",
+          "nickname": "Index",
           "optional": false,
           "type": "Integer"
         },
@@ -3581,6 +4021,7 @@
           "access": "item",
           "description": "Controls the strength of histogram matching. Range: 0 (none) to 1 (full).",
           "name": "Intensity",
+          "nickname": "Intens",
           "optional": false,
           "type": "Number"
         },
@@ -3588,6 +4029,7 @@
           "access": "item",
           "description": "Applies preprocessing for keypoints (CLAHE, sharpening).",
           "name": "Normalize",
+          "nickname": "Nz",
           "optional": false,
           "type": "Boolean"
         },
@@ -3595,6 +4037,7 @@
           "access": "item",
           "description": "Optional folder to save output.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -3602,6 +4045,7 @@
           "access": "item",
           "description": "A boolean value to trigger the histogram matching process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3612,16 +4056,19 @@
         {
           "description": "Histogram-matched image paths.",
           "name": "Image",
+          "nickname": "Img",
           "type": "Text"
         },
         {
           "description": "Preview image.",
           "name": "Preview",
+          "nickname": "Preview",
           "type": "Generic Data"
         },
         {
           "description": "Processing time in seconds.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3637,6 +4084,7 @@
           "access": "item",
           "description": "The coordinates in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\").",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -3644,6 +4092,7 @@
           "access": "item",
           "description": "The radius of the query from the Location point in meters.",
           "name": "Radius",
+          "nickname": "Rad",
           "optional": false,
           "type": "Number"
         },
@@ -3651,6 +4100,7 @@
           "access": "item",
           "description": "A boolean value to trigger the block construction process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3661,26 +4111,31 @@
         {
           "description": "The nearest location on a detected block boundary, returned as a tuple (longitude, latitude) for visualization. Units depend on the Projection selected via the right-click context menu: degrees for Plate Carrée, meters for Web Mercator/Metric.",
           "name": "Point Coordinates",
+          "nickname": "PtCoord",
           "type": "Point"
         },
         {
           "description": "The list of centroid points corresponding to each detected block. Units depend on the selected Projection.",
           "name": "Block Centroids",
+          "nickname": "BlkCe",
           "type": "Point"
         },
         {
           "description": "The list containing polylines representing the edges of each block. Units depend on the selected Projection.",
           "name": "Block Polylines",
+          "nickname": "BlkPoly",
           "type": "Curve"
         },
         {
           "description": "The data tree containing the vertices of each block geometry. Units depend on the selected Projection.",
           "name": "Block Vertices",
+          "nickname": "BlkVe",
           "type": "Point"
         },
         {
           "description": "The time taken to construct the block geometries.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3696,6 +4151,7 @@
           "access": "tree",
           "description": "The set of panorama IDs to download.",
           "name": "Pano ID",
+          "nickname": "PanoID",
           "optional": true,
           "type": "Text"
         },
@@ -3703,6 +4159,7 @@
           "access": "item",
           "description": "The quality level of the panorama from 1 to 5.",
           "name": "Zoom",
+          "nickname": "Zoom",
           "optional": false,
           "type": "Integer"
         },
@@ -3710,6 +4167,7 @@
           "access": "item",
           "description": "Optional path specifying where to save the JSON file.\n- If it ends with '.json', it is treated as the full output file path.\n- If it is a directory or empty, a JSON file with a timestamped name will be created in that directory or in a temporary folder.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -3717,6 +4175,7 @@
           "access": "item",
           "description": "A boolean value to trigger the panorama download.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3727,16 +4186,19 @@
         {
           "description": "Path to the summary JSON file with metadata.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "The file paths to the equirectangular images.",
           "name": "Panorama",
+          "nickname": "Pano",
           "type": "Text"
         },
         {
           "description": "The total time elapsed during the process.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3752,6 +4214,7 @@
           "access": "list",
           "description": "Image file paths in sequential order.",
           "name": "Images",
+          "nickname": "Img",
           "optional": true,
           "type": "Text"
         },
@@ -3759,6 +4222,7 @@
           "access": "list",
           "description": "3D rectangles defining the position and scale of each image.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -3766,6 +4230,7 @@
           "access": "item",
           "description": "Threshold for filtering feature matches (Range 0.5-0.9).",
           "name": "Threshold",
+          "nickname": "Thr",
           "optional": false,
           "type": "Number"
         },
@@ -3773,6 +4238,7 @@
           "access": "item",
           "description": "Maximum number of keypoints to detect per image.",
           "name": "Max Key Points",
+          "nickname": "MaxKp",
           "optional": false,
           "type": "Integer"
         },
@@ -3780,6 +4246,7 @@
           "access": "item",
           "description": "Number of nearest neighbor images to match with each image.",
           "name": "Neighbors",
+          "nickname": "Nb",
           "optional": false,
           "type": "Integer"
         },
@@ -3787,6 +4254,7 @@
           "access": "item",
           "description": "A boolean value to trigger the keypoint detection process.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -3797,26 +4265,31 @@
         {
           "description": "Detected feature points from all analyzed images.",
           "name": "Keypoints",
+          "nickname": "Kp",
           "type": "Point"
         },
         {
           "description": "Lines connecting matched keypoints between related images.",
           "name": "Matches",
+          "nickname": "Matches",
           "type": "Line"
         },
         {
           "description": "Tuple pairs (Source, Target) indicating the image indices for each match line.",
           "name": "Relations",
+          "nickname": "Rel",
           "type": "Text"
         },
         {
           "description": "Processing status report with connection statistics.",
           "name": "Success",
+          "nickname": "Success",
           "type": "Text"
         },
         {
           "description": "Processing time in seconds.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -3832,6 +4305,7 @@
           "access": "item",
           "description": "Polyline that defines the 2D region to populate.",
           "name": "Area",
+          "nickname": "Area",
           "optional": true,
           "type": "Curve"
         },
@@ -3839,6 +4313,7 @@
           "access": "item",
           "description": "Distance between points in meters.",
           "name": "Distance",
+          "nickname": "Dist",
           "optional": false,
           "type": "Number"
         },
@@ -3846,6 +4321,7 @@
           "access": "item",
           "description": "Number of closest outside points to add per perimeter point.",
           "name": "Count",
+          "nickname": "Cnt",
           "optional": false,
           "type": "Integer"
         }
@@ -3856,16 +4332,19 @@
         {
           "description": "Minimum bounding rectangle oriented to the area.",
           "name": "Bound",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Points generated inside the region at the specified spacing.",
           "name": "Inside",
+          "nickname": "In",
           "type": "Point"
         },
         {
           "description": "Points generated outside the region but inside the bounding box.",
           "name": "Outside",
+          "nickname": "Out",
           "type": "Point"
         }
       ],
@@ -3881,6 +4360,7 @@
           "access": "item",
           "description": "Origin point of the joystick.",
           "name": "Origin",
+          "nickname": "O",
           "optional": false,
           "type": "Point"
         },
@@ -3888,6 +4368,7 @@
           "access": "item",
           "description": "Reference plane that defines the joystick's X and Y directions.",
           "name": "Plane",
+          "nickname": "Pl",
           "optional": false,
           "type": "Plane"
         }
@@ -3898,16 +4379,19 @@
         {
           "description": "Resulting position of the joystick.",
           "name": "Position",
+          "nickname": "P",
           "type": "Point"
         },
         {
           "description": "Resulting direction of the joystick.",
           "name": "Direction",
+          "nickname": "D",
           "type": "Vector"
         },
         {
           "description": "Resulting amplitude of the joystick.",
           "name": "Amplitude",
+          "nickname": "A",
           "type": "Number"
         }
       ],
@@ -3923,6 +4407,7 @@
           "access": "item",
           "description": "The decimal factor value to be converted.",
           "name": "Measure",
+          "nickname": "Ms",
           "optional": true,
           "type": "Number"
         }
@@ -3933,6 +4418,7 @@
         {
           "description": "The resulting distance value in meters.",
           "name": "Distance",
+          "nickname": "Dist",
           "type": "Number"
         }
       ],
@@ -3948,6 +4434,7 @@
           "access": "item",
           "description": "Camera orientation as Vector (Heading, Pitch, Roll).",
           "name": "Camera",
+          "nickname": "Camera",
           "optional": true,
           "type": "Vector"
         },
@@ -3955,6 +4442,7 @@
           "access": "item",
           "description": "North reference vector.",
           "name": "North",
+          "nickname": "North",
           "optional": false,
           "type": "Vector"
         }
@@ -3965,16 +4453,19 @@
         {
           "description": "Camera direction vector.",
           "name": "Forward",
+          "nickname": "Fwd",
           "type": "Vector"
         },
         {
           "description": "Camera orientation plane.",
           "name": "Plane",
+          "nickname": "Pln",
           "type": "Plane"
         },
         {
           "description": "Camera up vector.",
           "name": "Up",
+          "nickname": "Up",
           "type": "Vector"
         }
       ],
@@ -3990,6 +4481,7 @@
           "access": "list",
           "description": "The list of street names.",
           "name": "Street Names",
+          "nickname": "StNm",
           "optional": true,
           "type": "Text"
         },
@@ -3997,6 +4489,7 @@
           "access": "list",
           "description": "Selection criterion. Can be:\r\n- An index The index or list of indices of the street(s) to be selected.\r\n- A point (Finds closest street).",
           "name": "Reference",
+          "nickname": "Ref",
           "optional": true,
           "type": "Generic Data"
         },
@@ -4004,6 +4497,7 @@
           "access": "tree",
           "description": "The DataTree containing street polylines.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         }
@@ -4014,11 +4508,13 @@
         {
           "description": "The name or list of names of the selected street(s).",
           "name": "Street Name",
+          "nickname": "StNm",
           "type": "Text"
         },
         {
           "description": "The DataTree of selected polylines (grouped by index).",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "type": "Curve"
         }
       ],
@@ -4034,6 +4530,7 @@
           "access": "tree",
           "description": "The coordinates in the format \"latitude,longitude\" (e.g., \"19.355720782526816,-99.1900035901753\"). Accepts a single item, a list, or a tree -- one reverse-geocoding request is made per item, respecting the same structure on every output.",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         }
@@ -4044,56 +4541,67 @@
         {
           "description": "Full textual representation of the location.",
           "name": "Address",
+          "nickname": "Adr",
           "type": "Text"
         },
         {
           "description": "Name of the street or road.",
           "name": "Road",
+          "nickname": "Road",
           "type": "Text"
         },
         {
           "description": "Building number.",
           "name": "Number",
+          "nickname": "Num",
           "type": "Text"
         },
         {
           "description": "City or municipality name.",
           "name": "City",
+          "nickname": "City",
           "type": "Text"
         },
         {
           "description": "State, province, or region.",
           "name": "State",
+          "nickname": "State",
           "type": "Text"
         },
         {
           "description": "Local neighborhood or suburb.",
           "name": "Neighborhood",
+          "nickname": "Nbh",
           "type": "Text"
         },
         {
           "description": "Postal or ZIP code.",
           "name": "Postcode",
+          "nickname": "Pc",
           "type": "Text"
         },
         {
           "description": "Country name.",
           "name": "Country",
+          "nickname": "Ctry",
           "type": "Text"
         },
         {
           "description": "Unique Nominatim place identifier.",
           "name": "Place ID",
+          "nickname": "PlaceID",
           "type": "Text"
         },
         {
           "description": "Type of the OSM object (node, way, relation).",
           "name": "OSM Type",
+          "nickname": "OsmTy",
           "type": "Text"
         },
         {
           "description": "Unique OSM identifier for the object.",
           "name": "OSM ID",
+          "nickname": "OsmID",
           "type": "Text"
         }
       ],
@@ -4109,6 +4617,7 @@
           "access": "list",
           "description": "3D rectangles defining the initial position and scale of each image.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "optional": true,
           "type": "Rectangle"
         },
@@ -4116,6 +4625,7 @@
           "access": "list",
           "description": "Line segments connecting corresponding points between bounds.",
           "name": "Matches",
+          "nickname": "Matches",
           "optional": true,
           "type": "Line"
         },
@@ -4123,6 +4633,7 @@
           "access": "list",
           "description": "Tuple pairs (Source, Target) indicating the image indices for each match line.",
           "name": "Relations",
+          "nickname": "Rel",
           "optional": true,
           "type": "Text"
         },
@@ -4130,6 +4641,7 @@
           "access": "item",
           "description": "JSON string describing algorithm parameters for transformations.",
           "name": "Settings",
+          "nickname": "Setup",
           "optional": true,
           "type": "Text"
         },
@@ -4137,6 +4649,7 @@
           "access": "item",
           "description": "A boolean value to trigger the computation of transformations.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -4147,21 +4660,25 @@
         {
           "description": "Transformations calculated for each bound.",
           "name": "Transform",
+          "nickname": "Xform",
           "type": "Transform"
         },
         {
           "description": "Transformed rectangles representing aligned image positions.",
           "name": "Bounds",
+          "nickname": "Bnd",
           "type": "Rectangle"
         },
         {
           "description": "Status report showing which bound pairs were successfully aligned.",
           "name": "Success",
+          "nickname": "Success",
           "type": "Text"
         },
         {
           "description": "Elapsed time for the computation or error message.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -4177,6 +4694,7 @@
           "access": "item",
           "description": "Optional path to save metadata files.\n- If it ends with \".json\" it is used as the summary file path.\n- If it is a directory, files are saved there.\n- If empty, a temp folder is used.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -4184,6 +4702,7 @@
           "access": "tree",
           "description": "Data tree of geographic coordinates (\"lat, lon\") to query.",
           "name": "Location",
+          "nickname": "Loc",
           "optional": true,
           "type": "Text"
         },
@@ -4191,6 +4710,7 @@
           "access": "item",
           "description": "Set to True to trigger the panorama metadata retrieval.",
           "name": "Run",
+          "nickname": "Run",
           "optional": false,
           "type": "Boolean"
         }
@@ -4201,16 +4721,19 @@
         {
           "description": "Path to the JSON summary file.",
           "name": "JSON",
+          "nickname": "JSON",
           "type": "Text"
         },
         {
           "description": "Data tree of paths to individual panorama JSON metadata files.",
           "name": "Metadata",
+          "nickname": "Metadata",
           "type": "Text"
         },
         {
           "description": "Elapsed time for the retrieval process.",
           "name": "Time",
+          "nickname": "Time",
           "type": "Text"
         }
       ],
@@ -4226,6 +4749,7 @@
           "access": "tree",
           "description": "The curves to evaluate, grouped by branch:\n- A branch with 1 curve calculates perpendiculars on both sides of that curve.\n- A branch with 2 curves calculates divergent perpendiculars avoiding the median between them.",
           "name": "Street Polyline",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         },
@@ -4233,6 +4757,7 @@
           "access": "tree",
           "description": "The list of points to evaluate along the curve(s).",
           "name": "Points",
+          "nickname": "Pts",
           "optional": true,
           "type": "Point"
         }
@@ -4243,16 +4768,19 @@
         {
           "description": "The list of midpoints of the perpendicular line segments.",
           "name": "Mid Points",
+          "nickname": "MidPts",
           "type": "Point"
         },
         {
           "description": "The list of perpendicular rotation angles clockwise from the curves (in degrees).",
           "name": "Headings",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "The list of perpendicular line segments.",
           "name": "Lines",
+          "nickname": "Ln",
           "type": "Line"
         }
       ],
@@ -4268,6 +4796,7 @@
           "access": "tree",
           "description": "The line segment to be evaluated.",
           "name": "Line",
+          "nickname": "Ln",
           "optional": true,
           "type": "Line"
         }
@@ -4278,6 +4807,7 @@
         {
           "description": "The rotation angle of the line (in degrees) clockwise from geographic north.",
           "name": "Heading",
+          "nickname": "Hdg",
           "type": "Number"
         }
       ],
@@ -4293,6 +4823,7 @@
           "access": "tree",
           "description": "Curves to evaluate.",
           "name": "Street Polylines",
+          "nickname": "StPoly",
           "optional": true,
           "type": "Curve"
         },
@@ -4300,6 +4831,7 @@
           "access": "list",
           "description": "Intersection point.",
           "name": "Point",
+          "nickname": "Pt",
           "optional": true,
           "type": "Point"
         }
@@ -4310,16 +4842,19 @@
         {
           "description": "Midpoints of the diverging line segments.",
           "name": "Mid Points",
+          "nickname": "MidPts",
           "type": "Point"
         },
         {
           "description": "Clockwise rotation angles toward the divergence point (degrees).",
           "name": "Headings",
+          "nickname": "Hdg",
           "type": "Number"
         },
         {
           "description": "Diverging line segments.",
           "name": "Lines",
+          "nickname": "Ln",
           "type": "Line"
         }
       ],
@@ -4335,6 +4870,7 @@
           "access": "item",
           "description": "Path to the media file.",
           "name": "File Path",
+          "nickname": "File",
           "optional": true,
           "type": "Text"
         }
@@ -4345,56 +4881,67 @@
         {
           "description": "File name without extension.",
           "name": "Name",
+          "nickname": "Name",
           "type": "Text"
         },
         {
           "description": "File extension (e.g., .jpg, .png).",
           "name": "Extension",
+          "nickname": "Ext",
           "type": "Text"
         },
         {
           "description": "Folder path containing the file.",
           "name": "Directory",
+          "nickname": "Dir",
           "type": "Text"
         },
         {
           "description": "File size in bytes.",
           "name": "Size",
+          "nickname": "Size",
           "type": "Integer"
         },
         {
           "description": "Image height in pixels.",
           "name": "Height",
+          "nickname": "Height",
           "type": "Integer"
         },
         {
           "description": "Image width in pixels.",
           "name": "Width",
+          "nickname": "Width",
           "type": "Integer"
         },
         {
           "description": "Width divided by height ratio.",
           "name": "Aspect Ratio",
+          "nickname": "AR",
           "type": "Number"
         },
         {
           "description": "Color space and bit depth information.",
           "name": "Pixel Format",
+          "nickname": "PxFmt",
           "type": "Text"
         },
         {
           "description": "Number of color channels (1=grayscale, 3=RGB, 4=RGBA).",
           "name": "Channels",
+          "nickname": "Chs",
           "type": "Integer"
         },
         {
           "description": "File creation date and time.",
           "name": "Creation Date",
+          "nickname": "CreDate",
           "type": "Time"
         },
         {
           "description": "Last modification date and time.",
           "name": "Modification Date",
+          "nickname": "ModDate",
           "type": "Time"
         }
       ],
@@ -4410,6 +4957,7 @@
           "access": "item",
           "description": "Full path to a directory or file.",
           "name": "Directory",
+          "nickname": "Dir",
           "optional": true,
           "type": "Text"
         },
@@ -4417,6 +4965,7 @@
           "access": "item",
           "description": "Optional file extension filter (e.g., \".txt\"). All formats included if None.",
           "name": "Format",
+          "nickname": "Fmt",
           "optional": true,
           "type": "Text"
         }
@@ -4427,16 +4976,19 @@
         {
           "description": "Filtered file paths.",
           "name": "File",
+          "nickname": "File",
           "type": "Text"
         },
         {
           "description": "Filtered folder paths.",
           "name": "Folder",
+          "nickname": "Folder",
           "type": "Text"
         },
         {
           "description": "Unique file formats in the filtered files.",
           "name": "Extension",
+          "nickname": "Ext",
           "type": "Text"
         }
       ],
@@ -4452,6 +5004,7 @@
           "access": "item",
           "description": "The first set of geographic coordinates in the format (latitude, longitude).",
           "name": "Location A",
+          "nickname": "LocA",
           "optional": true,
           "type": "Generic Data"
         },
@@ -4459,6 +5012,7 @@
           "access": "item",
           "description": "The second set of geographic coordinates in the format (latitude, longitude).",
           "name": "Location B",
+          "nickname": "LocB",
           "optional": true,
           "type": "Generic Data"
         }
@@ -4469,6 +5023,7 @@
         {
           "description": "The calculated distance in meters.",
           "name": "Distance",
+          "nickname": "Dist",
           "type": "Number"
         }
       ],
@@ -4484,6 +5039,7 @@
           "access": "list",
           "description": "Points or display strings representing coordinates.",
           "name": "Coordinates",
+          "nickname": "Coord",
           "optional": true,
           "type": "Generic Data"
         }
@@ -4494,6 +5050,7 @@
         {
           "description": "Coordinates converted to the opposite representation.",
           "name": "Swapped",
+          "nickname": "Swap",
           "type": "Text"
         }
       ],
@@ -4502,7 +5059,7 @@
   ],
   "plugin_metadata": {
     "author": "Edgar Zambrano Rodríguez | @EDGARZR54",
-    "generated_at": "2026-08-09 21:57:51",
+    "generated_at": "2026-08-10 00:02:11",
     "name": "StreetDataInsight",
     "version": "1.1.1"
   }
