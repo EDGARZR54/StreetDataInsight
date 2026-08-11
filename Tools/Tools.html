@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreetData Insight | Documentación</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-    <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+    <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetDataInsight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+    <link rel="stylesheet" href="https://edgarzr54.github.io/StreetDataInsight/partials/navbar_credits_styles.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         * {
@@ -904,7 +904,7 @@
         </div><!-- /view component -->
 
         <div class="credits">
-            <img src="https://edgarzr54.github.io/StreetData-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+            <img src="https://edgarzr54.github.io/StreetDataInsight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
             <p>
                 Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.
                 Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.
@@ -916,7 +916,7 @@
     </div>
 
     <script>
-        fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+        fetch('https://edgarzr54.github.io/StreetDataInsight/partials/navbar.html')
             .then(r => r.text()).then(d => {
                 document.getElementById('navbar-placeholder').innerHTML = d;
             })
@@ -1023,7 +1023,7 @@
 
                 async init() {
                     try {
-                        const res = await fetch('https://edgarzr54.github.io/StreetData-Insight/Tools/StreetDataInsight_Docs.json');
+                        const res = await fetch('https://edgarzr54.github.io/StreetDataInsight/Tools/StreetDataInsight_Docs.json');
                         const data = await res.json();
                         this.allComponents = data.components;
 

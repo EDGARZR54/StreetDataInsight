@@ -1,6 +1,6 @@
 # Documentation
 <p align="center">
-  <img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/e1bf6e60-1fdd-4504-972d-809f339c4380" alt="Animation_0" width="1000">
+  <img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/e1bf6e60-1fdd-4504-972d-809f339c4380" alt="Animation_0" width="1000">
 </p>
 
 ## Subcategories
@@ -15,7 +15,7 @@
 ## GeoData
 ### Geocode Requester
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/90b31b10-dabc-41ea-b9b5-c40c2b789a72" alt="Geocode Requester" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/90b31b10-dabc-41ea-b9b5-c40c2b789a72" alt="Geocode Requester" width="250">
 </p>
 Performs a geocoding request using the Google Maps Places API to interpret geographical coordinates of places and establishments from text queries.
 
@@ -31,7 +31,7 @@ Performs a geocoding request using the Google Maps Places API to interpret geogr
 | Location | A tuple containing the latitude and longitude coordinates of the location.| Tuple (Float)  |
 ### Excel | Batch Geocoder
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/6a062ba5-9f53-4d49-a20d-81488a34b57a" alt="Excel | Batch Geocoder" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/6a062ba5-9f53-4d49-a20d-81488a34b57a" alt="Excel | Batch Geocoder" width="250">
 </p>
 Performs batch geocoding using the Google Maps Places API to interpret geographical coordinates of places and establishments from names or addresses in the specified Excel file.
 
@@ -52,7 +52,7 @@ Performs batch geocoding using the Google Maps Places API to interpret geographi
 | Time      | The time spent in the batch geocoding process.                 | String |
 ### Excel | File Launcher
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/cdb81107-90cc-40de-a26e-2a11375710f5" alt="Excel | File Launcher" width="125">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/cdb81107-90cc-40de-a26e-2a11375710f5" alt="Excel | File Launcher" width="125">
 </p>
 Opens an Excel file using the Microsoft Excel application.
 
@@ -63,7 +63,7 @@ Opens an Excel file using the Microsoft Excel application.
 | Run     | A boolean value (True or False) to trigger the execution.| Boolean |
 ### KMZ to Curve Decoder
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/e943c781-5593-4f15-be33-5416c8d4d663" alt="KMZ to Curve Decoder" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/e943c781-5593-4f15-be33-5416c8d4d663" alt="KMZ to Curve Decoder" width="250">
 </p>
 Decodes Google Earth KMZ files to extract traces and convert the semi-structured KML data into an ordered XML structure, then converts it into a DataFrame.
 
@@ -80,7 +80,7 @@ Decodes Google Earth KMZ files to extract traces and convert the semi-structured
 ## StreetData
 ### OSMnx | Street Network Builder
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/d95d1806-31ae-4bae-8395-4ea2a4fb3abe" alt="OSMnx | Street Network Builder" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/d95d1806-31ae-4bae-8395-4ea2a4fb3abe" alt="OSMnx | Street Network Builder" width="250">
 </p>
 Builds a street network using OSMnx.
 
@@ -102,7 +102,7 @@ Builds a street network using OSMnx.
 | Time             | The time taken to build the street network.                            | String         |
 ### Street Selector
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/7d5d09ad-8506-42ef-8d61-a096f8fe5a5c" alt="Street Selector" width="300">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/7d5d09ad-8506-42ef-8d61-a096f8fe5a5c" alt="Street Selector" width="300">
 </p>
 Selects a street and its corresponding polyline based on the structure provided by OSMnx.
 
@@ -120,7 +120,7 @@ Selects a street and its corresponding polyline based on the structure provided 
 | Street_Polyline | The polyline of the selected street.            | String  |
 ### Street Selector
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/563a8035-a02f-47ad-9c28-128bf3352eac" alt="Street Selector" width="400">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/563a8035-a02f-47ad-9c28-128bf3352eac" alt="Street Selector" width="400">
 </p>
 This component provides the ability to obtain polyline segments between streets based on selected street names and geometry.
 
@@ -142,7 +142,7 @@ This component provides the ability to obtain polyline segments between streets 
 ## GeoMetrical
 ### Haversine GeoDistance
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/66038d63-90a2-4a3d-9a98-f5f29704da3a" alt="Haversine GeoDistance" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/66038d63-90a2-4a3d-9a98-f5f29704da3a" alt="Haversine GeoDistance" width="250">
 </p>
 Calculates the distance between two sets of geographic coordinates using the Haversine formula.
 
@@ -158,7 +158,7 @@ Calculates the distance between two sets of geographic coordinates using the Hav
 | Distance      | The calculated distance in meters.              | Float        |
 ### Rearrange Coordinates
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/b22e45d8-0aea-4f02-a3c2-1ac2d99cb517" alt="Rearrange Coordinates" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/b22e45d8-0aea-4f02-a3c2-1ac2d99cb517" alt="Rearrange Coordinates" width="200">
 </p>
 Rearranges the coordinate format between (latitude, longitude) for visualization in Rhino canvas (XYZ).
 
@@ -173,7 +173,7 @@ Rearranges the coordinate format between (latitude, longitude) for visualization
 | Location   | Converted Point list.                           | List (Tuple)  |
 ### Distance to Factor
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/eb1e8202-afed-423d-ba87-21a8cd515c3a" alt="Distance to Factor" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/eb1e8202-afed-423d-ba87-21a8cd515c3a" alt="Distance to Factor" width="200">
 </p>
 Converts a metric distance to a decimal factor.
 
@@ -188,7 +188,7 @@ Converts a metric distance to a decimal factor.
 | Factor     | The calculated factor value.                    | Float |
 ### Factor to Distance
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/d9923bed-aa51-4f61-8e61-a7800c54433c" alt="Factor to Distance" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/d9923bed-aa51-4f61-8e61-a7800c54433c" alt="Factor to Distance" width="200">
 </p>
 Converts a decimal factor to a metric distance.
 
@@ -203,7 +203,7 @@ Converts a decimal factor to a metric distance.
 | Distance   | The calculated distance value.                  | Float |
 ### Round Factor
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/7d711820-7e19-4ed7-aa06-c4f5aebdf90a" alt="Componentes_1" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/7d711820-7e19-4ed7-aa06-c4f5aebdf90a" alt="Componentes_1" width="200">
 </p>
 Round a floating-point value.
 
@@ -219,7 +219,7 @@ Round a floating-point value.
 ## StreetView
 ### StreetView | Metadata Requester
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/f5efc3b0-edd5-47dd-81de-489a0f01bad3" alt="StreetView | Metadata Requester" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/f5efc3b0-edd5-47dd-81de-489a0f01bad3" alt="StreetView | Metadata Requester" width="200">
 </p>
 Performs a query to the Google Street View Static API using the provided API key and returns the keys of the response data.
 
@@ -234,7 +234,7 @@ Performs a query to the Google Street View Static API using the provided API key
 | out        | The keys of the response data from the API query.         | Keys   |
 ### StreetView | Thumbnail Requester
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/ff4bed96-eb5a-496a-b0b5-1fbfbc0012ae" alt="StreetView | Thumbnail Requester" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/ff4bed96-eb5a-496a-b0b5-1fbfbc0012ae" alt="StreetView | Thumbnail Requester" width="250">
 </p>
 Queries Google Street View images using the Street View Static API.
 
@@ -259,7 +259,7 @@ Queries Google Street View images using the Street View Static API.
 | IMG        | The URL link to the image.                       | String |
 ### StreetView | Thumbnail Path Visualizer
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/046e89bd-7595-4fb5-b30d-12fa96201f16)" alt="StreetView | Thumbnail Path Visualizer" width="250">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/046e89bd-7595-4fb5-b30d-12fa96201f16)" alt="StreetView | Thumbnail Path Visualizer" width="250">
 </p>
 Visualizes the path of thumbnails.
 
@@ -281,7 +281,7 @@ Visualizes the path of thumbnails.
 | Vector      | List of perpendicular lines vectors.            | List         |
 ### StreetView | Nearest Panoramic Locator
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/dc40d74d-f5d6-47d5-843f-dce64d4844a5" alt="StreetView | Nearest Panoramic Locator" width="350">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/dc40d74d-f5d6-47d5-843f-dce64d4844a5" alt="StreetView | Nearest Panoramic Locator" width="350">
 </p>
 Queries the Google Street View Static API using a personal API key to find the nearest available street-level panoramic coordinate for each point in the Point list.
 
@@ -299,7 +299,7 @@ Queries the Google Street View Static API using a personal API key to find the n
 | Time                  | The time spent for the panoramic consultation.                        | String          |
 ### StreetView | URL Builder
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/7da7f2e4-eb90-4247-832e-11815b7be9c5" alt="StreetView | URL Builder" width="200">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/7da7f2e4-eb90-4247-832e-11815b7be9c5" alt="StreetView | URL Builder" width="200">
 </p>
 Constructs URL query strings for Google Street View.
 
@@ -320,7 +320,7 @@ Constructs URL query strings for Google Street View.
 | URL         | List of constructed query URLs.                   | List   |
 ### StreetView | Image Handler
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/9df1a3d3-0c33-4a06-91f9-e7c2159ebbfa" alt="StreetView | Image Handler" width="300">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/9df1a3d3-0c33-4a06-91f9-e7c2159ebbfa" alt="StreetView | Image Handler" width="300">
 </p>
 Performs web requests to download Street View images using the provided URLs.
 
@@ -341,7 +341,7 @@ Performs web requests to download Street View images using the provided URLs.
 
 ### StreetView | Panorama Downloader
 <p align="center">
-<img src="https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/cb32d27b-2c44-4849-900c-0bcb239dba43" alt="StreetView | Panorama Downloader" width="300">
+<img src="https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/cb32d27b-2c44-4849-900c-0bcb239dba43" alt="StreetView | Panorama Downloader" width="300">
 </p>
 Downloads equirectangular panoramic images from Google Street View using "Street View Download 360".
 

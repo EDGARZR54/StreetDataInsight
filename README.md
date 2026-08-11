@@ -1,5 +1,5 @@
 # Street Data Insight
-[![121132Artboard 2](https://github.com/EDGARZR54/StreetData-Insight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37)](https://edgarzr54.github.io/StreetData-Insight/)
+[![121132Artboard 2](https://github.com/EDGARZR54/StreetDataInsight/assets/114836515/de67caa2-a486-4f98-bd1e-d09db6b35e37)](https://edgarzr54.github.io/StreetDataInsight/)
 
 When planning an urban-architectural intervention in public space, it is essential to have a solid understanding of the environment in which it is located, in order to fully appreciate its relationship with the city or the surrounding landscape. This study presents a methodology based on the acquisition and processing of geospatial data to digitally reconstruct urban profiles, with the aim of analyzing and planning public space.
 
@@ -7,12 +7,12 @@ Street Data Insight is a plugin composed of 7 categories and more than 70 compon
 
 The plugin incorporates advanced features uncommon in typical Grasshopper extensions, including a custom graphical user interface, animated icons, GPU-accelerated processes, refined UX details, and live preview capabilities directly within component capsules, enabling a more interactive and responsive workflow.
 
-[![StreetData-Insight](https://img.shields.io/badge/StreetData%20Insight-1.0.1-000000.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAxNCI%2BPGRlZnM%2BPHN0eWxlPi5ie2ZpbGw6IzQyODVmNDt9LmN7ZmlsbDojZmZjMTBhO30uZHtmaWxsOiMxYTFhMWE7fTwvc3R5bGU%2BPC9kZWZzPjxwYXRoIGNsYXNzPSJiIiBkPSJNNywxLjc1aDUuMjVWMy44M2wtLjg3LS41MS0uODcsLjUxdjEuMDFsLS44Ny0uNTEtLjg3LC41MXYxLjAxbC0uODctLjUxLS44NywuNTF2MS4wMWwtLjg4LS41MS0uODcsLjVoMHYxLjAxbC0uODctLjUtLjg3LC41MXYtMi42MmMwLTEuOTMsMS41Ny0zLjUsMy41LTMuNVoiLz48cGF0aCBjbGFzcz0iZCIgZD0iTTEyLjI1LDExLjM3aDBjMCwuNDgtLjM5LC44OC0uODgsLjg4SDEuNzVWMi42MmMwLS40OCwuMzktLjg3LC44Ny0uODdoMFYxMS4zN0gxMi4yNVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTQuMzcsNy4zN3YzLjEzaC0uODd2LTIuNjJsLjg3LS41MVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTcuODcsNS4zNXYzLjkxaC0xLjc1bC0uODctLjUxaDEuNzV2LTIuOWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNOS42Miw0LjM0djQuNDFoLS44N3YtMy45MWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNNi4xMiw2LjM2djIuMzloLS44N3YtMS44OWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNOC43NSw4Ljc1djEuNzVoLS44N3YtMS4yNWwuODctLjVaIi8%2BPHBhdGggY2xhc3M9ImQiIGQ9Ik01LjI1LDguNzV2MS43NWgtLjg3di0xLjI0bC44Ny0uNVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTExLjM3LDMuMzN2NS45M2gtMS43NWwtLjg3LS41aDEuNzVWMy44M2wuODctLjUxWiIvPjwvc3ZnPg%3D%3D&logoColor=white&labelColor=white)](https://www.food4rhino.com/en/app/street-data-insight)
+[![StreetDataInsight](https://img.shields.io/badge/StreetData%20Insight-1.0.1-000000.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAxNCI%2BPGRlZnM%2BPHN0eWxlPi5ie2ZpbGw6IzQyODVmNDt9LmN7ZmlsbDojZmZjMTBhO30uZHtmaWxsOiMxYTFhMWE7fTwvc3R5bGU%2BPC9kZWZzPjxwYXRoIGNsYXNzPSJiIiBkPSJNNywxLjc1aDUuMjVWMy44M2wtLjg3LS41MS0uODcsLjUxdjEuMDFsLS44Ny0uNTEtLjg3LC41MXYxLjAxbC0uODctLjUxLS44NywuNTF2MS4wMWwtLjg4LS41MS0uODcsLjVoMHYxLjAxbC0uODctLjUtLjg3LC41MXYtMi42MmMwLTEuOTMsMS41Ny0zLjUsMy41LTMuNVoiLz48cGF0aCBjbGFzcz0iZCIgZD0iTTEyLjI1LDExLjM3aDBjMCwuNDgtLjM5LC44OC0uODgsLjg4SDEuNzVWMi42MmMwLS40OCwuMzktLjg3LC44Ny0uODdoMFYxMS4zN0gxMi4yNVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTQuMzcsNy4zN3YzLjEzaC0uODd2LTIuNjJsLjg3LS41MVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTcuODcsNS4zNXYzLjkxaC0xLjc1bC0uODctLjUxaDEuNzV2LTIuOWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNOS42Miw0LjM0djQuNDFoLS44N3YtMy45MWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNNi4xMiw2LjM2djIuMzloLS44N3YtMS44OWwuODctLjUxWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNOC43NSw4Ljc1djEuNzVoLS44N3YtMS4yNWwuODctLjVaIi8%2BPHBhdGggY2xhc3M9ImQiIGQ9Ik01LjI1LDguNzV2MS43NWgtLjg3di0xLjI0bC44Ny0uNVoiLz48cGF0aCBjbGFzcz0iYyIgZD0iTTExLjM3LDMuMzN2NS45M2gtMS43NWwtLjg3LS41aDEuNzVWMy44M2wuODctLjUxWiIvPjwvc3ZnPg%3D%3D&logoColor=white&labelColor=white)](https://www.food4rhino.com/en/app/street-data-insight)
 ---
 
 **Current code version:** v1.0  
-**Permanent repository link:** https://github.com/EDGARZR54/StreetData-Insight  
-**Project website:** https://edgarzr54.github.io/StreetData-Insight  
+**Permanent repository link:** https://github.com/EDGARZR54/StreetDataInsight  
+**Project website:** https://edgarzr54.github.io/StreetDataInsight  
 **Distribution page:** Food4Rhino & Package Manager  
 **Publication:** https://www.food4rhino.com/en/app/street-data-insight  
 
@@ -59,7 +59,7 @@ Windows 64x | Rhino 7 | Image processing software (Adobe Photoshop, Affinity or 
 
 # Development
 
-Edgar Zambrano Rodríguez | [@EDGARZR54](https://discourse.mcneel.com/u/EDGARZR54) | [Food4Rhino](https://www.food4rhino.com/en/app/street-data-insight) | [Site](https://edgarzr54.github.io/StreetData-Insight/) | [Documentation](https://edgarzr54.github.io/StreetData-Insight/Tools/Tools.html)
+Edgar Zambrano Rodríguez | [@EDGARZR54](https://discourse.mcneel.com/u/EDGARZR54) | [Food4Rhino](https://www.food4rhino.com/en/app/street-data-insight) | [Site](https://edgarzr54.github.io/StreetDataInsight/) | [Documentation](https://edgarzr54.github.io/StreetDataInsight/Tools/Tools.html)
 
 ---
 

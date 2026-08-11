@@ -10,7 +10,7 @@
   <style>
     @font-face {
       font-family: 'Europa-Bold';
-      src: url('https://edgarzr54.github.io/StreetData-Insight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
+      src: url('https://edgarzr54.github.io/StreetDataInsight/partials/fonts/europa-bold-webfont.ttf') format('truetype');
     }
 
     :root {
@@ -98,8 +98,8 @@
   
   <!-- Enlaces externos -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetData-Insight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
-  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetData-Insight/partials/navbar_credits_styles.css">
+  <link rel="icon" type="image/png" href="https://github.com/EDGARZR54/StreetDataInsight/raw/d378384937443e8cd09db8f0956e21d9ce58907d/Grassshopper%20Components/icon/SDI.png">
+  <link rel="stylesheet" href="https://edgarzr54.github.io/StreetDataInsight/partials/navbar_credits_styles.css">
 </head>
 <body>
   <div id="navbar-placeholder"></div>
@@ -112,7 +112,7 @@
     </div>
 
     <div class="credits">
-      <img src="https://edgarzr54.github.io/StreetData-Insight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
+      <img src="https://edgarzr54.github.io/StreetDataInsight/Imagotype/UNAM_FA_LATE.svg" alt="UNAM Logo">
       <p>
         Este proyecto es de carácter académico y se ha utilizado material visual proveniente de Google Street View.<br>
         Las imágenes empleadas son propiedad de Google y se incluyen exclusivamente con fines educativos e investigativos.<br>
@@ -124,7 +124,7 @@
 
   <script>
     // Cargar navbar
-    fetch('https://edgarzr54.github.io/StreetData-Insight/partials/navbar.html')
+    fetch('https://edgarzr54.github.io/StreetDataInsight/partials/navbar.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
@@ -133,7 +133,7 @@
 
     // Cargar CSV y generar tabla
     window.addEventListener('DOMContentLoaded', (event) => {
-      const csvUrl = 'https://edgarzr54.github.io/StreetData-Insight/Preliminar/Preliminar_Sources.csv';
+      const csvUrl = 'https://edgarzr54.github.io/StreetDataInsight/Preliminar/Preliminar_Sources.csv';
       
       fetch(csvUrl)
         .then(response => response.text())
