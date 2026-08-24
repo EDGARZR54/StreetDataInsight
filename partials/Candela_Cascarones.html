@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candela / Cascarón — Réplica</title>
+<style>
+  :root {
+    --bg: #0B0B0C;
+    --fg: #F4F1EA;
+    --dim: #8A8780;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    gap: 8vw;
+    padding: 6vw;
+  }
+
+  .logo-block {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: auto;
+    color: var(--fg); /* used by currentColor stroke */
+    overflow: visible;
+  }
+
+  .letter-outer {
+    transition: transform 0.25s ease;
+  }
+
+  .caption {
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--dim);
+    text-align: center;
+  }
+
+  .caption b { color: var(--fg); font-weight: 500; }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--dim);
+    letter-spacing: 0.02em;
+  }
+
+  .controls label {
+    white-space: nowrap;
+  }
+
+  .controls input[type="range"] {
+    width: 220px;
+    accent-color: var(--fg);
+  }
+
+  .controls span {
+    min-width: 28px;
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .controls button {
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid var(--dim);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .controls button:hover {
+    border-color: var(--fg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* Handled in JS: intro/hover animations are skipped, static frame shown */
+  }
+</style>
+</head>
+<body>
+
+  <div class="controls">
+    <label for="stroke-width">Grosor del trazo</label>
+    <input type="range" id="stroke-width" min="0.5" max="15" step="0.1" value="2">
+    <span id="stroke-width-value">2.0</span>
+
+    <label for="letter-overlap">Empalme entre letras</label>
+    <input type="range" id="letter-overlap" min="0" max="2" step="0.05" value="1">
+    <span id="letter-overlap-value">1.0</span>
+
+    <button id="restart-btn" type="button">Reiniciar animación</button>
+  </div>
+
+  <div class="logo-block">
+    <svg id="logo-candela" class="logo-svg" viewBox="0 0 977 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Candela" focusable="false"></svg>
+  </div>
+
+  <div class="logo-block">
+    <svg id="logo-cascaron" class="logo-svg" viewBox="0 0 977 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cascarones" focusable="false"></svg>
+    <p class="caption">Pasá el mouse sobre una letra — <b>réplica</b> de la lógica de curvas de Lissajous.</p>
+  </div>
+
+<script>
+(() => {
+  "use strict";
+
+  // ---------------------------------------------------------------------
+  // Motor genérico de curvas de Lissajous, reutilizado para cada palabra.
+  // Cada llamada a buildLissajousLogo() es independiente: crea su propio
+  // requestAnimationFrame loop y listeners, sin pisar al otro logo.
+  // ---------------------------------------------------------------------
+
+  const EASINGS = {
+    linear: t => t,
+    easeIn: t => t * t,
+    easeOut: t => 1 - (1 - t) * (1 - t),
+    easeInOut: t => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2),
+    easeOutQuart: t => 1 - Math.pow(1 - t, 4),
+  };
+
+  function progress(cfg, index, elapsed) {
+    const t = (elapsed - ((cfg.delay || 0) + index * (cfg.stagger || 0))) / cfg.duration;
+    const clamped = t <= 0 ? 0 : t >= 1 ? 1 : t;
+    return EASINGS[cfg.easing](clamped);
+  }
+
+  function lissajousPath(a, b, phase, resolution, w, h, scaleX = 1, scaleY = 1) {
+    const rx = (0.9 * w / 2) * scaleX;
+    const ry = (0.9 * h / 2) * scaleY;
+    const cx = w / 2;
+    const cy = h / 2;
+    const pts = [];
+    for (let i = 0; i <= resolution; i++) {
+      const n = (i / resolution) * Math.PI * 2;
+      const x = cx + rx * Math.sin(a * n + phase);
+      const y = cy + ry * Math.sin(b * n);
+      pts.push(`${i === 0 ? "M" : "L"}${x.toFixed(2)},${y.toFixed(2)}`);
+    }
+    return pts.join(" ");
+  }
+
+  const HOVER_DEFAULT = { phase: { amount: 0.3 * Math.PI, duration: 4, stagger: 0.4, easing: "easeOutQuart" } };
+  const CELL_SIZE = 200;
+  const GAP = 8;
+  const RESOLUTION = 500;
+
+  function buildLissajousLogo(svgId, LETTERS) {
+    const svg = document.getElementById(svgId);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Layout — position each letter cell along the x axis
+    let cursor = 0;
+    const layout = LETTERS.map((letter, i) => {
+      const width = letter.width || CELL_SIZE;
+      const gapBefore = i === 0 ? 0 : (letter.gapBefore ?? GAP);
+      cursor += gapBefore;
+      const x = cursor;
+      cursor += width;
+      const rot = (letter.rotation * Math.PI) / 180;
+      const autoScale = 1 / (Math.abs(Math.sin(rot)) + Math.abs(Math.cos(rot)));
+      return {
+        x,
+        width,
+        scaleX: letter.scaleX ?? autoScale,
+        scaleY: letter.scaleY ?? autoScale,
+      };
+    });
+    const totalWidth = layout.length ? layout[layout.length - 1].x + layout[layout.length - 1].width : 0;
+    const maxHeight = layout.reduce((m, c) => Math.max(m, c.width), CELL_SIZE);
+
+    svg.setAttribute("viewBox", `0 0 ${totalWidth} ${maxHeight}`);
+
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const groups = [];
+
+    LETTERS.forEach((letter, i) => {
+      const cell = layout[i];
+      const offsetX = letter.offsetX || 0;
+      const offsetY = letter.offsetY || 0;
+      const cellCenterOffset = (maxHeight - cell.width) / 2;
+
+      const outer = document.createElementNS(SVG_NS, "g");
+      outer.setAttribute("class", "letter-outer");
+      outer.style.transform = `translate(${cell.x + offsetX}px, ${cellCenterOffset + offsetY}px)`;
+
+      const inner = document.createElementNS(SVG_NS, "g");
+      inner.style.transformOrigin = `${cell.width / 2}px ${cell.width / 2}px`;
+      inner.style.transform = `rotate(${letter.rotation}deg)`;
+      inner.style.willChange = "transform";
+      inner.style.cursor = "pointer";
+
+      const hitRect = document.createElementNS(SVG_NS, "rect");
+      hitRect.setAttribute("width", cell.width);
+      hitRect.setAttribute("height", cell.width);
+      hitRect.setAttribute("fill", "transparent");
+      hitRect.setAttribute("pointer-events", "all");
+
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("stroke", letter.stroke);
+      path.setAttribute("stroke-linecap", "round");
+      path.setAttribute("stroke-linejoin", "round");
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke-width", "2");
+
+      inner.appendChild(hitRect);
+      inner.appendChild(path);
+      outer.appendChild(inner);
+      svg.appendChild(outer);
+
+      // reverse order like the original (`.reverse()`) so earlier letters
+      // render on top for overlapping strokes — append in reverse via prepend
+      svg.insertBefore(outer, svg.firstChild);
+
+      groups.push({
+        outer, inner, path, letter, cell,
+        hoverState: { active: false, since: null, phaseVal: 0, rotVal: 0 },
+      });
+    });
+
+    let startTime = performance.now();
+
+    function render(now) {
+      const elapsed = (now - startTime) / 1000;
+
+      groups.forEach((grp, i) => {
+        const { letter, cell, path, inner, hoverState } = grp;
+        const introPhase = letter.intro?.phase;
+        const introRot = letter.intro?.rotation;
+
+        let phaseOffset = 0;
+        let rotOffset = 0;
+
+        if (!prefersReduced) {
+          if (introPhase) {
+            const p = progress(introPhase, i, elapsed);
+            phaseOffset = (p - 1) * introPhase.amount;
+          }
+          if (introRot) {
+            const p = progress(introRot, i, elapsed);
+            rotOffset = (p - 1) * introRot.amount;
+          }
+        }
+
+        if (!prefersReduced && hoverState.since !== null) {
+          const hoverPhase = letter.hover?.phase ?? HOVER_DEFAULT.phase;
+          const hoverRot = letter.hover?.rotation ?? HOVER_DEFAULT.rotation;
+          const target = hoverState.active ? 1 : 0;
+          const dt = elapsed - hoverState.since;
+
+          if (hoverPhase) {
+            const t = progress({ ...hoverPhase, delay: 0 }, 0, dt);
+            hoverState.phaseVal = hoverState.phaseVal + (target - hoverState.phaseVal) * t;
+            phaseOffset += hoverState.phaseVal * hoverPhase.amount;
+          }
+          if (hoverRot) {
+            const t = progress({ ...hoverRot, delay: 0 }, 0, dt);
+            hoverState.rotVal = hoverState.rotVal + (target - hoverState.rotVal) * t;
+            rotOffset += hoverState.rotVal * hoverRot.amount;
+          }
+        }
+
+        const d = lissajousPath(
+          letter.a, letter.b, letter.delta + phaseOffset, RESOLUTION,
+          cell.width, cell.width, cell.scaleX, cell.scaleY
+        );
+        path.setAttribute("d", d);
+        inner.style.transform = `rotate(${letter.rotation + rotOffset}deg)`;
+      });
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    groups.forEach(grp => {
+      const enter = () => {
+        grp.hoverState.active = true;
+        grp.hoverState.since = (performance.now() - startTime) / 1000;
+      };
+      const leave = () => {
+        grp.hoverState.active = false;
+        grp.hoverState.since = (performance.now() - startTime) / 1000;
+      };
+      grp.inner.addEventListener("pointerenter", enter);
+      grp.inner.addEventListener("pointerleave", leave);
+    });
+
+    function restart() {
+      startTime = performance.now();
+      groups.forEach(grp => {
+        grp.hoverState.active = false;
+        grp.hoverState.since = null;
+        grp.hoverState.phaseVal = 0;
+        grp.hoverState.rotVal = 0;
+      });
+    }
+
+    // -----------------------------------------------------------------
+    // Empalme entre letras — recalcula solo la posición X de cada celda
+    // usando gapBefore * factor (factor=1 reproduce el layout original;
+    // 0 junta las celdas sin superponerlas; >1 exagera el empalme).
+    // -----------------------------------------------------------------
+    function setOverlap(factor) {
+      let cursor = 0;
+      groups.forEach((grp, i) => {
+        const { letter, cell } = grp;
+        const gapBefore = i === 0 ? 0 : (letter.gapBefore ?? GAP) * factor;
+        cursor += gapBefore;
+        const x = cursor;
+        cursor += cell.width;
+
+        const offsetX = letter.offsetX || 0;
+        const offsetY = letter.offsetY || 0;
+        const cellCenterOffset = (maxHeight - cell.width) / 2;
+        grp.outer.style.transform = `translate(${x + offsetX}px, ${cellCenterOffset + offsetY}px)`;
+      });
+      svg.setAttribute("viewBox", `0 0 ${cursor} ${maxHeight}`);
+    }
+
+    return { groups, restart, setOverlap };
+  }
+
+  // ---------------------------------------------------------------------
+  // Definiciones de letras — "candela"
+  // ---------------------------------------------------------------------
+  const LETTERS_CANDELA = [
+    // c — reusada tal cual de "compile" (2:1, k=1)
+    { a: 2, b: 1, delta: Math.PI / 0.3, rotation: 0, scaleX: 0.94, offsetY: 4, scaleY: 1.02, offsetX: -4,
+      stroke: "currentColor",
+      intro: { phase: { amount: Math.PI, duration: 1.8, delay: 0, easing: "easeInOut" } } },
+
+    // a — 2:1, delta=PI/2, rotada -90° → arco abierto hacia abajo (corregido, antes quedaba de cabeza)
+    { a: 2, b: 1, delta: Math.PI / 2, rotation: -90, stroke: "currentColor",
+      gapBefore: -60,
+      intro: {
+        phase: { amount: Math.PI, duration: 2, delay: 0.1, easing: "easeInOut" },
+        rotation: { amount: -90, duration: 2, delay: 0.1, easing: "easeInOut" }
+      } },
+
+    // n — 3:1, k=4 → delta=PI, rotada 90°
+    { a: 3, b: 1, delta: Math.PI, rotation: 90, stroke: "currentColor",
+      gapBefore: -50, offsetY: 8,
+      intro: {
+        phase: { amount: Math.PI, duration: 2.2, delay: 0.2, easing: "easeInOut" },
+        rotation: { amount: 90, duration: 2.2, delay: 0.2, easing: "easeInOut" }
+      } },
+
+    // d — 3:2, delta=3PI/4, rotada 90° → lazo hacia la derecha (corregida, antes parecía alfa hacia abajo)
+    { a: 3, b: 2, delta: 3 * Math.PI / 4, rotation: 90, stroke: "currentColor",
+      gapBefore: -45,
+      intro: {
+        phase: { amount: Math.PI, duration: 2, delay: 0.3, easing: "easeInOut" },
+        rotation: { amount: 90, duration: 2, delay: 0.3, easing: "easeInOut" }
+      } },
+
+    // e — parámetros correctos tomados de "compile" (3:1, delta=PI/2) — antes tenía los de la "i"
+    { a: 3, b: 1, delta: Math.PI / 2, rotation: 0, stroke: "currentColor",
+      gapBefore: -104, offsetY: 4, offsetX: -4,
+      intro: { phase: { amount: Math.PI, duration: 1.6, delay: 0.4, easing: "easeInOut" } } },
+
+    // l — 1:1, delta=0 → diagonal "\" de esquina sup. izq. a inf. derecha
+    { a: 1, b: 1, delta: 0, rotation: 0, stroke: "currentColor",
+      gapBefore: -70, scaleX: 0.5, scaleY: 1,
+      intro: { phase: { amount: Math.PI, duration: 2, delay: 0.5, easing: "easeInOut" } } },
+
+    // a — segunda ocurrencia, MISMOS parámetros que la primera "a" (corregida)
+    { a: 2, b: 1, delta: Math.PI / 2, rotation: -90, stroke: "currentColor",
+      gapBefore: -60,
+      intro: {
+        phase: { amount: Math.PI, duration: 2, delay: 0.6, easing: "easeInOut" },
+        rotation: { amount: -90, duration: 2, delay: 0.6, easing: "easeInOut" }
+      } },
+  ];
+
+  // ---------------------------------------------------------------------
+  // Definiciones de letras — "cascarón"
+  // ---------------------------------------------------------------------
+  const LETTERS_CASCARON = [
+    // c — 2:1, k=1 (reusada tal cual de "compile"/"candela")
+    { a: 2, b: 1, delta: Math.PI / 0.3, rotation: 0, scaleX: 0.94, offsetY: 4, scaleY: 1.02, offsetX: -4,
+      stroke: "currentColor",
+      intro: { phase: { amount: Math.PI, duration: 1.8, delay: 0, easing: "easeInOut" } } },
+
+    // a — 2:1, delta=PI/2, rotada -90° → arco abierto hacia abajo (igual que candela, corregido)
+    { a: 2, b: 1, delta: Math.PI / 2, rotation: -90, stroke: "currentColor",
+      gapBefore: -60,
+      intro: {
+        phase: { amount: Math.PI, duration: 2, delay: 0.1, easing: "easeInOut" },
+        rotation: { amount: -90, duration: 2, delay: 0.1, easing: "easeInOut" }
+      } },
+
+    // s — 3:1, k=1 → delta=PI/4, sin rotación
+    { a: 3, b: 1, delta: Math.PI / 4, rotation: 0, stroke: "currentColor",
+      gapBefore: -50, offsetY: 4,
+      intro: { phase: { amount: Math.PI, duration: 2.2, delay: 0.2, easing: "easeInOut" } } },
+
+    // c — segunda ocurrencia, misma forma que la primera "c"
+    { a: 2, b: 1, delta: Math.PI / 0.3, rotation: 0, scaleX: 0.94, offsetY: 4, scaleY: 1.02,
+      stroke: "currentColor",
+      gapBefore: -50,
+      intro: { phase: { amount: Math.PI, duration: 1.8, delay: 0.3, easing: "easeInOut" } } },
+
+    // a — segunda ocurrencia, MISMOS parámetros que la primera "a" (corregida)
+    { a: 2, b: 1, delta: Math.PI / 2, rotation: -90, stroke: "currentColor",
+      gapBefore: -60,
+      intro: {
+        phase: { amount: Math.PI, duration: 2, delay: 0.4, easing: "easeInOut" },
+        rotation: { amount: -90, duration: 2, delay: 0.4, easing: "easeInOut" }
+      } },
+
+    // r — 3:2, delta=2PI/3 → doble lazo superior + punta inferior (nueva forma, referencia "k=5")
+    { a: 3, b: 2, delta: 2 * Math.PI / 3, rotation: 0, stroke: "currentColor",
+      gapBefore: -70,
+      intro: { phase: { amount: Math.PI, duration: 2, delay: 0.5, easing: "easeInOut" } } },
+
+    // o — parámetros correctos tomados de "compile" (1:1, delta=PI/0.3003) — antes era un círculo simple
+    { a: 1, b: 1, delta: Math.PI / 0.3003, rotation: 0, stroke: "currentColor",
+      gapBefore: -20, scaleX: 1.02, scaleY: 1.02, offsetY: 4,
+      intro: { phase: { amount: Math.PI, duration: 2, delay: 0.6, easing: "easeInOut" } } },
+
+    // n — 3:1, k=4 → delta=PI, rotada 90° (igual que la "n" de candela)
+    { a: 3, b: 1, delta: Math.PI, rotation: 90, stroke: "currentColor",
+      gapBefore: -50, offsetY: 8,
+      intro: {
+        phase: { amount: Math.PI, duration: 2.2, delay: 0.7, easing: "easeInOut" },
+        rotation: { amount: 90, duration: 2.2, delay: 0.7, easing: "easeInOut" }
+      } },
+
+    // e — misma forma que la "e" de candela (3:1, delta=PI/2)
+    { a: 3, b: 1, delta: Math.PI / 2, rotation: 0, stroke: "currentColor",
+      gapBefore: -50, offsetY: 4, offsetX: -4,
+      intro: { phase: { amount: Math.PI, duration: 1.6, delay: 0.8, easing: "easeInOut" } } },
+
+    // s — segunda ocurrencia, misma forma que la primera "s" de cascarón
+    { a: 3, b: 1, delta: Math.PI / 4, rotation: 0, stroke: "currentColor",
+      gapBefore: -50, offsetY: 4,
+      intro: { phase: { amount: Math.PI, duration: 2.2, delay: 0.9, easing: "easeInOut" } } },
+  ];
+
+  const candela = buildLissajousLogo("logo-candela", LETTERS_CANDELA);
+  const cascaron = buildLissajousLogo("logo-cascaron", LETTERS_CASCARON);
+
+  // ---------------------------------------------------------------------
+  // Control de grosor — un slider afecta el stroke-width de ambos logos
+  // ---------------------------------------------------------------------
+  const allPaths = [...candela.groups, ...cascaron.groups].map(g => g.path);
+  const slider = document.getElementById("stroke-width");
+  const sliderValue = document.getElementById("stroke-width-value");
+
+  function applyStrokeWidth(width) {
+    allPaths.forEach(path => path.setAttribute("stroke-width", width));
+    sliderValue.textContent = Number(width).toFixed(1);
+  }
+
+  applyStrokeWidth(slider.value);
+  slider.addEventListener("input", () => applyStrokeWidth(slider.value));
+
+  // ---------------------------------------------------------------------
+  // Control de empalme — un slider afecta cuánto se superponen las letras
+  // ---------------------------------------------------------------------
+  const overlapSlider = document.getElementById("letter-overlap");
+  const overlapValue = document.getElementById("letter-overlap-value");
+
+  function applyOverlap(factor) {
+    candela.setOverlap(factor);
+    cascaron.setOverlap(factor);
+    overlapValue.textContent = Number(factor).toFixed(2);
+  }
+
+  overlapSlider.addEventListener("input", () => applyOverlap(overlapSlider.value));
+
+  // ---------------------------------------------------------------------
+  // Botón de reinicio — vuelve a correr la animación de intro de ambos logos
+  // ---------------------------------------------------------------------
+  const restartBtn = document.getElementById("restart-btn");
+  restartBtn.addEventListener("click", () => {
+    candela.restart();
+    cascaron.restart();
+  });
+})();
+</script>
+
+</body>
+</html>
