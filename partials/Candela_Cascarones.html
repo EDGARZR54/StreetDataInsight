@@ -117,8 +117,8 @@
     <span id="stroke-width-value">15.0</span>
 
     <label for="letter-overlap">Empalme entre letras</label>
-    <input type="range" id="letter-overlap" min="0" max="2" step="0.05" value="0">
-    <span id="letter-overlap-value">0.0</span>
+    <input type="range" id="letter-overlap" min="0.00" max="2" step="0.05" value="0.00"> 
+    <span id="letter-overlap-value">0.00</span>
 
     <button id="restart-btn" type="button">Reiniciar animación</button>
   </div>
@@ -489,17 +489,18 @@
   // ---------------------------------------------------------------------
   // Control de empalme — un slider afecta cuánto se superponen las letras
   // ---------------------------------------------------------------------
-  const overlapSlider = document.getElementById("letter-overlap");
-  const overlapValue = document.getElementById("letter-overlap-value");
+const overlapSlider = document.getElementById("letter-overlap");
+const overlapValue = document.getElementById("letter-overlap-value");
 
-  function applyOverlap(factor) {
-    candela.setOverlap(factor);
-    cascaron.setOverlap(factor);
-    overlapValue.textContent = Number(factor).toFixed(2);
-  }
+function applyOverlap(factor) {
+  candela.setOverlap(factor);
+  cascaron.setOverlap(factor);
+  overlapValue.textContent = Number(factor).toFixed(2);
+}
 
-  overlapSlider.addEventListener("input", () => applyOverlap(overlapSlider.value));
+applyOverlap(overlapSlider.value);
 
+overlapSlider.addEventListener("input", () => applyOverlap(overlapSlider.value));
   // ---------------------------------------------------------------------
   // Botón de reinicio — vuelve a correr la animación de intro de ambos logos
   // ---------------------------------------------------------------------
