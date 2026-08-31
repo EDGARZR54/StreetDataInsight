@@ -865,7 +865,7 @@
                                             <td x-html="fmtDesc(input.description)"></td>
                                             <td><span class="badge-type" x-text="input.type"></span></td>
                                             <td>
-                                                <span class="badge-type" x-text="input.optional ? 'Yes' : 'No'">
+                                                <span class="badge-type" x-text="fmtAccess(input.access)">
                                                 </span>
                                             </td>
                                         </tr>
@@ -995,6 +995,11 @@
                         this.selectedComponent = null;
                         this.view = 'category';
                     }
+                },
+
+                fmtAccess(access) {
+                    if (!access) return '';
+                    return access.charAt(0).toUpperCase() + access.slice(1).toLowerCase();
                 },
 
                 fmtDesc(text) {
