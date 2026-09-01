@@ -1,5 +1,108 @@
 [
   {
+    "guid": "9671d2ae-18b1-4f7a-b829-616335b65920",
+    "name": "3DTiles.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "3ee14aef-fcca-400f-ab64-69bea61f07eb",
+    "name": "Autocomplete.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "9a997a8f-1675-4fe2-be3e-eede78faf277",
+    "name": "Block4Split.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "490a7026-6567-415c-96f8-502e443a60fe",
+    "name": "BlockSelector.cs",
+    "description": "Busca o clasifica una lista de manzanas urbanas (blocks) según una referencia: índice, punto más cercano o curva contenedora.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiquetas de Block",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de cada block resultante ('Block_0', 'Block_1'...) como TextDot sobre su centroide, solo mientras Attributes.Selected es true.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "guid": "40b05639-f809-404f-bb1f-ab1fc0fd7847",
     "name": "BoundBuilder.cs",
     "description": "Genera un rectángulo delimitador alrededor de una ubicación, y estima los tiles necesarios para cubrir el área.",
@@ -105,6 +208,1208 @@
             "description": "Comportamiento automático, sin control visible: se suscribe a DisplayPipeline.PostDrawObjects y compara el ChangeCounter de la cámara en cada frame; si cambió, fuerza ExpireSolution() en el siguiente ciclo de UI. Se desuscribe si Run pasa a false o el componente se elimina del documento.",
             "default": null,
             "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "727da5a2-8462-4ce2-86ca-a001c73a20d1",
+    "name": "CustomGnomonic.cs",
+    "description": "Genera una proyección gnomónica (rectilínea) a partir de una imagen equirectangular, renderizada por GPU (OpenGL).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 180×180px dentro de la cápsula donde se muestra el resultado renderizado. Sin controles interactivos propios (no hay arrastre ni clic) — es una superficie de solo lectura.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: cada vez que cambian los inputs (imagen, FOV, heading, pitch, roll) se vuelve a renderizar el framebuffer offscreen (OpenGL) y se actualiza el bitmap mostrado. Antes de tener una imagen, muestra el texto 'Preview' centrado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a1b7b37d-8237-46f6-94e4-321faf8b3f11",
+    "name": "DepthMapViewer.cs",
+    "description": "Procesa mapas de profundidad (depth maps) y los convierte en una imagen de gradiente equirectangular que representa profundidad y geometría planar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Dos áreas dibujadas directamente en el canvas, dentro de la cápsula del componente: la ventana de previsualización arriba, la barra de gradiente abajo.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 180px de ancho (alto = mitad del ancho, relación 2:1). Muestra la imagen de profundidad procesada, o el texto 'Preview' si aún no hay resultado. Sin controles interactivos propios.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: se actualiza cada vez que cambia el resultado procesado (previewImage).",
+                "default": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Barra de Gradiente",
+            "description": "Franja debajo de la ventana de preview donde se dibuja el control de gradiente nativo de Grasshopper (Grasshopper.GUI.Gradient.GH_Gradient — no es un widget hecho a mano), con sus grips (marcadores de color) visibles encima.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Agregar Grip",
+                "description": "Clic en el área de 16×16px al inicio de la barra agrega un nuevo grip de color en la posición del cursor.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "behavior",
+                "label": "Arrastre de Grip",
+                "description": "Clic y arrastre sobre un grip existente (radio de detección 8px) mueve su posición dentro del gradiente.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "action",
+                "label": "Editar Gradiente",
+                "description": "Doble clic sobre la barra (fuera del área de agregar grip) abre el editor de gradiente nativo de Grasshopper (gradient.DisplayGradientEditor()) — el mismo que abre 'Edit Gradient...' desde el menú contextual.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "toggle",
+            "label": "Locked",
+            "description": "ToolStripMenuItem checkable. Mientras está activo, el gradiente no se puede editar (ni con los grips ni con el editor).",
+            "default": false,
+            "children": []
+          },
+          {
+            "kind": "toggle",
+            "label": "Linear Interpolation",
+            "description": "ToolStripMenuItem checkable, con ícono propio. Alterna si el color entre grips se interpola de forma lineal o no.",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Set As Default",
+            "description": "Ítem del menú. Guarda el gradiente actual como el default que usarán las nuevas instancias del componente.",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Edit Gradient...",
+            "description": "Ítem del menú. Abre el mismo editor de gradiente nativo que el doble clic sobre la barra.",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "menu_group",
+            "label": "Presets",
+            "description": "Submenú con vista previa de cada gradiente: dos presets fijos (Viridis, Heat Map), separador, presets guardados por el usuario, separador, y la opción de agregar el gradiente actual a la lista.",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Viridis / Heat Map",
+                "description": "Ítems fijos del submenú (no se pueden borrar). Cada uno aplica su set de grips predefinido al hacer clic.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Presets del Usuario",
+                "description": "Ítems cargados dinámicamente desde los presets guardados previamente por el usuario (LoadUserGradients). Pueden no existir si el usuario nunca guardó ninguno.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "action",
+                "label": "Add Current Gradient",
+                "description": "Ítem del submenú. Guarda el gradiente actual como un nuevo preset reutilizable en la lista de arriba.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a6ffe8aa-bf17-42c0-b9df-4007bc795f93",
+    "name": "EdgesDetector.cs",
+    "description": "Extrae líneas de contorno de una imagen y las reconstruye como polylines simplificadas.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 180×180px dentro de la cápsula donde se muestra el resultado renderizado. Sin controles interactivos propios (no hay arrastre ni clic) — es una superficie de solo lectura.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: cada vez que cambian los inputs se recalcula el bitmap (GetProcessedPreviewBitmap()) y se actualiza lo mostrado. A diferencia de las otras ventanas de previsualización del plugin, esta preserva el aspect ratio original de la imagen (escala proporcional, sin estirar) usando interpolación HighQualityBicubic. Antes de tener una imagen, muestra el texto 'Preview' centrado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "81eff9d8-7974-4857-934c-43ca52606477",
+    "name": "EquirectangularRemap.cs",
+    "description": "Aplica un desplazamiento UV continuo (sin costuras) a una imagen equirectangular, preservando su proyección esférica.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 300×150px dentro de la cápsula donde se muestra el resultado renderizado. Sin controles interactivos propios (no hay arrastre ni clic) — es una superficie de solo lectura.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: cada vez que cambian los inputs se recalcula el bitmap (GetPreviewBitmap()) y se actualiza lo mostrado. Antes de tener una imagen, muestra el texto 'Preview' centrado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a17f6b83-cc1d-4e22-bd3f-6c89ab7dc0e2",
+    "name": "ExtraScriptVariable.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "43aeb2e7-bf1d-45a2-ba17-0a33a2b71ead",
+    "name": "GeoLocalSwitch.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "75f28922-6ca8-498f-8a07-7b4811fb27f4",
+    "name": "GridBuilder.cs",
+    "description": "Construye un grid a partir de los bounds de un conjunto de imágenes, con espaciado configurable por fila/columna.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elementos dibujados directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Patrón de Lectura",
+            "description": "Mini-grid de 4 puntos (2×2) dentro de la cápsula, uno por cada celda del grid de imágenes (fila×2+columna).",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre Secuencial",
+                "description": "Clic y arrastre sobre los 4 puntos, en el orden deseado, define LockPattern (el orden en que se leen las celdas). No permite trazar un patrón que se auto-intersecte; si se sueltan menos de 4 puntos, se revierte al último patrón válido. Un solo evento de undo por gesto completo.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "behavior",
+                "label": "Flecha de Dirección",
+                "description": "Comportamiento automático, sin control aparte del arrastre: dibuja una línea con flecha entre los puntos consecutivos del patrón activo para indicar visualmente el sentido de lectura.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "c8d88dca-df98-46e1-a884-ac118dcf775d",
+    "name": "HistogramMatcher.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b7bd2439-5c49-43d7-8953-4724cb01d78d",
+    "name": "HistogramViewer.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a34c73ff-4f3c-4a12-8cc5-366bbfd2d0c1",
+    "name": "InverseGnomonic.cs",
+    "description": "Proyecta una fotografía rectilínea estándar sobre un canvas equirectangular; la resolución de salida se deriva automáticamente de la imagen fuente.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 300×150px dentro de la cápsula donde se muestra el resultado renderizado. Sin controles interactivos propios (no hay arrastre ni clic) — es una superficie de solo lectura.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: cada vez que cambian los inputs se recalcula el bitmap (GetPreviewBitmap()) y se actualiza lo mostrado. Antes de tener una imagen, muestra el texto 'Preview' centrado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d526b86c-993b-4731-b178-25087f03b41b",
+    "name": "Joystick.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Diálogo",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d32e2d41-21d0-49b3-9e7a-65c8c5f8f4bc",
+    "name": "KeypointDetector.UI.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "fa6cdd20-3a01-4445-a39f-894a0ea9e8f9",
+    "name": "LocationDisplaySwap.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "64c2f669-f61e-45e8-b5f8-2b2e744725a6",
+    "name": "Make2DEquirectangular.cs",
+    "description": "Crea un dibujo de líneas ocultas (hidden-line drawing) en proyección equirectangular a partir de geometría 3D.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, debajo de la cápsula del componente (clase compartida Make2D_Attributes, leída por reflexión: cualquier componente con propiedades AutoCompute/AwaitingTrigger/ComputeOverride puede usarla sin implementar ninguna interfaz).",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Botón Compute / Done",
+            "description": "Cápsula de texto debajo de la cápsula principal. Mientras hay un cálculo pendiente (AwaitingTrigger=true) muestra 'Compute' en rosa; en cualquier otro caso muestra 'Done'.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Cálculo Manual",
+                "description": "Clic sobre el botón, con efecto solo si hay un cálculo pendiente: fuerza ComputeOverride=true y dispara ExpireSolution. Con 'Automatic' activado el botón sigue mostrando 'Done' pero no hace falta usarlo, porque el recálculo ya ocurre solo.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente. Se agrega vía AppendAdditionalComponentMenuItems, no AppendAdditionalMenuItems — método distinto que el script de detección por PowerShell no reconoce todavía.",
+        "default": null,
+        "children": [
+          {
+            "kind": "toggle",
+            "label": "Automatic",
+            "description": "ToolStripMenuItem checkable. Activado: el componente se recalcula solo en cada cambio de input. Desactivado: los cambios quedan pendientes (AwaitingTrigger=true) hasta que se hace clic en el botón 'Compute'.",
+            "default": false,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Color de Preview",
+            "description": "Comportamiento automático, sin control visible: el rectángulo de preview (DrawViewportWires) usa el color de selección estándar de Grasshopper (WireColour_Selected) en vez de verde mar (SeaGreen) mientras el componente está seleccionado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "53ea2ad5-909f-4a0a-b8cc-cb69490ab5e2",
+    "name": "Make2DTinyPlanet.cs",
+    "description": "Crea una proyección estereográfica (tiny planet) a partir de geometría 3D, con clasificación visible/oculto opcional vía un pipeline Make2D de cubemap de 6 caras.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, debajo de la cápsula del componente (clase compartida Make2D_Attributes, leída por reflexión: cualquier componente con propiedades AutoCompute/AwaitingTrigger/ComputeOverride puede usarla sin implementar ninguna interfaz).",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Botón Compute / Done",
+            "description": "Cápsula de texto debajo de la cápsula principal. Mientras hay un cálculo pendiente (AwaitingTrigger=true) muestra 'Compute' en rosa; en cualquier otro caso muestra 'Done'.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Cálculo Manual",
+                "description": "Clic sobre el botón, con efecto solo si hay un cálculo pendiente: fuerza ComputeOverride=true y dispara ExpireSolution. Con 'Automatic' activado el botón sigue mostrando 'Done' pero no hace falta usarlo, porque el recálculo ya ocurre solo.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente. Se agrega vía AppendAdditionalComponentMenuItems, no AppendAdditionalMenuItems — método distinto que el script de detección por PowerShell no reconoce todavía.",
+        "default": null,
+        "children": [
+          {
+            "kind": "toggle",
+            "label": "Automatic",
+            "description": "ToolStripMenuItem checkable. Activado: el componente se recalcula solo en cada cambio de input. Desactivado: los cambios quedan pendientes (AwaitingTrigger=true) hasta que se hace clic en el botón 'Compute'.",
+            "default": false,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Color de Preview",
+            "description": "Comportamiento automático, sin control visible: el rectángulo de preview (DrawViewportWires) usa el color de selección estándar de Grasshopper (WireColour_Selected) en vez de verde mar (SeaGreen) mientras el componente está seleccionado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b45f13a4-1a2b-4c3d-9d4e-5f8b7e1c2d9f",
+    "name": "MapTileRequester.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "f5d4b8a1-1234-4c56-abcd-56789abcdef0",
+    "name": "MediaInfo.cs",
+    "description": "Extrae metadata y propiedades técnicas de archivos multimedia (imágenes, geofotos, video, audio, documentos).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "toggle",
+            "label": "Lock Output Structure",
+            "description": "ToolStripMenuItem checkable. Mientras está activo, congela el set de outputs actual e ignora la categoría del archivo que llegue después (ver Parámetros Dinámicos).",
+            "default": false,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Parámetros Dinámicos",
+        "description": "Igual que en ReadJSON.cs: CanInsertParameter y CanRemoveParameter devuelven siempre false, no hay controles nativos de +/- visibles. Los outputs se reconstruyen solos según el tipo de archivo detectado.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Outputs por Tipo de Archivo",
+            "description": "Comportamiento automático, sin control visible: al recibir un archivo, detecta su categoría por extensión (image, geophoto, video, audio, document, o un set genérico por default) y reconstruye el set completo de outputs para esa categoría — entre 10 y 12 parámetros distintos según el tipo (ej. 'geophoto' agrega Location, Compass, Camera y FOV que las demás categorías no tienen). No ocurre si 'Lock Output Structure' está activo.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, debajo de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Botón Open File",
+            "description": "Cápsula de texto (GH_Capsule, rótulo 'Open File') debajo del componente.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Abrir en Explorador",
+                "description": "Clic sobre el botón abre el archivo actual en el Explorador de Windows (con /select para resaltarlo).",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b6990250-3c23-49ba-95bd-11b512f00791",
+    "name": "NearestPanoramaLocator.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d0801329-ac5d-4a5b-ad23-904e3212a3cc",
+    "name": "OSM_CityBlockBuilder.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "46a1cdd2-b8fb-4fcf-b23b-b3767928cfb3",
+    "name": "OSM_StreetNetwork.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "4de86491-80d8-4c30-973f-2a3625530cb6",
+    "name": "PathClipper.cs",
+    "description": "Recorta una ruta de directorio a un nivel específico, con outputs adicionales para niveles relativos (Depth+n / Depth-n).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Parámetros Dinámicos",
+        "description": "Grasshopper dibuja controles nativos de +/- sobre los outputs porque el componente implementa IGH_VariableParameterComponent — no es GUI dibujada por este código, es el mecanismo estándar de Grasshopper para parámetros variables.",
+        "default": null,
+        "children": [
+          {
+            "kind": "action",
+            "label": "Agregar Output (+)",
+            "description": "Control nativo de Grasshopper sobre la lista de outputs. Inserta un nuevo Param_FilePath, solo en los extremos (nunca en medio). Si se inserta antes o en la posición del output base, este se desplaza para seguir apuntando al mismo parámetro lógico (Depth+0).",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Quitar Output (-)",
+            "description": "Control nativo de Grasshopper sobre la lista de outputs. Elimina un output, solo desde los extremos; nunca se puede eliminar el output base (Depth+0).",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "behavior",
+            "label": "Renombrado Automático",
+            "description": "Comportamiento automático, sin control visible: tras cualquier cambio en los outputs, todos se renombran según su offset respecto al base — 'Clip -1', 'Clip -2'... hacia la izquierda, 'Clip', 'Clip +1', 'Clip +2'... hacia la derecha — cada uno con su descripción indicando el Depth efectivo que produce.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "f753b731-3ae4-484d-bcae-25bf49d79688",
+    "name": "PathInspector.cs",
+    "description": "Lista, filtra y ordena archivos y carpetas de un directorio según patrones de nombre, formato y sensibilidad a mayúsculas.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "menu_group",
+            "label": "Item Limit",
+            "description": "Submenú con un checkbox y un control numérico embebidos (ToolStripControlHost), para limitar cuántos elementos se procesan.",
+            "default": null,
+            "children": [
+              {
+                "kind": "toggle",
+                "label": "Enable Item Limit",
+                "description": "CheckBox de WinForms embebido en el submenú. Activa o desactiva el límite de elementos procesados.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "digit_scroller",
+                "label": "Max Items",
+                "description": "NumericUpDown de WinForms embebido en el submenú (rango 10–100,000, paso 100). Solo tiene efecto mientras Enable Item Limit está activo.",
+                "default": 500,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "menu_group",
+            "label": "Sort by",
+            "description": "Submenú de ordenamiento.",
+            "default": null,
+            "children": [
+              {
+                "kind": "menu_group",
+                "label": "Name",
+                "description": "Submenú anidado con dos variantes de orden por nombre.",
+                "default": null,
+                "children": [
+                  {
+                    "kind": "option",
+                    "label": "Name [Alphanumeric]",
+                    "description": "Ítem del submenú. Orden natural: números dentro del nombre se comparan como valor, no carácter por carácter (ej. '2' antes que '10').",
+                    "default": true,
+                    "children": []
+                  },
+                  {
+                    "kind": "option",
+                    "label": "Name [Lexicographic]",
+                    "description": "Ítem del submenú. Orden alfabético estricto por caracteres.",
+                    "default": false,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "kind": "option",
+                "label": "Size",
+                "description": "Ítem del submenú. Ordena por tamaño de archivo.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Modified",
+                "description": "Ítem del submenú. Ordena por fecha de última modificación.",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "menu_group",
+            "label": "File Name filters",
+            "description": "Submenú con tres campos de texto y un checkbox para filtrar archivos por nombre.",
+            "default": null,
+            "children": [
+              {
+                "kind": "text_input",
+                "label": "Starts with",
+                "description": "TextBox embebido en el submenú. Filtra archivos cuyo nombre (sin extensión) empiece con el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "text_input",
+                "label": "Contains",
+                "description": "TextBox embebido en el submenú. Filtra archivos cuyo nombre contenga el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "text_input",
+                "label": "Ends with",
+                "description": "TextBox embebido en el submenú. Filtra archivos cuyo nombre termine con el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "toggle",
+                "label": "Case sensitive",
+                "description": "CheckBox embebido en el submenú. Aplica los tres filtros de arriba distinguiendo mayúsculas/minúsculas.",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "menu_group",
+            "label": "Folder Name filters",
+            "description": "Mismo esquema que File Name filters (Starts with / Contains / Ends with / Case sensitive), aplicado a los nombres de carpeta en vez de archivo.",
+            "default": null,
+            "children": [
+              {
+                "kind": "text_input",
+                "label": "Starts with",
+                "description": "TextBox embebido en el submenú. Filtra carpetas cuyo nombre empiece con el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "text_input",
+                "label": "Contains",
+                "description": "TextBox embebido en el submenú. Filtra carpetas cuyo nombre contenga el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "text_input",
+                "label": "Ends with",
+                "description": "TextBox embebido en el submenú. Filtra carpetas cuyo nombre termine con el texto dado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "toggle",
+                "label": "Case sensitive",
+                "description": "CheckBox embebido en el submenú. Aplica los tres filtros de arriba distinguiendo mayúsculas/minúsculas.",
+                "default": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, debajo de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Botón Open Directory",
+            "description": "Cápsula de texto (GH_Capsule, rótulo 'Open Directory') debajo del componente.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Abrir en Explorador",
+                "description": "Clic sobre el botón abre el path actual (el último Directory recibido) en el Explorador de Windows — con /select si es un archivo, o la carpeta directamente si es un directorio.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "bc9322ca-c2b8-4174-ad40-fbbad570c577",
+    "name": "PC_Importer.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "c1a74e2b-9f03-4d87-a21b-5e6d83f910c4",
+    "name": "PC_Reduce.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "660156c4-b662-49df-9134-61b275bd2bcd",
+    "name": "ReadJSON.cs",
+    "description": "Lee un archivo o string JSON: como texto plano, deserializado en outputs dinámicos por propiedad, o interpretado como metadata de panorama (SDI).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "menu_group",
+            "label": "Modo de Lectura",
+            "description": "Tres ToolStripMenuItem checkables con exclusividad manejada a mano en el código (no es un grupo nativo de radio): activar uno desactiva los otros dos.",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Read as text",
+                "description": "Ítem del menú. Devuelve el JSON completo como texto plano en un único output 'Data'.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Read and deserialize",
+                "description": "Ítem del menú. Crea un output por cada propiedad única del nivel superior del JSON (ver Parámetros Dinámicos).",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Read panorama metadata",
+                "description": "Ítem del menú. Interpreta el JSON como metadata de panorama (Street View / Mapillary-like) y crea un set fijo de ~13 outputs (ver Parámetros Dinámicos).",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "toggle",
+            "label": "Remove missing files",
+            "description": "ToolStripMenuItem checkable, siempre habilitado. Filtra del resultado los registros cuyo archivo de imagen asociado no existe en disco.",
+            "default": true,
+            "children": []
+          },
+          {
+            "kind": "toggle",
+            "label": "Remove incomplete metadata",
+            "description": "ToolStripMenuItem checkable, habilitado solo cuando 'Read panorama metadata' está activo. Descarta registros sin location y sin al menos uno de: date, elevation o heading.",
+            "default": true,
+            "children": []
+          },
+          {
+            "kind": "toggle",
+            "label": "Lock Outputs",
+            "description": "ToolStripMenuItem checkable, visible solo cuando 'Read and deserialize' está activo. Congela la estructura de outputs actual para que no se reconfigure aunque cambien las propiedades del JSON de entrada.",
+            "default": false,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Match Outputs",
+            "description": "ToolStripMenuItem, visible solo cuando 'Read and deserialize' está activo. Fuerza una resincronización inmediata de los outputs contra las propiedades detectadas en el JSON actual.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Parámetros Dinámicos",
+        "description": "A diferencia de PathClipper.cs, aquí CanInsertParameter y CanRemoveParameter devuelven siempre false: el usuario NUNCA ve los controles nativos de +/- de Grasshopper. Los outputs se crean y renombran solos, según el modo de lectura activo.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Outputs de Metadata (SDI)",
+            "description": "Comportamiento automático, sin control visible: al activar 'Read panorama metadata', se registra un set fijo de outputs (Pano ID, Site, Location, Elevation, North, Date, Heading, Pitch, Roll, Depth Map, Copyright, Success, Statistics).",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "behavior",
+            "label": "Outputs por Propiedad JSON",
+            "description": "Comportamiento automático, sin control visible: en modo 'Read and deserialize', se crea un output por cada propiedad única del nivel superior del JSON de entrada, nombrado igual que la clave y con acceso list o item según el tipo detectado. Se actualiza solo si 'Lock Outputs' está desactivado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "e71b0839-9dbe-4201-8555-7da4863645d5",
+    "name": "StreetsidePanoramaLocator.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "7e881c27-ac8d-40e3-906a-fd19f20c4dca",
+    "name": "Syntax_Intersector.cs",
+    "description": "Calcula los subtramos de una vía principal delimitados por sus intersecciones con otras dos vías concurrentes.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiqueta de Ruta",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de la vía principal (MainName, o 'Main Road' si no se especificó) como TextDot en el punto medio de cada segmento resultante, solo mientras el componente está seleccionado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a58ee327-7842-4075-8f55-78f4f29f103c",
+    "name": "TinyPlanet.cs",
+    "description": "Convierte imágenes panorámicas en proyecciones Tiny Planet.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 180×180px dentro de la cápsula donde se muestra el resultado renderizado. Sin controles interactivos propios (no hay arrastre ni clic) — es una superficie de solo lectura.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: cada vez que cambian los inputs se recalcula el bitmap (GetPreviewBitmap()) y se actualiza lo mostrado. Antes de tener una imagen, muestra el texto 'Preview' centrado.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       }
@@ -220,853 +1525,6 @@
             "kind": "behavior",
             "label": "Ajuste al Guardar",
             "description": "Comportamiento automático al aceptar el diálogo, sin control visible: si el valor actual de un eje queda fuera del nuevo dominio, se recorta al extremo más cercano (clamp, no wrap).",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "9671d2ae-18b1-4f7a-b829-616335b65920",
-    "name": "3DTiles.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "3ee14aef-fcca-400f-ab64-69bea61f07eb",
-    "name": "Autocomplete.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "9a997a8f-1675-4fe2-be3e-eede78faf277",
-    "name": "Block4Split.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "490a7026-6567-415c-96f8-502e443a60fe",
-    "name": "BlockSelector.cs",
-    "description": "Busca o clasifica una lista de manzanas urbanas (blocks) según una referencia: índice, punto más cercano o curva contenedora.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Mientras el componente está seleccionado en el canvas.",
-        "default": null,
-        "children": [
-          {
-            "kind": "behavior",
-            "label": "Etiquetas de Block",
-            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de cada block resultante ('Block_0', 'Block_1'...) como TextDot sobre su centroide, solo mientras Attributes.Selected es true.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "727da5a2-8462-4ce2-86ca-a001c73a20d1",
-    "name": "CustomGnomonic.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "a1b7b37d-8237-46f6-94e4-321faf8b3f11",
-    "name": "DepthMapViewer.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "a6ffe8aa-bf17-42c0-b9df-4007bc795f93",
-    "name": "EdgesDetector.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "81eff9d8-7974-4857-934c-43ca52606477",
-    "name": "EquirectangularRemap.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "a17f6b83-cc1d-4e22-bd3f-6c89ab7dc0e2",
-    "name": "ExtraScriptVariable.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "43aeb2e7-bf1d-45a2-ba17-0a33a2b71ead",
-    "name": "GeoLocalSwitch.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "75f28922-6ca8-498f-8a07-7b4811fb27f4",
-    "name": "GridBuilder.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "c8d88dca-df98-46e1-a884-ac118dcf775d",
-    "name": "HistogramMatcher.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "b7bd2439-5c49-43d7-8953-4724cb01d78d",
-    "name": "HistogramViewer.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "a34c73ff-4f3c-4a12-8cc5-366bbfd2d0c1",
-    "name": "InverseGnomonic.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "d526b86c-993b-4731-b178-25087f03b41b",
-    "name": "Joystick.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Diálogo",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "d32e2d41-21d0-49b3-9e7a-65c8c5f8f4bc",
-    "name": "KeypointDetector.UI.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "fa6cdd20-3a01-4445-a39f-894a0ea9e8f9",
-    "name": "LocationDisplaySwap.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "64c2f669-f61e-45e8-b5f8-2b2e744725a6",
-    "name": "Make2DEquirectangular.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "53ea2ad5-909f-4a0a-b8cc-cb69490ab5e2",
-    "name": "Make2DTinyPlanet.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "b45f13a4-1a2b-4c3d-9d4e-5f8b7e1c2d9f",
-    "name": "MapTileRequester.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "f5d4b8a1-1234-4c56-abcd-56789abcdef0",
-    "name": "MediaInfo.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "b6990250-3c23-49ba-95bd-11b512f00791",
-    "name": "NearestPanoramaLocator.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "d0801329-ac5d-4a5b-ad23-904e3212a3cc",
-    "name": "OSM_CityBlockBuilder.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "46a1cdd2-b8fb-4fcf-b23b-b3767928cfb3",
-    "name": "OSM_StreetNetwork.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "f753b731-3ae4-484d-bcae-25bf49d79688",
-    "name": "PathInspector.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "bc9322ca-c2b8-4174-ad40-fbbad570c577",
-    "name": "PC_Importer.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "c1a74e2b-9f03-4d87-a21b-5e6d83f910c4",
-    "name": "PC_Reduce.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "660156c4-b662-49df-9134-61b275bd2bcd",
-    "name": "ReadJSON.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "e71b0839-9dbe-4201-8555-7da4863645d5",
-    "name": "StreetsidePanoramaLocator.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "7e881c27-ac8d-40e3-906a-fd19f20c4dca",
-    "name": "Syntax_Intersector.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
-            "children": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "guid": "a58ee327-7842-4075-8f55-78f4f29f103c",
-    "name": "TinyPlanet.cs",
-    "description": "Pendiente de documentar.",
-    "tree": [
-      {
-        "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
-        "default": null,
-        "children": [
-          {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
             "default": null,
             "children": []
           }
