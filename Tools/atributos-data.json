@@ -1,0 +1,230 @@
+[
+  {
+    "guid": "40b05639-f809-404f-bb1f-ab1fc0fd7847",
+    "name": "BoundBuilder.cs",
+    "description": "Genera un rectángulo delimitador alrededor de una ubicación, y estima los tiles necesarios para cubrir el área.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "menu_group",
+            "label": "Preview Projection",
+            "description": "Grupo de dos ToolStripMenuItem exclusivos (tipo radio, con Checked) agregado al menú contextual bajo el encabezado 'Preview Projection'. Solo controla la proyección con la que se dibuja el preview en el viewport — los outputs siempre salen en Plate Carrée (lon/lat sin transformar).",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Plate Carrée",
+                "description": "Ítem del menú, marcado (Checked) por default. Proyección sin transformar, lon/lat 1:1.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Web Mercator",
+                "description": "Ítem del menú. Proyección Mercator anclada al punto Location, para que el bound no se desplace fuera de posición.",
+                "default": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiquetas de ID de Tile",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el ID de cada tile ('Zoom/x/y') como TextDot sobre su rectángulo, solo mientras Attributes.Selected es true.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "0a3e109b-60c4-43cf-94a8-6613d3c496a1",
+    "name": "BoundViewport.cs",
+    "description": "Genera los bounds de tiles a partir de la cámara activa del viewport de Rhino.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
+        "default": null,
+        "children": [
+          {
+            "kind": "menu_group",
+            "label": "Preview Projection",
+            "description": "Grupo de dos ToolStripMenuItem exclusivos (tipo radio, con Checked) agregado al menú contextual bajo el encabezado 'Preview Projection'. Solo controla la proyección con la que se dibuja el preview — los outputs siempre salen en Plate Carrée.",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Plate Carrée",
+                "description": "Ítem del menú, marcado (Checked) por default. Proyección sin transformar, lon/lat 1:1.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Web Mercator",
+                "description": "Ítem del menú. Proyección Mercator anclada al centro del bound.",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "digit_scroller",
+            "label": "Límite de Tiles",
+            "description": "GH_DigitScroller embebido directamente en el menú contextual (prefijo 'Max tiles:', rango 1–200, sin decimales). El valor limita el máximo de tiles permitido; el Zoom recomendado se ajusta para no superarlo.",
+            "default": 75,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Cámara",
+        "description": "Mientras Run = true: se suscribe a los cambios de la cámara activa y se re-resuelve automáticamente cuando esta se mueve.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Recálculo Automático",
+            "description": "Comportamiento automático, sin control visible: se suscribe a DisplayPipeline.PostDrawObjects y compara el ChangeCounter de la cámara en cada frame; si cambió, fuerza ExpireSolution() en el siguiente ciclo de UI. Se desuscribe si Run pasa a false o el componente se elimina del documento.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "78ae4dc2-5539-4ef5-a91b-e87be53fc1f7",
+    "name": "Trackball_Controller.cs",
+    "description": "Controla una cámara virtual (Heading, Pitch, Roll) mediante una GUI personalizada: deslizadores lineales, una esfera y un anillo interactivos (definidos en Trackball_Attributes.cs), más un diálogo de configuración de dominios (Trackball_Dialog.cs). Sin menú contextual.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elementos dibujados directamente en el canvas, dentro de la cápsula del componente (definidos en Trackball_Attributes.cs).",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Deslizadores",
+            "description": "Tres deslizadores lineales: Heading, Pitch, Roll.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre",
+                "description": "Gesto de arrastre sobre el indicador (cuadro de 8px que marca la posición actual en el deslizador). Cambia el valor del eje dentro de su dominio, con wrap-around en los límites; un solo evento de undo por gesto completo.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "text_input",
+                "label": "Edición de Valor",
+                "description": "Doble clic sobre el deslizador abre un campo de texto para escribir el valor exacto. No responde si ese eje está bloqueado.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "toggle",
+                "label": "Bloqueo de Eje",
+                "description": "Candado junto a cada deslizador. Mientras está activo, ese eje deja de responder al arrastre del indicador y a la rotación de esfera/anillo.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "action",
+                "label": "Reinicio de Eje",
+                "description": "Botón junto a cada deslizador que regresa el valor a 0 y parpadea 200ms como confirmación visual del gesto.",
+                "default": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Esfera",
+            "description": "Esfera 3D interactiva a la derecha de la cápsula; representa Heading y Pitch como una orientación.",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre",
+                "description": "Gesto de arrastre dentro del radio de la esfera: rota Heading y Pitch simultáneamente, salvo que alguno de esos dos ejes esté bloqueado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Anillo",
+            "description": "Anillo que rodea la esfera; representa el eje Roll (rotación en el plano de la pantalla).",
+            "default": null,
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre",
+                "description": "Gesto de arrastre sobre la zona anular (entre el radio interior y exterior del anillo): rota el eje Roll, salvo que esté bloqueado.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Diálogo",
+        "description": "Se abre con doble clic en una zona vacía de la cápsula (fuera de deslizadores, esfera y anillo) — ventana modal aparte, no parte del GUI dibujado en canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "dialog_field",
+            "label": "Heading",
+            "description": "TextBox dentro del diálogo, formato 'min To max'. Define el rango permitido para el eje Heading.",
+            "default": "-180 To 180",
+            "children": []
+          },
+          {
+            "kind": "dialog_field",
+            "label": "Pitch",
+            "description": "TextBox dentro del diálogo, mismo formato. Define el rango permitido para el eje Pitch.",
+            "default": "-180 To 180",
+            "children": []
+          },
+          {
+            "kind": "dialog_field",
+            "label": "Roll",
+            "description": "TextBox dentro del diálogo, mismo formato. Define el rango permitido para el eje Roll.",
+            "default": "-180 To 180",
+            "children": []
+          },
+          {
+            "kind": "behavior",
+            "label": "Ajuste al Guardar",
+            "description": "Comportamiento automático al aceptar el diálogo, sin control visible: si el valor actual de un eje queda fuera del nuevo dominio, se recorta al extremo más cercano (clamp, no wrap).",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
