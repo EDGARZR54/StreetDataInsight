@@ -573,6 +573,139 @@
             color: #333;
         }
 
+        /* ══════════════════════════════════════════════════════════
+           ÁRBOL DE ATRIBUTOS (Interfaz personalizada / context menu /
+           acciones condicionadas). Viene de atributos-data.json,
+           matcheado por guid contra el componente seleccionado.
+           ══════════════════════════════════════════════════════════ */
+        :root {
+            --attr-ink: #1a1a1a;
+            --attr-ink-soft: #55636f;
+            --attr-ink-faint: #8d99a3;
+            --attr-line: #ccc;
+            --attr-accent: #1f5b6b;
+
+            --attr-k-menu_group: #6a5b93;
+            --attr-k-option: #7c8b96;
+            --attr-k-digit_scroller: #a1493f;
+            --attr-k-behavior: #a97a2e;
+            --attr-k-toggle: #3d7a5c;
+            --attr-k-action: #b3542e;
+            --attr-k-text_input: #35618f;
+            --attr-k-dialog_field: #7c8b96;
+            --attr-k-gui_element: #4a7a6f;
+
+            --attr-indent: 22px;
+        }
+
+        .attr-tree-section { padding: 16px; }
+
+        .attr-tree, .attr-tree ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: "Open Sans", Arial, sans-serif;
+        }
+
+        .attr-tree ul { border-left: 1px dashed var(--attr-line); }
+
+        .attr-tree li {
+            position: relative;
+            min-height: 30px;
+            padding-left: var(--attr-indent);
+        }
+        .attr-tree li + li { margin-top: 1px; }
+
+        .attr-tree details { margin: 0; }
+
+        .attr-tree summary {
+            display: flex;
+            align-items: center;
+            min-height: 30px;
+            margin-left: calc(-1 * var(--attr-indent) / 2);
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            padding-left: 0;
+            gap: 6px;
+        }
+        .attr-tree summary::-webkit-details-marker,
+        .attr-tree summary::marker { display: none; }
+
+        .attr-tree summary::before {
+            content: "▷";
+            font-size: 12px;
+            line-height: 1;
+            display: inline-block;
+            width: var(--attr-indent);
+            text-align: center;
+            flex-shrink: 0;
+            color: var(--attr-ink-faint);
+        }
+        .attr-tree details[open] > summary::before {
+            content: "◢";
+            color: var(--attr-ink-soft);
+        }
+
+        .attr-tree summary:hover .attr-node-label { color: var(--attr-accent); }
+        .attr-tree summary:focus-visible {
+            outline: 1px dashed var(--attr-accent);
+            outline-offset: 2px;
+        }
+
+        .attr-node-label {
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--attr-ink);
+        }
+
+        .attr-tree details.is-trigger > summary .attr-node-label {
+            font-size: 14px;
+        }
+        .attr-tree details.is-trigger > .attr-node-body {
+            padding-bottom: 4px;
+        }
+        .attr-tree details.is-trigger > .attr-node-body > .attr-desc {
+            border-bottom: 1px solid var(--attr-line);
+            padding-bottom: 10px;
+        }
+
+        .attr-kind-tag {
+            font-family: ui-monospace, "Courier New", monospace;
+            font-size: 10px;
+            color: var(--attr-kind-color, var(--attr-ink-faint));
+            white-space: nowrap;
+        }
+        .attr-kind-tag::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--attr-kind-color, var(--attr-ink-faint));
+            margin-right: 5px;
+            transform: translateY(-1px);
+        }
+
+        .attr-node-body { padding: 0 var(--attr-indent) 8px 0; }
+
+        .attr-desc {
+            color: var(--attr-ink-soft);
+            font-size: 12.5px;
+            line-height: 1.5;
+            margin: 0 0 6px;
+            max-width: 60ch;
+        }
+
+        .attr-meta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .attr-meta-chip {
+            font-family: ui-monospace, "Courier New", monospace;
+            font-size: 10.5px;
+            color: var(--attr-ink-soft);
+        }
+        .attr-meta-chip.is-default { color: var(--attr-accent); }
+
         [x-cloak] {
             display: none !important;
         }
@@ -865,7 +998,7 @@
                                             <td x-html="fmtDesc(input.description)"></td>
                                             <td><span class="badge-type" x-text="input.type"></span></td>
                                             <td>
-                                                <span class="badge-type" x-text="fmtAccess(input.access)">
+                                                <span class="badge-type" x-text="input.optional ? 'Yes' : 'No'">
                                                 </span>
                                             </td>
                                         </tr>
@@ -899,6 +1032,14 @@
                             </table>
                         </div>
                     </template>
+                    <!-- ÁRBOL DE ATRIBUTOS: solo se muestra si atributos-data.json
+                         trae una entrada cuyo guid coincide con el componente activo -->
+                    <template x-if="getAttrComponent(selectedComponent?.guid)">
+                        <div class="io-section attr-tree-section">
+                            <h3>Atributos</h3>
+                            <div x-ref="attrTreeMount" x-effect="renderAttrTree($refs.attrTreeMount, getAttrComponent(selectedComponent?.guid))"></div>
+                        </div>
+                    </template>
                 </div>
             </main>
         </div><!-- /view component -->
@@ -927,6 +1068,7 @@
                 groups: {},
                 sortedCategoryNames: [],
                 loading: true,
+                attributesData: [],
                 selectedComponent: null,
                 selectedCategory: null,
                 allComponents: [],
@@ -997,11 +1139,6 @@
                     }
                 },
 
-                fmtAccess(access) {
-                    if (!access) return '';
-                    return access.charAt(0).toUpperCase() + access.slice(1).toLowerCase();
-                },
-
                 fmtDesc(text) {
                     if (!text) return '';
                     let s = text
@@ -1028,9 +1165,19 @@
 
                 async init() {
                     try {
-                        const res = await fetch('https://edgarzr54.github.io/StreetDataInsight/Tools/StreetDataInsight_Docs.json');
+                        const DOCS_URL = 'https://edgarzr54.github.io/StreetDataInsight/Tools/StreetDataInsight_Docs.json';
+                        const res = await fetch(DOCS_URL);
                         const data = await res.json();
                         this.allComponents = data.components;
+
+                        // atributos-data.json vive en la misma carpeta que el docs JSON.
+                        // Si falla (404, aún no existe, etc.) no debe romper el resto de
+                        // la página — simplemente no se muestra la sección de Atributos.
+                        const ATTR_URL = DOCS_URL.replace(/[^/]+$/, 'atributos-data.json');
+                        fetch(ATTR_URL)
+                            .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+                            .then(attrs => { this.attributesData = attrs; })
+                            .catch(e => console.warn('atributos-data.json no disponible:', e.message));
 
                         const tempGroups = {};
                         const keyMap = {}; // lowercase -> primera grafía encontrada (canónica)
@@ -1118,6 +1265,91 @@
                             if (ea !== eb) return ea - eb;
                             return a.name.localeCompare(b.name);
                         });
+                },
+
+                /* ── ÁRBOL DE ATRIBUTOS ──
+                   Busca en atributos-data.json (cargado en init()) el componente
+                   cuyo guid coincide con el seleccionado, y monta el árbol con
+                   vanilla JS (no plantillas de Alpine, por la recursión). */
+                getAttrComponent(guid) {
+                    if (!guid || !this.attributesData.length) return null;
+                    const target = guid.trim().toLowerCase();
+                    return this.attributesData.find(c => (c.guid || '').trim().toLowerCase() === target) || null;
+                },
+
+                attrKindLabels: {
+                    menu_group: 'Grupo de menú',
+                    option: 'Opción',
+                    digit_scroller: 'Selector numérico',
+                    behavior: 'Automático',
+                    toggle: 'Interruptor',
+                    action: 'Acción',
+                    text_input: 'Entrada de texto',
+                    dialog_field: 'Campo de diálogo',
+                    gui_element: 'Elemento de GUI'
+                },
+
+                attrMetaChip(node) {
+                    if (node.default === null || node.default === undefined) return '';
+                    return `<span class="attr-meta-chip is-default">por defecto: ${node.default}</span>`;
+                },
+
+                renderAttrNodes(nodes, container, depth) {
+                    const ul = document.createElement('ul');
+                    ul.className = 'attr-tree';
+
+                    nodes.forEach(node => {
+                        const li = document.createElement('li');
+                        const hasChildren = node.children && node.children.length > 0;
+                        const isTrigger = node.kind === 'trigger';
+
+                        const details = document.createElement('details');
+                        details.open = depth === 0;
+                        if (isTrigger) details.className = 'is-trigger';
+                        if (!isTrigger) details.style.setProperty('--attr-kind-color', `var(--attr-k-${node.kind})`);
+
+                        const summary = document.createElement('summary');
+                        summary.innerHTML = isTrigger
+                            ? `<span class="attr-node-label">${node.label}</span>`
+                            : `<span class="attr-node-label">${node.label}</span>
+                               <span class="attr-kind-tag">${this.attrKindLabels[node.kind] || node.kind}</span>`;
+                        details.appendChild(summary);
+
+                        const body = document.createElement('div');
+                        body.className = 'attr-node-body';
+
+                        const desc = document.createElement('p');
+                        desc.className = 'attr-desc';
+                        desc.textContent = node.description;
+                        body.appendChild(desc);
+
+                        const chips = this.attrMetaChip(node);
+                        if (chips) {
+                            const meta = document.createElement('div');
+                            meta.className = 'attr-meta';
+                            meta.innerHTML = chips;
+                            body.appendChild(meta);
+                        }
+
+                        if (hasChildren) {
+                            const childContainer = document.createElement('div');
+                            childContainer.className = 'attr-children';
+                            this.renderAttrNodes(node.children, childContainer, depth + 1);
+                            body.appendChild(childContainer);
+                        }
+
+                        details.appendChild(body);
+                        li.appendChild(details);
+                        ul.appendChild(li);
+                    });
+                    container.appendChild(ul);
+                },
+
+                renderAttrTree(mountEl, attrComponent) {
+                    if (!mountEl) return;
+                    mountEl.innerHTML = '';
+                    if (!attrComponent) return;
+                    this.renderAttrNodes(attrComponent.tree, mountEl, 0);
                 }
             }
         }
