@@ -226,5 +226,874 @@
         ]
       }
     ]
+  },
+  {
+    "guid": "9671d2ae-18b1-4f7a-b829-616335b65920",
+    "name": "3DTiles.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "3ee14aef-fcca-400f-ab64-69bea61f07eb",
+    "name": "Autocomplete.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "9a997a8f-1675-4fe2-be3e-eede78faf277",
+    "name": "Block4Split.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "490a7026-6567-415c-96f8-502e443a60fe",
+    "name": "BlockSelector.cs",
+    "description": "Busca o clasifica una lista de manzanas urbanas (blocks) según una referencia: índice, punto más cercano o curva contenedora.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiquetas de Block",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de cada block resultante ('Block_0', 'Block_1'...) como TextDot sobre su centroide, solo mientras Attributes.Selected es true.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "727da5a2-8462-4ce2-86ca-a001c73a20d1",
+    "name": "CustomGnomonic.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a1b7b37d-8237-46f6-94e4-321faf8b3f11",
+    "name": "DepthMapViewer.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a6ffe8aa-bf17-42c0-b9df-4007bc795f93",
+    "name": "EdgesDetector.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "81eff9d8-7974-4857-934c-43ca52606477",
+    "name": "EquirectangularRemap.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a17f6b83-cc1d-4e22-bd3f-6c89ab7dc0e2",
+    "name": "ExtraScriptVariable.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "43aeb2e7-bf1d-45a2-ba17-0a33a2b71ead",
+    "name": "GeoLocalSwitch.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "75f28922-6ca8-498f-8a07-7b4811fb27f4",
+    "name": "GridBuilder.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "c8d88dca-df98-46e1-a884-ac118dcf775d",
+    "name": "HistogramMatcher.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b7bd2439-5c49-43d7-8953-4724cb01d78d",
+    "name": "HistogramViewer.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a34c73ff-4f3c-4a12-8cc5-366bbfd2d0c1",
+    "name": "InverseGnomonic.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d526b86c-993b-4731-b178-25087f03b41b",
+    "name": "Joystick.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Diálogo",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d32e2d41-21d0-49b3-9e7a-65c8c5f8f4bc",
+    "name": "KeypointDetector.UI.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "fa6cdd20-3a01-4445-a39f-894a0ea9e8f9",
+    "name": "LocationDisplaySwap.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "64c2f669-f61e-45e8-b5f8-2b2e744725a6",
+    "name": "Make2DEquirectangular.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "53ea2ad5-909f-4a0a-b8cc-cb69490ab5e2",
+    "name": "Make2DTinyPlanet.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b45f13a4-1a2b-4c3d-9d4e-5f8b7e1c2d9f",
+    "name": "MapTileRequester.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "f5d4b8a1-1234-4c56-abcd-56789abcdef0",
+    "name": "MediaInfo.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b6990250-3c23-49ba-95bd-11b512f00791",
+    "name": "NearestPanoramaLocator.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "d0801329-ac5d-4a5b-ad23-904e3212a3cc",
+    "name": "OSM_CityBlockBuilder.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "46a1cdd2-b8fb-4fcf-b23b-b3767928cfb3",
+    "name": "OSM_StreetNetwork.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "f753b731-3ae4-484d-bcae-25bf49d79688",
+    "name": "PathInspector.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "bc9322ca-c2b8-4174-ad40-fbbad570c577",
+    "name": "PC_Importer.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "c1a74e2b-9f03-4d87-a21b-5e6d83f910c4",
+    "name": "PC_Reduce.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "660156c4-b662-49df-9134-61b275bd2bcd",
+    "name": "ReadJSON.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Menú Contextual",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "e71b0839-9dbe-4201-8555-7da4863645d5",
+    "name": "StreetsidePanoramaLocator.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "7e881c27-ac8d-40e3-906a-fd19f20c4dca",
+    "name": "Syntax_Intersector.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a58ee327-7842-4075-8f55-78f4f29f103c",
+    "name": "TinyPlanet.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "28907ae8-0df9-43b6-9283-c597b7ecadcf",
+    "name": "TransformationSettings.cs",
+    "description": "Pendiente de documentar.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Pendiente de documentar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "todo",
+            "label": "Por documentar",
+            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
   }
 ]
