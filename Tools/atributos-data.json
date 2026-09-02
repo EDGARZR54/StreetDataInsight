@@ -2,19 +2,19 @@
   {
     "guid": "9671d2ae-18b1-4f7a-b829-616335b65920",
     "name": "3DTiles.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Descarga y decodifica los 3D building tiles de Google Maps en mallas de Rhino.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
+            "kind": "digit_scroller",
+            "label": "Tile Safety Limit",
+            "description": "GH_DigitScroller embebido en el menú contextual (prefijo 'Max tiles:', rango 1–100, sin decimales) — mismo patrón exacto que BoundViewport.cs. El default es más bajo que el techo real (25 vs 100) a propósito, pensado como límite seguro para navegación en vivo.",
+            "default": 25,
             "children": []
           }
         ]
@@ -24,35 +24,80 @@
   {
     "guid": "3ee14aef-fcca-400f-ab64-69bea61f07eb",
     "name": "Autocomplete.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Encuentra el ítem más parecido en una lista a partir de un texto de búsqueda, con coincidencia difusa (fuzzy match).",
     "tree": [
       {
         "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "label": "Interfaz Personalizada",
+        "description": "Combobox dibujado directamente en el canvas, dentro de la cápsula del componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Campo de Búsqueda",
+            "description": "Cabecera de 220×18px. Al hacer clic, crea un TextBox flotante real de Windows Forms superpuesto sobre el componente (no es un campo dibujado a mano) para escribir el texto de búsqueda.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "text_input",
+                "label": "Escribir Búsqueda",
+                "description": "TextBox flotante que aparece al soltar el clic sobre la cabecera. Se destruye al hacer clic fuera de la lista o al seleccionar un ítem.",
+                "default": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Lista Desplegable",
+            "description": "Hasta 8 filas visibles a la vez (con scrollbar arrastrable si hay más ítems filtrados que eso).",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Seleccionar Ítem",
+                "description": "Clic sobre una fila de la lista: selecciona ese ítem, cierra la lista y destruye el TextBox flotante.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "behavior",
+                "label": "Arrastre del Scroll",
+                "description": "Clic y arrastre sobre el grip de la barra de scroll (visible solo si hay más de 8 ítems filtrados) desplaza la lista.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       },
       {
         "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Modo de Coincidencia",
+            "description": "Dos ToolStripMenuItem checkable con exclusividad manejada a mano. A diferencia de un toggle cosmético, cambiar el modo agrega o quita un input completo del componente.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "option",
+                "label": "Single Match",
+                "description": "Ítem del menú. Escribe texto en el campo de búsqueda y devuelve la coincidencia más cercana de la lista.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Multi Match",
+                "description": "Ítem del menú. Agrega un input 'Query' (lista de texto) para buscar varias coincidencias a la vez, conectando una lista en vez de escribir en el campo. Al volver a Single Match, ese input se elimina (desconectando sus fuentes primero).",
+                "default": false,
+                "children": []
+              }
+            ]
           }
         ]
       }
@@ -61,18 +106,18 @@
   {
     "guid": "9a997a8f-1675-4fe2-be3e-eede78faf277",
     "name": "Block4Split.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Simplifica y segmenta la polilínea de cada manzana urbana en cuatro lados, ordenados radialmente.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "description": "Mientras el componente está seleccionado en el canvas.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Etiquetas de Lado",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja una letra (TextDot) sobre cada uno de los 4 lados resultantes, solo mientras el componente está seleccionado. Los 4 lados siempre se dibujan con una paleta de 4 colores (independiente de la selección) para distinguir su orden.",
             "default": null,
             "children": []
           }
@@ -206,6 +251,28 @@
             "kind": "behavior",
             "label": "Recálculo Automático",
             "description": "Comportamiento automático, sin control visible: se suscribe a DisplayPipeline.PostDrawObjects y compara el ChangeCounter de la cámara en cada frame; si cambió, fuerza ExpireSolution() en el siguiente ciclo de UI. Se desuscribe si Run pasa a false o el componente se elimina del documento.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "a4f22fa0-8c6e-42f7-8959-2f71c1a652bf",
+    "name": "Converging_Crossroads.cs",
+    "description": "Calcula los ángulos de heading (sentido horario desde el norte) en intersecciones convergentes entre una lista de calles y un punto específico.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Decoración de Arco y Etiqueta",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible. A diferencia de Diverging_Crossroads.cs, aquí el CONTORNO del arco (amarillo, sin flechas) ya se dibuja siempre, sin necesidad de seleccionar; lo que depende de la selección son las flechas de norte/heading, las puntas de flecha sobre el arco, y el TextDot con el ángulo.",
             "default": null,
             "children": []
           }
@@ -368,6 +435,28 @@
     ]
   },
   {
+    "guid": "f4dbc2b5-caed-447f-87fb-5140f107857f",
+    "name": "Diverging_Crossroads.cs",
+    "description": "Calcula los ángulos de heading (sentido horario desde el norte) en intersecciones divergentes entre una lista de calles y un punto específico.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Arcos y Etiquetas de Ángulo",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: las flechas de heading (una por calle divergente) y de norte (una por nodo) siempre están visibles; los arcos + TextDot con el ángulo por cada spoke solo se dibujan si está seleccionado. Detalle a tener en cuenta: el tamaño de flecha de los arcos se calcula UNA sola vez, a partir del primer arco válido de TODO el componente, no por nodo — así está en el código original.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "guid": "a6ffe8aa-bf17-42c0-b9df-4007bc795f93",
     "name": "EdgesDetector.cs",
     "description": "Extrae líneas de contorno de una imagen y las reconstruye como polylines simplificadas.",
@@ -430,20 +519,28 @@
   {
     "guid": "a17f6b83-cc1d-4e22-bd3f-6c89ab7dc0e2",
     "name": "ExtraScriptVariable.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Parámetro personalizado (hereda de Param_ScriptVariable, no de GH_Component) usado como input dinámico de PC_Exporter.cs para adjuntar metadata tipada por nube de puntos.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el parámetro (no sobre un componente — este menú vive en el input dinámico que agrega PC_Exporter.cs). Además de agregar su propio submenú, quita del menú base las opciones nativas 'Item/List/Tree Access' y el submenú nativo 'Type Hints' de Grasshopper, para reemplazarlo por el suyo.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Type Hints",
+            "description": "Submenú con 14 tipos posibles, agrupados en 3 bloques separados por líneas: primitivos (Boolean, Integer, String, Double, DateTime, Color, File Path), matemáticos (Point, Vector, Plane, Interval, Transform), y lineales (Line, Rectangle). El tipo elegido aquí es el que después usa PC_Exporter.cs para decidir cómo tipar la metadata en el JSON exportado.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "option",
+                "label": "Cada tipo de dato",
+                "description": "Ítem del submenú, uno por tipo (icono propio según el Param_* nativo equivalente). Marcado (Checked) el que esté activo actualmente. Clic asigna ese TypeHint al parámetro y dispara ExpireSolution.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       }
@@ -452,18 +549,18 @@
   {
     "guid": "43aeb2e7-bf1d-45a2-ba17-0a33a2b71ead",
     "name": "GeoLocalSwitch.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Convierte entre coordenadas geográficas (lat,lon) y sistema métrico local (x,y,z), en cualquiera de las dos direcciones.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "action",
+            "label": "Switch to: [dirección]",
+            "description": "Un solo ToolStripMenuItem, sin checkbox: su propio texto cambia para anunciar a qué dirección va a cambiar ('Switch to: Local → Location' o 'Switch to: Location → Local'). Al hacer clic, invierte la dirección de conversión y renombra el input, el output y el propio NickName del componente para reflejar el nuevo sentido — no es cosmético, cambia qué significa cada parámetro.",
             "default": null,
             "children": []
           }
@@ -509,20 +606,20 @@
     ]
   },
   {
-    "guid": "c8d88dca-df98-46e1-a884-ac118dcf775d",
-    "name": "HistogramMatcher.cs",
-    "description": "Pendiente de documentar.",
+    "guid": "f4d92d66-91b2-4efd-b195-7ca1086c315a",
+    "name": "HeadingAssistant.cs",
+    "description": "Calcula el ángulo de heading (sentido horario desde el norte geográfico) de un segmento de línea.",
     "tree": [
       {
         "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Arco y Etiqueta de Ángulo",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: la flecha de heading (amarilla) y la flecha de norte (azul) siempre están visibles; el arco entre ambas y un TextDot con el valor del ángulo en grados solo se dibujan mientras el componente está seleccionado.",
             "default": null,
             "children": []
           }
@@ -531,22 +628,67 @@
     ]
   },
   {
-    "guid": "b7bd2439-5c49-43d7-8953-4724cb01d78d",
-    "name": "HistogramViewer.cs",
-    "description": "Pendiente de documentar.",
+    "guid": "c8d88dca-df98-46e1-a884-ac118dcf775d",
+    "name": "HistogramMatcher.cs",
+    "description": "Iguala el histograma de una imagen a partir de una imagen de referencia (color matching).",
     "tree": [
       {
         "kind": "trigger",
         "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Comparador Antes/Después",
+            "description": "Ventana de 180×180px que superpone la imagen original y la procesada, recortadas (clip) a cada lado de una línea vertical arrastrable — comparador clásico de 'antes/después'. Sin imágenes aún, muestra el texto 'Preview'.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre del Divisor",
+                "description": "Círculo blanco de 4px de radio sobre la línea vertical central. Clic y arrastre horizontal mueve el punto de corte: a la izquierda del círculo se recorta la imagen ORIGINAL, a la derecha la procesada (etiquetada 'MATCHED'). Las etiquetas de texto solo se dibujan si no quedan tapadas por el propio divisor.",
+                "default": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b7bd2439-5c49-43d7-8953-4724cb01d78d",
+    "name": "HistogramViewer.cs",
+    "description": "Grafica el histograma RGB de una imagen, con las tres curvas de canal superpuestas y mezcladas por zonas de solapamiento.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Interfaz Personalizada",
+        "description": "Elemento dibujado directamente en el canvas, dentro de la cápsula del componente — a diferencia de la mayoría de los demás componentes del plugin, esta cápsula es redimensionable a mano.",
+        "default": null,
+        "children": [
+          {
+            "kind": "gui_element",
+            "label": "Gráfica de Histograma",
+            "description": "Área de 280×140px por default, con retícula de fondo 10×10 y las curvas de los canales Rojo, Verde y Azul superpuestas. Las 7 zonas posibles de solapamiento (R, G, B, R∩G, R∩B, G∩B, R∩G∩B) se rellenan con colores de mezcla tipo 'screen' (amarillo, magenta, cian, gris), y el canal 'dominante' en cada solapamiento de a dos se dibuja encima de los otros.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Cambiar Canal Dominante",
+                "description": "Clic dentro del área de la gráfica (fuera del borde de resize): detecta qué canal tiene el valor más alto en el bin correspondiente a esa posición X, y lo vuelve el canal que se dibuja encima en las zonas de solapamiento.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "behavior",
+                "label": "Redimensionar Cápsula",
+                "description": "Arrastre desde cualquiera de los 4 bordes (zona de 6px) o esquinas de la cápsula cambia su ancho y/o alto (cursor cambia a flecha de resize según el borde). El tamaño elegido se guarda con el componente.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       }
@@ -585,48 +727,99 @@
   {
     "guid": "d526b86c-993b-4731-b178-25087f03b41b",
     "name": "Joystick.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Controla dos valores (X/Y) mediante un joystick virtual 2D, en modo posición absoluta o modo rate (velocidad acumulada mientras se mantiene presionado).",
     "tree": [
       {
         "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "label": "Interfaz Personalizada",
+        "description": "Disco interactivo dibujado dentro de la cápsula del componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Disco del Joystick",
+            "description": "Placa base con degradado radial y un disco central arrastrable que representa la posición X/Y.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Arrastre",
+                "description": "Clic y arrastre dentro del radio del disco mueve el stick. En modo 'Auto Return To Center' (rate mode), mientras se mantiene presionado se acumula StickX/StickY × RateSpeed sobre el tiempo transcurrido (un timer corre cada ~15ms), y al soltar el stick vuelve a (0,0) solo. En modo posición (Auto Return To Center desactivado), el valor es directo y absoluto, limitado a MaxRadius, y NO vuelve al centro al soltar.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       },
       {
         "kind": "trigger",
         "label": "Diálogo",
-        "description": "Pendiente de documentar.",
+        "description": "Se abre con doble clic en zona vacía de la cápsula (fuera del disco) — ventana modal aparte, no parte del GUI dibujado en canvas.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
-            "default": null,
+            "kind": "dialog_field",
+            "label": "Rate Speed",
+            "description": "TextBox dentro del diálogo. Velocidad de acumulación (unidades por segundo) usada en modo Auto Return To Center.",
+            "default": 25.0,
+            "children": []
+          },
+          {
+            "kind": "dialog_field",
+            "label": "Max Radius",
+            "description": "TextBox dentro del diálogo. Radio máximo del stick en modo posición (Auto Return To Center desactivado).",
+            "default": 50.0,
             "children": []
           }
         ]
       },
       {
         "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "toggle",
+            "label": "Auto Return To Center",
+            "description": "ToolStripMenuItem checkable. Activado: modo rate, el stick vuelve al centro al soltar (ver Arrastre). Desactivado: modo posición absoluta.",
+            "default": true,
+            "children": []
+          },
+          {
+            "kind": "toggle",
+            "label": "Orthogonal mode",
+            "description": "ToolStripMenuItem checkable. Restringe el arrastre a un solo eje a la vez: el que se mueva más en cada gesto.",
+            "default": false,
+            "children": []
+          },
+          {
+            "kind": "menu_group",
+            "label": "Bloqueo de Eje",
+            "description": "Dos ToolStripMenuItem checkable con exclusividad manejada por un único valor interno (JoystickAxisLock): activar uno desactiva el otro, y un tercer clic sobre el que ya está activo lo desactiva (vuelve a 'ninguno').",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Lock Y Axis",
+                "description": "Ítem del menú. Nota: en el código este ítem activa JoystickAxisLock.LockX tal cual está escrito — el nombre visible y el valor interno no coinciden.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Lock X Axis",
+                "description": "Ítem del menú. Nota: en el código este ítem activa JoystickAxisLock.LockY tal cual está escrito — el nombre visible y el valor interno no coinciden.",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "action",
+            "label": "Reset",
+            "description": "Ítem del menú. Regresa StickX/StickY y AccumulatedX/Y a 0 inmediatamente.",
             "default": null,
             "children": []
           }
@@ -637,20 +830,35 @@
   {
     "guid": "d32e2d41-21d0-49b3-9e7a-65c8c5f8f4bc",
     "name": "KeypointDetector.UI.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Detecta puntos clave visuales (keypoints) y relaciones de coincidencia entre imágenes vecinas.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "description": "Dos círculos dibujados directamente en el canvas, junto a los dos primeros outputs del componente (Keypoints y Matches).",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Radio Buttons de Preview",
+            "description": "Así los llama el código ('radio buttons'), pero funcionalmente son dos toggles independientes, no un grupo exclusivo — activar uno no desactiva el otro. Solo se dibujan e interactúan por encima de cierto nivel de zoom (por debajo, el componente entra en 'modo skeleton' y estos círculos desaparecen).",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "toggle",
+                "label": "Mostrar Keypoints",
+                "description": "Círculo junto al output 'Keypoints'. Clic alterna KeypointsVisible: muestra u oculta los puntos rojos (DrawPoint) en el preview.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "toggle",
+                "label": "Mostrar Relaciones",
+                "description": "Círculo junto al output 'Matches'. Clic alterna RelacionesVisible: muestra u oculta las líneas verdes que conectan keypoints coincidentes entre imágenes.",
+                "default": true,
+                "children": []
+              }
+            ]
           }
         ]
       }
@@ -659,18 +867,40 @@
   {
     "guid": "fa6cdd20-3a01-4445-a39f-894a0ea9e8f9",
     "name": "LocationDisplaySwap.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Reordena coordenadas entre formatos (lat,lon) ↔ (lon,lat), para compatibilidad con sistemas de cálculo y visualización en el viewport de Rhino.",
     "tree": [
       {
         "kind": "trigger",
-        "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente. Se agrega vía AppendAdditionalComponentMenuItems, no AppendAdditionalMenuItems.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "toggle",
+            "label": "Remove elevation (Z)",
+            "description": "ToolStripMenuItem checkable. Activado: descarta el tercer componente (elevación) al convertir.",
+            "default": true,
+            "children": []
+          },
+          {
+            "kind": "toggle",
+            "label": "Preserve list structure (keep failed items as empty)",
+            "description": "ToolStripMenuItem checkable. Activado: los ítems que no se pudieron convertir se conservan como texto vacío en el output (para no desalinear los índices de la lista); desactivado, esos ítems simplemente se omiten.",
+            "default": true,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Pines de Coordenadas",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja un pin (PointStyle.Pin) por cada coordenada única convertida, solo mientras el componente está seleccionado. A diferencia de otros componentes del plugin, aquí el preview entero (no solo la etiqueta) depende de la selección — sin seleccionar, no se dibuja nada.",
             "default": null,
             "children": []
           }
@@ -801,34 +1031,86 @@
   {
     "guid": "b45f13a4-1a2b-4c3d-9d4e-5f8b7e1c2d9f",
     "name": "MapTileRequester.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Descarga tiles de mapa georreferenciados de distintos proveedores (OpenStreetMap, CartoDB, ESRI World, Google Maps, Bing Maps).",
     "tree": [
       {
         "kind": "trigger",
-        "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "label": "Interfaz Personalizada",
+        "description": "Ventana de previsualización y dos dropdowns dibujados directamente en el canvas, dentro de la cápsula del componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Ventana de Previsualización",
+            "description": "Área de 180×180px arriba de los dropdowns. Mientras se descarga el tile muestra 'Loading Preview...'; si ya hay una imagen pero falla al dibujarla, cae a 'Tile Preview'. Sin controles interactivos propios.",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "behavior",
+                "label": "Renderizado en Vivo",
+                "description": "Comportamiento automático, sin control visible: se actualiza cada vez que cambia el tile descargado (proveedor, estilo, o coordenadas).",
+                "default": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Selector de Proveedor y Estilo",
+            "description": "Dos dropdowns dibujados a mano (no son GH_ValueList nativos), uno debajo del otro: 'Map Provider' (OpenStreetMap, CartoDB, ESRI World, Google Maps, Bing Maps) y 'Style', cuyas opciones dependen del proveedor elegido — por ejemplo, CartoDB expone varios estilos distintos que OpenStreetMap no tiene. Cada uno se despliega en una lista de hasta 8 filas visibles, con scrollbar si hay más.",
+            "default": null,
+            "children": [
+              {
+                "kind": "action",
+                "label": "Desplegar / Elegir Opción",
+                "description": "Clic sobre el encabezado del dropdown lo abre o cierra; clic sobre una fila de la lista desplegada selecciona esa opción y cierra el dropdown. Elegir un proveedor distinto puede reiniciar la opción de 'Style' si la anterior no existe en el nuevo proveedor.",
+                "default": null,
+                "children": []
+              },
+              {
+                "kind": "behavior",
+                "label": "Arrastre del Scroll",
+                "description": "Clic y arrastre sobre el grip de la barra de scroll (visible solo si el dropdown desplegado tiene más de 8 opciones) desplaza la lista.",
+                "default": null,
+                "children": []
+              }
+            ]
           }
         ]
       },
       {
         "kind": "trigger",
-        "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "label": "Menú Contextual",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Preview Projection",
+            "description": "Grupo de dos ToolStripMenuItem exclusivos (tipo radio, con Checked) bajo el encabezado 'Preview Projection'. Mismo patrón que BoundBuilder.cs/BoundViewport.cs: solo controla la proyección con la que se dibuja el preview en el viewport, no afecta a los outputs.",
             "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Plate Carrée",
+                "description": "Ítem del menú, marcado (Checked) por default. Proyección sin transformar, lon/lat 1:1.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Web Mercator",
+                "description": "Ítem del menú. Proyección Mercator.",
+                "default": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "digit_scroller",
+            "label": "Tile Safety Limit",
+            "description": "GH_DigitScroller embebido en el menú contextual (prefijo 'Max tiles:', rango 1–200, sin decimales) — mismo patrón que BoundViewport.cs.",
+            "default": 75,
             "children": []
           }
         ]
@@ -898,18 +1180,18 @@
   {
     "guid": "b6990250-3c23-49ba-95bd-11b512f00791",
     "name": "NearestPanoramaLocator.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Consulta los servicios de Google Street View para obtener metadata completa de los panoramas más cercanos (actual e históricos) en una colección de coordenadas geográficas.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "description": "Mientras el componente está seleccionado en el canvas.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Etiqueta de Pano ID",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: mismo patrón que StreetsidePanoramaLocator.cs (puntos siempre visibles con degradado de color, Pano ID solo al seleccionar), con una capa extra: cada punto de entrada puede tener varios panoramas asociados (el actual y sus versiones históricas), y el degradado de color se aplica según la posición de cada panorama dentro de SU punto, no según la posición del punto en la lista.",
             "default": null,
             "children": []
           }
@@ -920,33 +1202,55 @@
   {
     "guid": "d0801329-ac5d-4a5b-ad23-904e3212a3cc",
     "name": "OSM_CityBlockBuilder.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Construye las manzanas urbanas (city blocks) de OpenStreetMap alrededor de una ubicación, a partir de la red de calles circundante.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Projection",
+            "description": "Encabezado deshabilitado (ToolStripMenuItem, Enabled=false, solo texto) seguido de 3 ToolStripMenuItem checkable con exclusividad manejada a mano. A diferencia de BoundBuilder.cs/BoundViewport.cs, aquí la proyección elegida construye la geometría de SALIDA, no solo el preview del viewport — cambiarla dispara un recálculo completo (ExpireSolution).",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "option",
+                "label": "Plate Carrée",
+                "description": "Ítem del menú. Proyección sin transformar, lon/lat 1:1.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Web Mercator",
+                "description": "Ítem del menú. Proyección Mercator.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Metric",
+                "description": "Ítem del menú. Proyección métrica (tercera opción que no existe en BoundBuilder.cs/BoundViewport.cs).",
+                "default": false,
+                "children": []
+              }
+            ]
           }
         ]
       },
       {
         "kind": "trigger",
         "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "description": "Mientras el componente está seleccionado en el canvas.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Etiqueta de Block",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja 'Block_{i}' como TextDot sobre el centroide de cada manzana, solo mientras el componente está seleccionado.",
             "default": null,
             "children": []
           }
@@ -957,33 +1261,55 @@
   {
     "guid": "46a1cdd2-b8fb-4fcf-b23b-b3767928cfb3",
     "name": "OSM_StreetNetwork.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Construye la red de calles (street network) de OpenStreetMap alrededor de una ubicación, clasificada por tipo de vía (highway).",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Projection",
+            "description": "Encabezado deshabilitado (ToolStripMenuItem, Enabled=false, solo texto) seguido de 3 ToolStripMenuItem checkable con exclusividad manejada a mano. A diferencia de BoundBuilder.cs/BoundViewport.cs, aquí la proyección elegida construye la geometría de SALIDA, no solo el preview del viewport — cambiarla dispara un recálculo completo (ExpireSolution).",
             "default": null,
-            "children": []
+            "children": [
+              {
+                "kind": "option",
+                "label": "Plate Carrée",
+                "description": "Ítem del menú. Proyección sin transformar, lon/lat 1:1.",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Web Mercator",
+                "description": "Ítem del menú. Proyección Mercator.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Metric",
+                "description": "Ítem del menú. Proyección métrica (tercera opción que no existe en BoundBuilder.cs/BoundViewport.cs).",
+                "default": false,
+                "children": []
+              }
+            ]
           }
         ]
       },
       {
         "kind": "trigger",
         "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "description": "Mientras el componente está seleccionado en el canvas.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Etiqueta de Calle",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de cada calle como TextDot en el punto medio de su curva (coloreada según el tipo de vía), solo mientras el componente está seleccionado.",
             "default": null,
             "children": []
           }
@@ -1204,20 +1530,115 @@
     ]
   },
   {
+    "guid": "b0c3ad00-af2f-47a6-9d57-46334824c1a6",
+    "name": "PC_Builder.cs",
+    "description": "Construye una nube de puntos a partir de mapas de profundidad equirectangulares geolocalizados.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (verificado vía doc.SelectedObjects(), no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Dots Numerados",
+            "description": "Comportamiento automático en DrawCentroidDots, sin control visible: dibuja un TextDot numerado (0, 1, 2...) sobre el centroide de cada nube de puntos generada, solo mientras el componente está seleccionado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "b41936c0-3c22-44d3-9ab5-48b307c3adb1",
+    "name": "PC_Exporter.cs",
+    "description": "Exporta nubes de puntos de Rhino a formato JSON comprimido (.json.gz). Permite adjuntar metadata arbitraria por nube.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Parámetros Dinámicos",
+        "description": "A diferencia de ReadJSON.cs/MediaInfo.cs/PC_Importer.cs (outputs que se reconfiguran solos), aquí SÍ son los controles nativos +/- de Grasshopper, pero sobre inputs, en la zona entre 'Names' y 'SavePath'. El usuario decide manualmente cuántos campos de metadata extra exportar.",
+        "default": null,
+        "children": [
+          {
+            "kind": "action",
+            "label": "Agregar Input (+)",
+            "description": "Control nativo de Grasshopper. Crea un input de tipo ExtraScriptVariable con nombre automático ('Extra1', 'Extra2'...) y selector de tipo (type hints) — igual que un input de un componente de Script de C#/Python. El nombre que le pongas se usa como key en el JSON exportado.",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Quitar Input (-)",
+            "description": "Control nativo de Grasshopper. Elimina el input dinámico correspondiente.",
+            "default": null,
+            "children": []
+          },
+          {
+            "kind": "behavior",
+            "label": "Renombrado Automático",
+            "description": "Comportamiento automático, sin control visible: los inputs que conservan su nombre automático se renumeran en orden ('Extra1', 'Extra2'...) tras cualquier cambio en la lista.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "guid": "bc9322ca-c2b8-4174-ad40-fbbad570c577",
     "name": "PC_Importer.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Importa nubes de puntos de Rhino desde formato JSON.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "toggle",
+            "label": "Lock Outputs",
+            "description": "ToolStripMenuItem checkable. Mientras está activo, congela el set de outputs dinámicos actual e ignora si las keys de metadata del archivo cambian.",
+            "default": false,
+            "children": []
+          },
+          {
+            "kind": "action",
+            "label": "Match Outputs",
+            "description": "Ítem del menú. Desactiva 'Lock Outputs' y fuerza una resincronización inmediata de los outputs contra las keys de metadata detectadas en el archivo actual.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Parámetros Dinámicos",
+        "description": "CanInsertParameter y CanRemoveParameter devuelven siempre false: no hay controles nativos de +/- visibles. Los outputs extra se crean solos, uno por cada key de metadata que el archivo traiga (el mismo esquema que escribió PC_Exporter.cs al exportarlo), con el tipo nativo de Grasshopper correspondiente (número, texto, punto, color, etc.).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Outputs por Metadata",
+            "description": "Comportamiento automático, sin control visible: compara las keys de metadata del archivo contra los outputs dinámicos actuales: si no coinciden, destruye los outputs dinámicos existentes y crea uno nuevo por cada key, tipado según el tipo guardado en el archivo. No ocurre si 'Lock Outputs' está activo.",
+            "default": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (verificado vía doc.SelectedObjects(), no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiqueta de Nube",
+            "description": "Comportamiento automático en DrawCentroidDots, sin control visible: dibuja el nombre de cada nube importada (o 'Cloud_{i}' si no tiene nombre) como TextDot sobre su centroide, solo mientras el componente está seleccionado.",
             "default": null,
             "children": []
           }
@@ -1228,18 +1649,69 @@
   {
     "guid": "c1a74e2b-9f03-4d87-a21b-5e6d83f910c4",
     "name": "PC_Reduce.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Reduce la cantidad de puntos de una nube mediante distintos métodos: aleatorio, por outliers, por patrón booleano, o por índices explícitos.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Menú Contextual",
-        "description": "Pendiente de documentar.",
+        "description": "Clic derecho sobre el componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "menu_group",
+            "label": "Método",
+            "description": "Cuatro ToolStripMenuItem checkable con exclusividad manejada a mano (activar uno desactiva los otros tres). Elegir un método reconstruye por completo los inputs del componente (ver debajo) — no es solo un modo de cálculo, cambia la forma del componente.",
+            "default": null,
+            "children": [
+              {
+                "kind": "option",
+                "label": "Random",
+                "description": "Ítem del menú. Reconstruye los inputs a 'Ratio' (fracción a conservar, 0.5 por default) y 'Seed' (semilla, 0 por default).",
+                "default": true,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Outlier",
+                "description": "Ítem del menú. Reconstruye los inputs a 'Radius' (radio de búsqueda, 0.1 por default) y 'Min Neighbors' (vecinos mínimos, 5 por default).",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Pattern",
+                "description": "Ítem del menú. Reconstruye los inputs a un solo 'Pattern' (árbol de booleanos, opcional): true = quitar punto, false = conservarlo, aplicado cíclicamente por nube.",
+                "default": false,
+                "children": []
+              },
+              {
+                "kind": "option",
+                "label": "Indices",
+                "description": "Ítem del menú. Reconstruye los inputs a un solo 'Indices' (árbol de enteros, opcional, admite índices negativos): puntos a eliminar por posición.",
+                "default": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "ecaba391-165b-480a-9134-56d5058acec6",
+    "name": "Perp_Heading.cs",
+    "description": "Calcula los ángulos de heading perpendicular (sentido horario) en puntos a lo largo de curvas de calle: a ambos lados de una sola curva, o evitando la mediana entre dos curvas.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Arco y Etiqueta de Ángulo",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: flechas de heading y norte siempre visibles. El arco solo se dibuja si está seleccionado y pudo construirse, pero a diferencia de Serial_Heading.cs, el TextDot con el ángulo SIEMPRE se dibuja mientras está seleccionado (con o sin arco válido, usando un punto de respaldo sobre la propia línea si hace falta).",
             "default": null,
             "children": []
           }
@@ -1342,20 +1814,86 @@
     ]
   },
   {
-    "guid": "e71b0839-9dbe-4201-8555-7da4863645d5",
-    "name": "StreetsidePanoramaLocator.cs",
-    "description": "Pendiente de documentar.",
+    "guid": "5a792993-4b82-4408-9cc1-1246523f2e6a",
+    "name": "RouteDraftCleaner.cs",
+    "description": "Limpia y alinea polilíneas de calles según continuidad espacial. Si se dan más de dos curvas, intenta reconstruir la ruta usando como máximo dos.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Selección del Componente",
-        "description": "Pendiente de documentar.",
+        "description": "Mientras el componente está seleccionado en el canvas (verificado vía doc.SelectedObjects(), no Attributes.Selected).",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "behavior",
+            "label": "Etiqueta de Segmento",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: para cada centroide, busca el segmento de geometría cuyo punto medio esté más cerca y dibuja el nombre de ese segmento como TextDot, solo mientras el componente está seleccionado.",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "1dfda101-6b89-442a-badb-13e8c3e3cf2e",
+    "name": "Serial_Heading.cs",
+    "description": "Calcula los ángulos de heading tangente (sentido horario) en puntos específicos a lo largo de una o varias curvas de calle.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Arco y Etiqueta de Ángulo",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: flechas de heading y norte siempre visibles. El arco + TextDot con el ángulo solo se dibujan si está seleccionado Y el arco pudo construirse — a diferencia de Perp_Heading.cs, aquí no hay un punto de respaldo cuando no hay arco válido (simplemente no se dibuja nada).",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "dd0c9396-919f-40d1-9f86-30db10bbe4a3",
+    "name": "StreetSelector.cs",
+    "description": "Busca, ordena y selecciona/filtra una o varias calles de una estructura OpenStreetMap según una referencia (índice o punto más cercano).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiquetas de Calle",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja el nombre de cada calle resultante como TextDot sobre el punto medio de su geometría, solo mientras el componente está seleccionado (verificado vía OnPingDocument().SelectedObjects(), no Attributes.Selected).",
+            "default": null,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "e71b0839-9dbe-4201-8555-7da4863645d5",
+    "name": "StreetsidePanoramaLocator.cs",
+    "description": "Consulta los servicios de Bing Streetside para obtener metadata del panorama más cercano a una colección de coordenadas geográficas.",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas.",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Etiqueta de Pano ID",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: los puntos de cada panorama siempre se dibujan (coloreados con un degradado de paleta según su posición en la lista), pero el TextDot con el Pano ID solo se dibuja mientras el componente está seleccionado.",
             "default": null,
             "children": []
           }
@@ -1535,18 +2073,63 @@
   {
     "guid": "28907ae8-0df9-43b6-9283-c597b7ecadcf",
     "name": "TransformationSettings.cs",
-    "description": "Pendiente de documentar.",
+    "description": "Define qué ejes (X/Y/Z) participan en cada tipo de transformación de imagen (traslación, escala, rotación, shear, espejo, perspectiva), y exporta la configuración como JSON.",
     "tree": [
       {
         "kind": "trigger",
         "label": "Interfaz Personalizada",
-        "description": "Pendiente de documentar.",
+        "description": "Botón y tabla dibujados directamente en el canvas, debajo de la cápsula del componente.",
         "default": null,
         "children": [
           {
-            "kind": "todo",
-            "label": "Por documentar",
-            "description": "Se detectó esta interacción en el código (vía búsqueda automática), pero aún no se documentaron sus atributos específicos.",
+            "kind": "gui_element",
+            "label": "Botón Conditions",
+            "description": "Cápsula de texto (GH_Capsule, rótulo 'Conditions') debajo del componente.",
+            "default": null,
+            "children": [
+              {
+                "kind": "toggle",
+                "label": "Expandir Tabla",
+                "description": "Clic sobre el botón alterna tableExpanded: muestra u oculta la tabla de checkboxes y reacomoda el tamaño del componente (ExpireLayout + ExpireSolution).",
+                "default": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "gui_element",
+            "label": "Tabla de Transformaciones",
+            "description": "Tabla de 6 filas × 3 columnas (Translation, Scale, Rotation, Shear, Mirror, Perspective × X, Y, Z), visible solo mientras tableExpanded es true. Las celdas sin checkbox asociado (Z en Translation, Scale, Shear y Mirror) se dibujan como '—', sin control.",
+            "default": null,
+            "children": [
+              {
+                "kind": "toggle",
+                "label": "Radio-botón por Celda",
+                "description": "Cada celda con ID válido es un radio-botón que activa/desactiva esa transformación en ese eje. Clic alterna el valor, registra un evento de undo ('Toggle <id>') y dispara ExpireSolution.",
+                "default": true,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "guid": "76c3d1c7-0636-4375-b212-7b1f2a6d1969",
+    "name": "URL_Deconstructor.cs",
+    "description": "Extrae los parámetros referenciados en un link de Google Street View (coordenadas, heading, pitch, FOV, pano ID).",
+    "tree": [
+      {
+        "kind": "trigger",
+        "label": "Selección del Componente",
+        "description": "Mientras el componente está seleccionado en el canvas (vía HeadingUtils.IsComponentSelected, que internamente usa doc.SelectedObjects() — no Attributes.Selected).",
+        "default": null,
+        "children": [
+          {
+            "kind": "behavior",
+            "label": "Pines de Ubicación",
+            "description": "Comportamiento automático en DrawViewportWires, sin control visible: dibuja un pin (PointStyle.Pin) por cada punto geográfico extraído, solo mientras el componente está seleccionado. Igual que en LocationDisplaySwap.cs, todo el preview depende de la selección — sin seleccionar, no se dibuja nada.",
             "default": null,
             "children": []
           }
